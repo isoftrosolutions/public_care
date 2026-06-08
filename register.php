@@ -166,13 +166,10 @@ Already have an account?
 <script>
 function togglePassword(id) {
     const input = document.getElementById(id);
-    const icon = input.nextElementSibling;
     if (input.type === "password") {
         input.type = "text";
-        icon.textContent = "visibility_off";
     } else {
         input.type = "password";
-        icon.textContent = "visibility";
     }
 }
 </script>

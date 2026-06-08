@@ -111,7 +111,7 @@ Access your personalized Ayurvedic healthcare journey through our clinical porta
 </div>
 <div class="relative">
 <input class="w-full px-4 py-3 rounded-lg border border-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline-variant" id="password" name="password" placeholder="••••••••" type="password" required/>
-<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary" type="button">
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary" type="button" onclick="togglePassword('password')">
 <span class="material-symbols-outlined">visibility</span>
 </button>
 </div>
@@ -182,6 +182,14 @@ Access your personalized Ayurvedic healthcare journey through our clinical porta
 .otp-input:focus { border-color: #1b4332; box-shadow: 0 0 0 2px rgba(27, 67, 50, 0.1); }
 </style>
 <script>
+function togglePassword(id) {
+    const input = document.getElementById(id);
+    if (input.type === "password") {
+        input.type = "text";
+    } else {
+        input.type = "password";
+    }
+}
 function switchTab(type) {
     const emailForm = document.getElementById('form-email');
     const phoneForm = document.getElementById('form-phone');
