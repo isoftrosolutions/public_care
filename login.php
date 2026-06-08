@@ -9,28 +9,36 @@ if (isset($_SESSION['user_id'])) {
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
-
-    if ($email && $password) {
-        $db = getDB();
-        $stmt = $db->prepare("SELECT id, full_name, password, role FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $user = $result->fetch_assoc();
-
-        if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['user_name'] = $user['full_name'];
-            $_SESSION['role'] = $user['role'];
-            header('Location: ' . BASE_URL . '/index.php');
-            exit;
-        } else {
-            $error = 'Invalid email or password.';
-        }
+    if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'] ?? '')) {
+        $error = 'Invalid form submission. Please try again.';
     } else {
-        $error = 'Please fill in all fields.';
+        $email = trim($_POST['email'] ?? '');
+        $password = $_POST['password'] ?? '';
+
+        if ($email && $password) {
+            $db = getDB();
+            $stmt = $db->prepare("SELECT id, full_name, password, role FROM users WHERE email = ?");
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $user = $result->fetch_assoc();
+
+            if ($user && password_verify($password, $user['password'])) {
+                session_regenerate_id(true);
+                $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_name'] = $user['full_name'];
+                $_SESSION['role'] = $user['role'];
+                $redirect = $_SESSION['redirect_after_login'] ?? BASE_URL . '/index.php';
+                unset($_SESSION['redirect_after_login']);
+                header('Location: ' . $redirect);
+                exit;
+            } else {
+                $error = 'Invalid email or password.';
+            }
+        } else {
+            $error = 'Please fill in all fields.';
+        }
     }
 }
 
@@ -91,6 +99,7 @@ Access your personalized Ayurvedic healthcare journey through our clinical porta
 </div>
 <div class="flex-grow">
 <form class="space-y-5" id="form-email" method="POST" action="">
+<input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 <div>
 <label class="block font-label-md text-label-md text-on-surface mb-2" for="email">Email Address</label>
 <input class="w-full px-4 py-3 rounded-lg border border-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline-variant" id="email" name="email" placeholder="dr.sharma@example.com" type="email" required/>

@@ -42,19 +42,9 @@
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 if (mobileMenuBtn) {
 mobileMenuBtn.addEventListener('click', () => {
-const nav = document.querySelector('nav.hidden');
+const nav = document.querySelector('nav');
 if (nav) {
-nav.classList.toggle('hidden');
-nav.classList.toggle('flex');
-nav.classList.toggle('flex-col');
-nav.classList.toggle('absolute');
-nav.classList.toggle('top-20');
-nav.classList.toggle('left-0');
-nav.classList.toggle('w-full');
-nav.classList.toggle('bg-surface');
-nav.classList.toggle('p-6');
-nav.classList.toggle('shadow-lg');
-nav.classList.toggle('z-50');
+nav.classList.toggle('mobile-open');
 }
 });
 }

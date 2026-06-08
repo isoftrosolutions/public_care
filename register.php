@@ -10,6 +10,9 @@ $errors = [];
 $form_data = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'] ?? '')) {
+        $errors['general'] = 'Invalid form submission. Please try again.';
+    } else {
     $form_data['full_name'] = trim($_POST['full_name'] ?? '');
     $form_data['email'] = trim($_POST['email'] ?? '');
     $form_data['mobile'] = trim($_POST['mobile'] ?? '');
@@ -25,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$form_data['mobile']) {
         $errors['mobile'] = 'Mobile number is required.';
     }
-    if (strlen($password) < 6) {
-        $errors['password'] = 'Password must be at least 6 characters.';
+    if (strlen($password) < 8 || !preg_match('/[A-Z]/', $password) || !preg_match('/[a-z]/', $password) || !preg_match('/[0-9]/', $password)) {
+        $errors['password'] = 'Password must be at least 8 characters with uppercase, lowercase, and a number.';
     }
     if ($password !== $confirm_password) {
         $errors['confirm_password'] = 'Passwords do not match.';
@@ -44,6 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $db->prepare("INSERT INTO users (full_name, email, mobile, password, role) VALUES (?, ?, ?, ?, 'customer')");
             $stmt->bind_param("ssss", $form_data['full_name'], $form_data['email'], $form_data['mobile'], $hashed);
             if ($stmt->execute()) {
+                session_regenerate_id(true);
+                $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
                 $_SESSION['user_id'] = $stmt->insert_id;
                 $_SESSION['user_name'] = $form_data['full_name'];
                 $_SESSION['role'] = 'customer';
@@ -53,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $errors['general'] = 'Registration failed. Please try again.';
             }
         }
+    }
     }
 }
 
@@ -74,6 +80,7 @@ require_once __DIR__ . '/includes/header.php';
 <div class="mb-6 p-4 rounded-lg bg-error-container border border-error text-on-error-container font-label-md"><?= htmlspecialchars($errors['general']) ?></div>
 <?php endif; ?>
 <form class="space-y-6" id="registrationForm" method="POST" action="">
+<input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 <div class="space-y-2">
 <label class="block font-label-md text-on-surface" for="fullName">Full Name</label>
 <input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md bg-white <?= isset($errors['full_name']) ? 'border-error' : '' ?>" id="fullName" name="full_name" placeholder="e.g. Aarav Sharma" type="text" value="<?= htmlspecialchars($form_data['full_name'] ?? '') ?>" required/>

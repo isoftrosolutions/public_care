@@ -6,6 +6,9 @@ $errors = [];
 $form_data = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'] ?? '')) {
+        $errors['general'] = 'Invalid form submission. Please try again.';
+    } else {
     $form_data['name'] = trim($_POST['name'] ?? '');
     $form_data['email'] = trim($_POST['email'] ?? '');
     $form_data['subject'] = trim($_POST['subject'] ?? '');
@@ -32,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors['general'] = 'Failed to send message. Please try again later.';
         }
     }
+    }
 }
 
 $site_title = 'Contact Us';
@@ -57,6 +61,7 @@ Whether you're beginning your Ayurvedic journey or require clinical assistance, 
 <div class="mb-6 p-4 rounded-lg bg-error-container border border-error text-on-error-container font-label-md"><?= htmlspecialchars($errors['general']) ?></div>
 <?php endif; ?>
 <form class="space-y-6" method="POST" action="">
+<input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="space-y-2">
 <label class="font-label-md text-on-surface-variant block" for="name">Full Name</label>

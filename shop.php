@@ -155,8 +155,8 @@ $max_price = $max_price ?: $max_price_in_db;
             <div class="px-1">
               <input type="range" id="price-slider" name="max_price" min="0" max="<?= $max_price_in_db ?>" value="<?= (int)$max_price ?>" class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary">
               <div class="flex justify-between items-center mt-3">
-                <span class="text-label-sm text-outline font-medium">$0</span>
-                <span class="text-label-sm text-primary font-semibold" id="price-label">Up to $<?= number_format((int)$max_price) ?></span>
+<span class="text-label-sm text-outline font-medium">₹0</span>
+<span class="text-label-sm text-primary font-semibold" id="price-label">Up to ₹<?= number_format((int)$max_price) ?></span>
               </div>
             </div>
           </div>
@@ -189,7 +189,7 @@ $max_price = $max_price ?: $max_price_in_db;
           <?php if ($search_term !== ''): ?>
             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/5 text-primary rounded-full text-label-sm">
               Search: "<?= htmlspecialchars($search_term) ?>"
-              <a href="<?= str_replace('&search=' . urlencode($search_term), '', $_SERVER['REQUEST_URI']); ?>" class="hover:text-error transition-colors">
+              <a href="<?= str_replace(['?search=' . urlencode($search_term), '&search=' . urlencode($search_term)], '', $_SERVER['REQUEST_URI']); ?>" class="hover:text-error transition-colors">
                 <span class="material-symbols-outlined text-[16px]">close</span>
               </a>
             </span>
@@ -198,14 +198,14 @@ $max_price = $max_price ?: $max_price_in_db;
             <?php $cat_name = ''; foreach ($categories as $cat) { if ($cat['id'] == $category_filter) { $cat_name = $cat['name']; break; } } ?>
             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/5 text-primary rounded-full text-label-sm">
               <?= htmlspecialchars($cat_name) ?>
-              <a href="<?= str_replace('&category=' . $category_filter, '', $_SERVER['REQUEST_URI']); ?>" class="hover:text-error transition-colors">
+              <a href="<?= str_replace(['?category=' . $category_filter, '&category=' . $category_filter], '', $_SERVER['REQUEST_URI']); ?>" class="hover:text-error transition-colors">
                 <span class="material-symbols-outlined text-[16px]">close</span>
               </a>
             </span>
           <?php endif; ?>
           <?php if ($min_price > 0 || $max_price < $max_price_in_db): ?>
             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/5 text-primary rounded-full text-label-sm">
-              $<?= number_format((int)$min_price) ?> – $<?= number_format((int)$max_price) ?>
+              ₹<?= number_format((int)$min_price) ?> – ₹<?= number_format((int)$max_price) ?>
               <a href="<?= BASE_URL ?>/shop.php" class="hover:text-error transition-colors">
                 <span class="material-symbols-outlined text-[16px]">close</span>
               </a>
@@ -297,9 +297,9 @@ $max_price = $max_price ?: $max_price_in_db;
 
                 <div class="mt-auto flex items-center justify-between">
                   <div class="flex items-baseline gap-2">
-                    <span class="font-headline-md text-primary">$<?= number_format($product['price'], 2) ?></span>
+                    <span class="font-headline-md text-primary">₹<?= number_format($product['price'], 2) ?></span>
                     <?php if ($product['compare_price'] > 0): ?>
-                      <span class="text-label-sm text-outline-variant line-through">$<?= number_format($product['compare_price'], 2) ?></span>
+                      <span class="text-label-sm text-outline-variant line-through">₹<?= number_format($product['compare_price'], 2) ?></span>
                     <?php endif; ?>
                   </div>
                   <?php if ((int)$product['stock'] > 0): ?>
@@ -426,7 +426,7 @@ const priceSlider = document.getElementById('price-slider');
 const priceLabel = document.getElementById('price-label');
 if (priceSlider) {
   priceSlider.addEventListener('input', function() {
-    priceLabel.textContent = 'Up to $' + Number(this.value).toLocaleString();
+    priceLabel.textContent = 'Up to ₹' + Number(this.value).toLocaleString('en-IN');
   });
   priceSlider.addEventListener('change', function() {
     document.getElementById('page-input').value = 1;
@@ -486,20 +486,31 @@ function applyMobileDrawer() {
 applyMobileDrawer();
 window.addEventListener('resize', applyMobileDrawer);
 
-  // Add to cart handler — visual feedback
+  // Add to cart handler
   document.querySelectorAll('.add-to-cart').forEach(btn => {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
+      const id = this.dataset.productId;
+      if (!id) return;
       const btnInner = this.querySelector('.material-symbols-outlined');
       const orig = btnInner.textContent;
-      btnInner.textContent = 'check';
-      this.classList.add('bg-secondary', 'text-on-secondary');
-      this.classList.remove('bg-primary/5', 'text-primary', 'bg-primary', 'hover:bg-primary-container');
-      setTimeout(() => {
-        btnInner.textContent = orig;
-        this.classList.remove('bg-secondary', 'text-on-secondary');
-        this.classList.add('bg-primary', 'text-on-primary');
-      }, 1500);
+      btnInner.textContent = 'sync';
+      fetch('<?= BASE_URL ?>/cart-update.php?action=add&id=' + id)
+        .then(() => {
+          btnInner.textContent = 'check';
+          this.classList.add('bg-secondary', 'text-on-secondary');
+          this.classList.remove('bg-primary/5', 'text-primary', 'bg-primary', 'hover:bg-primary-container');
+          const badge = document.querySelector('#cart-count-badge');
+          if (badge) {
+            const c = parseInt(badge.textContent) + 1;
+            badge.textContent = c;
+          }
+          setTimeout(() => {
+            btnInner.textContent = orig;
+            this.classList.remove('bg-secondary', 'text-on-secondary');
+            this.classList.add('bg-primary', 'text-on-primary');
+          }, 1500);
+        });
     });
   });
 </script>

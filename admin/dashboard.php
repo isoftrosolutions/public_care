@@ -2,7 +2,7 @@
 session_start();
 require_once __DIR__ . '/../config/database.php';
 
-if (!isset($_SESSION['user_id']) || ($_SESSION['user_role'] ?? '') !== 'admin') {
+if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'admin') {
     header('Location: ' . (defined('BASE_URL') ? BASE_URL : '/public_care_ayurveda') . '/login.php');
     exit;
 }

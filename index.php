@@ -145,9 +145,9 @@ if ($featured_result && $featured_result->num_rows > 0) {
 <span class="text-xs text-on-surface-variant ml-1">(<?= (int)$product['reviews_count'] ?>)</span>
 </div>
 <div class="flex items-center justify-between">
-<span class="text-xl font-bold text-primary">$<?= number_format($product['price'], 2) ?></span>
+<span class="text-xl font-bold text-primary">₹<?= number_format($product['price'], 2) ?></span>
 <?php if ($product['compare_price'] > 0): ?>
-<span class="text-sm text-outline-variant line-through ml-2">$<?= number_format($product['compare_price'], 2) ?></span>
+<span class="text-sm text-outline-variant line-through ml-2">₹<?= number_format($product['compare_price'], 2) ?></span>
 <?php endif; ?>
 <button class="bg-primary text-on-primary p-2 rounded-full hover:bg-primary-container transition-all add-to-cart" data-product-id="<?= $product['id'] ?>">
 <span class="material-symbols-outlined">add_shopping_cart</span>
@@ -183,9 +183,9 @@ if ($fallback_result && $fallback_result->num_rows > 0) {
 <span class="text-xs text-on-surface-variant ml-1">(<?= (int)$product['reviews_count'] ?>)</span>
 </div>
 <div class="flex items-center justify-between">
-<span class="text-xl font-bold text-primary">$<?= number_format($product['price'], 2) ?></span>
+<span class="text-xl font-bold text-primary">₹<?= number_format($product['price'], 2) ?></span>
 <?php if ($product['compare_price'] > 0): ?>
-<span class="text-sm text-outline-variant line-through ml-2">$<?= number_format($product['compare_price'], 2) ?></span>
+<span class="text-sm text-outline-variant line-through ml-2">₹<?= number_format($product['compare_price'], 2) ?></span>
 <?php endif; ?>
 <button class="bg-primary text-on-primary p-2 rounded-full hover:bg-primary-container transition-all add-to-cart" data-product-id="<?= $product['id'] ?>">
 <span class="material-symbols-outlined">add_shopping_cart</span>
@@ -230,7 +230,7 @@ Navigate your wellness journey with personalized advice. Speak with our certifie
 </section>
 
 <!-- Wellness Plans -->
-<section class="bg-surface py-section-gap max-w-container-max mx-auto px-gutter">
+<section id="wellness-plans" class="bg-surface py-section-gap max-w-container-max mx-auto px-gutter">
 <div class="text-center mb-16">
 <h2 class="font-headline-lg text-headline-lg text-primary mb-2">Curated Wellness Plans</h2>
 <p class="text-on-surface-variant">Step-by-step guidance for lasting health transformations.</p>
@@ -243,7 +243,7 @@ Navigate your wellness journey with personalized advice. Speak with our certifie
 </div>
 <h3 class="font-headline-md text-headline-md text-primary mb-2">Body Detox</h3>
 <p class="text-on-surface-variant mb-6">A 21-day program to eliminate toxins and reboot metabolism.</p>
-<div class="text-3xl font-bold text-primary mb-6">$129 <span class="text-base font-normal text-on-surface-variant">/ plan</span></div>
+<div class="text-3xl font-bold text-primary mb-6">₹999 <span class="text-base font-normal text-on-surface-variant">/ plan</span></div>
 </div>
 <ul class="space-y-4 mb-12 flex-grow">
 <li class="flex items-start gap-3 text-sm"><span class="material-symbols-outlined text-primary text-lg">spa</span> Herbal Supplement Kit</li>
@@ -260,7 +260,7 @@ Navigate your wellness journey with personalized advice. Speak with our certifie
 </div>
 <h3 class="font-headline-md text-headline-md text-primary mb-2">Immunity Boost</h3>
 <p class="text-on-surface-variant mb-6">Strengthen your natural defenses with seasonal herbs and yoga.</p>
-<div class="text-3xl font-bold text-primary mb-6">$159 <span class="text-base font-normal text-on-surface-variant">/ plan</span></div>
+<div class="text-3xl font-bold text-primary mb-6">₹1,499 <span class="text-base font-normal text-on-surface-variant">/ plan</span></div>
 </div>
 <ul class="space-y-4 mb-12 flex-grow">
 <li class="flex items-start gap-3 text-sm"><span class="material-symbols-outlined text-primary text-lg">spa</span> Premium Ojas Elixirs</li>
@@ -276,7 +276,7 @@ Navigate your wellness journey with personalized advice. Speak with our certifie
 </div>
 <h3 class="font-headline-md text-headline-md text-primary mb-2">Stress Care</h3>
 <p class="text-on-surface-variant mb-6">Calm the Vata energy and achieve mental clarity and restful sleep.</p>
-<div class="text-3xl font-bold text-primary mb-6">$99 <span class="text-base font-normal text-on-surface-variant">/ plan</span></div>
+<div class="text-3xl font-bold text-primary mb-6">₹799 <span class="text-base font-normal text-on-surface-variant">/ plan</span></div>
 </div>
 <ul class="space-y-4 mb-12 flex-grow">
 <li class="flex items-start gap-3 text-sm"><span class="material-symbols-outlined text-primary text-lg">spa</span> Brahmi &amp; Jatamansi Kit</li>
@@ -384,6 +384,7 @@ if ($blog_result && $blog_result->num_rows > 0) {
 <h2 class="font-display-lg text-display-lg text-primary mb-4">Join Our Wellness Community</h2>
 <p class="text-on-surface-variant mb-10">Get exclusive Ayurvedic tips, product launches, and 10% off your first order.</p>
 <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto" id="newsletter-form" method="POST" action="<?= BASE_URL ?>/subscribe.php">
+<input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 <input class="flex-grow rounded-full border-outline-variant bg-surface px-6 py-4 focus:ring-primary focus:border-primary" placeholder="Your email address" required name="email" type="email"/>
 <button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all" type="submit">Subscribe</button>
 </form>
@@ -393,4 +394,31 @@ if ($blog_result && $blog_result->num_rows > 0) {
 </div>
 </section>
 
+<script>
+document.querySelectorAll('.add-to-cart').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const id = this.dataset.productId;
+    if (!id) return;
+    const btnInner = this.querySelector('.material-symbols-outlined');
+    const orig = btnInner.textContent;
+    btnInner.textContent = 'sync';
+    fetch('<?= BASE_URL ?>/cart-update.php?action=add&id=' + id)
+      .then(() => {
+        btnInner.textContent = 'check';
+        this.classList.add('bg-secondary', 'text-on-secondary');
+        const badge = document.querySelector('#cart-count-badge');
+        if (badge) {
+          const c = parseInt(badge.textContent) + 1;
+          badge.textContent = c;
+        }
+        setTimeout(() => {
+          btnInner.textContent = orig;
+          this.classList.remove('bg-secondary', 'text-on-secondary');
+          this.classList.add('bg-primary', 'text-on-primary');
+        }, 1500);
+      });
+  });
+});
+</script>
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

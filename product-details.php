@@ -3,7 +3,10 @@ require_once __DIR__ . '/includes/config.php';
 
 $db = getDB();
 $product_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-$product = $db->query("SELECT p.*, c.name as category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id WHERE p.id = $product_id")->fetch_assoc();
+$stmt = $db->prepare("SELECT p.*, c.name as category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id WHERE p.id = ?");
+$stmt->bind_param('i', $product_id);
+$stmt->execute();
+$product = $stmt->get_result()->fetch_assoc();
 
 if (!$product) {
     header('Location: ' . BASE_URL . '/shop.php');
@@ -13,9 +16,17 @@ if (!$product) {
 $site_title = htmlspecialchars($product['name']);
 require_once __DIR__ . '/includes/header.php';
 
-$related = $db->query("SELECT * FROM products WHERE category_id = {$product['category_id']} AND id != {$product['id']} LIMIT 4")->fetch_all(MYSQLI_ASSOC);
+$cat_id = (int)$product['category_id'];
+$prod_id = (int)$product['id'];
+$stmt2 = $db->prepare("SELECT * FROM products WHERE category_id = ? AND id != ? LIMIT 4");
+$stmt2->bind_param('ii', $cat_id, $prod_id);
+$stmt2->execute();
+$related = $stmt2->get_result()->fetch_all(MYSQLI_ASSOC);
 if (empty($related)) {
-    $related = $db->query("SELECT * FROM products WHERE id != {$product['id']} LIMIT 4")->fetch_all(MYSQLI_ASSOC);
+    $stmt3 = $db->prepare("SELECT * FROM products WHERE id != ? LIMIT 4");
+    $stmt3->bind_param('i', $prod_id);
+    $stmt3->execute();
+    $related = $stmt3->get_result()->fetch_all(MYSQLI_ASSOC);
 }
 ?>
 
@@ -63,6 +74,7 @@ if (empty($related)) {
 <p class="text-on-surface-variant font-body-md leading-relaxed"><?= htmlspecialchars($product['description']) ?></p>
 
 <form method="POST" action="<?= BASE_URL ?>/cart-update.php" class="space-y-4 pt-4">
+<input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
 <input type="hidden" name="action" value="add">
 <div class="flex space-x-4">

@@ -9,7 +9,8 @@ function getDB() {
     if ($conn === null) {
         $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+            error_log("DB connection failed: " . $conn->connect_error);
+            die("Service temporarily unavailable. Please try again later.");
         }
     }
     return $conn;

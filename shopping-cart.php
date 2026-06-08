@@ -12,7 +12,7 @@ if (isset($_SESSION['user_id'])) {
     $result = getDB()->query("SELECT c.*, p.name, p.price, p.image_url, p.compare_price FROM cart c JOIN products p ON c.product_id = p.id WHERE c.user_id = $uid");
     $cart_items = $result->fetch_all(MYSQLI_ASSOC);
 } elseif (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-    $ids = implode(',', array_keys($_SESSION['cart']));
+    $ids = implode(',', array_map('intval', array_keys($_SESSION['cart'])));
     if ($ids) {
         $result = getDB()->query("SELECT * FROM products WHERE id IN ($ids)");
         foreach ($result->fetch_all(MYSQLI_ASSOC) as $p) {
@@ -65,11 +65,11 @@ $_SESSION['cart_count'] = $cart_count;
 </div>
 <div class="flex flex-wrap items-center justify-between mt-6 gap-4">
 <div class="flex items-center border border-outline rounded-full px-2 py-1">
-<a href="<?= BASE_URL ?>/cart-update.php?action=remove&id=<?= $item['product_id'] ?>" class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">remove</span></a>
+<a href="<?= BASE_URL ?>/cart-update.php?action=remove&id=<?= $item['product_id'] ?? $item['id'] ?>" class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">remove</span></a>
 <span class="px-4 font-bold text-primary"><?= $qty ?></span>
-<a href="<?= BASE_URL ?>/cart-update.php?action=add&id=<?= $item['product_id'] ?>" class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">add</span></a>
+<a href="<?= BASE_URL ?>/cart-update.php?action=add&id=<?= $item['product_id'] ?? $item['id'] ?>" class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">add</span></a>
 </div>
-<a href="<?= BASE_URL ?>/cart-update.php?action=delete&id=<?= $item['product_id'] ?>" class="flex items-center gap-1 text-label-md text-error hover:opacity-80 transition-opacity">
+<a href="<?= BASE_URL ?>/cart-update.php?action=delete&id=<?= $item['product_id'] ?? $item['id'] ?>" class="flex items-center gap-1 text-label-md text-error hover:opacity-80 transition-opacity">
 <span class="material-symbols-outlined text-[18px]">delete</span> Remove
 </a>
 </div>
@@ -118,10 +118,10 @@ Proceed to Checkout <span class="material-symbols-outlined align-middle">arrow_f
 <div class="text-center">
 <p class="text-label-sm text-on-surface-variant mb-4 uppercase tracking-widest">We Accept</p>
 <div class="flex justify-center gap-4 opacity-60">
-<span class="material-symbols-outlined text-3xl">credit_card</span>
-<span class="material-symbols-outlined text-3xl">account_balance</span>
-<span class="material-symbols-outlined text-3xl">contactless</span>
-<span class="material-symbols-outlined text-3xl">payments</span>
+<span class="material-symbols-outlined text-3xl" title="UPI">smartphone</span>
+<span class="material-symbols-outlined text-3xl" title="Net Banking">account_balance</span>
+<span class="material-symbols-outlined text-3xl" title="Credit/Debit Card">credit_card</span>
+<span class="material-symbols-outlined text-3xl" title="Wallets">payments</span>
 </div>
 </div>
 </div>

@@ -1,0 +1,9 @@
+Options -Indexes
+
+<FilesMatch "^\.git">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RedirectMatch 404 /\.git
+</IfModule>

@@ -12,7 +12,10 @@ $db = getDB();
 $doctor_id = isset($_GET['doctor_id']) ? (int)$_GET['doctor_id'] : 0;
 $doctor = null;
 if ($doctor_id) {
-    $doctor = $db->query("SELECT * FROM doctors WHERE id = $doctor_id")->fetch_assoc();
+    $stmt = $db->prepare("SELECT * FROM doctors WHERE id = ?");
+    $stmt->bind_param('i', $doctor_id);
+    $stmt->execute();
+    $doctor = $stmt->get_result()->fetch_assoc();
 }
 
 $success = false;
@@ -20,6 +23,9 @@ $booking_id = 0;
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book_appointment'])) {
+    if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'] ?? '')) {
+        $error = 'Invalid form submission. Please try again.';
+    } else {
     $doc_id = (int)$_POST['doctor_id'];
     $date = trim($_POST['appointment_date'] ?? '');
     $time = trim($_POST['appointment_time'] ?? '');
@@ -28,7 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book_appointment'])) 
     if (!$doc_id || !$date || !$time) {
         $error = 'Please select a doctor, date, and time.';
     } else {
-        $doc_data = $db->query("SELECT fee FROM doctors WHERE id = $doc_id")->fetch_assoc();
+        $stmt_doc = $db->prepare("SELECT fee FROM doctors WHERE id = ?");
+        $stmt_doc->bind_param('i', $doc_id);
+        $stmt_doc->execute();
+        $doc_data = $stmt_doc->get_result()->fetch_assoc();
         if (!$doc_data) {
             $error = 'Invalid doctor selected.';
         } else {
@@ -42,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book_appointment'])) 
                 $error = 'Failed to book appointment. Please try again.';
             }
         }
+    }
     }
 }
 
@@ -109,6 +119,7 @@ require_once __DIR__ . '/includes/header.php';
 <?php endif; ?>
 
 <form method="POST">
+<input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 <section class="step-transition" id="step-1">
 <div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-8 mb-8 shadow-sm">
 <h2 class="text-headline-md font-headline-md text-primary mb-6">Confirmed Consultant</h2>
@@ -188,7 +199,10 @@ foreach ($docs as $d):
 $selected_doc = $doctor;
 if (!$selected_doc && isset($_POST['doctor_id'])) {
     $sid = (int)$_POST['doctor_id'];
-    $selected_doc = $db->query("SELECT * FROM doctors WHERE id = $sid")->fetch_assoc();
+    $stmt_doc2 = $db->prepare("SELECT * FROM doctors WHERE id = ?");
+    $stmt_doc2->bind_param('i', $sid);
+    $stmt_doc2->execute();
+    $selected_doc = $stmt_doc2->get_result()->fetch_assoc();
 }
 $fee = $selected_doc ? (float)$selected_doc['fee'] : 0;
 $tax = $fee * 0.05;
@@ -210,25 +224,25 @@ $total = $fee + $tax;
 <h3 class="text-headline-md font-headline-md text-primary mb-8">Choose Payment Method</h3>
 <div class="space-y-4">
 <label class="flex items-center gap-6 p-5 border-2 border-primary bg-surface-container-low rounded-xl cursor-pointer transition-all">
-<input checked="" class="w-5 h-5 text-primary focus:ring-primary border-outline" name="payment" type="radio" value="esewa"/>
+<input checked="" class="w-5 h-5 text-primary focus:ring-primary border-outline" name="payment" type="radio" value="razorpay"/>
 <div class="flex items-center gap-4 flex-grow">
-<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden"><span class="text-secondary font-bold text-xl">e</span></div>
-<div><p class="font-bold text-on-surface">eSewa Wallet</p><p class="text-label-sm font-label-sm text-on-surface-variant">Pay using your eSewa account</p></div>
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden"><span class="text-blue-600 font-bold text-xl">R</span></div>
+<div><p class="font-bold text-on-surface">Razorpay</p><p class="text-label-sm font-label-sm text-on-surface-variant">UPI, cards, net banking &amp; wallets</p></div>
 </div>
 <span class="material-symbols-outlined text-primary">verified</span>
 </label>
 <label class="flex items-center gap-6 p-5 border border-outline-variant rounded-xl cursor-pointer hover:border-primary transition-all">
-<input class="w-5 h-5 text-primary focus:ring-primary border-outline" name="payment" type="radio" value="khalti"/>
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline" name="payment" type="radio" value="paytm"/>
 <div class="flex items-center gap-4 flex-grow">
-<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden"><span class="text-purple-600 font-bold text-xl">K</span></div>
-<div><p class="font-bold text-on-surface">Khalti</p><p class="text-label-sm font-label-sm text-on-surface-variant">Instant digital payment</p></div>
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden"><span class="text-blue-500 font-bold text-xl">P</span></div>
+<div><p class="font-bold text-on-surface">Paytm</p><p class="text-label-sm font-label-sm text-on-surface-variant">Paytm wallet, UPI &amp; cards</p></div>
 </div>
 </label>
 <label class="flex items-center gap-6 p-5 border border-outline-variant rounded-xl cursor-pointer hover:border-primary transition-all">
-<input class="w-5 h-5 text-primary focus:ring-primary border-outline" name="payment" type="radio" value="card"/>
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline" name="payment" type="radio" value="upi"/>
 <div class="flex items-center gap-4 flex-grow">
-<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden"><span class="material-symbols-outlined text-on-surface-variant">credit_card</span></div>
-<div><p class="font-bold text-on-surface">Card Payment</p><p class="text-label-sm font-label-sm text-on-surface-variant">Visa, Mastercard, or UnionPay</p></div>
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden"><span class="text-green-600 font-bold text-xl">U</span></div>
+<div><p class="font-bold text-on-surface">UPI</p><p class="text-label-sm font-label-sm text-on-surface-variant">Google Pay, PhonePe, BHIM &amp; more</p></div>
 </div>
 </label>
 </div>

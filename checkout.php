@@ -1,5 +1,12 @@
 <?php
 require_once __DIR__ . '/includes/config.php';
+
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['redirect_after_login'] = BASE_URL . '/checkout.php';
+    header('Location: ' . BASE_URL . '/login.php');
+    exit;
+}
+
 $site_title = 'Checkout';
 require_once __DIR__ . '/includes/header.php';
 
@@ -7,21 +14,9 @@ $cart_items = [];
 $cart_total = 0;
 $cart_count = 0;
 
-if (isset($_SESSION['user_id'])) {
-    $uid = (int)$_SESSION['user_id'];
-    $result = getDB()->query("SELECT c.*, p.name, p.price, p.image_url FROM cart c JOIN products p ON c.product_id = p.id WHERE c.user_id = $uid");
-    $cart_items = $result->fetch_all(MYSQLI_ASSOC);
-} elseif (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-    $ids = implode(',', array_keys($_SESSION['cart']));
-    if ($ids) {
-        $result = getDB()->query("SELECT * FROM products WHERE id IN ($ids)");
-        foreach ($result->fetch_all(MYSQLI_ASSOC) as $p) {
-            $p['quantity'] = $_SESSION['cart'][$p['id']];
-            $p['user_id'] = null;
-            $cart_items[] = $p;
-        }
-    }
-}
+$uid = (int)$_SESSION['user_id'];
+$result = getDB()->query("SELECT c.*, p.name, p.price, p.image_url, p.stock FROM cart c JOIN products p ON c.product_id = p.id WHERE c.user_id = $uid");
+$cart_items = $result->fetch_all(MYSQLI_ASSOC);
 
 foreach ($cart_items as $item) {
     $qty = $item['quantity'] ?? 1;
@@ -33,32 +28,55 @@ $order_placed = false;
 $order_error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
-    if (empty($cart_items)) {
+    if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'] ?? '')) {
+        $order_error = 'Invalid form submission. Please try again.';
+    } elseif (empty($cart_items)) {
         $order_error = 'Your cart is empty.';
-    } elseif (!isset($_SESSION['user_id'])) {
-        $order_error = 'Please login to place an order.';
     } else {
-        $db = getDB();
-        $uid = (int)$_SESSION['user_id'];
-        $order_num = 'ORD-' . strtoupper(bin2hex(random_bytes(4)));
-        $stmt = $db->prepare("INSERT INTO orders (user_id, order_number, total, status, payment_status) VALUES (?, ?, ?, 'pending', 'pending')");
-        $stmt->bind_param('isd', $uid, $order_num, $cart_total);
-        if ($stmt->execute()) {
-            $order_id = $stmt->insert_id;
-            foreach ($cart_items as $item) {
-                $qty = $item['quantity'] ?? 1;
-                $stmt2 = $db->prepare("INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)");
-                $stmt2->bind_param('iiid', $order_id, $item['product_id'], $qty, $item['price']);
-                $stmt2->execute();
+        foreach ($cart_items as $item) {
+            $qty = $item['quantity'] ?? 1;
+            if ((int)$item['stock'] < $qty) {
+                $order_error = htmlspecialchars($item['name']) . ' has insufficient stock. Only ' . (int)$item['stock'] . ' available.';
+                break;
             }
-            $db->query("DELETE FROM cart WHERE user_id = $uid");
-            unset($_SESSION['cart']);
-            $_SESSION['cart_count'] = 0;
-            $order_placed = true;
-        } else {
-            $order_error = 'Failed to place order. Please try again.';
+        }
+        if (!$order_error) {
+            $db = getDB();
+            $shipping_name = trim($_POST['full_name'] ?? '');
+            $shipping_phone = trim($_POST['phone'] ?? '');
+            $shipping_address = trim($_POST['address'] ?? '');
+            $shipping_city = trim($_POST['city'] ?? '');
+            $shipping_zip = trim($_POST['postal_code'] ?? '');
+            $order_num = 'ORD-' . strtoupper(bin2hex(random_bytes(4)));
+            $stmt = $db->prepare("INSERT INTO orders (user_id, order_number, total, status, payment_status, shipping_name, shipping_phone, shipping_address, shipping_city, shipping_zip) VALUES (?, ?, ?, 'pending', 'pending', ?, ?, ?, ?, ?)");
+            $stmt->bind_param('isdisssss', $uid, $order_num, $cart_total, $shipping_name, $shipping_phone, $shipping_address, $shipping_city, $shipping_zip);
+            if ($stmt->execute()) {
+                $order_id = $stmt->insert_id;
+                foreach ($cart_items as $item) {
+                    $qty = $item['quantity'] ?? 1;
+                    $stmt2 = $db->prepare("INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)");
+                    $stmt2->bind_param('iiid', $order_id, $item['product_id'], $qty, $item['price']);
+                    $stmt2->execute();
+                }
+                $stmt3 = $db->prepare("DELETE FROM cart WHERE user_id = ?");
+                $stmt3->bind_param('i', $uid);
+                $stmt3->execute();
+                unset($_SESSION['cart']);
+                $_SESSION['cart_count'] = 0;
+                $_SESSION['order_success'] = $order_num;
+                header('Location: ' . BASE_URL . '/checkout.php?order=success');
+                exit;
+            } else {
+                $order_error = 'Failed to place order. Please try again.';
+            }
         }
     }
+}
+
+if (isset($_SESSION['order_success'])) {
+    $order_placed = true;
+    $order_num = $_SESSION['order_success'];
+    unset($_SESSION['order_success']);
 }
 ?>
 
@@ -89,6 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
 <section class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant">
 <h2 class="font-headline-md text-headline-md text-primary mb-6">Shipping Address</h2>
 <form method="POST">
+<input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="flex flex-col gap-2">
 <label class="font-label-md text-label-md text-on-surface-variant">Full Name</label>

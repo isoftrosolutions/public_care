@@ -64,6 +64,9 @@ tailwind.config = {
 </script>
 <style>
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+@media (max-width: 1023px) {
+  nav.mobile-open { display: flex !important; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: #f4fafd; padding: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); z-index: 50; }
+}
 </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
@@ -87,7 +90,7 @@ tailwind.config = {
 <button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">search</button>
 <div class="relative">
 <a href="<?= BASE_URL ?>/shopping-cart.php" class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">shopping_cart</a>
-<span class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold"><?= $_SESSION['cart_count'] ?? 0 ?></span>
+<span id="cart-count-badge" class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold"><?= htmlspecialchars($_SESSION['cart_count'] ?? 0) ?></span>
 </div>
 <?php if (isset($_SESSION['user_id'])): ?>
 <a class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary transition-all" href="<?= BASE_URL ?>/admin/dashboard.php">Dashboard</a>
