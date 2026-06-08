@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register | Public Care Ayurveda</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Source+Serif+4:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#eef5f7",
+                        "on-primary-fixed": "#002114",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#86af99",
+                        "surface-container-highest": "#dde4e6",
+                        "outline": "#717973",
+                        "on-tertiary-fixed-variant": "#264f39",
+                        "surface": "#f4fafd",
+                        "on-primary-fixed-variant": "#274e3d",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#a5d0b9",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#1a432e",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2b3234",
+                        "surface-dim": "#d4dbdd",
+                        "secondary": "#735c00",
+                        "on-primary": "#ffffff",
+                        "on-background": "#161d1f",
+                        "on-secondary-container": "#745c00",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#ffe088",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "on-tertiary-container": "#84b095",
+                        "tertiary-fixed-dim": "#a4d1b4",
+                        "surface-container": "#e8eff1",
+                        "on-tertiary-fixed": "#002112",
+                        "on-surface": "#161d1f",
+                        "on-secondary-fixed": "#241a00",
+                        "tertiary": "#002d1a",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary-fixed": "#c1ecd4",
+                        "tertiary-fixed": "#c0edd0",
+                        "primary-container": "#1b4332",
+                        "surface-tint": "#3f6653",
+                        "inverse-on-surface": "#ebf2f4",
+                        "outline-variant": "#c1c8c2",
+                        "background": "#f4fafd",
+                        "surface-variant": "#dde4e6",
+                        "surface-container-high": "#e2e9ec",
+                        "on-surface-variant": "#414844",
+                        "secondary-container": "#fed65b",
+                        "on-error": "#ffffff",
+                        "primary": "#012d1d",
+                        "surface-bright": "#f4fafd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "section-gap": "80px",
+                        "margin-desktop": "48px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Source Serif 4"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "display-lg": ["Source Serif 4"],
+                        "headline-lg-mobile": ["Source Serif 4"],
+                        "headline-lg": ["Source Serif 4"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .botanical-bg {
+            background-color: #f4fafd;
+            background-image: radial-gradient(circle at 2px 2px, #dde4e6 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface shadow-sm docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center h-20 px-gutter w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<img alt="Public Care Ayurveda Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo879HCds3w21ve37kcaDk6TDBD6jGLmvKyZY044-2j4TI7_Fo3jg5MGIn2vS_Uy3jg523kaixaI9ewUNDrQnspvl92wCOxeXw3qX_NNldczaZIT3RTuZZl-ERSsjdCWSpLmC_9EVaIHo1ut2kqTZDdm2Ighvwpvul1Cg1nfmqPr1xgZydE72HjEN6ISVD-7gJT1zBWpbOG5yyRaloF-sBOHDbzme6CNKxf-SZ6ElHJDdS2ew6k7nkVl2Ul0YZYjPaefVIy8Wakas"/>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="shop.html">Shop</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="doctor-listing.html">Consult Doctor</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html#wellness-plans">Wellness Plans</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="wellness-blog.html">Blog</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="about-us.html">About</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="search">search</button>
+<div class="relative">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="shopping_cart">shopping_cart</button>
+<span class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+</div>
+<a class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all scale-95 active:scale-90 inline-block" href="login.html">Login</a>
+<button class="lg:hidden material-symbols-outlined" data-icon="menu" id="mobile-menu-btn">menu</button>
+</div>
+</div>
+</header>
+<main class="min-h-screen pt-32 pb-section-gap botanical-bg flex items-center justify-center px-margin-mobile">
+<!-- Registration Card Container -->
+<div class="w-full max-w-[560px] bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant overflow-hidden">
+<!-- Hero Illustration/Header Area -->
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="Ayurvedic herbs" class="w-full h-full object-cover" data-alt="A premium, editorial-style photograph of fresh Ayurvedic herbs like Ashwagandha and Neem arranged on a clean, off-white matte surface. The lighting is soft and clinical, suggesting purity and professional healthcare. The color palette is dominated by deep forest greens and soft earth tones, creating a tranquil and high-end botanical heritage aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAemPAzmDlqmKy6Bm93VNmtaLbrp8k6S-hEjfbgEoryUb2-__wTdwfuiMaJvXBAwmefy_Qg-TwJvcneLU3Jh3junRTq7YePjwht9LV6d5DL9-XuQRJcc2ImctVMbhKV3tMU5weCkE7fUMqfB2RMFX2btXLph4iTFSDih0y7VVVe4JoHF6RWmXKhgA_Ue1NU7xd3kmnneUCEOMg8yKAKkepmr93_-PRDwj6aZrckqknupjiVzPtUB8DAByfH3QGDgE40YQMpXUWXOzo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+</div>
+<div class="px-8 md:px-12 pb-12 -mt-12 relative z-10">
+<div class="text-center mb-8">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-2">Join Our Community</h1>
+<p class="text-on-surface-variant font-body-md">Begin your journey towards holistic wellness and timeless vitality.</p>
+</div>
+<form class="space-y-6" id="registrationForm">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface" for="fullName">Full Name</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md bg-white" id="fullName" placeholder="e.g. Aarav Sharma" type="text"/>
+</div>
+<!-- Email Address -->
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface" for="email">Email Address</label>
+<div class="relative">
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md bg-white pr-10" id="email" placeholder="aarav@example.com" type="email"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<p class="text-[12px] text-on-primary-container font-medium">Valid email address detected.</p>
+</div>
+<!-- Mobile Number -->
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface" for="mobile">Mobile Number</label>
+<div class="flex gap-2">
+<select class="w-24 px-3 py-3 rounded-lg border border-outline-variant bg-white font-body-md focus:border-primary outline-none">
+<option value="+91">+91</option>
+<option value="+1">+1</option>
+<option value="+44">+44</option>
+</select>
+<input class="flex-1 px-4 py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md bg-white" id="mobile" placeholder="98765 43210" type="tel"/>
+</div>
+</div>
+<!-- Password Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface" for="password">Password</label>
+<div class="relative">
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md bg-white" id="password" placeholder="••••••••" type="password"/>
+<button class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors" onclick="togglePassword('password')" type="button">visibility</button>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-on-surface" for="confirmPassword">Confirm Password</label>
+<div class="relative">
+<input class="w-full px-4 py-3 rounded-lg border border-secondary-container focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md bg-white" id="confirmPassword" placeholder="••••••••" type="password"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-secondary text-[20px]">verified</span>
+</div>
+<p class="text-[12px] text-secondary font-medium">Passwords match perfectly.</p>
+</div>
+</div>
+<!-- Terms & Conditions -->
+<div class="space-y-2">
+<label class="flex items-start gap-3 cursor-pointer group">
+<div class="relative mt-1">
+<input class="peer hidden" id="terms" type="checkbox"/>
+<div class="w-5 h-5 border-2 border-error rounded flex items-center justify-center peer-checked:bg-primary peer-checked:border-primary transition-all">
+<span class="material-symbols-outlined text-white text-[16px] hidden peer-checked:block">check</span>
+</div>
+</div>
+<span class="text-label-sm text-on-surface-variant leading-tight">
+                                I agree to the <a class="text-primary underline font-semibold" href="#">Terms of Service</a> and <a class="text-primary underline font-semibold" href="#">Privacy Policy</a>.
+                            </span>
+</label>
+<p class="text-[12px] text-error font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">error</span>
+                            Required to complete registration.
+                        </p>
+</div>
+<!-- CTA -->
+<button class="w-full bg-primary text-on-primary font-label-md py-4 rounded-lg shadow-md hover:bg-primary-container transition-all active:scale-95" type="submit">
+                        Create Ayurvedic Account
+                    </button>
+</form>
+<!-- Trust Indicators -->
+<div class="mt-8 flex items-center justify-center gap-6 py-4 border-t border-outline-variant">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span class="text-[12px] font-label-sm">Secure Data Encryption</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="text-[12px] font-label-sm">Privacy Guaranteed</span>
+</div>
+</div>
+<div class="mt-6 text-center">
+<p class="font-body-md text-on-surface-variant">
+                        Already have an account? 
+                        <a class="text-primary font-bold hover:underline" href="login.html">Sign In</a>
+</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary py-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-section-gap max-w-container-max mx-auto">
+<div class="space-y-4">
+<div class="font-headline-md text-headline-md text-on-primary">Public Care Ayurveda</div>
+<p class="font-body-md opacity-80">Bridging ancient holistic wisdom with modern clinical precision for a healthier world.</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-md uppercase tracking-wider">Quick Links</h4>
+<ul class="space-y-2 font-body-md opacity-80">
+<li><a class="hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-secondary-fixed transition-colors" href="#">Shipping Info</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-md uppercase tracking-wider">Customer Support</h4>
+<ul class="space-y-2 font-body-md opacity-80">
+<li><a class="hover:text-secondary-fixed transition-colors" href="#">Returns</a></li>
+<li><a class="hover:text-secondary-fixed transition-colors" href="contact-us.html">Contact Us</a></li>
+<li><a class="hover:text-secondary-fixed transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-md uppercase tracking-wider">Newsletter</h4>
+<div class="flex flex-col gap-3">
+<input class="bg-on-primary-fixed-variant border-none rounded-lg px-4 py-2 text-on-primary placeholder:text-on-primary/50" placeholder="Your email address" type="email"/>
+<button class="bg-secondary-fixed text-on-secondary-fixed font-label-md py-2 rounded-lg hover:bg-secondary-fixed-dim transition-colors">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop pt-8 border-t border-on-primary/10 text-center opacity-60 font-body-md">
+            © 2024 Public Care Ayurveda. All rights reserved.
+        </div>
+</footer>
+<script>
+        function togglePassword(id) {
+            const input = document.getElementById(id);
+            const icon = input.nextElementSibling;
+            if (input.type === "password") {
+                input.type = "text";
+                icon.textContent = "visibility_off";
+            } else {
+                input.type = "password";
+                icon.textContent = "visibility";
+            }
+        }
+
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Animation for form submission
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Processing...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = 'Registration Successful!';
+                btn.classList.replace('bg-primary', 'bg-tertiary-container');
+            }, 1500);
+        });
+    </script>
+<script>
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                alert('Mobile navigation would expand here with clinical-grade animations.');
+            });
+        }</script>
+</body></html>

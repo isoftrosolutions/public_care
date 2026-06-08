@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | Public Care Ayurveda</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#f4fafd",
+                      "surface-dim": "#d4dbdd",
+                      "secondary": "#735c00",
+                      "on-error-container": "#93000a",
+                      "surface-tint": "#3f6653",
+                      "surface-container-highest": "#dde4e6",
+                      "primary-container": "#1b4332",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#264f39",
+                      "inverse-surface": "#2b3234",
+                      "tertiary-container": "#1a432e",
+                      "primary-fixed": "#c1ecd4",
+                      "primary": "#012d1d",
+                      "on-primary-fixed-variant": "#274e3d",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#dde4e6",
+                      "surface-bright": "#f4fafd",
+                      "inverse-primary": "#a5d0b9",
+                      "surface-container-low": "#eef5f7",
+                      "secondary-fixed": "#ffe088",
+                      "on-secondary-container": "#745c00",
+                      "tertiary-fixed-dim": "#a4d1b4",
+                      "surface-container-high": "#e2e9ec",
+                      "on-secondary-fixed-variant": "#574500",
+                      "tertiary-fixed": "#c0edd0",
+                      "on-tertiary-fixed": "#002112",
+                      "error": "#ba1a1a",
+                      "secondary-fixed-dim": "#e9c349",
+                      "background": "#f4fafd",
+                      "on-primary-fixed": "#002114",
+                      "primary-fixed-dim": "#a5d0b9",
+                      "on-tertiary-container": "#84b095",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#161d1f",
+                      "outline": "#717973",
+                      "tertiary": "#002d1a",
+                      "on-secondary-fixed": "#241a00",
+                      "on-primary-container": "#86af99",
+                      "secondary-container": "#fed65b",
+                      "on-background": "#161d1f",
+                      "outline-variant": "#c1c8c2",
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#ebf2f4",
+                      "on-surface-variant": "#414844",
+                      "surface-container": "#e8eff1",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-gap": "80px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "48px",
+                      "gutter": "24px",
+                      "base": "8px",
+                      "container-max": "1200px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Source Serif 4"],
+                      "headline-md": ["Source Serif 4"],
+                      "label-md": ["Manrope"],
+                      "body-md": ["Manrope"],
+                      "body-lg": ["Manrope"],
+                      "label-sm": ["Manrope"],
+                      "headline-lg-mobile": ["Source Serif 4"],
+                      "headline-lg": ["Source Serif 4"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface shadow-sm docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center h-20 px-gutter w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<img alt="Public Care Ayurveda Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo879HCds3w21ve37kcaDk6TDBD6jGLmvKyZY044-2j4TI7_Fo3jg5MGIn2vS_Uy3jg523kaixaI9ewUNDrQnspvl92wCOxeXw3qX_NNldczaZIT3RTuZZl-ERSsjdCWSpLmC_9EVaIHo1ut2kqTZDdm2Ighvwpvul1Cg1nfmqPr1xgZydE72HjEN6ISVD-7gJT1zBWpbOG5yyRaloF-sBOHDbzme6CNKxf-SZ6ElHJDdS2ew6k7nkVl2Ul0YZYjPaefVIy8Wakas"/>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="shop.html">Shop</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="doctor-listing.html">Consult Doctor</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html#wellness-plans">Wellness Plans</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="wellness-blog.html">Blog</a>
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary pb-1 font-label-md text-label-md" href="about-us.html">About</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="search">search</button>
+<div class="relative">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="shopping_cart">shopping_cart</button>
+<span class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+</div>
+<a class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all scale-95 active:scale-90 inline-block" href="login.html">Login</a>
+<button class="lg:hidden material-symbols-outlined" data-icon="menu" id="mobile-menu-btn">menu</button>
+</div>
+</div>
+</header>
+<main>
+<!-- 1. Hero Section -->
+<section class="relative h-[819px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Ancient Wisdom Modern Precision" class="w-full h-full object-cover brightness-75" data-alt="A high-end cinematic shot of fresh Ayurvedic herbs like Ashwagandha and Brahmi arranged on a clean, light ivory stone surface. The lighting is soft and ethereal, capturing the fine textures and vibrant greens of the leaves. The aesthetic is clean, medical-grade minimalism blended with traditional botanical heritage, using a palette of deep forest green and soft cream tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMFr7zJc1aoyvW5h0fi27sI4oYC9u-V5iUgfdVQs3obhW1HplTEi9R886lnmMKWm6x0cPWkxyul1KfCsFSe9DJ382Uh-SIxxwCEDoN_T21z0tFwQXbuv6euYBHGwI60K6lR-GcJ1Fc-h4p4qnZ5RdgyEELG0NhRoRBbMjlQDjLCeSy--qqoWt3Wrsr7xbW62ldKwCFrixEkB1-aHLtDLmYW9rUX4TuI37E7GfquLR7pWbdFttQhymuzYX9riZTfYpa_umlbjLKYE4"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent"></div>
+</div>
+<div class="relative z-10 px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="max-w-2xl">
+<h1 class="font-display-lg text-display-lg text-white mb-6">Ancient Wisdom, Modern Precision</h1>
+<p class="text-body-lg text-white/90 mb-8 max-w-lg">Bridging the gap between timeless Ayurvedic healing and contemporary medical excellence to nurture your enduring wellness.</p>
+<div class="flex gap-4">
+<button class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-full font-label-md hover:scale-105 transition-transform">Explore Our Heritage</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Company Story -->
+<section class="py-section-gap px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="relative">
+<div class="aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl">
+<img alt="Our Origins 1994" class="w-full h-full object-cover" data-alt="A vintage black and white photograph of an early Ayurvedic apothecary from 1994, showing glass jars filled with botanical powders and a dedicated practitioner. The image is presented with a modern, high-contrast edit on a pristine white background, framed by elegant borders to signify trust and clinical legacy in the field of natural healthcare." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOJxywUJa4m7ToXdIYhnmdpI8p8r-QX8ofgLauwPrOjWbOL_v7k_cRfkUsgU5kPbtsfxSxx7Y1u6xIuHuwHryR-vT-6dW-5Og0O5jcYwnKz6NYORP_o_kKQVyuxYfsLrOhs5LzoRwzOMotS1ZYgJ92V2hKCTrKhsXjRXFwoV8jrAUWXsDAOSSge13tDHwhCucpFQP09mNopS591DBGw0m4H3lF6x7jQyLi3eYr5hAHqpkyLhu5uGfSdBW7903VJeXJP4mM-yH-xBE"/>
+</div>
+<div class="absolute -bottom-8 -right-8 bg-primary p-8 rounded-2xl text-white shadow-xl hidden md:block">
+<div class="text-[48px] font-bold leading-none">30+</div>
+<div class="text-label-md opacity-80">Years of Clinical Excellence</div>
+</div>
+</div>
+<div class="space-y-6 md:pl-12">
+<span class="text-secondary font-label-md tracking-widest uppercase">Our Heritage</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Born from a passion for holistic integrity in 1994.</h2>
+<p class="text-on-surface-variant leading-relaxed">Public Care Ayurveda began as a small research clinic dedicated to validating the profound effects of traditional botanical medicine. Over three decades, we have evolved into a leading authority in Ayurvedic healthcare, maintaining the same rigor and respect for nature that guided our first formulations.</p>
+<p class="text-on-surface-variant leading-relaxed">Today, we operate a vertically integrated ecosystem—from organic herb cultivation to state-of-the-art clinical testing—ensuring that every bottle carries the promise of purity and potency.</p>
+</div>
+</div>
+</section>
+<!-- 3. Mission & Vision -->
+<section class="bg-surface-container-low py-section-gap px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Values that Root Our Practice</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Our principles are the bedrock of every consultation and product we deliver to our global community.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-white p-10 rounded-[24px] border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-primary-container rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="clinical_notes">clinical_notes</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Our Mission</h3>
+<p class="text-on-surface-variant">To empower individuals through personalized Ayurvedic protocols backed by modern clinical research and ethical sourcing.</p>
+</div>
+<div class="bg-white p-10 rounded-[24px] border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-primary-container rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="visibility">visibility</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Our Vision</h3>
+<p class="text-on-surface-variant">To be the global gold standard for integrative botanical healthcare, where tradition and science coexist for human longevity.</p>
+</div>
+<div class="bg-white p-10 rounded-[24px] border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-primary-container rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="eco">eco</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-3">Core Integrity</h3>
+<p class="text-on-surface-variant">Uncompromising commitment to organic purity, sustainable harvesting, and complete transparency in our manufacturing process.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Team -->
+<section class="py-section-gap px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div class="max-w-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Leadership &amp; Medical Board</h2>
+<p class="text-on-surface-variant">Guided by a diverse team of Ayurvedic scholars, modern pharmacologists, and clinical specialists.</p>
+</div>
+<button class="border border-primary text-primary px-8 py-3 rounded-full font-label-md hover:bg-primary hover:text-white transition-all">View All Members</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Leader 1 -->
+<div class="group">
+<div class="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
+<img alt="Dr. Aruna Varma" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A professional portrait of a senior medical director in a minimalist modern clinical setting. The doctor is wearing a clean white coat with a sophisticated botanical lapel pin. The lighting is bright and warm, conveying a sense of authoritative kindness and medical precision. The overall style is editorial and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFCE4gzH34usGEOY5haA4gcrrBp-LrMKWKLsNGPuvRy9UxEbEKt1Rp2jipDFZD6vOrnCtp98h7je1lq-q12jhJeq7_AZPod48u5drp3MJZPuWWQvJ2G6b8YUB61QhErDSDV_ag3ZARAH23_9d4EHqgCS4lHBNjLGcGlM6HjTBIn2d4GQD7ef_f-jj52Egl5PPBomZVUAuxCUAbMewJeb6BcbgogK4FikLwdFe5Bhtj7dBGrqAEJ9gTu58dIDp00K_i9BEPp3-e5hg"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-white cursor-pointer" data-icon="share">share</span>
+</div>
+</div>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary">Dr. Aruna Varma</h4>
+<p class="text-label-md text-secondary uppercase">Chief Medical Officer</p>
+</div>
+<!-- Leader 2 -->
+<div class="group">
+<div class="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
+<img alt="Dr. Vikram Singh" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A portrait of a male Ayurvedic scholar and researcher in a high-tech laboratory filled with glass flasks and botanical extracts. He is dressed in professional clinical attire, exuding confidence and expertise. The lighting emphasizes the intersection of nature and science, with soft focus on the botanical elements in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChFH-ZSRrwYAPI7mjj5mHwayheMWyfe5fuuRLJFhggrhdkVvpBcNREzqkejletVivDipV6EDkLn3QYuLO_nX8lHsXz97ZHgjdkwRFAw_nYl6dT14sHYCwYOdy2ododQCNXQqrU1gnaJB2GACA5mZDyBghgPtjpQos_GGnzIZ5-9IUAScp_nBVqX9hOTGkGYxGvdbs6kRR4pbC-e5kfm_R6_inAPIjAoyeIDkponDwRNlpAxJ8lhMXzZ2_6zR0RghorggZlGgVkXbU"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-white cursor-pointer" data-icon="share">share</span>
+</div>
+</div>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary">Dr. Vikram Singh</h4>
+<p class="text-label-md text-secondary uppercase">Head of Research</p>
+</div>
+<!-- Leader 3 -->
+<div class="group">
+<div class="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
+<img alt="Meera Kapoor" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A portrait of a female pharmaceutical operations lead in a sleek, modern corporate office environment. The background shows soft-focus glass partitions and botanical plants. She has a composed, professional expression. The aesthetic is clean and high-contrast, representing modern operational excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1I3vw-DPUdQ3m9EmJnSJziz25-JJnU73TVGF5Iyg1hoHCxYd3UlGDA9DiI0Dn6-iyZEhbiOvqWknctlPA9k2Nd87uaR5AvIxLn_CN91EYxRB40iKMLI8ArlQhmkoDGeTSLqxk_MoCWSU4da1BptLhj0iTvFyWghpuTIbGaIyrFbVzwqxB8mL9kKOMDXTqCZqiv0McI4ga0oKGhPkoE_z_ZRxrhQBKfYH5nLbaQ42zbj8xG8OZp3DfkJEdD5xqcZcpi9pUX17f8dg"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-white cursor-pointer" data-icon="share">share</span>
+</div>
+</div>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary">Meera Kapoor</h4>
+<p class="text-label-md text-secondary uppercase">Operations Director</p>
+</div>
+<!-- Leader 4 -->
+<div class="group">
+<div class="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
+<img alt="Dr. Rajesh Iyer" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A portrait of a senior Ayurvedic practitioner and board member. The setting is a serene, traditionally-inspired healthcare suite with wood paneling and soft warm lighting. He has a warm, welcoming presence. The style reflects a deep respect for heritage and patient-focused wellness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMuzg0E0wfk8rHLVRZnLREoYizqoUbSh8y6iUMLqzka71ANM7aqprsCe_HC8m0j__7EdwCWJgBlZD2PXykWFFhrzypCmuWUkoZ2BgkkX-FwN1VrDNV0e4n4Le5Wa5Lpyem1O5lJcC4AtcSeGNe95mnYex2EU4lnboYqMkh3ULBCOCcGVMREyXWDkz433ZRDgpuu5lEZ78D1csIASudJvCW02wxg_zlrOj_d7RJP9zPPgTR186KXUUjbLLm_bkB9_8qY0dL7kt5cVw"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-white cursor-pointer" data-icon="share">share</span>
+</div>
+</div>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary">Dr. Rajesh Iyer</h4>
+<p class="text-label-md text-secondary uppercase">Senior Board Member</p>
+</div>
+</div>
+</section>
+<!-- 5. Certifications -->
+<section class="bg-primary py-16">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 hover:opacity-100 transition-opacity">
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-white text-[48px]" data-icon="verified">verified</span>
+<span class="text-white font-label-md">ISO 9001:2015</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-white text-[48px]" data-icon="health_and_safety">health_and_safety</span>
+<span class="text-white font-label-md">WHO GMP Certified</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-white text-[48px]" data-icon="nature">nature</span>
+<span class="text-white font-label-md">USDA Organic</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-white text-[48px]" data-icon="science">science</span>
+<span class="text-white font-label-md">NABL Accredited</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Manufacturing Process -->
+<section class="py-section-gap px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">The Alchemy of Excellence</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">From the forest floor to your doorstep, our 4-step process ensures unrivaled quality control.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+<!-- Connection Line (Desktop) -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-outline-variant -z-10"></div>
+<!-- Step 1 -->
+<div class="bg-white p-8 rounded-[32px] border border-outline-variant flex flex-col items-center text-center group hover:border-primary transition-colors">
+<div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mb-6 border border-outline-variant group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="potted_plant">potted_plant</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Source</h4>
+<p class="text-body-md text-on-surface-variant">Sustainably wild-harvested from certified organic forest beds.</p>
+</div>
+<!-- Step 2 -->
+<div class="bg-white p-8 rounded-[32px] border border-outline-variant flex flex-col items-center text-center group hover:border-primary transition-colors">
+<div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mb-6 border border-outline-variant group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="biotech">biotech</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Extract</h4>
+<p class="text-body-md text-on-surface-variant">Cold-press and CO2 extraction to preserve vital nutrients.</p>
+</div>
+<!-- Step 3 -->
+<div class="bg-white p-8 rounded-[32px] border border-outline-variant flex flex-col items-center text-center group hover:border-primary transition-colors">
+<div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mb-6 border border-outline-variant group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="microscope">microwave</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Test</h4>
+<p class="text-body-md text-on-surface-variant">Third-party lab verification for purity and active compounds.</p>
+</div>
+<!-- Step 4 -->
+<div class="bg-white p-8 rounded-[32px] border border-outline-variant flex flex-col items-center text-center group hover:border-primary transition-colors">
+<div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mb-6 border border-outline-variant group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="inventory_2">inventory_2</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Package</h4>
+<p class="text-body-md text-on-surface-variant">Miron violet glass to protect potency from light degradation.</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="mb-section-gap px-margin-desktop max-w-container-max mx-auto">
+<div class="bg-primary-container rounded-[40px] p-12 md:p-24 text-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary-fixed rounded-full blur-[100px]"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-tertiary-fixed rounded-full blur-[100px]"></div>
+</div>
+<div class="relative z-10">
+<h2 class="font-display-lg text-display-lg text-white mb-6">Ready to start your wellness journey?</h2>
+<p class="text-body-lg text-white/80 mb-10 max-w-xl mx-auto">Our specialists are here to guide you toward a balanced life with personalized care.</p>
+<button class="bg-secondary-container text-on-secondary-container px-12 py-5 rounded-full font-headline-md hover:scale-105 transition-transform shadow-lg">Book Your Consultation</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-primary-container w-full py-section-gap">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-8">
+<div class="text-headline-md font-headline-md font-bold text-on-primary dark:text-on-primary-container">Public Care Ayurveda</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-on-primary dark:text-on-primary-container opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity" href="#">Privacy Policy</a>
+<a class="text-on-primary dark:text-on-primary-container opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity" href="#">Terms of Service</a>
+<a class="text-on-primary dark:text-on-primary-container opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity" href="#">Clinical Guidelines</a>
+<a class="text-on-primary dark:text-on-primary-container opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity" href="#">Partner Program</a>
+</div>
+<div class="text-body-md font-body-md text-on-primary dark:text-on-primary-container opacity-60">
+                © 2024 Public Care Ayurveda. Botanical Heritage Healthcare.
+            </div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Sticky header background transition on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('glass-effect');
+                header.classList.add('bg-white/80');
+            } else {
+                header.classList.remove('glass-effect');
+                header.classList.remove('bg-white/80');
+            }
+        });
+    </script>
+<script>
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                alert('Mobile navigation would expand here with clinical-grade animations.');
+            });
+        }</script>
+</body></html>

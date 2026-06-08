@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wellness Blog | Public Care Ayurveda</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Use the provided Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f4fafd",
+                    "surface-dim": "#d4dbdd",
+                    "secondary": "#735c00",
+                    "on-error-container": "#93000a",
+                    "surface-tint": "#3f6653",
+                    "surface-container-highest": "#dde4e6",
+                    "primary-container": "#1b4332",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#264f39",
+                    "inverse-surface": "#2b3234",
+                    "tertiary-container": "#1a432e",
+                    "primary-fixed": "#c1ecd4",
+                    "primary": "#012d1d",
+                    "on-primary-fixed-variant": "#274e3d",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#dde4e6",
+                    "surface-bright": "#f4fafd",
+                    "inverse-primary": "#a5d0b9",
+                    "surface-container-low": "#eef5f7",
+                    "secondary-fixed": "#ffe088",
+                    "on-secondary-container": "#745c00",
+                    "tertiary-fixed-dim": "#a4d1b4",
+                    "surface-container-high": "#e2e9ec",
+                    "on-secondary-fixed-variant": "#574500",
+                    "tertiary-fixed": "#c0edd0",
+                    "on-tertiary-fixed": "#002112",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#e9c349",
+                    "background": "#f4fafd",
+                    "on-primary-fixed": "#002114",
+                    "primary-fixed-dim": "#a5d0b9",
+                    "on-tertiary-container": "#84b095",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#161d1f",
+                    "outline": "#717973",
+                    "tertiary": "#002d1a",
+                    "on-secondary-fixed": "#241a00",
+                    "on-primary-container": "#86af99",
+                    "secondary-container": "#fed65b",
+                    "on-background": "#161d1f",
+                    "outline-variant": "#c1c8c2",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#ebf2f4",
+                    "on-surface-variant": "#414844",
+                    "surface-container": "#e8eff1",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "80px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Source Serif 4"],
+                    "headline-md": ["Source Serif 4"],
+                    "label-md": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "headline-lg-mobile": ["Source Serif 4"],
+                    "headline-lg": ["Source Serif 4"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface shadow-sm docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center h-20 px-gutter w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<img alt="Public Care Ayurveda Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo879HCds3w21ve37kcaDk6TDBD6jGLmvKyZY044-2j4TI7_Fo3jg5MGIn2vS_Uy3jg523kaixaI9ewUNDrQnspvl92wCOxeXw3qX_NNldczaZIT3RTuZZl-ERSsjdCWSpLmC_9EVaIHo1ut2kqTZDdm2Ighvwpvul1Cg1nfmqPr1xgZydE72HjEN6ISVD-7gJT1zBWpbOG5yyRaloF-sBOHDbzme6CNKxf-SZ6ElHJDdS2ew6k7nkVl2Ul0YZYjPaefVIy8Wakas"/>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="shop.html">Shop</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="doctor-listing.html">Consult Doctor</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html#wellness-plans">Wellness Plans</a>
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary pb-1 font-label-md text-label-md" href="wellness-blog.html">Blog</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="about-us.html">About</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="search">search</button>
+<div class="relative">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="shopping_cart">shopping_cart</button>
+<span class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+</div>
+<a class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all scale-95 active:scale-90 inline-block" href="login.html">Login</a>
+<button class="lg:hidden material-symbols-outlined" data-icon="menu" id="mobile-menu-btn">menu</button>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-desktop py-10">
+<!-- Categories Section -->
+<section class="flex flex-wrap items-center gap-3 mb-12">
+<span class="text-label-md text-outline uppercase mr-2">Explore:</span>
+<button class="px-5 py-2 rounded-full bg-primary text-on-primary font-label-md transition-all">All Articles</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md hover:bg-primary-fixed transition-all">Herbal Remedies</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md hover:bg-primary-fixed transition-all">Mental Wellness</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md hover:bg-primary-fixed transition-all">Nutrition</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md hover:bg-primary-fixed transition-all">Yoga</button>
+</section>
+<!-- Featured Article Hero -->
+<section class="relative rounded-3xl overflow-hidden mb-section-gap group">
+<div class="aspect-[21/9] w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A serene indoor wellness space with sunlight filtering through large windows, highlighting a collection of Ayurvedic herbs in ceramic bowls and a person practicing mindfulness. The scene is captured in a high-key, professional photographic style with a focus on natural textures, botanical greens, and soft wood tones, reflecting a premium medical wellness aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbYN9VTr4PUr4mSksD8y6ynuDxsrhPnR8A3hpw6w3BFQRF-7465TJ60Rn3NnLy6xVwds2t_LzG_AMtIR0y6rMASIISbkrLpxR7v2GVK6xSf70pW6lPwVD4jnvFZ5jn-IoBVRLRKvTKR8vI-E9YOXMtsjroasIoKdvvevyISHUtDjunTuvEuykfbIai8e0_vjm6SbsaFDN0dKqnoUG6siU3aXcmrSXamkV9sOJZQpUo1lWRYgyljmFtioMRek8p-TpX-g3Kfn7fBbM"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex flex-col justify-end p-12">
+<div class="max-w-2xl">
+<span class="inline-block px-3 py-1 bg-secondary-container text-on-secondary-container rounded text-label-sm font-bold mb-4 uppercase tracking-widest">Featured Story</span>
+<h1 class="font-display-lg text-display-lg text-white mb-6">The Ancient Wisdom of Brahmi: Enhancing Cognitive Vitality Naturally</h1>
+<p class="text-white/90 text-body-lg mb-8 line-clamp-2">Discover how this sacred Ayurvedic herb has been used for centuries to sharpen memory, reduce anxiety, and promote a sense of calm in a chaotic modern world.</p>
+<button class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-lg font-label-md hover:bg-secondary-fixed transition-all flex items-center gap-2 group/btn">
+                        Read Full Article
+                        <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Blog Main Layout -->
+<div class="flex flex-col lg:flex-row gap-gutter">
+<!-- Recent Articles Grid -->
+<div class="lg:w-2/3">
+<h2 class="font-headline-lg text-headline-lg mb-8 flex items-center gap-3">
+                    Recent Insights
+                    <div class="h-px flex-grow bg-outline-variant"></div>
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Article 1 -->
+<article class="flex flex-col gap-4 group">
+<div class="aspect-[4/3] rounded-2xl overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Top-down editorial shot of colorful, healthy Ayurvedic breakfast bowls containing turmeric, fresh fruits, and nuts on a clean marble surface. The lighting is bright and airy, emphasizing the vibrant colors of the natural ingredients. The style is minimalist and high-end healthcare oriented, using deep greens and soft shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHm9mRLbI__29BD-5LSWL9M9E5axLe9_SdkHqogEfv_gb_UpkigNOn4xjqh_Cq2CkxIZIaRcW_T3ObOMtXHCo38btCUV8GQGSmuk70XvAfLLERO3eoXSLBckH5JjZEVppOJX5QDaw8cJXb393CFLAvlRRt0eIUrfavhSgRO0V_AM-MoiVENRYO5iVtfQYaVdcXCqoU_wmlZ2232RD7iw0kFIwcFFfRuT-QQEn6dBNh53l7rD0TF2KYVRT6p8QmuOyJFj3OGijkM0g"/>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-3 text-label-sm text-outline uppercase font-bold">
+<span>Nutrition</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>5 min read</span>
+</div>
+<h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Seasonal Detox: Balancing Your Dosha this Autumn</h3>
+<p class="text-on-surface-variant line-clamp-2">As the weather turns crisp, learn how to adjust your diet to maintain internal heat and prevent seasonal imbalances.</p>
+</div>
+</article>
+<!-- Article 2 -->
+<article class="flex flex-col gap-4 group">
+<div class="aspect-[4/3] rounded-2xl overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A tranquil outdoor yoga session at dawn, with a figure in silhouette against a soft orange and teal sky. The environment is lush with botanical life, suggesting a deep connection between the human form and nature. The composition is balanced and peaceful, following the modern botanical heritage design principles of the brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgq_5Yg9Rt_gcb2J-uvnlxtx6OEsaT5ldnY3m9s6Rpjbm6mxz5DbjA_o5vl1eK1S996ov1VzvweX1xur2dUk4aOFBJYPSA_MH5Tal7XCn5tZ4FPnJGDa-VWdeziYIb3IkhAU97UfA7c-b4hCUj-uFcvdD_H-j40D2pXCDhnE94EDSYY7mF1BtWdsoyM2m0JaTX4EBtGyOJEqy4lAtqouLhP82rRPddrqGPTSEKmpR9tczBW1oda-9Iy_rVPzWM6w9G1iwi9couWvU"/>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-3 text-label-sm text-outline uppercase font-bold">
+<span>Yoga</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>8 min read</span>
+</div>
+<h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Pranayama for Inner Peace: A Beginner's Guide</h3>
+<p class="text-on-surface-variant line-clamp-2">Exploring the science of breathwork and its profound impact on the nervous system and mental clarity.</p>
+</div>
+</article>
+<!-- Article 3 -->
+<article class="flex flex-col gap-4 group">
+<div class="aspect-[4/3] rounded-2xl overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Close-up of clinical Ayurvedic oils being prepared in a high-end laboratory setting. The lighting is surgical yet warm, highlighting the viscosity and rich golden color of the oils. Dark forest green accents in the background reinforce the brand's primary color palette and authoritative medical presence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtKb2YhCD9FOyI569DEuXYN5_D6Pl950t4HUVTtp26_pmSaJi6umTp57xz2okWy3NSRBtHE9bp3-58Pxj_qSGUsYy7p0Wi6aJq3yZxoQJD7PlpTcQTVxKfc_jPRymjBXBG3Alqoz81NvgKG-Io3klM4aPIC36JnM15SmDTsuDGgOAwkRa2DQ_mTvAvMvPIZR2GhWk4LJlM-mk7KybX_E4jqoKse5aVzoo3YOCPTJ50s5272BaG1r9hF3fCyyF1lw9wBShSLzuiF1k"/>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-3 text-label-sm text-outline uppercase font-bold">
+<span>Herbal Remedies</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>12 min read</span>
+</div>
+<h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">The Science Behind Abhyanga: Lymphatic Health</h3>
+<p class="text-on-surface-variant line-clamp-2">Why daily self-massage with warm herbal oils is more than just a luxury—it's a clinical necessity for detoxification.</p>
+</div>
+</article>
+<!-- Article 4 -->
+<article class="flex flex-col gap-4 group">
+<div class="aspect-[4/3] rounded-2xl overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist meditation corner featuring a low wooden table, a single ceramic vase with a green leaf, and soft natural textiles. The lighting is diffused and calming, creating a sanctuary-like atmosphere. The aesthetic is clean, sophisticated, and deeply rooted in botanical minimalism, using a palette of whites, sage, and deep greens." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpHMmcNNdnD2v7_hOjDujwqZJrcoQtJOZx4cevXH8qfhDlWNmXVSqbTu4UINYpNQ9HT6a3w7X2v0yNTvjpPnWo5B0CB5yIE2S2zQygzymG0nAoC5bSsFe6iaQXjS1zhsIymLD5u1d-cF2KC68bfEnapwidLIvVk0uVcD3PKGSgBZ1kZDvm9pdt2BXg5mcvff9o99787JhwYRB9oYIx4IUhB2Nkfuw9Jfk-d74d-uh-mImTDMx06wIgxtBueIAvXdDvYtDjeQtfmMo"/>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-3 text-label-sm text-outline uppercase font-bold">
+<span>Mental Wellness</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>6 min read</span>
+</div>
+<h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Creating a Sacred Space for Daily Reflection</h3>
+<p class="text-on-surface-variant line-clamp-2">Practical tips for designing a home environment that supports mental hygiene and spiritual growth.</p>
+</div>
+</article>
+</div>
+</div>
+<!-- Sidebar -->
+<aside class="lg:w-1/3 space-y-12">
+<!-- Trending Topics -->
+<div class="bg-surface-container-low rounded-3xl p-8 border border-outline-variant">
+<h4 class="font-headline-md text-headline-md mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-weight="fill">trending_up</span>
+                        Trending Now
+                    </h4>
+<ul class="space-y-6">
+<li class="group cursor-pointer">
+<span class="text-display-lg text-primary-fixed-dim font-bold opacity-30 group-hover:opacity-100 transition-opacity float-left mr-4 leading-none">01</span>
+<div class="overflow-hidden">
+<h5 class="font-label-md text-on-surface group-hover:text-primary transition-colors mb-1">Understanding Vata Imbalance During Travel</h5>
+<p class="text-label-sm text-outline">12.5k Reads</p>
+</div>
+</li>
+<li class="group cursor-pointer">
+<span class="text-display-lg text-primary-fixed-dim font-bold opacity-30 group-hover:opacity-100 transition-opacity float-left mr-4 leading-none">02</span>
+<div class="overflow-hidden">
+<h5 class="font-label-md text-on-surface group-hover:text-primary transition-colors mb-1">Top 5 Herbs for Immune Resilience</h5>
+<p class="text-label-sm text-outline">9.2k Reads</p>
+</div>
+</li>
+<li class="group cursor-pointer">
+<span class="text-display-lg text-primary-fixed-dim font-bold opacity-30 group-hover:opacity-100 transition-opacity float-left mr-4 leading-none">03</span>
+<div class="overflow-hidden">
+<h5 class="font-label-md text-on-surface group-hover:text-primary transition-colors mb-1">The Microbiome and Ayurvedic Digestion</h5>
+<p class="text-label-sm text-outline">8.8k Reads</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Newsletter Sign-up -->
+<div class="bg-primary text-on-primary rounded-3xl p-8 shadow-xl relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary-container rounded-full opacity-50 blur-3xl"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-secondary-fixed mb-4 text-4xl">eco</span>
+<h4 class="font-headline-md text-headline-md mb-3 text-white">Join our Wellness Community</h4>
+<p class="text-on-primary-container mb-6 font-body-md opacity-90">Receive curated Ayurvedic wisdom and clinical insights directly in your inbox twice a month.</p>
+<form class="space-y-3">
+<input class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:ring-2 focus:ring-secondary-fixed outline-none" placeholder="Your email address" type="email"/>
+<button class="w-full py-3 bg-secondary-container text-on-secondary-container font-label-md rounded-lg hover:bg-secondary-fixed transition-all active:scale-95" type="submit">
+                                Subscribe Now
+                            </button>
+</form>
+<p class="text-[10px] mt-4 opacity-60 text-center uppercase tracking-widest">Ancient Wisdom • Modern Clinical Care</p>
+</div>
+</div>
+<!-- Tags Cloud -->
+<div class="p-4">
+<h4 class="font-label-md text-outline uppercase tracking-widest mb-4">Popular Tags</h4>
+<div class="flex flex-wrap gap-2">
+<a class="px-3 py-1 border border-outline-variant rounded-md text-label-sm hover:border-primary hover:text-primary transition-colors" href="#">#SleepHygiene</a>
+<a class="px-3 py-1 border border-outline-variant rounded-md text-label-sm hover:border-primary hover:text-primary transition-colors" href="#">#GutHealth</a>
+<a class="px-3 py-1 border border-outline-variant rounded-md text-label-sm hover:border-primary hover:text-primary transition-colors" href="#">#StressManagement</a>
+<a class="px-3 py-1 border border-outline-variant rounded-md text-label-sm hover:border-primary hover:text-primary transition-colors" href="#">#Ashwagandha</a>
+<a class="px-3 py-1 border border-outline-variant rounded-md text-label-sm hover:border-primary hover:text-primary transition-colors" href="#">#Ritucharya</a>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-primary-container text-on-primary mt-section-gap w-full py-section-gap">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-8">
+<div class="flex flex-col gap-4">
+<div class="text-headline-md font-headline-md font-bold text-on-primary">Public Care Ayurveda</div>
+<p class="text-body-md opacity-80 max-w-xs">Bridging ancient botanical heritage with clinical excellence for lifelong wellness.</p>
+</div>
+<div class="flex gap-8 flex-wrap justify-center">
+<a class="text-on-primary opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity text-label-sm" href="#">Privacy Policy</a>
+<a class="text-on-primary opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity text-label-sm" href="#">Terms of Service</a>
+<a class="text-on-primary opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity text-label-sm" href="#">Clinical Guidelines</a>
+<a class="text-on-primary opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity text-label-sm" href="#">Partner Program</a>
+</div>
+</div>
+<div class="border-t border-white/10 mt-12 pt-8 text-center px-margin-desktop max-w-container-max mx-auto">
+<p class="text-label-sm opacity-60">© 2024 Public Care Ayurveda. Botanical Heritage Healthcare. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Simple scroll reveal effect for blog posts
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('article').forEach(article => {
+            article.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
+            observer.observe(article);
+        });
+
+        // Search bar micro-interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-105');
+            searchInput.parentElement.classList.add('shadow-md');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-105');
+            searchInput.parentElement.classList.remove('shadow-md');
+        });
+    </script>
+<script>
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                alert('Mobile navigation would expand here with clinical-grade animations.');
+            });
+        }</script>
+</body></html>

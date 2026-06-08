@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book Consultation | Public Care Ayurveda</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Source+Serif+4:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(225, 236, 212, 0.5);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#f4fafd",
+                      "surface-dim": "#d4dbdd",
+                      "secondary": "#735c00",
+                      "on-error-container": "#93000a",
+                      "surface-tint": "#3f6653",
+                      "surface-container-highest": "#dde4e6",
+                      "primary-container": "#1b4332",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#264f39",
+                      "inverse-surface": "#2b3234",
+                      "tertiary-container": "#1a432e",
+                      "primary-fixed": "#c1ecd4",
+                      "primary": "#012d1d",
+                      "on-primary-fixed-variant": "#274e3d",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#dde4e6",
+                      "surface-bright": "#f4fafd",
+                      "inverse-primary": "#a5d0b9",
+                      "surface-container-low": "#eef5f7",
+                      "secondary-fixed": "#ffe088",
+                      "on-secondary-container": "#745c00",
+                      "tertiary-fixed-dim": "#a4d1b4",
+                      "surface-container-high": "#e2e9ec",
+                      "on-secondary-fixed-variant": "#574500",
+                      "tertiary-fixed": "#c0edd0",
+                      "on-tertiary-fixed": "#002112",
+                      "error": "#ba1a1a",
+                      "secondary-fixed-dim": "#e9c349",
+                      "background": "#f4fafd",
+                      "on-primary-fixed": "#002114",
+                      "primary-fixed-dim": "#a5d0b9",
+                      "on-tertiary-container": "#84b095",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#161d1f",
+                      "outline": "#717973",
+                      "tertiary": "#002d1a",
+                      "on-secondary-fixed": "#241a00",
+                      "on-primary-container": "#86af99",
+                      "secondary-container": "#fed65b",
+                      "on-background": "#161d1f",
+                      "outline-variant": "#c1c8c2",
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#ebf2f4",
+                      "on-surface-variant": "#414844",
+                      "surface-container": "#e8eff1",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-gap": "80px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "48px",
+                      "gutter": "24px",
+                      "base": "8px",
+                      "container-max": "1200px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Source Serif 4"],
+                      "headline-md": ["Source Serif 4"],
+                      "label-md": ["Manrope"],
+                      "body-md": ["Manrope"],
+                      "body-lg": ["Manrope"],
+                      "label-sm": ["Manrope"],
+                      "headline-lg": ["Source Serif 4"]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen">
+<!-- Top Navigation Bar (Immutable Content & Mandatory Styling) -->
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface shadow-sm docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center h-20 px-gutter w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<img alt="Public Care Ayurveda Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo879HCds3w21ve37kcaDk6TDBD6jGLmvKyZY044-2j4TI7_Fo3jg5MGIn2vS_Uy3jg523kaixaI9ewUNDrQnspvl92wCOxeXw3qX_NNldczaZIT3RTuZZl-ERSsjdCWSpLmC_9EVaIHo1ut2kqTZDdm2Ighvwpvul1Cg1nfmqPr1xgZydE72HjEN6ISVD-7gJT1zBWpbOG5yyRaloF-sBOHDbzme6CNKxf-SZ6ElHJDdS2ew6k7nkVl2Ul0YZYjPaefVIy8Wakas"/>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="shop.html">Shop</a>
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary pb-1 font-label-md text-label-md" href="doctor-listing.html">Consult Doctor</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html#wellness-plans">Wellness Plans</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="wellness-blog.html">Blog</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="about-us.html">About</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="search">search</button>
+<div class="relative">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="shopping_cart">shopping_cart</button>
+<span class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+</div>
+<a class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all scale-95 active:scale-90 inline-block" href="login.html">Login</a>
+<button class="lg:hidden material-symbols-outlined" data-icon="menu" id="mobile-menu-btn">menu</button>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-desktop py-12">
+<!-- Progress Stepper -->
+<div class="max-w-3xl mx-auto mb-16">
+<div class="flex justify-between items-center relative">
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-surface-container-highest -z-10 -translate-y-1/2"></div>
+<!-- Step 1 -->
+<div class="flex flex-col items-center gap-2 group">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-primary text-on-primary font-bold shadow-lg transition-all" id="step-dot-1">1</div>
+<span class="text-label-sm font-label-sm text-primary">Doctor</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant font-bold transition-all" id="step-dot-2">2</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Schedule</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant font-bold transition-all" id="step-dot-3">3</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Payment</span>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-highest text-on-surface-variant font-bold transition-all" id="step-dot-4">4</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Complete</span>
+</div>
+</div>
+</div>
+<!-- Content Canvas -->
+<div class="max-w-4xl mx-auto">
+<!-- STEP 1: SELECT DOCTOR (Pre-filled) -->
+<section class="step-transition" id="step-1">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-8 mb-8 shadow-sm">
+<h2 class="text-headline-md font-headline-md text-primary mb-6">Confirmed Consultant</h2>
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="w-32 h-32 rounded-xl overflow-hidden shadow-sm flex-shrink-0">
+<img alt="Doctor Portrait" class="w-full h-full object-cover" data-alt="A portrait of a senior Ayurvedic practitioner with a serene and professional expression. He is wearing a minimalist, clean white linen clinical coat with a small green botanical emblem. The background is a soft-focus clinical setting with warm wood textures and natural light filtering through leaves, maintaining a high-end wellness aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq6qdsd7NoKqRjj4SaOYUAkuiQBb2STCcx5jXGgML9iMbKh0CygITarGhPuFfwFoX5skYrwJ1u5khW5fnWO77SB7jB6NNz6uPcXvJFShyevHybDeqJPMKgAN9I6ZUc4S3lhuZ6wBh2rhmMzn3nNjXK1OtQNU7aZAnbjFn2qHoLdlDA54PeljKjUS3LsjUtPIhkcCeR7joV36exQ5CPkUFVKs8POEZ7B9KSxo4LbApbeb-pl0muop2sbym1f9i8_s5tZC8DoAaPAzQ"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Dr. Aarav Sharma</h3>
+<p class="text-label-md font-label-md text-secondary-container bg-primary px-3 py-1 rounded-full inline-block mt-1">Senior Ayurvedic Physician</p>
+<p class="text-body-md font-body-md text-on-surface-variant mt-4 leading-relaxed">Specializing in Panchakarma and Chronic Metabolic Disorders. With over 15 years of botanical heritage expertise.</p>
+</div>
+<div class="text-right">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Consultation Fee</p>
+<p class="text-headline-md font-headline-md text-primary">Rs. 1,500</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-end">
+<button class="bg-primary text-on-primary px-12 py-4 rounded-lg font-bold shadow-md hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2" onclick="goToStep(2)">
+                        Next: Choose Schedule
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- STEP 2: SELECT DATE & TIME -->
+<section class="hidden step-transition" id="step-2">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+<!-- Interactive Calendar Mockup -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-headline-lg font-headline-lg text-primary">May 2024</h3>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center text-label-sm font-label-sm text-on-surface-variant mb-4">
+<span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+</div>
+<div class="grid grid-cols-7 gap-2">
+<!-- Placeholder dates -->
+<div class="p-3 text-surface-dim">28</div>
+<div class="p-3 text-surface-dim">29</div>
+<div class="p-3 text-surface-dim">30</div>
+<button class="p-3 rounded-lg hover:bg-surface-container-low transition-all">1</button>
+<button class="p-3 rounded-lg hover:bg-surface-container-low transition-all">2</button>
+<button class="p-3 rounded-lg bg-primary-fixed text-on-primary-fixed font-bold border border-primary">3</button>
+<button class="p-3 rounded-lg hover:bg-surface-container-low transition-all">4</button>
+<!-- More days... -->
+<button class="p-3 rounded-lg hover:bg-surface-container-low transition-all">5</button>
+<button class="p-3 rounded-lg hover:bg-surface-container-low transition-all">6</button>
+<button class="p-3 rounded-lg hover:bg-surface-container-low transition-all">7</button>
+<button class="p-3 rounded-lg hover:bg-surface-container-low transition-all">8</button>
+<button class="p-3 rounded-lg hover:bg-surface-container-low transition-all">9</button>
+<button class="p-3 rounded-lg hover:bg-surface-container-low transition-all">10</button>
+<button class="p-3 rounded-lg hover:bg-surface-container-low transition-all">11</button>
+</div>
+</div>
+<!-- Time Slots -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 shadow-sm">
+<h3 class="text-headline-md font-headline-md text-primary mb-6">Available Slots</h3>
+<div class="grid grid-cols-2 gap-4">
+<button class="px-4 py-3 border border-outline-variant rounded-lg text-on-surface font-medium hover:border-primary hover:bg-surface-container-low transition-all flex items-center justify-between">
+                                09:30 AM
+                                <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100">done</span>
+</button>
+<button class="px-4 py-3 bg-primary text-on-primary rounded-lg font-bold shadow-sm flex items-center justify-between">
+                                10:30 AM
+                                <span class="material-symbols-outlined text-sm">check_circle</span>
+</button>
+<button class="px-4 py-3 border border-outline-variant rounded-lg text-on-surface font-medium hover:border-primary hover:bg-surface-container-low transition-all">11:30 AM</button>
+<button class="px-4 py-3 border border-outline-variant rounded-lg text-on-surface font-medium hover:border-primary hover:bg-surface-container-low transition-all">02:00 PM</button>
+<button class="px-4 py-3 border border-outline-variant rounded-lg text-on-surface font-medium hover:border-primary hover:bg-surface-container-low transition-all">03:30 PM</button>
+<button class="px-4 py-3 border border-outline-variant rounded-lg text-on-surface-variant font-medium opacity-50 cursor-not-allowed line-through">04:30 PM</button>
+</div>
+<div class="mt-8 p-4 bg-surface-container-low rounded-lg border-l-4 border-secondary">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-secondary">info</span>
+<p class="text-label-sm font-label-sm text-on-surface-variant">All consultation times are in GMT+5:45 (Nepal Time).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<button class="text-primary font-bold flex items-center gap-2 px-6 py-3 rounded-lg hover:bg-surface-container transition-colors" onclick="goToStep(1)">
+<span class="material-symbols-outlined">arrow_back</span>
+                        Back
+                    </button>
+<button class="bg-primary text-on-primary px-12 py-4 rounded-lg font-bold shadow-md hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2" onclick="goToStep(3)">
+                        Next: Payment Secure
+                        <span class="material-symbols-outlined">lock</span>
+</button>
+</div>
+</section>
+<!-- STEP 3: PAYMENT -->
+<section class="hidden step-transition" id="step-3">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+<!-- Order Summary -->
+<div class="md:col-span-1">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 shadow-sm sticky top-28">
+<h3 class="text-headline-md font-headline-md text-primary mb-4">Summary</h3>
+<div class="space-y-4 mb-6">
+<div class="flex justify-between text-body-md font-body-md">
+<span class="text-on-surface-variant">Consultation Fee</span>
+<span>Rs. 1,500</span>
+</div>
+<div class="flex justify-between text-body-md font-body-md">
+<span class="text-on-surface-variant">Service Tax (5%)</span>
+<span>Rs. 75</span>
+</div>
+<div class="pt-4 border-t border-outline-variant flex justify-between">
+<span class="font-bold text-on-surface">Total Amount</span>
+<span class="font-bold text-primary">Rs. 1,575</span>
+</div>
+</div>
+<div class="p-3 bg-tertiary-container rounded-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" data-weight="fill">verified_user</span>
+<span class="text-label-sm font-label-sm text-on-tertiary-container">Encrypted &amp; Secure</span>
+</div>
+</div>
+</div>
+<!-- Payment Methods -->
+<div class="md:col-span-2">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-8 shadow-sm">
+<h3 class="text-headline-md font-headline-md text-primary mb-8">Choose Payment Method</h3>
+<div class="space-y-4">
+<label class="flex items-center gap-6 p-5 border-2 border-primary bg-surface-container-low rounded-xl cursor-pointer transition-all">
+<input checked="" class="w-5 h-5 text-primary focus:ring-primary border-outline" name="payment" type="radio"/>
+<div class="flex items-center gap-4 flex-grow">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+<span class="text-secondary font-bold text-xl">e</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">eSewa Wallet</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Pay using your eSewa account</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary">verified</span>
+</label>
+<label class="flex items-center gap-6 p-5 border border-outline-variant rounded-xl cursor-pointer hover:border-primary transition-all">
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline" name="payment" type="radio"/>
+<div class="flex items-center gap-4 flex-grow">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+<span class="text-purple-600 font-bold text-xl">K</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Khalti</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Instant digital payment</p>
+</div>
+</div>
+</label>
+<label class="flex items-center gap-6 p-5 border border-outline-variant rounded-xl cursor-pointer hover:border-primary transition-all">
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline" name="payment" type="radio"/>
+<div class="flex items-center gap-4 flex-grow">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant">credit_card</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Card Payment</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Visa, Mastercard, or UnionPay</p>
+</div>
+</div>
+</label>
+</div>
+<button class="w-full mt-12 bg-secondary-container text-on-secondary-container py-5 rounded-xl font-bold text-headline-md shadow-lg hover:opacity-90 active:scale-95 transition-all" onclick="goToStep(4)">
+                                Complete Payment
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- STEP 4: CONFIRMATION -->
+<section class="hidden step-transition text-center" id="step-4">
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-12 shadow-xl relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-2 bg-primary"></div>
+<div class="w-24 h-24 bg-primary-fixed rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce">
+<span class="material-symbols-outlined text-5xl text-primary" data-weight="fill">check_circle</span>
+</div>
+<h2 class="text-display-lg font-display-lg text-primary mb-4">Consultation Booked!</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-xl mx-auto mb-10">Your journey to holistic wellness with Dr. Aarav Sharma begins soon. We've sent a detailed confirmation to your email.</p>
+<div class="bg-surface-container rounded-xl p-8 mb-10 max-w-lg mx-auto border border-outline-variant">
+<div class="grid grid-cols-2 gap-y-4 text-left">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Booking ID</span>
+<span class="font-bold text-on-surface">#PCA-2024-88392</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Date &amp; Time</span>
+<span class="font-bold text-on-surface">May 03, 2024 at 10:30 AM</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Platform</span>
+<span class="font-bold text-on-surface">Secure Video Consultation</span>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined">calendar_add_on</span>
+                            Add to Google Calendar
+                        </button>
+<button class="border-2 border-primary text-primary px-8 py-4 rounded-lg font-bold hover:bg-surface-container transition-all">
+                            Download Receipt
+                        </button>
+</div>
+</div>
+<div class="mt-12">
+<a class="text-primary font-bold flex items-center gap-2 justify-center hover:underline" href="admin-dashboard.html">
+                        Return to My Dashboard
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-primary-container w-full py-section-gap mt-section-gap">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="text-headline-md font-headline-md font-bold text-on-primary dark:text-on-primary-container mb-2">Public Care Ayurveda</div>
+<p class="text-body-md font-body-md text-on-primary opacity-80">© 2024 Public Care Ayurveda. Botanical Heritage Healthcare.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-x-12 gap-y-4">
+<a class="text-on-primary dark:text-on-primary-container opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity text-label-sm font-label-sm" href="#">Privacy Policy</a>
+<a class="text-on-primary dark:text-on-primary-container opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity text-label-sm font-label-sm" href="#">Terms of Service</a>
+<a class="text-on-primary dark:text-on-primary-container opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity text-label-sm font-label-sm" href="#">Clinical Guidelines</a>
+<a class="text-on-primary dark:text-on-primary-container opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity text-label-sm font-label-sm" href="#">Partner Program</a>
+</div>
+</div>
+</footer>
+<script>
+        function goToStep(stepNumber) {
+            // Hide all steps
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`step-${i}`).classList.add('hidden');
+                
+                // Update dots
+                const dot = document.getElementById(`step-dot-${i}`);
+                if (i < stepNumber) {
+                    dot.classList.remove('bg-primary', 'bg-surface-container-highest', 'text-on-primary', 'text-on-surface-variant');
+                    dot.classList.add('bg-tertiary-container', 'text-on-tertiary-container');
+                    dot.innerHTML = '<span class="material-symbols-outlined text-xl">check</span>';
+                } else if (i === stepNumber) {
+                    dot.classList.remove('bg-surface-container-highest', 'text-on-surface-variant', 'bg-tertiary-container');
+                    dot.classList.add('bg-primary', 'text-on-primary');
+                    dot.innerHTML = i;
+                } else {
+                    dot.classList.remove('bg-primary', 'text-on-primary', 'bg-tertiary-container');
+                    dot.classList.add('bg-surface-container-highest', 'text-on-surface-variant');
+                    dot.innerHTML = i;
+                }
+            }
+
+            // Show active step
+            const activeStep = document.getElementById(`step-${stepNumber}`);
+            activeStep.classList.remove('hidden');
+            activeStep.classList.add('opacity-0', 'translate-y-4');
+            
+            setTimeout(() => {
+                activeStep.classList.remove('opacity-0', 'translate-y-4');
+                activeStep.classList.add('opacity-100', 'translate-y-0');
+            }, 10);
+
+            // Scroll to top of steps
+            window.scrollTo({ top: 150, behavior: 'smooth' });
+        }
+    </script>
+<script>
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                alert('Mobile navigation would expand here with clinical-grade animations.');
+            });
+        }</script>
+</body></html>

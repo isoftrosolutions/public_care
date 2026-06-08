@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shop All | Public Care Ayurveda</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffe088",
+                    "outline-variant": "#c1c8c2",
+                    "on-secondary-container": "#745c00",
+                    "inverse-on-surface": "#ebf2f4",
+                    "on-primary-container": "#86af99",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#84b095",
+                    "surface-container-high": "#e2e9ec",
+                    "tertiary-fixed-dim": "#a4d1b4",
+                    "background": "#f4fafd",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#574500",
+                    "primary-fixed-dim": "#a5d0b9",
+                    "surface": "#f4fafd",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#3f6653",
+                    "surface-container-low": "#eef5f7",
+                    "primary-fixed": "#c1ecd4",
+                    "on-surface-variant": "#414844",
+                    "on-surface": "#161d1f",
+                    "outline": "#717973",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#dde4e6",
+                    "on-error": "#ffffff",
+                    "surface-container": "#e8eff1",
+                    "on-primary-fixed": "#002114",
+                    "on-tertiary-fixed-variant": "#264f39",
+                    "inverse-primary": "#a5d0b9",
+                    "tertiary": "#002d1a",
+                    "secondary-container": "#fed65b",
+                    "on-background": "#161d1f",
+                    "inverse-surface": "#2b3234",
+                    "tertiary-container": "#1a432e",
+                    "secondary-fixed-dim": "#e9c349",
+                    "on-tertiary-fixed": "#002112",
+                    "primary": "#012d1d",
+                    "surface-container-highest": "#dde4e6",
+                    "on-primary": "#ffffff",
+                    "secondary": "#735c00",
+                    "surface-dim": "#d4dbdd",
+                    "primary-container": "#1b4332",
+                    "on-secondary-fixed": "#241a00",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f4fafd",
+                    "on-primary-fixed-variant": "#274e3d",
+                    "tertiary-fixed": "#c0edd0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1200px",
+                    "gutter": "24px",
+                    "section-gap": "80px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "label-md": ["Manrope"],
+                    "headline-lg-mobile": ["Source Serif 4"],
+                    "body-md": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "headline-lg": ["Source Serif 4"],
+                    "headline-md": ["Source Serif 4"],
+                    "display-lg": ["Source Serif 4"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        .product-card-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .product-card:hover .product-card-overlay {
+            opacity: 1;
+        }
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1b4332;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface shadow-sm docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center h-20 px-gutter w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<img alt="Public Care Ayurveda Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo879HCds3w21ve37kcaDk6TDBD6jGLmvKyZY044-2j4TI7_Fo3jg5MGIn2vS_Uy3jg523kaixaI9ewUNDrQnspvl92wCOxeXw3qX_NNldczaZIT3RTuZZl-ERSsjdCWSpLmC_9EVaIHo1ut2kqTZDdm2Ighvwpvul1Cg1nfmqPr1xgZydE72HjEN6ISVD-7gJT1zBWpbOG5yyRaloF-sBOHDbzme6CNKxf-SZ6ElHJDdS2ew6k7nkVl2Ul0YZYjPaefVIy8Wakas"/>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html">Home</a>
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary pb-1 font-label-md text-label-md" href="shop.html">Shop</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="doctor-listing.html">Consult Doctor</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html#wellness-plans">Wellness Plans</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="wellness-blog.html">Blog</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="about-us.html">About</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="search">search</button>
+<div class="relative">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="shopping_cart">shopping_cart</button>
+<span class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+</div>
+<a class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all scale-95 active:scale-90 inline-block" href="login.html">Login</a>
+<button class="lg:hidden material-symbols-outlined" data-icon="menu" id="mobile-menu-btn">menu</button>
+</div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto px-gutter py-10">
+<div class="flex flex-col lg:flex-row gap-10">
+<!-- Sidebar Filter -->
+<aside class="w-full lg:w-72 flex-shrink-0 space-y-8">
+<!-- Search -->
+<div class="space-y-3">
+<label class="font-label-md text-primary block">Search Products</label>
+<div class="relative">
+<input class="w-full pl-10 pr-4 py-3 rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Search items..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+</div>
+</div>
+<!-- Categories -->
+<div class="space-y-4">
+<h3 class="font-label-md text-primary uppercase tracking-wider">Categories</h3>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Immunity Boosters</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Diabetes Care</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-primary font-medium">Weight Management</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Hair &amp; Skin Care</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Stress Relief</span>
+</label>
+</div>
+</div>
+<!-- Price Range -->
+<div class="space-y-4">
+<h3 class="font-label-md text-primary uppercase tracking-wider">Price Range</h3>
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" max="5000" min="0" type="range"/>
+<div class="flex justify-between text-label-sm text-outline">
+<span>₹0</span>
+<span>₹5,000+</span>
+</div>
+</div>
+<!-- Ratings -->
+<div class="space-y-4">
+<h3 class="font-label-md text-primary uppercase tracking-wider">Ratings</h3>
+<div class="space-y-2">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<div class="flex text-secondary">
+<span class="material-symbols-outlined filled-icon text-[20px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[20px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[20px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[20px]">star</span>
+<span class="material-symbols-outlined text-[20px]">star</span>
+</div>
+<span class="text-label-md">&amp; Up</span>
+</button>
+</div>
+</div>
+<!-- Clear All -->
+<button class="w-full py-3 border border-outline-variant rounded-xl text-primary font-label-md hover:bg-surface-container-low transition-colors">
+                    Clear All Filters
+                </button>
+</aside>
+<!-- Main Product Area -->
+<div class="flex-1">
+<!-- Toolbar -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+<p class="text-body-md text-on-surface-variant">Showing <span class="font-bold text-on-surface">12</span> results for "Weight Management"</p>
+<div class="flex items-center gap-4 w-full sm:w-auto">
+<span class="text-label-md text-outline">Sort By:</span>
+<select class="border-none bg-transparent font-label-md text-on-surface focus:ring-0 cursor-pointer">
+<option>Featured</option>
+<option>Newest</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Best Rating</option>
+</select>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8" id="product-grid">
+<!-- Product Card 1 -->
+<div class="product-card group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden hover:shadow-xl transition-all duration-500 flex flex-col">
+<div class="relative aspect-square bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A premium Ayurvedic herbal supplement bottle with minimalist dark green labeling, placed on a clean white marble surface. Soft sunlight illuminates the scene, highlighting the organic, botanical ingredients surrounding the bottle like fresh mint leaves and dried ginger roots. The aesthetic is high-end medical clinical and serene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABA5SU6zj91LdU7p215yR6kkI_iHfD6pnCXseNWgdURpNLlhdt_8c9DYRuRLYZorpzY56YpjvsncEbMPB26av76kFG6QvJIVlkZrHpvvKB1KgFtt_QI1A2RTHl-WFxsH9qJe6BgriFtqX-SXGcNladPhA5lAgKt2i2TDKiC1HPQtyjEVAhOLRHddW3jAX4E-eWh_92l60pDVJjVlykIqxOhaGA3fn6fu_0IEYm080cbz4OQcEF1gKOePcPD8zo1FwwL6JeimhL1IM"/>
+<div class="absolute top-4 left-4">
+<span class="bg-secondary text-on-secondary px-3 py-1 rounded-full text-label-sm font-bold uppercase tracking-wider">Best Seller</span>
+</div>
+<button class="absolute top-4 right-4 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<!-- Hover Overlay -->
+<div class="product-card-overlay absolute inset-0 bg-primary/20 backdrop-blur-[2px] flex items-center justify-center gap-3">
+<button class="bg-white text-primary px-4 py-2 rounded-lg font-label-md shadow-lg hover:bg-primary hover:text-white transition-all transform -translate-y-2 group-hover:translate-y-0 duration-300">Quick View</button>
+<button class="bg-primary text-on-primary p-2.5 rounded-lg shadow-lg hover:bg-primary-container transition-all transform translate-y-2 group-hover:translate-y-0 duration-300">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex items-center gap-1 mb-2">
+<div class="flex text-secondary">
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+</div>
+<span class="text-label-sm text-outline">(124)</span>
+</div>
+<h3 class="font-headline-md text-primary mb-2 line-clamp-1">Triphala Guggulu Plus</h3>
+<p class="text-label-sm text-on-surface-variant mb-4">Natural weight management and metabolic support.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-headline-md text-primary">₹899.00</span>
+<span class="text-label-sm text-outline-variant line-through">₹1,200</span>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="product-card group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden hover:shadow-xl transition-all duration-500 flex flex-col">
+<div class="relative aspect-square bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="High-quality Ayurvedic hair oil glass bottle with a wooden cap, nestled among fresh green amla fruits and hibiscus petals. The lighting is soft and golden, suggesting a luxurious spa environment. The product packaging is elegant and clinical, using forest green and gold accents to reflect the Public Care Ayurveda brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA94HM5rb_gk8hJYNO5wUvmK32JcKIFiK04CTbOv7gZPuijwPzfUn1Uu3zJjwNs9cuDqPFm0ss-KEz1qjcYCSquE7s-XIK03ulCuQhgiWm0Uww4DU_YWBTi5M63QitzdZpXR0hRvItnFVLqeDA5_4w4y59VAdNLn3_PulA6LE1sou_1JOMFkmCETtIKfjmK4i5O5VXPE21Ehx0U0xXL2nIYFQHXi752Wz-3_pMvFP4xb08_8e4bAM7eD0FW_gGiqqiy4cPN38l_69Q"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary text-on-primary px-3 py-1 rounded-full text-label-sm font-bold uppercase tracking-wider">New</span>
+</div>
+<button class="absolute top-4 right-4 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<div class="product-card-overlay absolute inset-0 bg-primary/20 backdrop-blur-[2px] flex items-center justify-center gap-3">
+<button class="bg-white text-primary px-4 py-2 rounded-lg font-label-md shadow-lg hover:bg-primary hover:text-white transition-all transform -translate-y-2 group-hover:translate-y-0 duration-300">Quick View</button>
+<button class="bg-primary text-on-primary p-2.5 rounded-lg shadow-lg hover:bg-primary-container transition-all transform translate-y-2 group-hover:translate-y-0 duration-300">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex items-center gap-1 mb-2">
+<div class="flex text-secondary">
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+</div>
+<span class="text-label-sm text-outline">(48)</span>
+</div>
+<h3 class="font-headline-md text-primary mb-2 line-clamp-1">Keshvardhani Tailam</h3>
+<p class="text-label-sm text-on-surface-variant mb-4">Ayurvedic hair growth and follicle nourishment.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-headline-md text-primary">₹1,450.00</span>
+</div>
+</div>
+</div>
+<!-- Loading Skeleton Placeholder -->
+<div class="hidden grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8" id="skeleton-loader">
+<div class="rounded-2xl border border-outline-variant/30 overflow-hidden">
+<div class="aspect-square skeleton"></div>
+<div class="p-6 space-y-4">
+<div class="h-4 w-24 skeleton rounded"></div>
+<div class="h-6 w-full skeleton rounded"></div>
+<div class="h-4 w-3/4 skeleton rounded"></div>
+<div class="flex justify-between">
+<div class="h-6 w-20 skeleton rounded"></div>
+<div class="h-6 w-12 skeleton rounded"></div>
+</div>
+</div>
+</div>
+<!-- Repeat skeletons -->
+</div>
+<!-- Empty State (Hidden by default) -->
+<div class="hidden col-span-full py-20 text-center flex flex-col items-center" id="empty-state">
+<div class="w-24 h-24 bg-surface-container-low rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-[48px]">search_off</span>
+</div>
+<h3 class="font-headline-md text-primary mb-2">No products found</h3>
+<p class="text-body-md text-on-surface-variant max-w-md mx-auto mb-8">We couldn't find any products matching your current filters. Try adjusting your search or resetting all filters.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md" onclick="location.reload()">Reset All Filters</button>
+<button class="border border-primary text-primary px-8 py-3 rounded-full font-label-md">Need help finding something?</button>
+</div>
+</div>
+<!-- Product Card 3 (Duplicate for grid feel) -->
+<div class="product-card group bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden hover:shadow-xl transition-all duration-500 flex flex-col">
+<div class="relative aspect-square bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="An assortment of Ayurvedic herbs like Turmeric root, Ashwagandha, and Holy Basil leaves elegantly arranged around a dark amber glass bottle. The background is a soft, earthy clay texture. The lighting is cinematic, creating deep, rich shadows that emphasize the organic textures. The overall mood is clinical, authoritative, and deeply rooted in nature." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJUJjNqCKymPCR7E78NhgBWEVUF719heJO9YDHMdgfDYBkndMFzRIfoDuZ9r0Cj6z2j0o-g7NeGDk6-ootYe5QWCeBnxuThLKg9R8iH04ib0bfWV19CS3ox8R8NKGTsXBJE6xRyZnlOqh8ii9btQzK5qN2efj18PA-KCvxslL4av-4eYQcc3ZoXJ3vjqBTMP-I0j8KbA5CZNWPEB4HvHTCxr4kHazdVytjLOwSt3J8EXcaTU-bBEF06IBTWvjYAdlsp7O85tXibNY"/>
+<button class="absolute top-4 right-4 w-10 h-10 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-on-surface-variant hover:text-error transition-colors shadow-sm">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<div class="product-card-overlay absolute inset-0 bg-primary/20 backdrop-blur-[2px] flex items-center justify-center gap-3">
+<button class="bg-white text-primary px-4 py-2 rounded-lg font-label-md shadow-lg hover:bg-primary hover:text-white transition-all transform -translate-y-2 group-hover:translate-y-0 duration-300">Quick View</button>
+<button class="bg-primary text-on-primary p-2.5 rounded-lg shadow-lg hover:bg-primary-container transition-all transform translate-y-2 group-hover:translate-y-0 duration-300">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex items-center gap-1 mb-2">
+<div class="flex text-secondary">
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined filled-icon text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px]">star</span>
+</div>
+<span class="text-label-sm text-outline">(89)</span>
+</div>
+<h3 class="font-headline-md text-primary mb-2 line-clamp-1">Immuno-Boost Churna</h3>
+<p class="text-label-sm text-on-surface-variant mb-4">Strengthen your natural defense system daily.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="font-headline-md text-primary">₹599.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<nav class="mt-16 flex items-center justify-center gap-4">
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center text-primary hover:bg-surface-container-low transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex gap-2">
+<button class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md shadow-lg">1</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center font-label-md text-on-surface-variant hover:border-primary hover:text-primary transition-colors">2</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center font-label-md text-on-surface-variant hover:border-primary hover:text-primary transition-colors">3</button>
+<span class="w-12 h-12 flex items-center justify-center text-outline">...</span>
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center font-label-md text-on-surface-variant hover:border-primary hover:text-primary transition-colors">12</button>
+</div>
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center text-primary hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary w-full mt-section-gap">
+<div class="max-w-[1200px] mx-auto px-gutter py-section-gap grid grid-cols-1 md:grid-cols-4 gap-base">
+<div class="col-span-1 md:col-span-1 space-y-6">
+<div class="flex items-center gap-2">
+<img alt="Public Care Ayurveda Logo" class="h-10 brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8AWwfCfPK4gvMFHHTfEnbVZbwmqZgluDLOAaC2TG19k1eJguntDGx6sEem9tkr6uSfyI49eovCLSeEbdXwkULYgKnlTjHGoKCWOsNoXaeTfy_y6GqEkofw7xBoEiJaPs1kfx_xSsqgNKBR4R5pfq4WxbtVtaKLHq1X6Dp9Qvct_3v-CyluSFmbM6mlr0wOZYPQ_1XsfJexNVmo3rSkS3k_YNDIO17ncAaS-mvzyB9nGEj5LeX_YhUIAOY2tIX1HGWWjUUhS9dPqs"/>
+<span class="font-headline-md text-headline-md text-on-primary font-bold">Public Care</span>
+</div>
+<p class="text-body-md text-on-primary/80 pr-6">Integrating ancient Ayurvedic wisdom with modern clinical research to provide premium holistic healthcare.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-fixed hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">face_nod</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-fixed hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary-fixed hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="font-label-md uppercase tracking-widest text-secondary-fixed">Quick Links</h4>
+<div class="flex flex-col gap-4">
+<a class="text-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="about-us.html">Brand Story</a>
+<a class="text-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="doctor-listing.html">Our Doctors</a>
+<a class="text-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Success Stories</a>
+<a class="text-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Ayurvedic Quiz</a>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="font-label-md uppercase tracking-widest text-secondary-fixed">Customer Support</h4>
+<div class="flex flex-col gap-4">
+<a class="text-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="text-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Shipping Info</a>
+<a class="text-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="text-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="contact-us.html">Contact Us</a>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="font-label-md uppercase tracking-widest text-secondary-fixed">Newsletter</h4>
+<p class="text-body-md text-on-primary/80">Join our wellness community for tips and exclusive offers.</p>
+<div class="flex flex-col gap-3">
+<input class="bg-white/10 border border-white/20 rounded-xl px-4 py-3 focus:ring-1 focus:ring-secondary-fixed text-white placeholder:text-white/40" placeholder="Email Address" type="email"/>
+<button class="bg-secondary-fixed text-primary font-bold py-3 rounded-xl hover:bg-white transition-all">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="border-t border-white/10">
+<div class="max-w-[1200px] mx-auto px-gutter py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-label-sm text-on-primary/60">
+<p>© 2024 Public Care Ayurveda. Wisdom of Nature, Precision of Science.</p>
+<div class="flex gap-6">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">verified</span> ISO 9001 Certified</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">eco</span> 100% Organic</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction: Sidebar checkbox highlights
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const labelText = this.nextElementSibling;
+                if (this.checked) {
+                    labelText.classList.add('text-primary', 'font-medium');
+                    labelText.classList.remove('text-on-surface-variant');
+                } else {
+                    labelText.classList.remove('text-primary', 'font-medium');
+                    labelText.classList.add('text-on-surface-variant');
+                }
+            });
+        });
+
+        // Skeleton Loading Simulator
+        function showSkeletons() {
+            const grid = document.getElementById('product-grid');
+            const skeleton = document.getElementById('skeleton-loader');
+            
+            // In a real app, you'd swap these states
+            // skeleton.classList.remove('hidden');
+            // grid.classList.add('hidden');
+        }
+
+        // Quick Search Interaction
+        const searchInput = document.querySelector('input[placeholder="Search items..."]');
+        searchInput.addEventListener('input', (e) => {
+            if(e.target.value.toLowerCase() === 'empty') {
+                document.getElementById('product-grid').classList.add('hidden');
+                document.getElementById('empty-state').classList.remove('hidden');
+            } else {
+                document.getElementById('product-grid').classList.remove('hidden');
+                document.getElementById('empty-state').classList.add('hidden');
+            }
+        });
+    </script>
+<script>
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                alert('Mobile navigation would expand here with clinical-grade animations.');
+            });
+        }</script>
+</body></html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us | Public Care Ayurveda</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#f4fafd",
+                      "surface-dim": "#d4dbdd",
+                      "secondary": "#735c00",
+                      "on-error-container": "#93000a",
+                      "surface-tint": "#3f6653",
+                      "surface-container-highest": "#dde4e6",
+                      "primary-container": "#1b4332",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#264f39",
+                      "inverse-surface": "#2b3234",
+                      "tertiary-container": "#1a432e",
+                      "primary-fixed": "#c1ecd4",
+                      "primary": "#012d1d",
+                      "on-primary-fixed-variant": "#274e3d",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#dde4e6",
+                      "surface-bright": "#f4fafd",
+                      "inverse-primary": "#a5d0b9",
+                      "surface-container-low": "#eef5f7",
+                      "secondary-fixed": "#ffe088",
+                      "on-secondary-container": "#745c00",
+                      "tertiary-fixed-dim": "#a4d1b4",
+                      "surface-container-high": "#e2e9ec",
+                      "on-secondary-fixed-variant": "#574500",
+                      "tertiary-fixed": "#c0edd0",
+                      "on-tertiary-fixed": "#002112",
+                      "error": "#ba1a1a",
+                      "secondary-fixed-dim": "#e9c349",
+                      "background": "#f4fafd",
+                      "on-primary-fixed": "#002114",
+                      "primary-fixed-dim": "#a5d0b9",
+                      "on-tertiary-container": "#84b095",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#161d1f",
+                      "outline": "#717973",
+                      "tertiary": "#002d1a",
+                      "on-secondary-fixed": "#241a00",
+                      "on-primary-container": "#86af99",
+                      "secondary-container": "#fed65b",
+                      "on-background": "#161d1f",
+                      "outline-variant": "#c1c8c2",
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#ebf2f4",
+                      "on-surface-variant": "#414844",
+                      "surface-container": "#e8eff1",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-gap": "80px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "48px",
+                      "gutter": "24px",
+                      "base": "8px",
+                      "container-max": "1200px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Source Serif 4"],
+                      "headline-md": ["Source Serif 4"],
+                      "label-md": ["Manrope"],
+                      "body-md": ["Manrope"],
+                      "body-lg": ["Manrope"],
+                      "label-sm": ["Manrope"],
+                      "headline-lg-mobile": ["Source Serif 4"],
+                      "headline-lg": ["Source Serif 4"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .faq-accordion[open] .faq-icon {
+            transform: rotate(180deg);
+        }
+        .map-container {
+            filter: grayscale(0.2) contrast(1.1) brightness(0.95);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md">
+<!-- Top Navigation -->
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface shadow-sm docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center h-20 px-gutter w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<img alt="Public Care Ayurveda Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo879HCds3w21ve37kcaDk6TDBD6jGLmvKyZY044-2j4TI7_Fo3jg5MGIn2vS_Uy3jg523kaixaI9ewUNDrQnspvl92wCOxeXw3qX_NNldczaZIT3RTuZZl-ERSsjdCWSpLmC_9EVaIHo1ut2kqTZDdm2Ighvwpvul1Cg1nfmqPr1xgZydE72HjEN6ISVD-7gJT1zBWpbOG5yyRaloF-sBOHDbzme6CNKxf-SZ6ElHJDdS2ew6k7nkVl2Ul0YZYjPaefVIy8Wakas"/>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="shop.html">Shop</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="doctor-listing.html">Consult Doctor</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html#wellness-plans">Wellness Plans</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="wellness-blog.html">Blog</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="about-us.html">About</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="search">search</button>
+<div class="relative">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="shopping_cart">shopping_cart</button>
+<span class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+</div>
+<a class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all scale-95 active:scale-90 inline-block" href="login.html">Login</a>
+<button class="lg:hidden material-symbols-outlined" data-icon="menu" id="mobile-menu-btn">menu</button>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-desktop">
+<!-- Header Section -->
+<header class="py-section-gap text-center max-w-3xl mx-auto">
+<h1 class="font-display-lg text-display-lg text-primary mb-6">Get in Touch with Our Experts</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                Whether you're beginning your Ayurvedic journey or require clinical assistance, our team of botanical heritage specialists is here to guide your path to wellness.
+            </p>
+</header>
+<!-- Contact & Support Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-section-gap">
+<!-- Contact Form Area -->
+<div class="lg:col-span-8 bg-surface-container-lowest p-10 rounded-[16px] shadow-sm border border-outline-variant">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-8">Send an Inquiry</h2>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-md text-on-surface-variant block">Full Name</label>
+<input class="w-full border-outline-variant rounded-lg focus:ring-primary focus:border-primary bg-surface p-3" placeholder="e.g. Dr. Kavita Sharma" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-on-surface-variant block">Email Address</label>
+<input class="w-full border-outline-variant rounded-lg focus:ring-primary focus:border-primary bg-surface p-3" placeholder="kavita@heritage.care" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-on-surface-variant block">Topic of Discussion</label>
+<select class="w-full border-outline-variant rounded-lg focus:ring-primary focus:border-primary bg-surface p-3">
+<option>Clinical Consultation</option>
+<option>Product Inquiry</option>
+<option>Order Tracking</option>
+<option>Botanical Sourcing</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-on-surface-variant block">Your Message</label>
+<textarea class="w-full border-outline-variant rounded-lg focus:ring-primary focus:border-primary bg-surface p-3" placeholder="How can our clinical experts assist you today?" rows="5"></textarea>
+</div>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-md hover:opacity-90 transition-all shadow-md flex items-center gap-2" type="submit">
+<span>Submit Inquiry</span>
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</form>
+</div>
+<!-- Support Details Sidebar -->
+<aside class="lg:col-span-4 space-y-gutter">
+<!-- Support Cards -->
+<div class="bg-primary text-on-primary p-8 rounded-[16px] shadow-lg">
+<h3 class="font-headline-md text-headline-md mb-6">Immediate Support</h3>
+<div class="space-y-6">
+<a class="flex items-center gap-4 group" href="tel:+1800HERITAGE">
+<div class="bg-primary-container p-3 rounded-full group-hover:bg-tertiary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+</div>
+<div>
+<p class="text-label-sm opacity-70">Phone Support</p>
+<p class="font-headline-md text-headline-md">+1 (800) AYUR-CARE</p>
+</div>
+</a>
+<a class="flex items-center gap-4 group" href="mailto:expert@publiccare.com">
+<div class="bg-primary-container p-3 rounded-full group-hover:bg-tertiary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</div>
+<div>
+<p class="text-label-sm opacity-70">Email Us</p>
+<p class="font-headline-md text-headline-md">expert@ayur.care</p>
+</div>
+</a>
+<a class="flex items-center gap-4 group" href="appointment-booking.html">
+<div class="bg-primary-container p-3 rounded-full group-hover:bg-tertiary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+</div>
+<div>
+<p class="text-label-sm opacity-70">WhatsApp Concierge</p>
+<p class="font-headline-md text-headline-md">Live Chat Active</p>
+</div>
+</a>
+</div>
+</div>
+<!-- Office Card -->
+<div class="bg-surface-container-high p-8 rounded-[16px] border border-outline-variant">
+<h4 class="font-label-md text-primary mb-4 uppercase tracking-wider">Flagship Clinic</h4>
+<p class="font-headline-md text-headline-md text-on-surface mb-2">The Heritage House</p>
+<p class="font-body-md text-on-surface-variant mb-6">
+                        42 Clinical Gardens, Wellness District<br/>
+                        New Delhi, India 110001
+                    </p>
+<div class="pt-4 border-t border-outline-variant">
+<p class="font-label-md text-on-surface">Mon – Sat: 08:00 AM – 08:00 PM</p>
+<p class="font-label-md text-on-surface">Sun: Closed for Botanical Harvest</p>
+</div>
+</div>
+</aside>
+</section>
+<!-- Map Section -->
+<section class="mb-section-gap">
+<div class="rounded-[24px] overflow-hidden shadow-sm h-[400px] relative border border-outline-variant">
+<div class="absolute inset-0 bg-surface-dim flex items-center justify-center map-container">
+<img alt="Clinic Location Map" class="w-full h-full object-cover opacity-80" data-alt="A professional and artistic map visualization of a premium clinic location in New Delhi. The map uses a sophisticated dark green and white botanical heritage color palette, with elegant gold pins marking the clinic's position. The surrounding cityscape is rendered in a minimalist, architectural style that emphasizes cleanliness and medical precision. The lighting is soft and ambient, suggesting a serene clinical environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFIZo49uitXwv-Anxp3BnrsNgHD7miee-yj_HTZVvcAfT6fZK8bFV8rOwlf4x4EPep7IHfsKGNmqmO9WQimz8JYYriiffsrYOdyEnBZaF7ZPF3KXR0QrEHzRGC5p8ZuoGLX8--6seIsp6f368UKydEVpTzgLj6AjgnbiwpstWgU3VrfIllSO-k8pit-wbjTPr2SKmWalOI6pLV4OTvqXaRbGCS23C9X3kuWfZEiD_NVI8bJbMZe0bS3Lr5wWP4NKRrrA-cWRUIPNM"/>
+<div class="absolute bg-surface-container-lowest p-6 rounded-xl shadow-xl border border-outline-variant max-w-sm left-10 bottom-10">
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary" data-icon="location_on" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary">Public Care Flagship</h4>
+<p class="font-body-md text-on-surface-variant">The heart of our Ayurvedic research and clinical practice.</p>
+<button class="mt-4 text-primary font-bold font-label-md flex items-center gap-1">Get Directions <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="mb-section-gap max-w-4xl mx-auto">
+<div class="text-center mb-12">
+<h2 class="font-display-lg text-display-lg text-primary mb-4">Frequently Asked Questions</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Common inquiries regarding our clinical standards and patient care.</p>
+</div>
+<div class="space-y-4">
+<!-- Shipping -->
+<details class="faq-accordion group bg-surface-container-low border border-outline-variant rounded-[16px] overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="local_shipping">local_shipping</span>
+<span class="font-headline-md text-on-surface">Global Shipping &amp; Delivery</span>
+</div>
+<span class="faq-icon material-symbols-outlined transition-transform duration-300" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-on-surface-variant leading-relaxed">
+                        We offer climate-controlled international shipping to over 40 countries to ensure the potency of our botanical oils and herbs remains intact. Standard delivery within India is 3-5 business days, while international orders typically arrive within 7-14 days depending on customs.
+                    </div>
+</details>
+<!-- Consultation -->
+<details class="faq-accordion group bg-surface-container-low border border-outline-variant rounded-[16px] overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="video_chat">video_chat</span>
+<span class="font-headline-md text-on-surface">How do Digital Consultations work?</span>
+</div>
+<span class="faq-icon material-symbols-outlined transition-transform duration-300" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-on-surface-variant leading-relaxed">
+                        Our digital consultations are conducted via a secure, HIPAA-compliant telehealth platform. Once you book, you'll receive a pre-consultation Dosha assessment form. Your expert physician will then review your history and conduct a 45-minute live visual diagnosis.
+                    </div>
+</details>
+<!-- Treatment -->
+<details class="faq-accordion group bg-surface-container-low border border-outline-variant rounded-[16px] overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="prescriptions">prescriptions</span>
+<span class="font-headline-md text-on-surface">Safety and Clinical Guidelines</span>
+</div>
+<span class="faq-icon material-symbols-outlined transition-transform duration-300" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-on-surface-variant leading-relaxed">
+                        All treatments prescribed at Public Care Ayurveda undergo rigorous quality control. Our herbs are sourced from organic heritage farms and tested for purity, heavy metals, and potency. We strictly follow clinical guidelines that bridge traditional Ayurvedic texts with modern safety standards.
+                    </div>
+</details>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-primary-container text-on-primary w-full py-section-gap">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-8">
+<div class="space-y-4 text-center md:text-left">
+<div class="text-headline-md font-headline-md font-bold text-on-primary">
+                    Public Care Ayurveda
+                </div>
+<p class="text-body-md opacity-80 max-w-xs">
+                    © 2024 Public Care Ayurveda. Botanical Heritage Healthcare.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-on-primary opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity text-label-sm" href="#">Privacy Policy</a>
+<a class="text-on-primary opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity text-label-sm" href="#">Terms of Service</a>
+<a class="text-on-primary opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity text-label-sm" href="#">Clinical Guidelines</a>
+<a class="text-on-primary opacity-80 hover:opacity-100 hover:text-secondary-fixed transition-opacity text-label-sm" href="#">Partner Program</a>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full border border-on-primary border-opacity-20 flex items-center justify-center hover:bg-white hover:text-primary transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[20px]" data-icon="public">public</span>
+</div>
+<div class="w-10 h-10 rounded-full border border-on-primary border-opacity-20 flex items-center justify-center hover:bg-white hover:text-primary transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[20px]" data-icon="share">share</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple form validation micro-interaction
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span>Processing...</span><span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span>';
+            btn.classList.add('opacity-50');
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '<span>Message Sent!</span><span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>';
+                btn.classList.remove('bg-primary');
+                btn.classList.add('bg-secondary');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.add('bg-primary');
+                    btn.classList.remove('bg-secondary', 'opacity-50');
+                    btn.disabled = false;
+                    e.target.reset();
+                }, 3000);
+            }, 1500);
+        });
+
+        // FAQ auto-close siblings
+        const faqs = document.querySelectorAll('.faq-accordion');
+        faqs.forEach(faq => {
+            faq.addEventListener('toggle', function() {
+                if (this.open) {
+                    faqs.forEach(otherFaq => {
+                        if (otherFaq !== this) otherFaq.removeAttribute('open');
+                    });
+                }
+            });
+        });
+    </script>
+<script>
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                alert('Mobile navigation would expand here with clinical-grade animations.');
+            });
+        }</script>
+</body></html>

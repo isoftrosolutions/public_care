@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Consult Our Doctors | Public Care Ayurveda</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c1c8c2;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#161d1f",
+                    "secondary-fixed-dim": "#e9c349",
+                    "inverse-primary": "#a5d0b9",
+                    "tertiary": "#002d1a",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#c1ecd4",
+                    "tertiary-container": "#1a432e",
+                    "on-tertiary-fixed-variant": "#264f39",
+                    "secondary": "#735c00",
+                    "outline": "#717973",
+                    "on-primary-container": "#86af99",
+                    "secondary-fixed": "#ffe088",
+                    "tertiary-fixed-dim": "#a4d1b4",
+                    "primary": "#012d1d",
+                    "primary-container": "#1b4332",
+                    "surface": "#f4fafd",
+                    "outline-variant": "#c1c8c2",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#574500",
+                    "inverse-on-surface": "#ebf2f4",
+                    "on-surface-variant": "#414844",
+                    "on-primary-fixed": "#002114",
+                    "error-container": "#ffdad6",
+                    "background": "#f4fafd",
+                    "on-tertiary-fixed": "#002112",
+                    "surface-container": "#e8eff1",
+                    "secondary-container": "#fed65b",
+                    "surface-container-low": "#eef5f7",
+                    "inverse-surface": "#2b3234",
+                    "surface-container-highest": "#dde4e6",
+                    "surface-bright": "#f4fafd",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#c0edd0",
+                    "surface-dim": "#d4dbdd",
+                    "on-secondary-fixed": "#241a00",
+                    "surface-tint": "#3f6653",
+                    "primary-fixed-dim": "#a5d0b9",
+                    "error": "#ba1a1a",
+                    "on-tertiary-container": "#84b095",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#274e3d",
+                    "on-secondary-container": "#745c00",
+                    "surface-variant": "#dde4e6",
+                    "surface-container-high": "#e2e9ec",
+                    "on-surface": "#161d1f",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "margin-desktop": "48px",
+                    "section-gap": "80px",
+                    "base": "8px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Source Serif 4"],
+                    "headline-md": ["Source Serif 4"],
+                    "label-sm": ["Manrope"],
+                    "label-md": ["Manrope"],
+                    "headline-lg": ["Source Serif 4"],
+                    "body-md": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "headline-lg-mobile": ["Source Serif 4"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased">
+<!-- Top Navigation Bar -->
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface shadow-sm docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center h-20 px-gutter w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<img alt="Public Care Ayurveda Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo879HCds3w21ve37kcaDk6TDBD6jGLmvKyZY044-2j4TI7_Fo3jg5MGIn2vS_Uy3jg523kaixaI9ewUNDrQnspvl92wCOxeXw3qX_NNldczaZIT3RTuZZl-ERSsjdCWSpLmC_9EVaIHo1ut2kqTZDdm2Ighvwpvul1Cg1nfmqPr1xgZydE72HjEN6ISVD-7gJT1zBWpbOG5yyRaloF-sBOHDbzme6CNKxf-SZ6ElHJDdS2ew6k7nkVl2Ul0YZYjPaefVIy8Wakas"/>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="shop.html">Shop</a>
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary pb-1 font-label-md text-label-md" href="doctor-listing.html">Consult Doctor</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html#wellness-plans">Wellness Plans</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="wellness-blog.html">Blog</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="about-us.html">About</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="search">search</button>
+<div class="relative">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="shopping_cart">shopping_cart</button>
+<span class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+</div>
+<a class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all scale-95 active:scale-90 inline-block" href="login.html">Login</a>
+<button class="lg:hidden material-symbols-outlined" data-icon="menu" id="mobile-menu-btn">menu</button>
+</div>
+</div>
+</header>
+<main class="pt-[100px] pb-section-gap max-w-[1200px] mx-auto px-gutter">
+<!-- Search & Quick Filters -->
+<div class="mb-10 space-y-6">
+<h1 class="font-headline-lg text-headline-lg text-primary">Find Your Ayurvedic Expert</h1>
+<div class="flex flex-col md:flex-row gap-4 items-center">
+<div class="relative w-full md:max-w-md">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Search by name, specialty or health concern..." type="text"/>
+</div>
+<div class="flex flex-wrap gap-3 overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-full font-label-md text-label-md flex items-center gap-2">
+                        Specialty <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+<button class="px-4 py-2 border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-2">
+                        Availability <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+<button class="px-4 py-2 border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-2">
+                        Language <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+<button class="px-4 py-2 border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-2">
+                        Experience <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
+<!-- Sidebar Filters -->
+<aside class="md:col-span-3 space-y-8 sticky top-[120px] hidden md:block">
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-outline-variant/30">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-[18px] text-primary">Advanced Filters</h3>
+<button class="text-primary font-label-sm text-label-sm hover:underline">Clear all</button>
+</div>
+<div class="space-y-8">
+<!-- Fee Filter -->
+<div class="space-y-4">
+<h4 class="font-label-md text-label-md text-on-surface">Consultation Fee</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary">Under ₹500</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary">₹500 - ₹1000</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md text-on-surface-variant group-hover:text-primary">₹1000+</span>
+</label>
+</div>
+</div>
+<!-- Rating Filter -->
+<div class="space-y-4">
+<h4 class="font-label-md text-label-md text-on-surface">Doctor Rating</h4>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 border-outline-variant text-primary focus:ring-primary" name="rating" type="radio"/>
+<span class="flex items-center text-body-md text-on-surface-variant">4.5 &amp; Above <span class="material-symbols-outlined text-[18px] text-secondary-fixed-dim ml-1" style="font-variation-settings: 'FILL' 1;">star</span></span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 border-outline-variant text-primary focus:ring-primary" name="rating" type="radio"/>
+<span class="flex items-center text-body-md text-on-surface-variant">4.0 &amp; Above <span class="material-symbols-outlined text-[18px] text-secondary-fixed-dim ml-1" style="font-variation-settings: 'FILL' 1;">star</span></span>
+</label>
+</div>
+</div>
+<!-- Location Filter -->
+<div class="space-y-4">
+<h4 class="font-label-md text-label-md text-on-surface">Clinic Location</h4>
+<select class="w-full bg-surface-container border-none rounded-lg p-3 text-body-md text-on-surface outline-none">
+<option>Select City</option>
+<option>Bengaluru</option>
+<option>Mumbai</option>
+<option>New Delhi</option>
+<option>Kerala (Wayanad)</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Featured Card -->
+<div class="bg-primary-container p-6 rounded-2xl text-on-primary-container relative overflow-hidden">
+<div class="relative z-10">
+<p class="font-label-md text-label-md mb-2 opacity-80">Nadi Pariksha</p>
+<h4 class="font-headline-md text-[20px] mb-4 text-white">Traditional Pulse Diagnosis at Home</h4>
+<button class="bg-secondary-fixed text-on-secondary-fixed px-4 py-2 rounded-lg font-label-md text-label-md">Learn More</button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-20">
+<span class="material-symbols-outlined text-[100px]">spa</span>
+</div>
+</div>
+</aside>
+<!-- Main Content: Doctor Listings -->
+<div class="md:col-span-9 space-y-6">
+<!-- Sorting Header -->
+<div class="flex justify-between items-center px-2">
+<p class="text-body-md text-on-surface-variant">Showing <span class="font-bold text-on-surface">42 doctors</span> in Pune</p>
+<div class="flex items-center gap-2">
+<span class="text-label-md font-label-md text-outline">Sort by:</span>
+<select class="bg-transparent border-none text-primary font-bold focus:ring-0 cursor-pointer">
+<option>Relevance</option>
+<option>Experience: High to Low</option>
+<option>Consultation Fee: Low to High</option>
+<option>Rating: High to Low</option>
+</select>
+</div>
+</div>
+<!-- Doctor Cards -->
+<div class="space-y-4">
+<!-- Doctor Card 1 -->
+<div class="bg-white rounded-2xl p-6 border border-outline-variant/30 shadow-sm hover:shadow-md transition-shadow flex flex-col lg:flex-row gap-6">
+<div class="flex-shrink-0 relative">
+<img class="w-32 h-32 lg:w-40 lg:h-40 object-cover rounded-2xl" data-alt="A professional studio portrait of a female Ayurvedic doctor in a clinical setting. She wears a clean white coat with a subtle green embroidery on the lapel. The lighting is soft and high-key, emphasizing a trustworthy and professional clinical atmosphere. Behind her is a minimalist wooden shelf with traditional copper Ayurvedic vessels and dried herbs in glass jars." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdTWCprbSiSo92fxcJokWQZwMdIVq5ZiHGrObWvUB-sqnNZb0Igz3tmo62Ge2cytcmsFp2MNP51NTid7qs9n2mhGj86ooBhhdMkiGgE3Vq45r9R-MCSmtF6IoIrYxj3xBlsV7IcmhKgBjb1NsNs2dt4-T3PKGzG0ZpObjeZhcYpe7gTK7RE10DDg5fkcvXByIBa7Mj_5rhOSoBDVL-p6hDnhQljBDCn8L6CNAE_7RQpijLjjRYBHf_5sloMrSkduLJy7tVKokqTmQ"/>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-full whitespace-nowrap border-2 border-white">AVAILABLE TODAY</div>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="flex flex-col md:flex-row md:justify-between items-start gap-2">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Dr. Ananya Sharma, BAMS, MD</h2>
+<p class="text-on-surface-variant font-label-md">Senior Ayurvedic Physician | Internal Medicine</p>
+</div>
+<div class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-lg font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                                    4.9 (240 Reviews)
+                                </div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-6 mt-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">history</span>
+<span class="text-body-md">12+ Years Exp.</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">translate</span>
+<span class="text-body-md">English, Hindi</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">payments</span>
+<span class="text-body-md font-bold">₹750</span>
+</div>
+</div>
+<div class="mt-6 flex flex-wrap gap-4 items-center">
+<a class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md hover:opacity-90 transition-all flex items-center gap-2" href="appointment-booking.html">
+                                    Book Consultation
+                                    <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+</a>
+<a class="text-primary font-label-md text-label-md border-b border-primary pb-0.5 hover:text-primary-container transition-colors" href="doctor-profile.html">View Profile</a>
+</div>
+</div>
+</div>
+<!-- Doctor Card 2 -->
+<div class="bg-white rounded-2xl p-6 border border-outline-variant/30 shadow-sm hover:shadow-md transition-shadow flex flex-col lg:flex-row gap-6">
+<div class="flex-shrink-0 relative">
+<img class="w-32 h-32 lg:w-40 lg:h-40 object-cover rounded-2xl" data-alt="A portrait of a male Ayurvedic doctor with a calm and confident expression. He is dressed in professional clinical attire, standing in a brightly lit modern clinic. The background is slightly blurred, showing lush indoor green plants and high-end wooden medical equipment. The lighting is natural and balanced, creating a sense of holistic wellness and modern medicine combined." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzJO8leyVJSVTaxBRN2oGEdJV_fLasfVEvJuaQiWqSLiGzvbhrYofPjCW_cuBGttCijHEh4vbOBEILeFgCTHZJAdqcJJpM9PczcipGxLtXx7O65RWGZBqFvVU46YEFZKeSo1Fpt-VL49HNZwwaajCyNUlHZRlKiJhqa26LwV4HRoQ09AE9aSDrEc-IKBMNir0o6HEsvWPeYvkuRU0m6KgYLus_0OOrkXJ0xsG0cl2wIFiRISwafgkNRxWnayepTx-O7Rx6XItNPm4"/>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-full whitespace-nowrap border-2 border-white">SLOT IN 2 HOURS</div>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="flex flex-col md:flex-row md:justify-between items-start gap-2">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Dr. Vikram Malhotra, BAMS, PhD</h2>
+<p class="text-on-surface-variant font-label-md">Ayurvedic Surgeon | Panchakarma Specialist</p>
+</div>
+<div class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-lg font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                                    4.8 (115 Reviews)
+                                </div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-6 mt-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">history</span>
+<span class="text-body-md">15+ Years Exp.</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">translate</span>
+<span class="text-body-md">Hindi, Marathi</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">payments</span>
+<span class="text-body-md font-bold">₹1000</span>
+</div>
+</div>
+<div class="mt-6 flex flex-wrap gap-4 items-center">
+<a class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md hover:opacity-90 transition-all flex items-center gap-2" href="appointment-booking.html">
+                                    Book Consultation
+                                    <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+</a>
+<a class="text-primary font-label-md text-label-md border-b border-primary pb-0.5 hover:text-primary-container transition-colors" href="doctor-profile.html">View Profile</a>
+</div>
+</div>
+</div>
+<!-- Doctor Card 3 -->
+<div class="bg-white rounded-2xl p-6 border border-outline-variant/30 shadow-sm hover:shadow-md transition-shadow flex flex-col lg:flex-row gap-6">
+<div class="flex-shrink-0 relative">
+<img class="w-32 h-32 lg:w-40 lg:h-40 object-cover rounded-2xl" data-alt="A portrait of a serene female Ayurvedic doctor with a compassionate look. She is in a high-end wellness center with warm wood accents and soft ambient lighting. She is wearing a pastel sage green traditional tunic that looks modern and clinical. In the background, there is a large window with a view of a tranquil botanical garden, reinforcing the natural heritage of the brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5DGxgNbTneOmnR1Lc37AHGqzWrZuG2chSzio0QrufhcLGjVsJIlXv68j3uqw2ZGym33Kd3aasLuMZREZeIJG4KDfSzVkFT0F0HTGjaPGBpj-9qlA8CsnDd5hv-N_Luo1Gv1VbKnozjM7fOhhYW_P9zmMXhAnQHxwx3AO2ePPBE-yCB5VWoabHJ5Rnh9jiwzmRtw9k4NgUBjlEzArMAsctHdI4TJ9KMSCApKCejERhVvLDSZAIldB8yawZN55oKp3dpQhy5PzMHTI"/>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-full whitespace-nowrap border-2 border-white">AVAILABLE TODAY</div>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="flex flex-col md:flex-row md:justify-between items-start gap-2">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Dr. Priya Nair, BAMS</h2>
+<p class="text-on-surface-variant font-label-md">Women's Health Expert | Lifestyle Consultant</p>
+</div>
+<div class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-lg font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                                    5.0 (88 Reviews)
+                                </div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-6 mt-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">history</span>
+<span class="text-body-md">8+ Years Exp.</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">translate</span>
+<span class="text-body-md">English, Malayalam</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">payments</span>
+<span class="text-body-md font-bold">₹500</span>
+</div>
+</div>
+<div class="mt-6 flex flex-wrap gap-4 items-center">
+<a class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md hover:opacity-90 transition-all flex items-center gap-2" href="appointment-booking.html">
+                                    Book Consultation
+                                    <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+</a>
+<a class="text-primary font-label-md text-label-md border-b border-primary pb-0.5 hover:text-primary-container transition-colors" href="doctor-profile.html">View Profile</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex items-center justify-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-outline hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-on-primary font-label-md">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container font-label-md transition-colors">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container font-label-md transition-colors">3</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant text-outline hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-section-gap bg-primary dark:bg-tertiary-container">
+<div class="max-w-[1200px] mx-auto px-gutter py-section-gap grid grid-cols-1 md:grid-cols-4 gap-base">
+<div class="space-y-6">
+<span class="font-headline-md text-headline-md text-on-primary">Public Care Ayurveda</span>
+<p class="text-on-primary/80 font-body-md">Restoring balance through the timeless wisdom of Ayurveda and modern scientific evidence.</p>
+</div>
+<div class="md:col-span-1">
+<h4 class="font-label-md text-label-md text-secondary-fixed font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-on-primary/80 text-body-md hover:text-secondary-fixed transition-colors" href="about-us.html">Brand Story</a></li>
+<li><a class="text-on-primary/80 text-body-md hover:text-secondary-fixed transition-colors" href="doctor-listing.html">Our Doctors</a></li>
+<li><a class="text-on-primary/80 text-body-md hover:text-secondary-fixed transition-colors" href="contact-us.html">Contact Us</a></li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h4 class="font-label-md text-label-md text-secondary-fixed font-bold mb-6">Legal</h4>
+<ul class="space-y-4">
+<li><a class="text-on-primary/80 text-body-md hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-on-primary/80 text-body-md hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a></li>
+<li><a class="text-on-primary/80 text-body-md hover:text-secondary-fixed transition-colors" href="#">Shipping Info</a></li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h4 class="font-label-md text-label-md text-secondary-fixed font-bold mb-6">Newsletter</h4>
+<div class="flex flex-col gap-4">
+<input class="bg-primary-container/50 border border-on-primary/20 rounded-lg px-4 py-2 text-white placeholder:text-white/40 outline-none focus:border-secondary-fixed" placeholder="Your email address" type="email"/>
+<button class="bg-secondary-fixed text-on-secondary-fixed py-2 rounded-lg font-label-md">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="max-w-[1200px] mx-auto px-gutter py-8 border-t border-on-primary/10 text-center">
+<p class="text-on-primary/60 text-body-md">© 2024 Public Care Ayurveda. Wisdom of Nature, Precision of Science.</p>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for filter chips
+        const chips = document.querySelectorAll('button.border-outline-variant');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chip.classList.toggle('bg-primary-container');
+                chip.classList.toggle('text-white');
+                chip.classList.toggle('border-primary-container');
+            });
+        });
+    </script>
+<script>
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                alert('Mobile navigation would expand here with clinical-grade animations.');
+            });
+        }</script>
+</body></html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | Public Care Ayurveda</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Source+Serif+4:wght@600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@100..900&amp;family=Source+Serif+4:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#c0edd0",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2b3234",
+                    "surface-container-low": "#eef5f7",
+                    "on-tertiary-fixed-variant": "#264f39",
+                    "inverse-primary": "#a5d0b9",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f4fafd",
+                    "secondary-fixed-dim": "#e9c349",
+                    "on-surface": "#161d1f",
+                    "primary-fixed": "#c1ecd4",
+                    "on-tertiary-container": "#84b095",
+                    "primary-fixed-dim": "#a5d0b9",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#fed65b",
+                    "surface-container": "#e8eff1",
+                    "primary": "#012d1d",
+                    "tertiary": "#002d1a",
+                    "inverse-on-surface": "#ebf2f4",
+                    "background": "#f4fafd",
+                    "surface-container-high": "#e2e9ec",
+                    "tertiary-container": "#1a432e",
+                    "on-primary-container": "#86af99",
+                    "surface-tint": "#3f6653",
+                    "on-secondary-container": "#745c00",
+                    "surface-dim": "#d4dbdd",
+                    "surface-variant": "#dde4e6",
+                    "secondary-fixed": "#ffe088",
+                    "on-primary": "#ffffff",
+                    "secondary": "#735c00",
+                    "on-tertiary-fixed": "#002112",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-surface-variant": "#414844",
+                    "surface-container-highest": "#dde4e6",
+                    "tertiary-fixed-dim": "#a4d1b4",
+                    "on-error-container": "#93000a",
+                    "outline": "#717973",
+                    "primary-container": "#1b4332",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#f4fafd",
+                    "on-primary-fixed-variant": "#274e3d",
+                    "on-background": "#161d1f",
+                    "outline-variant": "#c1c8c2",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#241a00",
+                    "on-primary-fixed": "#002114"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "16px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "48px",
+                    "gutter": "24px",
+                    "section-gap": "80px",
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "label-md": ["Manrope"],
+                    "headline-md": ["Source Serif 4"],
+                    "headline-lg-mobile": ["Source Serif 4"],
+                    "display-lg": ["Source Serif 4"],
+                    "headline-lg": ["Source Serif 4"],
+                    "body-lg": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "label-sm": ["Manrope"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active { @apply text-primary font-bold border-primary; }
+        .step-inactive { @apply text-outline border-outline-variant; }
+        .step-completed { @apply text-primary-container border-primary-container bg-primary-fixed; }
+        
+        input:focus {
+            outline: none;
+            border-color: #012d1d !important;
+            box-shadow: 0 0 0 1px #012d1d !important;
+        }
+
+        .checkout-container {
+            min-height: calc(100vh - 80px);
+        }
+
+        .custom-shadow {
+            box-shadow: 0 4px 20px -2px rgba(1, 45, 29, 0.05);
+        }
+
+        .loader-spin {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-primary">
+<!-- Header / Navigation -->
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-inverse-surface shadow-sm docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center h-20 px-gutter w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<img alt="Public Care Ayurveda Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo879HCds3w21ve37kcaDk6TDBD6jGLmvKyZY044-2j4TI7_Fo3jg5MGIn2vS_Uy3jg523kaixaI9ewUNDrQnspvl92wCOxeXw3qX_NNldczaZIT3RTuZZl-ERSsjdCWSpLmC_9EVaIHo1ut2kqTZDdm2Ighvwpvul1Cg1nfmqPr1xgZydE72HjEN6ISVD-7gJT1zBWpbOG5yyRaloF-sBOHDbzme6CNKxf-SZ6ElHJDdS2ew6k7nkVl2Ul0YZYjPaefVIy8Wakas"/>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="shop.html">Shop</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="doctor-listing.html">Consult Doctor</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="index.html#wellness-plans">Wellness Plans</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="wellness-blog.html">Blog</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="about-us.html">About</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="search">search</button>
+<div class="relative">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="shopping_cart">shopping_cart</button>
+<span class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+</div>
+<a class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all scale-95 active:scale-90 inline-block" href="login.html">Login</a>
+<button class="lg:hidden material-symbols-outlined" data-icon="menu" id="mobile-menu-btn">menu</button>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-section-gap px-margin-desktop max-w-container-max mx-auto">
+<!-- Progressive Step Indicator -->
+<div class="mb-12">
+<div class="flex items-center justify-between max-w-3xl mx-auto relative">
+<!-- Connectors -->
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-outline-variant -translate-y-1/2 z-0"></div>
+<!-- Step 1: Address -->
+<div class="relative z-10 flex flex-col items-center gap-2 group cursor-pointer" onclick="setActiveStep(1)">
+<div class="w-10 h-10 rounded-full border-2 bg-surface flex items-center justify-center transition-all step-active" id="step-circle-1">
+<span class="text-sm font-bold" id="step-icon-1">1</span>
+</div>
+<span class="font-label-md text-label-md transition-all text-primary font-bold" id="step-label-1">Address</span>
+</div>
+<!-- Step 2: Delivery -->
+<div class="relative z-10 flex flex-col items-center gap-2 group cursor-pointer" onclick="setActiveStep(2)">
+<div class="w-10 h-10 rounded-full border-2 bg-surface flex items-center justify-center transition-all step-inactive" id="step-circle-2">
+<span class="text-sm font-bold" id="step-icon-2">2</span>
+</div>
+<span class="font-label-md text-label-md transition-all text-outline" id="step-label-2">Delivery</span>
+</div>
+<!-- Step 3: Payment -->
+<div class="relative z-10 flex flex-col items-center gap-2 group cursor-pointer" onclick="setActiveStep(3)">
+<div class="w-10 h-10 rounded-full border-2 bg-surface flex items-center justify-center transition-all step-inactive" id="step-circle-3">
+<span class="text-sm font-bold" id="step-icon-3">3</span>
+</div>
+<span class="font-label-md text-label-md transition-all text-outline" id="step-label-3">Payment</span>
+</div>
+<!-- Step 4: Review -->
+<div class="relative z-10 flex flex-col items-center gap-2 group cursor-pointer" onclick="setActiveStep(4)">
+<div class="w-10 h-10 rounded-full border-2 bg-surface flex items-center justify-center transition-all step-inactive" id="step-circle-4">
+<span class="text-sm font-bold" id="step-icon-4">4</span>
+</div>
+<span class="font-label-md text-label-md transition-all text-outline" id="step-label-4">Review</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Side: Forms -->
+<div class="lg:col-span-8 space-y-6">
+<!-- STEP 1: ADDRESS -->
+<section class="bg-surface-container-lowest p-8 rounded-xl custom-shadow" id="content-step-1">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Shipping Address</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Full Name</label>
+<input class="bg-surface border-outline-variant rounded-lg p-3 text-body-md focus:ring-primary focus:border-primary" placeholder="e.g. Aarav Sharma" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Phone Number</label>
+<input class="bg-surface border-outline-variant rounded-lg p-3 text-body-md" placeholder="+977 98XXXXXXXX" type="tel"/>
+</div>
+<div class="md:col-span-2 flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Street Address</label>
+<input class="bg-surface border-outline-variant rounded-lg p-3 text-body-md" placeholder="House no, Street name" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">City</label>
+<input class="bg-surface border-outline-variant rounded-lg p-3 text-body-md" placeholder="Kathmandu" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Postal Code (Optional)</label>
+<input class="bg-surface border-outline-variant rounded-lg p-3 text-body-md border-error text-error" placeholder="44600" type="text"/>
+<p class="text-error font-label-sm text-label-sm">Please enter a valid postal code.</p>
+</div>
+</div>
+<div class="mt-8 flex justify-end">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md hover:bg-primary-container transition-colors" onclick="setActiveStep(2)">Continue to Delivery</button>
+</div>
+</section>
+<!-- STEP 2: DELIVERY (HIDDEN) -->
+<section class="hidden bg-surface-container-lowest p-8 rounded-xl custom-shadow" id="content-step-2">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Shipping Method</h2>
+<div class="space-y-4">
+<label class="flex items-center justify-between p-4 border-2 border-primary bg-primary-fixed/20 rounded-xl cursor-pointer group">
+<div class="flex items-center gap-4">
+<input checked="" class="text-primary focus:ring-primary" name="delivery" type="radio"/>
+<div>
+<p class="font-body-md text-body-md font-bold text-primary">Standard Delivery</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Estimated arrival: 3-5 business days</p>
+</div>
+</div>
+<span class="font-body-md text-body-md font-bold">NPR 150</span>
+</label>
+<label class="flex items-center justify-between p-4 border-2 border-outline-variant hover:border-primary-container rounded-xl cursor-pointer group transition-all">
+<div class="flex items-center gap-4">
+<input class="text-primary focus:ring-primary" name="delivery" type="radio"/>
+<div>
+<p class="font-body-md text-body-md font-bold text-on-surface">Express Delivery</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Estimated arrival: 1-2 business days</p>
+</div>
+</div>
+<span class="font-body-md text-body-md font-bold">NPR 450</span>
+</label>
+</div>
+<div class="mt-8 flex justify-between">
+<button class="text-primary font-label-md text-label-md px-6 py-3" onclick="setActiveStep(1)">Back</button>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md hover:bg-primary-container transition-colors" onclick="setActiveStep(3)">Continue to Payment</button>
+</div>
+</section>
+<!-- STEP 3: PAYMENT (HIDDEN) -->
+<section class="hidden bg-surface-container-lowest p-8 rounded-xl custom-shadow" id="content-step-3">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Payment Method</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+<div class="border-2 border-primary bg-primary-fixed/20 p-4 rounded-xl flex flex-col items-center gap-2 cursor-pointer transition-all">
+<img class="h-10 object-contain" data-alt="Official logo of eSewa, a prominent green digital wallet brand in Nepal, presented in a minimalist high-resolution digital format. The background is a clean white, emphasizing the iconic green typography and rounded square shape of the brand identity. The lighting is bright and modern, fitting into a professional healthcare checkout environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTzlj2lnDGY8pdtmwdDBTWD92t_NE8IzZuLXDRLEv3QX3H_Xn73f0XG5gdW6DU7wCmuD__Zlo0njvsxwpAMDnJOs8_BUtx9G52est0DbJUDBAaux6HIwz4TrQpX9TNIpAUYvEkf_ch1F-zWTefyhfgb_JvAZPUCPhCSjY-zv0kJFCE7W_Q8a-6Q-YrAKRyJpNX2MvhXH2wtvzGELwYMbDMship9FsmaZtZRhrqMOXhF8Qm1qgDY6pe_WYH5QQrO_xHcW38n45RT3k"/>
+<span class="font-label-sm text-label-sm text-primary font-bold">eSewa</span>
+</div>
+<div class="border-2 border-outline-variant p-4 rounded-xl flex flex-col items-center gap-2 cursor-pointer hover:border-primary transition-all">
+<img class="h-10 object-contain" data-alt="Official logo of Khalti digital wallet, showcasing its signature purple brand color with a simple, modern aesthetic. The graphic is clean and bold, set against a neutral off-white surface. The overall feel is clinical and trustworthy, suitable for a premium Ayurvedic healthcare platform's payment gateway section." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmdfkZnZZVbAydWcA5LQwX5DzRfamM7cd2fkJ358PuIxYem7dNf-hudZiXIWdnP80WQFf_W6dMgZ0RRrGswF5Uhscki2CLE4W7LhMUSpG1SjyXslN7D2BcE5SxF6MfVy-JbG4wmO-rT0uBy1I10WhCbBDEDP5SWkYbOMN2FrFgdsv6GWC6EsdlBPFyDr1U2F7vw_zQFkzKTQ4QofkI_DLHE4rTd44OtK9OfisZl8NEkNPVX92tQcArRGEsXxzKygWxutQO5T4-XNs"/>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Khalti</span>
+</div>
+<div class="border-2 border-outline-variant p-4 rounded-xl flex flex-col items-center gap-2 cursor-pointer hover:border-primary transition-all">
+<img class="h-10 object-contain" data-alt="Official FonePay logo with its distinctive red and black branding elements. The logo is displayed clearly on a light clinical background, emphasizing security and fintech reliability. The design uses flat modern graphics, aligning with a professional healthcare web interface for botanical medical products." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-Bx1mOebnNBTSMkK2Fzvb36ceR1J7l0eDMXNw7sbY2iZ18P-DL01lw99_DaXenkBeAUDt49-79gWuLYtNokuXgwAfCx2qhjMObHc3GGauLxcIs7zBmLtfSDhN-EDx9GNkqZ3L2KpcUF5o_vg9pgawExVGSdxUOZlWjoMJNxttwvHvm70vDEG7i8BLbvMQu3mS8759WShzTizDSVhQSeo2F4XFWsoIZAaIs_wj3xCBkkJV2a6Wy7xcST0-MGw0XIYDtgbnlqZF8Ko"/>
+<span class="font-label-sm text-label-sm text-on-surface-variant">FonePay</span>
+</div>
+<div class="border-2 border-outline-variant p-4 rounded-xl flex flex-col items-center gap-2 cursor-pointer hover:border-primary transition-all">
+<img class="h-10 object-contain" data-alt="Official IME Pay logo featuring vibrant red and orange brand colors. The image is rendered with high precision on a white digital canvas. The lighting is uniform and soft, conveying a sense of secure and efficient financial transactions within a premium wellness ecosystem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcQGg3V79SYKnIPcFma38qVtC5C04grsdx0bSuH6m-BRcsL5ECegfA_nxnwbTYtL41U-pj5NihZFhATkFTHawihMpqqrHz6FomyQP9TTz1woVSWUBefneK43p2T9WEwVYA5iBE90rlJGRjlfO8IA5z3dmwkPkpTW_nBbmNtWLFFZZ42zjrmDs5F-rMg45SP3gplL_qbM0HUgp3t0L5bFYvTzowGe9a9DgQeI3Y46AaMrtyyJbFMmQqiFJIsOvkJCkGcajQMrwcZts"/>
+<span class="font-label-sm text-label-sm text-on-surface-variant">IME Pay</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="p-4 border-2 border-outline-variant rounded-xl flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="credit_card">credit_card</span>
+<span class="font-body-md text-body-md">Credit or Debit Card</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="p-4 border-2 border-outline-variant rounded-xl flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="payments">payments</span>
+<span class="font-body-md text-body-md">Cash on Delivery</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="mt-8 flex justify-between">
+<button class="text-primary font-label-md text-label-md px-6 py-3" onclick="setActiveStep(2)">Back</button>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md hover:bg-primary-container transition-colors" onclick="setActiveStep(4)">Review Order</button>
+</div>
+</section>
+<!-- STEP 4: REVIEW (HIDDEN) -->
+<section class="hidden bg-surface-container-lowest p-8 rounded-xl custom-shadow" id="content-step-4">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Review Your Order</h2>
+<div class="space-y-6">
+<!-- Order Items -->
+<div class="border-b border-outline-variant pb-6 space-y-4">
+<div class="flex gap-4">
+<img class="w-20 h-20 object-cover rounded-lg border border-outline-variant" data-alt="A premium glass bottle of Brahmi Ayurvedic oil placed on a white marble surface beside a fresh botanical leaf. The lighting is clinical yet warm, with a high-key aesthetic that highlights the deep amber liquid inside. The shot is high-contrast, editorial, and sophisticated, reflecting a professional medical heritage brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDbxYfTGYkC2U0xnO-e6YsZ6srmfXc10MzlRXVFwds59eS0jTkQ9yjjbO7H-sgLcZNDGOPJCAlBagDgqr4y42WBSZrCr3VPMyXyCzA1WCLDdRZ527xwrG7glVAcmkkgCEfRbDUX-x3s0twtRMD-fmHGYK-YfXnhBX8VBMcxMVSCs91opO9KudLoho6W7UwEKh31B7iwpXRfN-X0NsRtH5rkH-00xf3UUbsazJoxkQa3VDcwaHSKqGVXEs4rlQJLTBrG-XmuQiwKyI"/>
+<div class="flex-1">
+<p class="font-body-md text-body-md font-bold text-primary">Organic Brahmi Revitalizing Oil</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Quantity: 2 x 100ml</p>
+<p class="font-body-md text-body-md text-primary font-bold mt-1">NPR 1,800</p>
+</div>
+</div>
+<div class="flex gap-4">
+<img class="w-20 h-20 object-cover rounded-lg border border-outline-variant" data-alt="Close-up of premium Ashwagandha capsules in a sustainable frosted glass jar with a dark green label. The setting is a minimalist wooden apothecary desk with soft focus on a mortar and pestle in the background. The lighting is gentle and natural, emphasizing the product's holistic and clinical purity in a high-end wellness context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC04kS0dVDuz5Rh5z5wsNRYEZZbDXwO9S3NhgL7Uk8pwetJkpopIJBqLZQDCx4clIvWQCc1GVkw_ELlvx2sxHJPSq81ieyO14LhvVHewtJEy7FSiY8ndCZMogbGZ8jbnyOBM5Ou1rbKAMyZvp0_ljgXvJhcNo7dnrasll4kXM9Y_sGCJWUYq8eudTyF4R6M1FUCkJZwwd8i8Hv4yMpvyWi1wWSBT7DtMXDJW6boJJcy6761UFxJtFAqBDajrggkpJx4wCu5XluCObI"/>
+<div class="flex-1">
+<p class="font-body-md text-body-md font-bold text-primary">KSM-66 Ashwagandha Stress Relief</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Quantity: 1 x 60 Caps</p>
+<p class="font-body-md text-body-md text-primary font-bold mt-1">NPR 1,250</p>
+</div>
+</div>
+</div>
+<!-- Info Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<div class="flex items-center justify-between mb-2">
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Shipping To</h4>
+<button class="text-primary font-label-sm text-label-sm underline" onclick="setActiveStep(1)">Edit</button>
+</div>
+<p class="text-body-md text-on-surface">Aarav Sharma<br/>Ward 3, Lazimpat Road<br/>Kathmandu, 44600<br/>+977 9841234567</p>
+</div>
+<div>
+<div class="flex items-center justify-between mb-2">
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Payment Method</h4>
+<button class="text-primary font-label-sm text-label-sm underline" onclick="setActiveStep(3)">Edit</button>
+</div>
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 object-contain" data-alt="A small icon representing eSewa's brand identity, specifically for a digital transaction confirmation page. The graphic is clean, featuring vibrant green tones and professional flat design, set against a pristine white background to ensure visual clarity and a sense of financial security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeiCt205FeTy37-BYkqcA_4QNzwVnEkh5ShT8TWzLNxa6YIP7HLRbxKsWc5AvMZMzs1kFhyRXi1j7jE3sYZCLAhyp2idWpf3_n-QGXOUtLvqeVD97lDIUAKEiRDR9xghRnPN0TnTaXfVl9GN14sg09JdqPALJ_pNihgXZadmhW8_ORSx2Viz0BF87hxHlayN3L8boRI7doLCtfBCsh5mNr4RuO8anQqS4A5q3a6LY8Cv6FGJVee0gNqOhESe1Lh0IUYokFAfG5yMQ"/>
+<p class="text-body-md text-on-surface font-bold">eSewa Wallet</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-between items-center border-t border-outline-variant pt-8">
+<button class="text-primary font-label-md text-label-md px-6 py-3" onclick="setActiveStep(3)">Back</button>
+<button class="bg-primary text-on-primary px-12 py-4 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all flex items-center gap-3" id="placeOrderBtn" onclick="handlePlaceOrder()">
+<span id="btnText">Place Order &amp; Pay NPR 3,200</span>
+<span class="hidden material-symbols-outlined loader-spin" data-icon="progress_activity" id="btnLoader">progress_activity</span>
+</button>
+</div>
+</section>
+<!-- Trust Badges -->
+<div class="flex flex-wrap items-center justify-center md:justify-start gap-8 opacity-60 mt-12">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm">SSL Secure Payment</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="lock">lock</span>
+<span class="font-label-sm text-label-sm">256-bit Encryption</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="clinical_notes">clinical_notes</span>
+<span class="font-label-sm text-label-sm">Ayurvedic Authenticity</span>
+</div>
+</div>
+</div>
+<!-- Right Side: Order Summary (Sticky) -->
+<aside class="lg:col-span-4 lg:sticky lg:top-32 space-y-6">
+<div class="bg-surface-container-high p-8 rounded-xl">
+<h3 class="font-headline-md text-headline-md text-primary mb-6">Order Summary</h3>
+<div class="space-y-4 mb-6 border-b border-outline-variant pb-6">
+<div class="flex justify-between font-body-md text-body-md">
+<span class="text-on-surface-variant">Subtotal (3 items)</span>
+<span class="font-bold">NPR 3,050</span>
+</div>
+<div class="flex justify-between font-body-md text-body-md">
+<span class="text-on-surface-variant">Shipping Fee</span>
+<span class="font-bold">NPR 150</span>
+</div>
+<div class="flex justify-between font-body-md text-body-md">
+<span class="text-on-surface-variant">Tax (VAT 13%)</span>
+<span class="font-bold">NPR 0</span> <!-- Included in price usually, or calculated -->
+</div>
+</div>
+<div class="flex justify-between items-center mb-8">
+<span class="font-headline-md text-headline-md text-primary">Total</span>
+<span class="font-headline-md text-headline-md text-primary">NPR 3,200</span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex gap-2 p-3 bg-tertiary-fixed/30 rounded-lg">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant" data-icon="auto_awesome">auto_awesome</span>
+<p class="font-label-sm text-label-sm text-on-tertiary-fixed-variant">You're getting <b>Free Shipping</b> on your next order!</p>
+</div>
+<div class="flex items-center gap-2 border border-outline-variant rounded-lg p-2 bg-surface">
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-sm" placeholder="Promo Code" type="text"/>
+<button class="text-primary font-label-md text-label-md px-4">Apply</button>
+</div>
+</div>
+</div>
+<!-- Assistance -->
+<div class="bg-primary text-on-primary p-6 rounded-xl">
+<h4 class="font-label-md text-label-md mb-2">Need help with checkout?</h4>
+<p class="font-label-sm text-label-sm opacity-80 mb-4">Our Ayurvedic experts are available for live consultation and support.</p>
+<button class="w-full bg-secondary-fixed text-on-secondary-fixed py-2 rounded-full font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-secondary-fixed-dim transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chat">chat</span>
+                        Chat with an Expert
+                    </button>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary w-full">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-section-gap max-w-container-max mx-auto">
+<div class="space-y-4">
+<div class="font-headline-md text-headline-md text-on-primary">Public Care Ayurveda</div>
+<p class="font-label-sm text-label-sm text-on-primary/70">Bridging ancient holistic wisdom with clinical precision for your wellbeing.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="font-label-md text-label-md mb-2">Support</h5>
+<a class="font-body-md text-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Shipping Info</a>
+<a class="font-body-md text-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Returns</a>
+<a class="font-body-md text-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">FAQ</a>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="font-label-md text-label-md mb-2">Company</h5>
+<a class="font-body-md text-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-primary/80 hover:text-secondary-fixed transition-colors" href="contact-us.html">Contact Us</a>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-md text-label-md mb-2">Secure Checkout</h5>
+<div class="flex gap-4 opacity-80">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="material-symbols-outlined" data-icon="trusted_setup">autostop</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-primary/60">© 2024 Public Care Ayurveda. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+        let currentStep = 1;
+
+        function setActiveStep(step) {
+            // UI Cleanup
+            for (let i = 1; i <= 4; i++) {
+                const circle = document.getElementById(`step-circle-${i}`);
+                const label = document.getElementById(`step-label-${i}`);
+                const icon = document.getElementById(`step-icon-${i}`);
+                const content = document.getElementById(`content-step-${i}`);
+
+                content.classList.add('hidden');
+                
+                if (i < step) {
+                    // Completed Steps
+                    circle.className = 'w-10 h-10 rounded-full border-2 bg-primary-fixed flex items-center justify-center transition-all border-primary-container text-primary-container';
+                    icon.innerHTML = 'check';
+                    icon.className = 'material-symbols-outlined text-lg';
+                    label.className = 'font-label-md text-label-md text-primary-container font-bold';
+                } else if (i === step) {
+                    // Active Step
+                    circle.className = 'w-10 h-10 rounded-full border-2 bg-surface flex items-center justify-center transition-all border-primary text-primary shadow-lg scale-110';
+                    icon.innerHTML = i;
+                    icon.className = 'text-sm font-bold';
+                    label.className = 'font-label-md text-label-md text-primary font-bold';
+                    content.classList.remove('hidden');
+                } else {
+                    // Future Steps
+                    circle.className = 'w-10 h-10 rounded-full border-2 bg-surface flex items-center justify-center transition-all border-outline-variant text-outline';
+                    icon.innerHTML = i;
+                    icon.className = 'text-sm font-bold';
+                    label.className = 'font-label-md text-label-md text-outline';
+                }
+            }
+            currentStep = step;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function handlePlaceOrder() {
+            const btn = document.getElementById('placeOrderBtn');
+            const btnText = document.getElementById('btnText');
+            const btnLoader = document.getElementById('btnLoader');
+
+            btn.disabled = true;
+            btn.classList.add('opacity-80', 'cursor-not-allowed');
+            btnText.innerHTML = 'Processing Payment...';
+            btnLoader.classList.remove('hidden');
+
+            setTimeout(() => {
+                alert('Success! Your order has been placed. You will receive a confirmation email shortly.');
+                window.location.reload();
+            }, 2500);
+        }
+    </script>
+<script>
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                alert('Mobile navigation would expand here with clinical-grade animations.');
+            });
+        }</script>
+</body></html>

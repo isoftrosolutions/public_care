@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Portal | Public Care Ayurveda</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f4fafd",
+                    "surface-dim": "#d4dbdd",
+                    "secondary": "#735c00",
+                    "on-error-container": "#93000a",
+                    "surface-tint": "#3f6653",
+                    "surface-container-highest": "#dde4e6",
+                    "primary-container": "#1b4332",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#264f39",
+                    "inverse-surface": "#2b3234",
+                    "tertiary-container": "#1a432e",
+                    "primary-fixed": "#c1ecd4",
+                    "primary": "#012d1d",
+                    "on-primary-fixed-variant": "#274e3d",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#dde4e6",
+                    "surface-bright": "#f4fafd",
+                    "inverse-primary": "#a5d0b9",
+                    "surface-container-low": "#eef5f7",
+                    "secondary-fixed": "#ffe088",
+                    "on-secondary-container": "#745c00",
+                    "tertiary-fixed-dim": "#a4d1b4",
+                    "surface-container-high": "#e2e9ec",
+                    "on-secondary-fixed-variant": "#574500",
+                    "tertiary-fixed": "#c0edd0",
+                    "on-tertiary-fixed": "#002112",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#e9c349",
+                    "background": "#f4fafd",
+                    "on-primary-fixed": "#002114",
+                    "primary-fixed-dim": "#a5d0b9",
+                    "on-tertiary-container": "#84b095",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#161d1f",
+                    "outline": "#717973",
+                    "tertiary": "#002d1a",
+                    "on-secondary-fixed": "#241a00",
+                    "on-primary-container": "#86af99",
+                    "secondary-container": "#fed65b",
+                    "on-background": "#161d1f",
+                    "outline-variant": "#c1c8c2",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#ebf2f4",
+                    "on-surface-variant": "#414844",
+                    "surface-container": "#e8eff1",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "80px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Source Serif 4"],
+                    "headline-md": ["Source Serif 4"],
+                    "label-md": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "headline-lg": ["Source Serif 4"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .chart-bar { transition: height 1s ease-out; }
+      .bento-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+      .bento-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface flex min-h-screen">
+<!-- SideNavBar Component (Semantic Shell) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-base z-50">
+<!-- Brand Header -->
+<div class="px-6 py-8 mb-6">
+<h1 class="text-headline-md font-headline-md font-bold text-primary">Admin Portal</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant opacity-70">Operations Management</p>
+<a href="index.html" class="mt-4 text-xs text-primary flex items-center gap-1 hover:underline"><span class="material-symbols-outlined text-sm">arrow_back</span> Back to Public Site</a>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-grow space-y-1">
+<a class="bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 mx-2 flex items-center gap-3 transition-transform duration-150 scale-95" href="admin-dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-3 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="text-label-md font-label-md">Appointments</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-3 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="text-label-md font-label-md">Orders</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-3 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-md font-label-md">Products</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-3 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+<span class="text-label-md font-label-md">Doctors</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-3 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-label-md font-label-md">Users</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-3 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-md font-label-md">Analytics</span>
+</a>
+</nav>
+<!-- Footer Actions -->
+<div class="mt-auto border-t border-outline-variant pt-4 pb-4">
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-3 hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-3 hover:bg-surface-container-highest transition-all duration-200" href="index.html">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+<div class="px-6 mt-4">
+<button class="w-full bg-primary text-on-primary py-2 rounded-lg text-label-md font-label-md shadow-sm">System Status</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-grow ml-64 p-margin-desktop bg-surface min-h-screen">
+<!-- Header Section -->
+<header class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-display-lg font-display-lg text-primary">Performance Dashboard</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant mt-2">Welcome back, Admin. Here is the operational pulse for today.</p>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 bg-surface-container-high text-on-surface px-6 py-3 rounded-full text-label-md font-label-md border border-outline-variant hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                    Add New Product
+                </button>
+<button class="flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-full text-label-md font-label-md shadow-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+                    Onboard Doctor
+                </button>
+</div>
+</header>
+<!-- Analytics Cards Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-section-gap">
+<!-- Total Revenue -->
+<div class="bento-card bg-surface-container-lowest p-6 rounded-xl border border-outline-variant">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-secondary bg-secondary-fixed p-2 rounded-lg" data-icon="payments">payments</span>
+<span class="text-label-sm font-label-sm text-primary flex items-center gap-1">+12.5% <span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span></span>
+</div>
+<h3 class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Total Revenue</h3>
+<p class="text-headline-lg font-headline-lg text-on-surface mt-1">₹14,28,450</p>
+</div>
+<!-- Total Orders -->
+<div class="bento-card bg-surface-container-lowest p-6 rounded-xl border border-outline-variant">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-2 rounded-lg" data-icon="shopping_cart">shopping_cart</span>
+<span class="text-label-sm font-label-sm text-primary flex items-center gap-1">+8.2% <span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span></span>
+</div>
+<h3 class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Total Orders</h3>
+<p class="text-headline-lg font-headline-lg text-on-surface mt-1">3,492</p>
+</div>
+<!-- Active Consultations -->
+<div class="bento-card bg-surface-container-lowest p-6 rounded-xl border border-outline-variant">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-tertiary-fixed-dim bg-tertiary-container p-2 rounded-lg" data-icon="medical_information">medical_information</span>
+<span class="text-label-sm font-label-sm text-on-error-container flex items-center gap-1">-2.1% <span class="material-symbols-outlined text-xs" data-icon="trending_down">trending_down</span></span>
+</div>
+<h3 class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Active Consults</h3>
+<p class="text-headline-lg font-headline-lg text-on-surface mt-1">128</p>
+</div>
+<!-- Patient Growth -->
+<div class="bento-card bg-surface-container-lowest p-6 rounded-xl border border-outline-variant">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-on-primary-container bg-primary-container p-2 rounded-lg" data-icon="person_celebrate">person_celebrate</span>
+<span class="text-label-sm font-label-sm text-primary flex items-center gap-1">+24% <span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span></span>
+</div>
+<h3 class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Patient Growth</h3>
+<p class="text-headline-lg font-headline-lg text-on-surface mt-1">12,840</p>
+</div>
+</section>
+<!-- Charts Section (Asymmetric Bento) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-section-gap">
+<!-- Monthly Revenue Line Chart Placeholder -->
+<div class="lg:col-span-8 bg-surface-container-lowest p-8 rounded-xl border border-outline-variant">
+<div class="flex justify-between items-center mb-8">
+<h4 class="text-headline-md font-headline-md text-primary">Monthly Revenue Trend</h4>
+<select class="bg-surface border-none text-label-sm font-label-sm rounded-lg focus:ring-primary">
+<option>Last 6 Months</option>
+<option>Last Year</option>
+</select>
+</div>
+<div class="h-64 flex items-end gap-4 px-2">
+<!-- Faux Bar/Line Visual -->
+<div class="flex-grow flex flex-col items-center gap-2">
+<div class="w-full bg-surface-container-high rounded-t-lg h-24 relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary-fixed chart-bar" style="height: 60%"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">JAN</span>
+</div>
+<div class="flex-grow flex flex-col items-center gap-2">
+<div class="w-full bg-surface-container-high rounded-t-lg h-32 relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary-fixed chart-bar" style="height: 75%"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">FEB</span>
+</div>
+<div class="flex-grow flex flex-col items-center gap-2">
+<div class="w-full bg-surface-container-high rounded-t-lg h-28 relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary-fixed chart-bar" style="height: 65%"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">MAR</span>
+</div>
+<div class="flex-grow flex flex-col items-center gap-2">
+<div class="w-full bg-surface-container-high rounded-t-lg h-40 relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary chart-bar" style="height: 90%"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant font-bold text-primary">APR</span>
+</div>
+<div class="flex-grow flex flex-col items-center gap-2">
+<div class="w-full bg-surface-container-high rounded-t-lg h-36 relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary-fixed chart-bar" style="height: 80%"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">MAY</span>
+</div>
+<div class="flex-grow flex flex-col items-center gap-2">
+<div class="w-full bg-surface-container-high rounded-t-lg h-48 relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary-fixed chart-bar" style="height: 100%"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">JUN</span>
+</div>
+</div>
+</div>
+<!-- Sales by Category Pie Placeholder -->
+<div class="lg:col-span-4 bg-surface-container-lowest p-8 rounded-xl border border-outline-variant flex flex-col">
+<h4 class="text-headline-md font-headline-md text-primary mb-8">Sales by Category</h4>
+<div class="flex-grow flex items-center justify-center relative">
+<!-- Faux Pie Chart with CSS Gradients -->
+<div class="w-48 h-48 rounded-full" style="background: conic-gradient(#012d1d 0% 45%, #1b4332 45% 75%, #735c00 75% 100%);"></div>
+<div class="absolute w-32 h-32 bg-surface-container-lowest rounded-full flex flex-col items-center justify-center">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase">Total</span>
+<span class="text-headline-md font-headline-md text-primary">100%</span>
+</div>
+</div>
+<div class="mt-8 space-y-3">
+<div class="flex items-center justify-between text-label-sm">
+<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-primary"></span> Ayurvedic Oils</div>
+<span class="font-bold">45%</span>
+</div>
+<div class="flex items-center justify-between text-label-sm">
+<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-primary-container"></span> Herbal Supplements</div>
+<span class="font-bold">30%</span>
+</div>
+<div class="flex items-center justify-between text-label-sm">
+<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-secondary"></span> Wellness Kits</div>
+<span class="font-bold">25%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity Table -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
+<div class="px-8 py-6 border-b border-outline-variant flex justify-between items-center">
+<h4 class="text-headline-md font-headline-md text-primary">Recent Orders &amp; Activity</h4>
+<button class="text-label-md font-label-md text-primary hover:underline">View All Records</button>
+</div>
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant">
+<th class="px-8 py-4 text-label-sm font-label-sm uppercase tracking-wider">Patient / ID</th>
+<th class="px-8 py-4 text-label-sm font-label-sm uppercase tracking-wider">Type</th>
+<th class="px-8 py-4 text-label-sm font-label-sm uppercase tracking-wider">Date</th>
+<th class="px-8 py-4 text-label-sm font-label-sm uppercase tracking-wider">Status</th>
+<th class="px-8 py-4 text-label-sm font-label-sm uppercase tracking-wider">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold">AK</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">Arjun Kapoor</p>
+<p class="text-label-sm text-on-surface-variant">#ORD-28491</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5 text-body-md">Product Order</td>
+<td class="px-8 py-5 text-body-md">Oct 24, 2023</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 rounded-full text-label-sm font-label-sm bg-secondary-container text-on-secondary-container">Shipped</span>
+</td>
+<td class="px-8 py-5">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+<tr>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional medical profile headshot of a female doctor with a stethoscope, set against a bright, airy medical office with soft natural light. The lighting is high-key and pristine, reflecting a clean clinical aesthetic. The portrait conveys authority and professional trust within a modern healthcare context, using a sophisticated color palette of crisp whites and muted green tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbpwXEpoZP_IhDHIMPxTZ97sc8cMKfMs0gQXwuJEAVvM0_EODHRFN2rbIquwNFRjk__ZybebnR6BQhscMIEQefm8D60aGwvvgeR48sy4339xaDDP5AKecSDsTKIPH9O7gh0CXk29w9jFo0JuzT1OgD9-inQ5k6uKebcLpBAjVU0_-gIkIeksMDbRm1lifliF43OP-yQ4I7NnrvWH7KmAigRi3k_nRnqm2_fbwUl6Cufka-D1gQ7_NheodkGfhW58RSdxKdLxAX0oo"/>
+<div>
+<p class="text-body-md font-bold text-on-surface">Dr. Meera Iyer</p>
+<p class="text-label-sm text-on-surface-variant">Consultation Slot</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5 text-body-md">Medical Expert</td>
+<td class="px-8 py-5 text-body-md">Oct 25, 2023</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 rounded-full text-label-sm font-label-sm bg-primary-fixed text-on-primary-fixed">Confirmed</span>
+</td>
+<td class="px-8 py-5">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+<tr>
+<td class="px-8 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface font-bold">SN</div>
+<div>
+<p class="text-body-md font-bold text-on-surface">Sunita Nair</p>
+<p class="text-label-sm text-on-surface-variant">#ORD-28495</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5 text-body-md">Product Order</td>
+<td class="px-8 py-5 text-body-md">Oct 26, 2023</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 rounded-full text-label-sm font-label-sm bg-error-container text-on-error-container">Pending</span>
+</td>
+<td class="px-8 py-5">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</main>
+<!-- Footer Component (Semantic Shell) -->
+<footer class="hidden">
+<!-- Hidden as per Admin Portal UX guidelines to maximize canvas space, but logically part of the page structure -->
+<p>© 2024 Public Care Ayurveda. Botanical Heritage Healthcare.</p>
+</footer>
+<script>
+        // Micro-interactions for chart bars
+        document.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.chart-bar');
+            bars.forEach(bar => {
+                const height = bar.style.height;
+                bar.style.height = '0';
+                setTimeout(() => {
+                    bar.style.height = height;
+                }, 300);
+            });
+        });
+    </script>
+</body></html>
