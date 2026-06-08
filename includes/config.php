@@ -5,7 +5,9 @@ ini_set('session.gc_maxlifetime', 7200);
 
 define('SITE_NAME', 'Public Care Ayurveda');
 define('SITE_TAGLINE', 'Ancient Wisdom for Modern Living');
-define('BASE_URL', '/www/public_care_ayurveda');
+
+$isLocal = isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'localhost') !== false;
+define('BASE_URL', $isLocal ? '/www/public_care_ayurveda' : '');
 
 require_once __DIR__ . '/../config/database.php';
 
