@@ -29,7 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_name'] = $user['full_name'];
                 $_SESSION['role'] = $user['role'];
-                $redirect = $_SESSION['redirect_after_login'] ?? BASE_URL . '/index.php';
+                if ($user['role'] === 'admin') {
+                    $redirect = BASE_URL . '/admin/dashboard.php';
+                } else {
+                    $redirect = $_SESSION['redirect_after_login'] ?? BASE_URL . '/index.php';
+                }
                 unset($_SESSION['redirect_after_login']);
                 header('Location: ' . $redirect);
                 exit;
