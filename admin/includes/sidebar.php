@@ -1,10 +1,5 @@
 <aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-base z-50">
-<div class="px-6 py-8 mb-6">
-<h1 class="text-headline-md font-headline-md font-bold text-primary">Admin Portal</h1>
-<p class="text-label-sm text-on-surface-variant opacity-70">Operations Management</p>
-<a href="<?= BASE_URL ?>/index.php" class="mt-4 text-xs text-primary flex items-center gap-1 hover:underline"><span class="material-symbols-outlined text-sm">arrow_back</span> Back to Public Site</a>
-</div>
-<nav class="flex-grow space-y-1">
+<nav class="flex-grow space-y-1 mt-4">
 <?php
 $nav_items = [
     'dashboard'     => ['label' => 'Dashboard',     'icon' => 'dashboard'],
