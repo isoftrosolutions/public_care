@@ -47,6 +47,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book_appointment'])) 
             if ($stmt->execute()) {
                 $success = true;
                 $booking_id = $stmt->insert_id;
+
+                $roomName = 'pca-' . $doc_id . '-' . $booking_id . '-' . bin2hex(random_bytes(3));
+                $meetingLink = BASE_URL . '/video-consult.php?room=' . $roomName;
+                $stmt_c = $db->prepare("INSERT INTO consultations (user_id, doctor_id, appointment_id, type, status, meeting_link) VALUES (?, ?, ?, 'video', 'scheduled', ?)");
+                $stmt_c->bind_param("iiis", $_SESSION['user_id'], $doc_id, $booking_id, $meetingLink);
+                $stmt_c->execute();
+                $consId = $stmt_c->insert_id;
+
+                $stmt_u = $db->prepare("UPDATE appointments SET consultation_id = ?, meeting_link = ? WHERE id = ?");
+                $stmt_u->bind_param("isi", $consId, $meetingLink, $booking_id);
+                $stmt_u->execute();
             } else {
                 $error = 'Failed to book appointment. Please try again.';
             }
@@ -99,11 +110,13 @@ require_once __DIR__ . '/includes/header.php';
 <span class="font-bold text-on-surface"><?= htmlspecialchars(date('F d, Y', strtotime($_POST['appointment_date']))) ?> at <?= htmlspecialchars($_POST['appointment_time']) ?></span>
 <span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Platform</span>
 <span class="font-bold text-on-surface">Secure Video Consultation</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Meeting Link</span>
+<span class="font-bold text-on-surface text-sm break-all"><?= htmlspecialchars($meetingLink) ?></span>
 </div>
 </div>
 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-<a href="<?= BASE_URL ?>/index.php" class="bg-primary text-on-primary px-8 py-4 rounded-lg font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all"><span class="material-symbols-outlined">home</span> Return Home</a>
-<a href="<?= BASE_URL ?>/index.php#wellness-plans" class="border-2 border-primary text-primary px-8 py-4 rounded-lg font-bold hover:bg-surface-container transition-all">Explore Wellness Plans</a>
+<a href="<?= $meetingLink ?>" class="bg-secondary text-primary px-8 py-4 rounded-lg font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all"><span class="material-symbols-outlined">videocam</span> Join Video Call</a>
+<a href="<?= BASE_URL ?>/index.php" class="border-2 border-primary text-primary px-8 py-4 rounded-lg font-bold hover:bg-surface-container transition-all">Return Home</a>
 </div>
 </div>
 <div class="mt-12">

@@ -3,7 +3,7 @@
 <footer class="bg-primary text-on-primary w-full py-section-gap px-gutter">
 <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
 <div class="col-span-1">
-<img alt="Public Care Ayurveda Logo" class="h-12 w-auto object-contain brightness-0 invert mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo879HCds3w21ve37kcaDk6TDBD6jGLmvKyZY044-2j4TI7_Fo3jg5MGIn2vS_Uy3jg523kaixaI9ewUNDrQnspvl92wCOxeXw3qX_NNldczaZIT3RTuZZl-ERSsjdCWSpLmC_9EVaIHo1ut2kqTZDdm2Ighvwpvul1Cg1nfmqPr1xgZydE72HjEN6ISVD-7gJT1zBWpbOG5yyRaloF-sBOHDbzme6CNKxf-SZ6ElHJDdS2ew6k7nkVl2Ul0YZYjPaefVIy8Wakas"/>
+<img alt="Ayurwellness Logo" class="h-12 w-auto object-contain brightness-0 invert mb-6" src="<?= BASE_URL ?>/assets/uploads/logo.jpeg"/>
 <p class="text-sm opacity-80 leading-relaxed">Bridging ancient holistic wisdom with clinical precision for the modern family.</p>
 </div>
 <div>
@@ -27,7 +27,7 @@
 <div>
 <h4 class="font-headline-md text-headline-md mb-6">Contact Us</h4>
 <ul class="space-y-3">
-<li class="flex items-center gap-3 text-sm opacity-80"><span class="material-symbols-outlined text-sm">mail</span> support@publiccareayurveda.com</li>
+<li class="flex items-center gap-3 text-sm opacity-80"><span class="material-symbols-outlined text-sm">mail</span> support@ayurwellness.com</li>
 <li class="flex items-center gap-3 text-sm opacity-80"><span class="material-symbols-outlined text-sm">phone</span> +1 (800) AYURVEDA</li>
 <li class="flex items-center gap-3 text-sm opacity-80"><span class="material-symbols-outlined text-sm">location_on</span> 123 Wellness Blvd, Heritage City</li>
 </ul>
@@ -61,5 +61,6 @@ entry.target.classList.remove('opacity-0', 'translate-y-10');
 observer.observe(el);
 });
 </script>
+<?php require_once __DIR__ . '/chatbot.php'; ?>
 </body>
 </html>

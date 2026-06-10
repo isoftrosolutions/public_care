@@ -1,8 +1,8 @@
 <?php
 define('DB_HOST', 'localhost');
-define('DB_USER', 'ektamultp_test_user');
-define('DB_PASS', '2@ROrWwM.4(QU2a4');
-define('DB_NAME', 'ektamultp_test');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'public_care_ayurveda');
 
 function getDB() {
     static $conn = null;

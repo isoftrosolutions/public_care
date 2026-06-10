@@ -57,7 +57,7 @@ require_once __DIR__ . '/includes/header.php';
 <div class="relative z-10 w-full max-w-[1100px] flex flex-col md:flex-row bg-surface-container-lowest rounded-xl overflow-hidden login-card">
 <div class="hidden md:flex md:w-5/12 bg-primary-container p-12 flex-col justify-between items-start">
 <div>
-<img alt="Public Care Ayurveda Logo" class="h-20 w-auto mb-8 grayscale invert brightness-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgVQC_h4DCP40UtuYrlJ03BVhpay5bSt3cpc4bPCDRl-ZVkDBnj_z3Q33ioLX_zHcOsZjhv8vzInXaeRF2kZqEnIWAb7dixDOHTvOa7cxOxJF9ORm9O087kv7k55AJ4B1Ovlk3ljZpw0oOLh3i7XXZaXOBoG9u63PWz1diuVZe4hZT3d6kUCNhmZvGczSxP4uf2tSMtuGfxnsnghKUXNUvEi2Ooi-wo9wdyQpdI-2MYf3Ns3nTRFDyFvJQn8bktqAwbi2iAgbUfPQ"/>
+<img alt="Ayurwellness Logo" class="h-20 w-auto mb-8 grayscale invert brightness-200" src="<?= BASE_URL ?>/assets/uploads/logo.jpeg"/>
 <h1 class="font-headline-lg text-headline-lg text-primary-fixed leading-tight mb-4">Ancient Wisdom,<br/>Modern Precision.</h1>
 <p class="font-body-md text-body-md text-on-primary-container max-w-xs">
 Access your personalized Ayurvedic healthcare journey through our clinical portal. Secure, private, and professional.
@@ -86,7 +86,7 @@ Access your personalized Ayurvedic healthcare journey through our clinical porta
 </div>
 <div class="w-full md:w-7/12 p-8 md:p-16 flex flex-col">
 <div class="md:hidden mb-8">
-<img alt="Public Care Ayurveda Logo" class="h-12 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgVQC_h4DCP40UtuYrlJ03BVhpay5bSt3cpc4bPCDRl-ZVkDBnj_z3Q33ioLX_zHcOsZjhv8vzInXaeRF2kZqEnIWAb7dixDOHTvOa7cxOxJF9ORm9O087kv7k55AJ4B1Ovlk3ljZpw0oOLh3i7XXZaXOBoG9u63PWz1diuVZe4hZT3d6kUCNhmZvGczSxP4uf2tSMtuGfxnsnghKUXNUvEi2Ooi-wo9wdyQpdI-2MYf3Ns3nTRFDyFvJQn8bktqAwbi2iAgbUfPQ"/>
+<img alt="Ayurwellness Logo" class="h-12 w-auto" src="<?= BASE_URL ?>/assets/uploads/logo.jpeg"/>
 </div>
 <div class="mb-8">
 <h2 class="font-headline-lg text-headline-lg text-primary mb-2">Welcome Back</h2>

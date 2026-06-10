@@ -197,7 +197,7 @@ Our digital consultations are conducted via a secure, HIPAA-compliant telehealth
 <span class="faq-icon material-symbols-outlined transition-transform duration-300">expand_more</span>
 </summary>
 <div class="p-6 pt-0 font-body-md text-on-surface-variant leading-relaxed">
-All treatments prescribed at Public Care Ayurveda undergo rigorous quality control. Our herbs are sourced from organic heritage farms and tested for purity, heavy metals, and potency. We strictly follow clinical guidelines that bridge traditional Ayurvedic texts with modern safety standards.
+All treatments prescribed at Ayurwellness undergo rigorous quality control. Our herbs are sourced from organic heritage farms and tested for purity, heavy metals, and potency. We strictly follow clinical guidelines that bridge traditional Ayurvedic texts with modern safety standards.
 </div>
 </details>
 </div>

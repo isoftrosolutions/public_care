@@ -13,8 +13,15 @@ $nav_items = [
     'categories'    => ['label' => 'Categories',     'icon' => 'category'],
     'doctors'       => ['label' => 'Doctors',        'icon' => 'stethoscope'],
     'appointments'  => ['label' => 'Appointments',   'icon' => 'calendar_month'],
+    'consultations' => ['label' => 'Consultations',  'icon' => 'videocam'],
+    'prescriptions' => ['label' => 'Prescriptions',  'icon' => 'prescriptions'],
+    'email-logs'    => ['label' => 'Email Logs',     'icon' => 'mail'],
     'blog'          => ['label' => 'Blog Posts',     'icon' => 'article'],
-    'users'         => ['label' => 'Users',          'icon' => 'group'],
+    'dosha-questions' => ['label' => 'Dosha Questions', 'icon' => 'self_improvement'],
+    'patient-metrics' => ['label' => 'Patient Metrics', 'icon' => 'monitoring'],
+    'users'          => ['label' => 'Users',           'icon' => 'group'],
+    'family-members' => ['label' => 'Family Accounts', 'icon' => 'family_history'],
+    'settings'      => ['label' => 'Settings',        'icon' => 'settings'],
 ];
 foreach ($nav_items as $key => $item):
     $is_active = ($active_page === $key);

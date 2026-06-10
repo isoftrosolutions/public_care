@@ -1,0 +1,18 @@
+# API Keys & Secrets
+includes/config-local.php
+
+# SQL backups
+sql/backup_*.sql
+
+# OS
+Thumbs.db
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Environment
+.env
+*.env.local

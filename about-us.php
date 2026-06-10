@@ -36,7 +36,7 @@ require_once __DIR__ . '/includes/header.php';
 <div class="space-y-6 md:pl-12">
 <span class="text-secondary font-label-md tracking-widest uppercase">Our Heritage</span>
 <h2 class="font-headline-lg text-headline-lg text-primary">Born from a passion for holistic integrity in 1994.</h2>
-<p class="text-on-surface-variant leading-relaxed">Public Care Ayurveda began as a small research clinic dedicated to validating the profound effects of traditional botanical medicine. Over three decades, we have evolved into a leading authority in Ayurvedic healthcare, maintaining the same rigor and respect for nature that guided our first formulations.</p>
+<p class="text-on-surface-variant leading-relaxed">Ayurwellness began as a small research clinic dedicated to validating the profound effects of traditional botanical medicine. Over three decades, we have evolved into a leading authority in Ayurvedic healthcare, maintaining the same rigor and respect for nature that guided our first formulations.</p>
 <p class="text-on-surface-variant leading-relaxed">Today, we operate a vertically integrated ecosystem—from organic herb cultivation to state-of-the-art clinical testing—ensuring that every bottle carries the promise of purity and potency.</p>
 </div>
 </div>

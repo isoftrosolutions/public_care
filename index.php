@@ -47,6 +47,61 @@ Experience the healing power of authentic Ayurveda. Trusted by families, recomme
 </div>
 </section>
 
+<!-- Smart Ayurveda Features -->
+<section class="py-section-gap bg-surface">
+<div class="max-w-container-max mx-auto px-gutter">
+    <div class="text-center mb-12">
+        <span class="inline-block bg-secondary-container/30 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-4"><span class="material-symbols-outlined text-sm align-text-bottom">auto_awesome</span> AI + आयुर्वेद — What Makes Us Different</span>
+        <h2 class="font-headline-lg text-headline-lg text-primary mb-2">Beyond Products — Your Complete Wellness Ecosystem</h2>
+        <p class="text-on-surface-variant max-w-2xl mx-auto">6 powerful features designed to keep you healthy, informed, and connected with your Ayurvedic journey.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature 1: AI Body Analysis -->
+        <a href="<?= BASE_URL ?>/dosha-quiz.php" class="group bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6] hover:shadow-lg hover:border-primary transition-all">
+            <div class="w-12 h-12 rounded-xl bg-[#1b4332]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-2xl text-primary">biotech</span></div>
+            <h3 class="font-bold text-on-surface mb-2">AI Body Analysis</h3>
+            <p class="text-sm text-on-surface-variant">3-minute test to know your Vata-Pitta-Kapha profile with Groq AI-powered personalized diet, yoga & lifestyle recommendations.</p>
+            <span class="text-xs font-bold text-primary mt-3 inline-block group-hover:translate-x-1 transition-transform">Try Now →</span>
+        </a>
+        <!-- Feature 2: Email Health Coach -->
+        <a href="<?= BASE_URL ?>/health-coach.php" class="group bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6] hover:shadow-lg hover:border-primary transition-all">
+            <div class="w-12 h-12 rounded-xl bg-[#1b4332]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-2xl text-primary">notifications_active</span></div>
+            <h3 class="font-bold text-on-surface mb-2">Email Health Coach</h3>
+            <p class="text-sm text-on-surface-variant">Daily reminders for medicine, water, yoga & diet plans — because we care beyond the purchase.</p>
+            <span class="text-xs font-bold text-primary mt-3 inline-block group-hover:translate-x-1 transition-transform">Set Reminders →</span>
+        </a>
+        <!-- Feature 3: 90-Day Dashboard -->
+        <a href="<?= BASE_URL ?>/my-health.php" class="group bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6] hover:shadow-lg hover:border-primary transition-all">
+            <div class="w-12 h-12 rounded-xl bg-[#1b4332]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-2xl text-primary">monitoring</span></div>
+            <h3 class="font-bold text-on-surface mb-2">90-Day Dashboard</h3>
+            <p class="text-sm text-on-surface-variant">Track weight, sleep, pain score, BP & sugar. See your progress over 7, 30 or 90 days.</p>
+            <span class="text-xs font-bold text-primary mt-3 inline-block group-hover:translate-x-1 transition-transform">View Dashboard →</span>
+        </a>
+        <!-- Feature 4: Family Health -->
+        <a href="<?= BASE_URL ?>/my-family.php" class="group bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6] hover:shadow-lg hover:border-primary transition-all">
+            <div class="w-12 h-12 rounded-xl bg-[#1b4332]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-2xl text-primary">family_history</span></div>
+            <h3 class="font-bold text-on-surface mb-2">Family Health Account</h3>
+            <p class="text-sm text-on-surface-variant">One login for your whole family — manage reports, medicines, and appointments together.</p>
+            <span class="text-xs font-bold text-primary mt-3 inline-block group-hover:translate-x-1 transition-transform">Add Family →</span>
+        </a>
+        <!-- Feature 5: Video Consult -->
+        <a href="<?= BASE_URL ?>/video-consult.php" class="group bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6] hover:shadow-lg hover:border-primary transition-all">
+            <div class="w-12 h-12 rounded-xl bg-[#1b4332]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-2xl text-primary">videocam</span></div>
+            <h3 class="font-bold text-on-surface mb-2">Video Doctor Call</h3>
+            <p class="text-sm text-on-surface-variant">Face-to-face video consultations with digital prescriptions delivered on email & WhatsApp.</p>
+            <span class="text-xs font-bold text-primary mt-3 inline-block group-hover:translate-x-1 transition-transform">Book Now →</span>
+        </a>
+        <!-- Feature 6: Multi-Language -->
+        <div class="group bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6] hover:shadow-lg hover:border-primary transition-all">
+            <div class="w-12 h-12 rounded-xl bg-[#1b4332]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-2xl text-primary">language</span></div>
+            <h3 class="font-bold text-on-surface mb-2">भाषा आधारित सेवा</h3>
+            <p class="text-sm text-on-surface-variant">हिन्दी, हरियाणवी, ਪੰਜਾਬੀ, भोजपुरी और English — अपनी भाषा में आयुर्वेद की सेवाएँ लें।</p>
+            <span class="text-xs font-bold text-primary mt-3 inline-block">Change Language ↑</span>
+        </div>
+    </div>
+</div>
+</section>
+
 <!-- Product Categories -->
 <section class="py-section-gap max-w-container-max mx-auto px-gutter">
 <div class="text-center mb-16">

@@ -175,6 +175,7 @@ $year = $parts[2] ?? '';
 <span class="font-bold text-primary">₹<?= number_format($doctor['fee'], 2) ?></span>
 </div>
 <a href="<?= BASE_URL ?>/appointment-booking.php?doctor_id=<?= $doctor['id'] ?>" class="block w-full bg-secondary text-on-primary py-4 rounded-2xl font-bold hover:brightness-110 transition-all shadow-lg shadow-secondary/20 flex items-center justify-center gap-2">Proceed to Payment <span class="material-symbols-outlined">arrow_forward</span></a>
+<a href="<?= BASE_URL ?>/appointment-booking.php?doctor_id=<?= $doctor['id'] ?>&type=video" class="block w-full bg-primary text-on-primary py-4 rounded-2xl font-bold hover:brightness-110 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 mt-3"><span class="material-symbols-outlined">videocam</span> Video Consult</a>
 <p class="text-center text-label-sm text-on-surface-variant mt-4">Free cancellation up to 24 hours before</p>
 </div>
 </div>
@@ -188,7 +189,10 @@ $year = $parts[2] ?? '';
 <p class="text-label-sm text-on-surface-variant">Consultation Fee</p>
 <p class="text-headline-md font-bold text-primary">₹<?= number_format($doctor['fee'], 2) ?></p>
 </div>
-<a href="<?= BASE_URL ?>/appointment-booking.php?doctor_id=<?= $doctor['id'] ?>" class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-bold shadow-lg shadow-primary/20 text-center">Book Now</a>
+<div class="flex gap-2">
+<a href="<?= BASE_URL ?>/appointment-booking.php?doctor_id=<?= $doctor['id'] ?>" class="bg-primary text-on-primary py-3 px-6 rounded-xl font-bold shadow-lg shadow-primary/20 text-center text-sm">Book Now</a>
+<a href="<?= BASE_URL ?>/appointment-booking.php?doctor_id=<?= $doctor['id'] ?>&type=video" class="bg-primary-container text-on-primary-container py-3 px-6 rounded-xl font-bold text-center text-sm flex items-center gap-1"><span class="material-symbols-outlined text-sm">videocam</span> Video</a>
+</div>
 </div>
 </div>
 

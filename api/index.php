@@ -3,7 +3,7 @@ require_once __DIR__ . '/helpers.php';
 
 jsonResponse([
     'success' => true,
-    'name' => 'Public Care Ayurveda API',
+    'name' => 'Ayurwellness API',
     'version' => '1.0',
     'endpoints' => [
         'GET /api/products' => 'List products (query: category, search, sort, min_price, max_price, page, per_page)',

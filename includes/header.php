@@ -66,7 +66,9 @@ tailwind.config = {
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
 @media (max-width: 1023px) {
   nav.mobile-open { display: flex !important; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: #f4fafd; padding: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); z-index: 50; }
+  nav.mobile-open + #mobile-account-links { display: block !important; position: absolute; top: 480px; left: 0; width: 100%; background: #f4fafd; padding: 8px 24px 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); z-index: 50; }
 }
+#mobile-account-links { display: none; }
 </style>
 </head>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
@@ -75,25 +77,80 @@ tailwind.config = {
 <div class="flex justify-between items-center h-20 px-gutter w-full max-w-container-max mx-auto">
 <div class="flex items-center gap-4">
 <a href="<?= BASE_URL ?>/index.php">
-<img alt="Public Care Ayurveda Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo879HCds3w21ve37kcaDk6TDBD6jGLmvKyZY044-2j4TI7_Fo3jg5MGIn2vS_Uy3jg523kaixaI9ewUNDrQnspvl92wCOxeXw3qX_NNldczaZIT3RTuZZl-ERSsjdCWSpLmC_9EVaIHo1ut2kqTZDdm2Ighvwpvul1Cg1nfmqPr1xgZydE72HjEN6ISVD-7gJT1zBWpbOG5yyRaloF-sBOHDbzme6CNKxf-SZ6ElHJDdS2ew6k7nkVl2Ul0YZYjPaefVIy8Wakas"/>
+<img alt="Ayurwellness Logo" class="h-12 w-auto object-contain" src="<?= BASE_URL ?>/assets/uploads/logo.jpeg"/>
 </a>
 </div>
 <nav class="hidden lg:flex items-center gap-8">
 <a class="<?= $current_page === 'index.php' ? 'text-primary border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary' ?> pb-1 font-label-md text-label-md transition-colors" href="<?= BASE_URL ?>/index.php">Home</a>
 <a class="<?= $current_page === 'shop.php' ? 'text-primary border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary' ?> pb-1 font-label-md text-label-md transition-colors" href="<?= BASE_URL ?>/shop.php">Shop</a>
 <a class="<?= in_array($current_page, ['doctor-listing.php','doctor-profile.php']) ? 'text-primary border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary' ?> pb-1 font-label-md text-label-md transition-colors" href="<?= BASE_URL ?>/doctor-listing.php">Consult Doctor</a>
+<a class="<?= $current_page === 'dosha-quiz.php' ? 'text-primary border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary' ?> pb-1 font-label-md text-label-md transition-colors" href="<?= BASE_URL ?>/dosha-quiz.php">Body Analysis</a>
 <a class="text-on-surface-variant hover:text-primary pb-1 font-label-md text-label-md transition-colors" href="<?= BASE_URL ?>/index.php#wellness-plans">Wellness Plans</a>
+<?php if (isset($_SESSION['user_id'])): ?>
+<div class="relative group" id="account-menu">
+    <button class="flex items-center gap-1 text-on-surface-variant hover:text-primary pb-1 font-label-md text-label-md transition-colors">
+        My Account
+        <span class="material-symbols-outlined text-sm">arrow_drop_down</span>
+    </button>
+    <div class="absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-[#dde4e6] py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+        <a class="flex items-center gap-3 px-4 py-2.5 hover:bg-surface-container transition-colors text-sm <?= $current_page === 'health-coach.php' ? 'font-bold text-primary' : 'text-on-surface' ?>" href="<?= BASE_URL ?>/health-coach.php">
+            <span class="material-symbols-outlined text-lg">notifications</span> Health Coach
+        </a>
+        <a class="flex items-center gap-3 px-4 py-2.5 hover:bg-surface-container transition-colors text-sm <?= $current_page === 'my-health.php' ? 'font-bold text-primary' : 'text-on-surface' ?>" href="<?= BASE_URL ?>/my-health.php">
+            <span class="material-symbols-outlined text-lg">monitoring</span> My Health
+        </a>
+        <a class="flex items-center gap-3 px-4 py-2.5 hover:bg-surface-container transition-colors text-sm <?= $current_page === 'my-family.php' ? 'font-bold text-primary' : 'text-on-surface' ?>" href="<?= BASE_URL ?>/my-family.php">
+            <span class="material-symbols-outlined text-lg">family_history</span> My Family
+        </a>
+        <a class="flex items-center gap-3 px-4 py-2.5 hover:bg-surface-container transition-colors text-sm <?= $current_page === 'video-consult.php' ? 'font-bold text-primary' : 'text-on-surface' ?>" href="<?= BASE_URL ?>/video-consult.php">
+            <span class="material-symbols-outlined text-lg">videocam</span> Video Consult
+        </a>
+        <hr class="my-2 border-[#dde4e6]">
+        <a class="flex items-center gap-3 px-4 py-2.5 hover:bg-surface-container transition-colors text-sm text-on-surface" href="<?= BASE_URL ?>/admin/dashboard.php">
+            <span class="material-symbols-outlined text-lg">dashboard</span> Dashboard
+        </a>
+    </div>
+</div>
+<?php endif; ?>
 <a class="<?= $current_page === 'wellness-blog.php' ? 'text-primary border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary' ?> pb-1 font-label-md text-label-md transition-colors" href="<?= BASE_URL ?>/wellness-blog.php">Blog</a>
 <a class="<?= $current_page === 'about-us.php' ? 'text-primary border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary' ?> pb-1 font-label-md text-label-md transition-colors" href="<?= BASE_URL ?>/about-us.php">About</a>
 </nav>
+<!-- Mobile Account Links (shown only when logged in) -->
+<?php if (isset($_SESSION['user_id'])): ?>
+<div class="hidden lg:hidden border-t border-[#dde4e6] mt-2 pt-2 px-4" id="mobile-account-links">
+    <p class="text-xs text-on-surface-variant font-medium px-4 py-1">MY ACCOUNT</p>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary text-sm" href="<?= BASE_URL ?>/health-coach.php"><span class="material-symbols-outlined text-lg">notifications</span> Health Coach</a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary text-sm" href="<?= BASE_URL ?>/my-health.php"><span class="material-symbols-outlined text-lg">monitoring</span> My Health</a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary text-sm" href="<?= BASE_URL ?>/my-family.php"><span class="material-symbols-outlined text-lg">family_history</span> My Family</a>
+    <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary text-sm" href="<?= BASE_URL ?>/video-consult.php"><span class="material-symbols-outlined text-lg">videocam</span> Video Consult</a>
+</div>
+<?php endif; ?>
 <div class="flex items-center gap-6">
 <button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">search</button>
+<!-- Language Switcher -->
+<div class="relative" id="lang-switcher">
+    <button onclick="document.getElementById('lang-menu').classList.toggle('hidden')" class="text-on-surface-variant hover:text-primary transition-colors px-2 py-1 rounded text-sm font-medium flex items-center gap-1">
+        <span><?php
+            $langs = getAvailableLanguages();
+            echo $langs[$_SESSION['lang']]['flag'] ?? '🌐';
+        ?></span>
+        <span class="hidden md:inline"><?= strtoupper($_SESSION['lang'] ?? 'hi') ?></span>
+    </button>
+    <div id="lang-menu" class="hidden absolute right-0 mt-2 w-44 bg-white rounded-xl shadow-lg border border-[#dde4e6] py-2 z-50">
+        <?php foreach (getAvailableLanguages() as $code => $info): ?>
+        <a href="?lang=<?= $code ?>" class="flex items-center gap-3 px-4 py-2.5 hover:bg-surface-container transition-colors text-sm <?= ($_SESSION['lang'] ?? 'hi') === $code ? 'bg-surface-container font-bold' : '' ?>">
+            <span><?= $info['flag'] ?></span>
+            <span><?= $info['native'] ?></span>
+        </a>
+        <?php endforeach; ?>
+    </div>
+</div>
 <div class="relative">
 <a href="<?= BASE_URL ?>/shopping-cart.php" class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">shopping_cart</a>
 <span id="cart-count-badge" class="absolute -top-2 -right-2 bg-secondary text-on-secondary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold"><?= htmlspecialchars($_SESSION['cart_count'] ?? 0) ?></span>
 </div>
 <?php if (isset($_SESSION['user_id'])): ?>
-<a class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary transition-all" href="<?= BASE_URL ?>/admin/dashboard.php">Dashboard</a>
+<a class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary transition-all" href="<?= BASE_URL ?>/my-health.php">My Health</a>
 <a class="text-on-surface-variant hover:text-primary font-label-md text-label-md" href="<?= BASE_URL ?>/logout.php">Logout</a>
 <?php else: ?>
 <a class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all scale-95 active:scale-90 inline-block" href="<?= BASE_URL ?>/login.php">Login</a>
@@ -101,5 +158,27 @@ tailwind.config = {
 <button class="lg:hidden material-symbols-outlined" id="mobile-menu-btn">menu</button>
 </div>
 </div>
+<script>
+document.addEventListener('click', function(e) {
+    const sw = document.getElementById('lang-switcher');
+    if (sw && !sw.contains(e.target)) {
+        const menu = document.getElementById('lang-menu');
+        if (menu) menu.classList.add('hidden');
+    }
+});
+</script>
+<script>
+// Mobile menu toggle
+document.getElementById('mobile-menu-btn')?.addEventListener('click', function() {
+    const nav = document.querySelector('nav.hidden');
+    const mobileLinks = document.getElementById('mobile-account-links');
+    if (nav) {
+        nav.classList.toggle('mobile-open');
+        if (mobileLinks) {
+            mobileLinks.style.display = nav.classList.contains('mobile-open') ? 'block' : 'none';
+        }
+    }
+});
+</script>
 </header>
 <main>
