@@ -1,5 +1,5 @@
 <aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex flex-col py-base z-50">
-<nav class="flex-grow space-y-1 mt-4">
+<nav class="flex-grow space-y-1 mt-4 overflow-y-auto">
 <?php
 $nav_items = [
     'dashboard'     => ['label' => 'Dashboard',     'icon' => 'dashboard'],
