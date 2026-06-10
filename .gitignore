@@ -1,6 +1,9 @@
 # API Keys & Secrets
 includes/config-local.php
 
+# Database config (local copy — use database.example.php as template)
+config/database.php
+
 # SQL backups
 sql/backup_*.sql
 
