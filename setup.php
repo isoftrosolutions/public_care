@@ -1,6 +1,4 @@
 <?php
-require_once __DIR__ . '/includes/config.php';
-
 $is_cli = php_sapi_name() === 'cli';
 
 function log_msg(string $msg): void
