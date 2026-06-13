@@ -61,6 +61,16 @@ if ($bind_params) {
 }
 $stmt->execute();
 $orders = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+$order_ids = array_map('intval', array_column($orders, 'id'));
+$invoice_map = [];
+if (!empty($order_ids)) {
+    $ids_list = implode(',', $order_ids);
+    $inv_result = $db->query("SELECT order_id, invoice_number FROM invoices WHERE order_id IN ($ids_list) AND pdf_path IS NOT NULL");
+    while ($inv_row = $inv_result->fetch_assoc()) {
+        $invoice_map[(int)$inv_row['order_id']] = $inv_row['invoice_number'];
+    }
+}
 ?>
 <?php require_once __DIR__ . '/includes/head.php'; ?>
 <body class="bg-surface font-body-md text-on-surface flex min-h-screen">
@@ -150,7 +160,7 @@ $status_class = match($o['status']) {
 <td class="px-6 py-4 text-body-md text-on-surface-variant"><?= date('M d, Y', strtotime($o['created_at'])) ?></td>
 <td class="px-6 py-4"><span class="px-3 py-1 rounded-full text-label-sm <?= $status_class ?>"><?= htmlspecialchars(ucfirst($o['status'])) ?></span></td>
 <td class="px-6 py-4">
-<form method="POST" class="flex items-center gap-2" onsubmit="return confirm('Update status?')">
+<form method="POST" class="flex items-center gap-2 mb-2" onsubmit="return confirm('Update status?')">
 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 <input type="hidden" name="order_id" value="<?= $o['id'] ?>">
 <select name="status" class="bg-surface border border-outline-variant text-label-sm rounded px-2 py-1">
@@ -162,6 +172,16 @@ $status_class = match($o['status']) {
 </select>
 <button class="text-label-sm bg-primary text-on-primary px-3 py-1 rounded hover:opacity-90" type="submit" name="update_status" value="1">Update</button>
 </form>
+<div class="flex gap-1">
+<?php if (isset($invoice_map[$o['id']])): ?>
+<a href="<?= BASE_URL ?>/invoice-download.php?order_id=<?= (int)$o['id'] ?>" class="text-label-xs bg-surface-container-high text-on-surface px-2 py-1 rounded hover:bg-surface-container-highest transition-colors inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">description</span> Invoice
+</a>
+<?php endif; ?>
+<a href="<?= BASE_URL ?>/admin/invoice-regenerate.php?order_id=<?= (int)$o['id'] ?>" class="text-label-xs bg-surface-container-high text-on-surface px-2 py-1 rounded hover:bg-surface-container-highest transition-colors inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">refresh</span> PDF
+</a>
+</div>
 </td>
 </tr>
 <?php endforeach; ?>

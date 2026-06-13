@@ -1,75 +1,17 @@
 <?php
 require_once __DIR__ . '/../includes/config.php';
+require_once __DIR__ . '/includes/admin-crud.php';
 
-if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'admin') {
-    header('Location: ' . BASE_URL . '/login.php');
-    exit;
-}
+admin_require_auth();
 
 $db = getDB();
 $page_title = 'Doctors';
 $active_page = 'doctors';
 
-// --- DELETE ---
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'], $_POST['csrf_token']) && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
-    $stmt = $db->prepare("DELETE FROM doctors WHERE id = ?");
-    $stmt->bind_param('i', $_POST['delete']);
-    $stmt->execute();
-    header('Location: doctors.php');
-    exit;
-}
+$total_doctors = $db->query("SELECT COUNT(*) FROM doctors")->fetch_row()[0];
+$available_count = $db->query("SELECT COUNT(*) FROM doctors WHERE available = 1")->fetch_row()[0];
+$unavailable_count = $db->query("SELECT COUNT(*) FROM doctors WHERE available = 0")->fetch_row()[0];
 
-// --- ADD ---
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_doctor'], $_POST['csrf_token']) && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
-    $name = trim($_POST['name'] ?? '');
-    $slug = preg_replace('/[^a-z0-9-]+/', '-', strtolower(trim($name)));
-    $qualifications = trim($_POST['qualifications'] ?? '');
-    $specialty = trim($_POST['specialty'] ?? '');
-    $experience_years = (int)($_POST['experience_years'] ?? 0);
-    $languages = trim($_POST['languages'] ?? '');
-    $fee = (float)($_POST['fee'] ?? 0);
-    $bio = trim($_POST['bio'] ?? '');
-    $image_url = trim($_POST['image_url'] ?? '');
-    $available = isset($_POST['available']) ? 1 : 0;
-
-    $stmt = $db->prepare("INSERT INTO doctors (name, slug, qualifications, specialty, experience_years, languages, fee, bio, image_url, available) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssisssi', $name, $slug, $qualifications, $specialty, $experience_years, $languages, $fee, $bio, $image_url, $available);
-    $stmt->execute();
-    header('Location: doctors.php');
-    exit;
-}
-
-// --- EDIT ---
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_doctor'], $_POST['doctor_id'], $_POST['csrf_token']) && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
-    $id = (int)$_POST['doctor_id'];
-    $name = trim($_POST['name'] ?? '');
-    $slug = preg_replace('/[^a-z0-9-]+/', '-', strtolower(trim($name)));
-    $qualifications = trim($_POST['qualifications'] ?? '');
-    $specialty = trim($_POST['specialty'] ?? '');
-    $experience_years = (int)($_POST['experience_years'] ?? 0);
-    $languages = trim($_POST['languages'] ?? '');
-    $fee = (float)($_POST['fee'] ?? 0);
-    $bio = trim($_POST['bio'] ?? '');
-    $image_url = trim($_POST['image_url'] ?? '');
-    $available = isset($_POST['available']) ? 1 : 0;
-
-    $stmt = $db->prepare("UPDATE doctors SET name=?, slug=?, qualifications=?, specialty=?, experience_years=?, languages=?, fee=?, bio=?, image_url=?, available=? WHERE id=?");
-    $stmt->bind_param('sssssisssii', $name, $slug, $qualifications, $specialty, $experience_years, $languages, $fee, $bio, $image_url, $available, $id);
-    $stmt->execute();
-    header('Location: doctors.php');
-    exit;
-}
-
-// --- Fetch edit record ---
-$edit_doctor = null;
-if (isset($_GET['edit'])) {
-    $stmt = $db->prepare("SELECT * FROM doctors WHERE id = ?");
-    $stmt->bind_param('i', $_GET['edit']);
-    $stmt->execute();
-    $edit_doctor = $stmt->get_result()->fetch_assoc();
-}
-
-// --- Listing ---
 $page = max(1, (int)($_GET['page'] ?? 1));
 $per_page = 20;
 $search = trim($_GET['search'] ?? '');
@@ -107,10 +49,6 @@ if ($bind_params) {
 }
 $data_stmt->execute();
 $doctors = $data_stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-
-$total_doctors = $db->query("SELECT COUNT(*) FROM doctors")->fetch_row()[0];
-$available_count = $db->query("SELECT COUNT(*) FROM doctors WHERE available = 1")->fetch_row()[0];
-$unavailable_count = $db->query("SELECT COUNT(*) FROM doctors WHERE available = 0")->fetch_row()[0];
 ?>
 <?php require_once __DIR__ . '/includes/head.php'; ?>
 <body class="bg-surface font-body-md text-on-surface flex min-h-screen">
@@ -121,9 +59,7 @@ $unavailable_count = $db->query("SELECT COUNT(*) FROM doctors WHERE available = 
 <h2 class="text-display-lg font-display-lg text-primary">Doctors</h2>
 <p class="text-body-lg text-on-surface-variant mt-2">Manage Ayurvedic doctors and their profiles.</p>
 </div>
-<?php if (!$edit_doctor && !isset($_GET['show_form'])): ?>
-<a class="bg-primary text-on-primary px-4 py-2 rounded-lg text-label-sm flex items-center gap-2 hover:opacity-90 transition-all" href="?show_form=1"><span class="material-symbols-outlined text-sm">add</span> Add Doctor</a>
-<?php endif; ?>
+<a href="doctor-create.php" class="inline-flex items-center gap-2 bg-primary text-on-primary px-5 py-2.5 rounded-lg text-label-sm hover:opacity-90 transition-opacity"><span class="material-symbols-outlined text-sm">add</span> Add Doctor</a>
 </header>
 
 <section class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-8">
@@ -140,61 +76,6 @@ $unavailable_count = $db->query("SELECT COUNT(*) FROM doctors WHERE available = 
 <p class="text-headline-md text-on-error-container mt-1"><?= $unavailable_count ?></p>
 </div>
 </section>
-
-<?php if ($edit_doctor || isset($_GET['show_form'])): ?>
-<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 mb-8">
-<div class="flex justify-between items-center mb-6">
-<h3 class="text-headline-md text-on-surface"><?= $edit_doctor ? 'Edit Doctor' : 'Add Doctor' ?></h3>
-<a class="text-label-sm text-on-surface-variant hover:underline flex items-center gap-1" href="doctors.php"><span class="material-symbols-outlined text-sm">close</span> Cancel</a>
-</div>
-<form class="grid grid-cols-1 md:grid-cols-3 gap-4" method="POST">
-<input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
-<?php if ($edit_doctor): ?>
-<input type="hidden" name="doctor_id" value="<?= $edit_doctor['id'] ?>">
-<?php endif; ?>
-<div class="flex flex-col gap-1">
-<label class="text-label-sm text-on-surface-variant" for="name">Name *</label>
-<input class="bg-surface border border-outline-variant text-label-sm rounded-lg focus:ring-primary px-3 py-2" id="name" name="name" required type="text" value="<?= htmlspecialchars($edit_doctor['name'] ?? '') ?>">
-</div>
-<div class="flex flex-col gap-1">
-<label class="text-label-sm text-on-surface-variant" for="specialty">Specialty</label>
-<input class="bg-surface border border-outline-variant text-label-sm rounded-lg focus:ring-primary px-3 py-2" id="specialty" name="specialty" type="text" value="<?= htmlspecialchars($edit_doctor['specialty'] ?? '') ?>">
-</div>
-<div class="flex flex-col gap-1">
-<label class="text-label-sm text-on-surface-variant" for="qualifications">Qualifications</label>
-<input class="bg-surface border border-outline-variant text-label-sm rounded-lg focus:ring-primary px-3 py-2" id="qualifications" name="qualifications" type="text" value="<?= htmlspecialchars($edit_doctor['qualifications'] ?? '') ?>">
-</div>
-<div class="flex flex-col gap-1">
-<label class="text-label-sm text-on-surface-variant" for="experience_years">Experience (years)</label>
-<input class="bg-surface border border-outline-variant text-label-sm rounded-lg focus:ring-primary px-3 py-2" id="experience_years" min="0" name="experience_years" type="number" value="<?= htmlspecialchars($edit_doctor['experience_years'] ?? '') ?>">
-</div>
-<div class="flex flex-col gap-1">
-<label class="text-label-sm text-on-surface-variant" for="languages">Languages</label>
-<input class="bg-surface border border-outline-variant text-label-sm rounded-lg focus:ring-primary px-3 py-2" id="languages" name="languages" placeholder="e.g. English, Hindi, Malayalam" type="text" value="<?= htmlspecialchars($edit_doctor['languages'] ?? '') ?>">
-</div>
-<div class="flex flex-col gap-1">
-<label class="text-label-sm text-on-surface-variant" for="fee">Consultation Fee (₹)</label>
-<input class="bg-surface border border-outline-variant text-label-sm rounded-lg focus:ring-primary px-3 py-2" id="fee" min="0" name="fee" step="0.01" type="number" value="<?= htmlspecialchars($edit_doctor['fee'] ?? '') ?>">
-</div>
-<div class="md:col-span-3 flex flex-col gap-1">
-<label class="text-label-sm text-on-surface-variant" for="bio">Bio</label>
-<textarea class="bg-surface border border-outline-variant text-label-sm rounded-lg focus:ring-primary px-3 py-2 h-24" id="bio" name="bio"><?= htmlspecialchars($edit_doctor['bio'] ?? '') ?></textarea>
-</div>
-<div class="md:col-span-3 flex flex-col gap-1">
-<label class="text-label-sm text-on-surface-variant" for="image_url">Image URL</label>
-<input class="bg-surface border border-outline-variant text-label-sm rounded-lg focus:ring-primary px-3 py-2" id="image_url" name="image_url" type="text" value="<?= htmlspecialchars($edit_doctor['image_url'] ?? '') ?>">
-</div>
-<div class="md:col-span-3 flex items-center gap-2">
-<input class="rounded border-outline-variant text-primary focus:ring-primary" id="available" name="available" type="checkbox" value="1" <?= (isset($edit_doctor) && $edit_doctor['available']) || !isset($edit_doctor) ? 'checked' : '' ?>>
-<label class="text-label-sm text-on-surface-variant" for="available">Available for consultations</label>
-</div>
-<div class="md:col-span-3 flex gap-3 mt-2">
-<button class="bg-primary text-on-primary px-6 py-2 rounded-lg text-label-sm hover:opacity-90 transition-all" name="<?= $edit_doctor ? 'edit_doctor' : 'add_doctor' ?>" type="submit" value="1"><?= $edit_doctor ? 'Update Doctor' : 'Add Doctor' ?></button>
-<a class="bg-surface-container-high text-on-surface px-6 py-2 rounded-lg text-label-sm hover:bg-surface-container-highest transition-all" href="doctors.php">Cancel</a>
-</div>
-</form>
-</section>
-<?php endif; ?>
 
 <section class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
 <div class="px-6 py-4 border-b border-outline-variant flex flex-wrap justify-between items-center gap-4">
@@ -254,12 +135,8 @@ $initial = strtoupper(substr($name_parts[0] ?? '', 0, 1));
 <td class="px-6 py-4"><span class="px-3 py-1 rounded-full text-label-sm <?= $d['available'] ? 'bg-primary-fixed text-on-primary-fixed' : 'bg-surface-container-high text-on-surface' ?>"><?= $d['available'] ? 'Available' : 'Unavailable' ?></span></td>
 <td class="px-6 py-4">
 <div class="flex items-center gap-2">
-<a class="text-label-sm bg-surface-container-high px-3 py-1 rounded hover:bg-surface-container-highest transition-all flex items-center gap-1" href="?edit=<?= $d['id'] ?>"><span class="material-symbols-outlined text-sm">edit</span> Edit</a>
-<form class="inline" method="POST" onsubmit="return confirm('Delete this doctor profile?')">
-<input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
-<input type="hidden" name="delete" value="<?= $d['id'] ?>">
-<button class="text-label-sm bg-error-container text-on-error-container px-3 py-1 rounded hover:opacity-80 transition-all flex items-center gap-1" type="submit"><span class="material-symbols-outlined text-sm">delete</span> Delete</button>
-</form>
+<a class="text-label-sm bg-surface-container-high px-3 py-1 rounded hover:bg-surface-container-highest transition-all flex items-center gap-1" href="doctor-edit.php?id=<?= $d['id'] ?>"><span class="material-symbols-outlined text-sm">edit</span> Edit</a>
+<a class="text-label-sm bg-error-container text-on-error-container px-3 py-1 rounded hover:opacity-80 transition-all flex items-center gap-1" href="doctor-delete.php?id=<?= $d['id'] ?>"><span class="material-symbols-outlined text-sm">delete</span> Delete</a>
 </div>
 </td>
 </tr>

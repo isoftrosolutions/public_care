@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | Ayurwellness - Natural • Balanced • Healthy</title>
+<meta content="Access your personalized Ayurvedic wellness journey. Secure login for Ayurwellness consultations and herbal products." name="description"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#1F5D2E", // Deep Herbal Green
+                        "primary-container": "#E8F3EA",
+                        "secondary": "#5a605a",
+                        "tertiary": "#785800", // Gold highlight
+                        "on-background": "#1b1c1c",
+                        "surface": "#fbf9f8",
+                        "surface-container-low": "#f5f3f3",
+                        "surface-container": "#efeded",
+                        "outline": "#707a6e",
+                        "error": "#ba1a1a",
+                        "background": "#F8FAF6" // Warm White for Hero
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "base": "8px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["DM Sans"],
+                        "headline-lg": ["DM Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 20% 30%, rgba(31, 93, 46, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(120, 88, 0, 0.03) 0%, transparent 50%);
+        }
+        .floating-element {
+            animation: floating 6s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-white font-body-lg text-on-background min-h-screen overflow-x-hidden">
+<main class="min-h-screen flex flex-col md:flex-row">
+<!-- Left Section: Hero Content -->
+<section class="hidden md:flex md:w-1/2 bg-background hero-gradient relative items-center justify-center p-margin-desktop overflow-hidden border-r border-surface-container">
+<div class="max-w-xl relative z-10">
+<!-- Branding -->
+<div class="mb-12">
+<img alt="Ayurwellness Logo" class="h-16 w-auto object-contain mb-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm2jObK2Y1lsBpGeeIU5NppwptnUz3iFpX6vM-ikP8K2gxcuF-iXtT-GKaOgpGsQKaN2XxMit4WtA5EFG99x8cvevrHPUWe3Xszx3cVTwYemKzuyrQYU4BlMcWSI6BljeXwNNhOUWvlkndF-0iwLfkU5_zx4x59cwPRnx9vOVeStKqBwFNUJXkpkUDLG21vqRzu471UTXMvPdbYrjLVG6g7Z82pG_NXYNejQHLXoxv0efRsQB3dpC1S35CadWcRzj-MXPVKBHFnSc"/>
+<p class="text-primary font-bold tracking-widest text-label-sm uppercase">Natural • Balanced • Healthy</p>
+</div>
+<!-- Hero Content -->
+<h1 class="font-headline-lg text-[48px] leading-[1.1] text-primary mb-6">
+                    Your Wellness Journey <br/>Starts Here
+                </h1>
+<p class="text-body-lg text-secondary mb-12 leading-relaxed max-w-lg">
+                    Access trusted Ayurvedic consultations, personalized wellness plans, natural remedies, and premium healthcare products tailored to your unique dosha.
+                </p>
+<!-- Illustration Container -->
+<div class="relative w-full aspect-square max-w-sm mx-auto floating-element">
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-3xl scale-125"></div>
+<img alt="Ayurvedic Preparation Illustration" class="w-full h-full object-cover rounded-2xl shadow-2xl relative z-20 border border-white/50" data-alt="A premium high-resolution still life photography featuring a handcrafted stone mortar and pestle filled with fresh green herbs like holy basil and mint leaves. The scene is set on a minimalist light wood surface with soft morning sunlight creating gentle shadows. The aesthetic is clean, medical-grade, yet deeply rooted in organic wellness tradition, featuring a color palette of deep greens and warm whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpc-sNmlF7Y9YHlbGWOSO7uKw5jVrIox-pQU6aRNgVJbS5a63UEltCFLXO_8siWJSxSpiyU1_wYxFYXXNLJ2XP8v0F2cGyaH_tDh-ZlIYy5wy1gta3X8W4ri5U0sb2tvSNyGPa_M77jehwoH45ZU7TehHIOW6fkDJISzC_pdytwTvuDbLJb74TCaOWNnDWKGKQmSbbemKlCOqTLZwaGdxPNO4ur0ci7xbqrAIL5rvh9CNP6CX0PUzG3leJAKSH8mJmhyq1UnHheSM"/>
+<!-- Floating Highlights -->
+<div class="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-lg border border-primary-container z-30">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">eco</span>
+<div>
+<p class="text-label-lg text-primary">100% Natural</p>
+<p class="text-[10px] text-secondary">Pure Herb Extracts</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Trust Elements -->
+<div class="mt-16 flex items-center gap-8 border-t border-primary/10 pt-8">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">verified_user</span>
+<span class="text-label-sm text-secondary">Secure Login</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">medical_services</span>
+<span class="text-label-sm text-secondary">Ayurvedic Experts</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">hub</span>
+<span class="text-label-sm text-secondary">Wellness Ecosystem</span>
+</div>
+</div>
+</div>
+<!-- Decorative Background SVG -->
+<div class="absolute -bottom-20 -left-20 opacity-10">
+<svg fill="none" height="400" viewbox="0 0 200 200" width="400" xmlns="http://www.w3.org/2000/svg">
+<path d="M100 0C100 55.2285 55.2285 100 0 100C55.2285 100 100 144.772 100 200C100 144.772 144.772 100 200 100C144.772 100 100 55.2285 100 0Z" fill="#1F5D2E"></path>
+</svg>
+</div>
+</section>
+<!-- Right Section: Login Form -->
+<section class="w-full md:w-1/2 flex items-center justify-center p-margin-mobile md:p-margin-desktop bg-white">
+<!-- Mobile Logo Only -->
+<div class="md:hidden absolute top-8 left-margin-mobile">
+<img alt="Ayurwellness Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm2jObK2Y1lsBpGeeIU5NppwptnUz3iFpX6vM-ikP8K2gxcuF-iXtT-GKaOgpGsQKaN2XxMit4WtA5EFG99x8cvevrHPUWe3Xszx3cVTwYemKzuyrQYU4BlMcWSI6BljeXwNNhOUWvlkndF-0iwLfkU5_zx4x59cwPRnx9vOVeStKqBwFNUJXkpkUDLG21vqRzu471UTXMvPdbYrjLVG6g7Z82pG_NXYNejQHLXoxv0efRsQB3dpC1S35CadWcRzj-MXPVKBHFnSc"/>
+</div>
+<div class="w-full max-w-md">
+<!-- Mobile Welcome Text -->
+<div class="md:hidden mb-8 mt-12">
+<h2 class="font-headline-lg text-primary mb-2">Welcome Back</h2>
+<p class="text-body-md text-secondary">Join the thousands who trust Ayurwellness for their holistic health journey.</p>
+</div>
+<div class="bg-white p-6 md:p-10 rounded-2xl md:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08)] md:border border-surface-container-low transition-all duration-300">
+<div class="hidden md:block mb-8">
+<h2 class="font-headline-md text-on-background mb-1">Welcome Back</h2>
+<p class="text-body-md text-secondary">Enter your credentials to access your portal</p>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<button class="flex items-center justify-center gap-2 px-4 py-3 border border-surface-container-low rounded-lg hover:bg-surface-container-low transition-colors duration-200 group">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4g3Xvg2qiCuKZY6RQKdyOEXmhUPpP7gQUmkiQYWbaG3CxVfxecPiSmdVUD9pRtVY-9AebQnNoarb4ehf6mdz22RmQiPrqk0O4ahCRNnJ6sYia9_IrxOgAEmUap802XN9x6KRTzZbeLnXxsyoOODwCt1U1xaiWlB74vpxnHc7zOKpj-B9se31sIF7-_--VSD4mO7VoYAZdhwmLSWfYOm9kQEG74Sh-N9XS2wzoNNsGRJ1jbwOic-xPVg_KyEU2D4X-rrT4Pz7gU3s"/>
+<span class="text-label-lg text-on-background">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 px-4 py-3 border border-surface-container-low rounded-lg hover:bg-surface-container-low transition-colors duration-200 group">
+<svg class="w-5 h-5 fill-on-background" viewbox="0 0 24 24">
+<path d="M17.05 20.28c-.96.95-2.06 1.43-3.27 1.43-1.15 0-2.12-.41-3.1-1.22-1-.81-1.95-1.21-3.03-1.21-1.07 0-2 .41-3.03 1.21-1.01.81-2.02 1.22-3.13 1.22-1.15 0-2.18-.46-3.1-1.38-3.41-3.4-3.41-10.15 0-13.56 1.15-1.15 2.53-1.73 4.13-1.73.96 0 1.83.24 2.65.73 1 .59 1.8 1.13 2.45 1.13.61 0 1.34-.48 2.37-1.08.83-.49 1.8-.73 2.87-.73 1.48 0 2.76.54 3.82 1.62-4.14 2.1-3.41 7.63.78 9.32-.48 1.76-1.31 3.16-2.45 4.31zm-4.32-17.7c-.12 2.66-2.31 4.71-4.88 4.71.21-2.66 2.48-4.75 4.88-4.71z"></path>
+</svg>
+<span class="text-label-lg text-on-background">Apple</span>
+</button>
+</div>
+<div class="relative flex items-center mb-8">
+<div class="flex-grow border-t border-surface-container"></div>
+<span class="flex-shrink mx-4 text-label-sm text-outline uppercase tracking-widest">or continue with email</span>
+<div class="flex-grow border-t border-surface-container"></div>
+</div>
+<!-- Login Form -->
+<form class="space-y-6" id="loginForm">
+<div>
+<label class="block text-label-lg text-on-surface-variant mb-2" for="identifier">Mobile Number or Email</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">person</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-surface-container-lowest border border-surface-container-high rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-outline/50" id="identifier" name="identifier" placeholder="e.g. name@example.com" required="" type="text"/>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="block text-label-lg text-on-surface-variant" for="password">Password</label>
+<a class="text-label-lg text-primary hover:underline font-bold" href="#">Forgot Password?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full pl-12 pr-12 py-3.5 bg-surface-container-lowest border border-surface-container-high rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-outline/50" id="password" name="password" placeholder="Enter your password" required="" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" id="passwordIcon">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center">
+<input class="w-5 h-5 rounded border-surface-container-high text-primary focus:ring-primary cursor-pointer" id="remember" name="remember" type="checkbox"/>
+<label class="ml-3 text-body-md text-secondary cursor-pointer select-none" for="remember">Remember me for 30 days</label>
+</div>
+<button class="w-full bg-primary text-white py-4 px-6 rounded-xl font-bold text-headline-md shadow-lg shadow-primary/20 hover:bg-[#15411f] active:scale-[0.98] transition-all duration-200" type="submit">
+                            Log In
+                        </button>
+</form>
+<!-- Footer Link -->
+<div class="mt-8 text-center">
+<p class="text-body-md text-secondary">
+                            Don't have an account? 
+                            <a class="text-primary font-bold hover:underline" href="#">Create Account</a>
+</p>
+</div>
+</div>
+<!-- Footer Trust -->
+<div class="mt-12 text-center md:hidden">
+<div class="flex flex-wrap justify-center gap-4 text-outline text-[12px] uppercase tracking-tighter">
+<span>Secure Login</span>
+<span class="text-primary-container">•</span>
+<span>Expert Guided</span>
+<span class="text-primary-container">•</span>
+<span>100% Natural</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const passwordIcon = document.getElementById('passwordIcon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordIcon.innerText = 'visibility_off';
+            } else {
+                passwordInput.type = 'password';
+                passwordIcon.innerText = 'visibility';
+            }
+        }
+
+        // Form submission animation/logic
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerHTML = `
+                <svg class="animate-spin h-5 w-5 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            `;
+            btn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                alert('In a real application, you would be redirected now.');
+            }, 1500);
+        });
+
+        // Add focus effects to input parents
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.closest('.group')?.classList.add('ring-2', 'ring-primary/10');
+            });
+            input.addEventListener('blur', () => {
+                input.closest('.group')?.classList.remove('ring-2', 'ring-primary/10');
+            });
+        });
+    </script>
+</body></html>

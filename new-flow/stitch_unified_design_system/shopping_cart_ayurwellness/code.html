@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Your Cart | Ayurwellness</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e4e2e2",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#dfe4dc",
+                        "surface-bright": "#fbf9f8",
+                        "on-secondary-container": "#606660",
+                        "on-primary-container": "#9be9a4",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#40493f",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "tertiary-container": "#785800",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#434843",
+                        "on-secondary-fixed": "#181d18",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e7",
+                        "secondary": "#5a605a",
+                        "surface": "#fbf9f8",
+                        "surface-variant": "#e4e2e2",
+                        "surface-tint": "#1f6c35",
+                        "primary-fixed": "#a6f5af",
+                        "tertiary-fixed": "#ffdf9f",
+                        "on-tertiary-container": "#ffd06c",
+                        "surface-dim": "#dbd9d9",
+                        "primary-fixed-dim": "#8bd895",
+                        "outline": "#707a6e",
+                        "surface-container": "#efeded",
+                        "outline-variant": "#bfc9bc",
+                        "primary-container": "#1e6b34",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#8bd895",
+                        "background": "#fbf9f8",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#f6be35",
+                        "secondary-fixed-dim": "#c3c8c1",
+                        "on-tertiary-fixed": "#261a00",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f5f3f3",
+                        "on-primary-fixed": "#002109",
+                        "on-tertiary-fixed-variant": "#5c4300",
+                        "on-primary-fixed-variant": "#005321",
+                        "on-background": "#1b1c1c",
+                        "tertiary": "#5a4200",
+                        "primary": "#005221",
+                        "secondary-container": "#dfe4dc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "title-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["DM Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg": ["DM Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["DM Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #fbf9f8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cart-card-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest dark:bg-surface-dim docked full-width top-0 sticky z-50 shadow-[0px_4px_20px_rgba(0,0,0,0.05)]">
+<nav class="flex justify-between items-center w-full px-base md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<a class="font-display-lg text-headline-md font-bold text-primary dark:text-primary-fixed" href="#">Ayurwellness</a>
+<div class="hidden md:flex gap-6">
+<a class="font-body-lg text-body-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Home</a>
+<a class="font-body-lg text-body-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Categories</a>
+<a class="font-body-lg text-body-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Consultations</a>
+<a class="font-body-lg text-body-lg text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Wellness Blog</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all relative">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="max-w-container-max mx-auto px-base md:px-margin-desktop py-12">
+<div class="flex flex-col gap-4 mb-8">
+<nav class="flex items-center gap-2 text-on-surface-variant text-label-sm font-label-sm">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface">Your Shopping Cart</span>
+</nav>
+<h1 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface">Your Shopping Cart</h1>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Product List Section -->
+<section class="lg:col-span-8 flex flex-col gap-6">
+<!-- Cart Item 1: Ashwagandha -->
+<div class="cart-card-shadow bg-surface-container-lowest rounded-xl p-6 flex flex-col sm:flex-row gap-6 items-center transition-all hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)]">
+<div class="w-32 h-32 rounded-lg bg-surface-container-low flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A premium amber glass bottle of Ashwagandha extract sitting on a clean, white marble surface. Soft natural sunlight illuminates the label and creates delicate shadows. The background is a soft, out-of-focus wellness spa environment with organic textures and a muted green color palette that reflects the herbal medicine branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzqrKD2-ml1KzCSqKpYu9rIstn5vP6XwIJxm9TOXDrtswTPQKIWwc30_dlxHQyTqpQUgFR0Uq7u8j10F_AXp1FkPSfaNvh38iI7zsquEsxrN1YdIon6bHGb9RbutLpUNXViLvNqINwdVeRlTP-2GF6YiPrBpPLwLuGEAw6XLtL2Y0yoqLszWsJolX7755_fWSU0MKJk6zmZ-9N7GL69Nqy2HDuS2hUEcaLezj_G-cWstYjHQe-42qk3LdoW7M6_dKzNMzg5PM6h4Q"/>
+</div>
+<div class="flex-grow flex flex-col gap-1 text-center sm:text-left">
+<h3 class="font-title-lg text-title-lg text-on-surface">Organic Ashwagandha Root Powder</h3>
+<p class="text-on-surface-variant text-body-md italic">Stress relief &amp; natural vitality</p>
+<div class="mt-4 flex items-center justify-center sm:justify-start gap-4">
+<div class="flex items-center border border-outline-variant rounded-lg">
+<button class="px-3 py-1 hover:bg-surface-container-low text-primary transition-all rounded-l-lg">-</button>
+<span class="px-4 py-1 border-x border-outline-variant font-label-lg text-label-lg">1</span>
+<button class="px-3 py-1 hover:bg-surface-container-low text-primary transition-all rounded-r-lg">+</button>
+</div>
+<button class="text-error text-label-lg font-label-lg hover:underline transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+                                Remove
+                            </button>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-primary">$24.99</p>
+<p class="text-outline text-label-sm line-through">$32.00</p>
+</div>
+</div>
+<!-- Cart Item 2: Triphala Churna -->
+<div class="cart-card-shadow bg-surface-container-lowest rounded-xl p-6 flex flex-col sm:flex-row gap-6 items-center transition-all hover:shadow-[0px_8px_30px_rgba(0,0,0,0.08)]">
+<div class="w-32 h-32 rounded-lg bg-surface-container-low flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylish ceramic bowl containing fine Triphala Churna herbal powder placed on a textured bamboo mat. Around the bowl are raw ingredients like dried amla and haritaki. The lighting is warm and organic, creating a serene, professional wellness atmosphere focused on traditional Ayurvedic digestive health." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0wlRoDabMGSc_tqSKNLw1xsH7-AOjRxlYdLtrUjBY9oqXNEpOQctKHrtlzy0Fwh8kioEHuzRrdSaJyMt_dJZXcGLZeL0MVMqhN80-SAYEEnmcTrfhz92LxLZswKLg0tuznTgyJlrNqY_u5iDAY1lT_uCYHr6vHsiON2xQMZriznA-f3qWZqxAj88XQrJOqyURgh86Z90AmJKH5I4XvqslYoajDkr33Mx8fVcuH9lSBQDf2W5pf-PiSG8ZGbHFv49kNibu2MMAub0"/>
+</div>
+<div class="flex-grow flex flex-col gap-1 text-center sm:text-left">
+<h3 class="font-title-lg text-title-lg text-on-surface">Pure Triphala Churna</h3>
+<p class="text-on-surface-variant text-body-md italic">Digestive detox &amp; rejuvenation</p>
+<div class="mt-4 flex items-center justify-center sm:justify-start gap-4">
+<div class="flex items-center border border-outline-variant rounded-lg">
+<button class="px-3 py-1 hover:bg-surface-container-low text-primary transition-all rounded-l-lg">-</button>
+<span class="px-4 py-1 border-x border-outline-variant font-label-lg text-label-lg">2</span>
+<button class="px-3 py-1 hover:bg-surface-container-low text-primary transition-all rounded-r-lg">+</button>
+</div>
+<button class="text-error text-label-lg font-label-lg hover:underline transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+                                Remove
+                            </button>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-primary">$37.00</p>
+<p class="text-on-surface-variant text-label-sm">($18.50 each)</p>
+</div>
+</div>
+<div class="mt-4">
+<a class="text-primary font-label-lg text-label-lg flex items-center gap-2 hover:translate-x-[-4px] transition-transform w-fit" href="#">
+<span class="material-symbols-outlined">arrow_back</span>
+                        Continue Shopping
+                    </a>
+</div>
+</section>
+<!-- Order Summary Sidebar -->
+<aside class="lg:col-span-4 sticky top-28">
+<div class="cart-card-shadow bg-surface-container-lowest rounded-xl p-8 flex flex-col gap-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Order Summary</h2>
+<div class="flex flex-col gap-4 py-4 border-y border-outline-variant">
+<div class="flex justify-between items-center text-body-lg font-body-lg">
+<span class="text-on-surface-variant">Subtotal</span>
+<span class="text-on-surface">$61.99</span>
+</div>
+<div class="flex justify-between items-center text-body-lg font-body-lg">
+<span class="text-on-surface-variant">Shipping</span>
+<span class="text-primary-container font-semibold">FREE</span>
+</div>
+<div class="flex justify-between items-center text-body-lg font-body-lg">
+<span class="text-on-surface-variant">Estimated Tax</span>
+<span class="text-on-surface">$0.00</span>
+</div>
+</div>
+<div class="flex justify-between items-center text-headline-md font-headline-md py-2">
+<span class="text-on-surface">Total Amount</span>
+<span class="text-primary">$61.99</span>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-lg text-label-lg text-on-surface" for="coupon">Apply Coupon</label>
+<div class="flex gap-2">
+<input class="flex-grow border border-outline-variant rounded-lg px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="coupon" placeholder="Enter code" type="text"/>
+<button class="px-4 py-2 border border-primary text-primary font-label-lg rounded-lg hover:bg-primary hover:text-white transition-all">Apply</button>
+</div>
+</div>
+<button class="w-full py-4 bg-primary text-white font-headline-md rounded-lg shadow-lg hover:bg-primary-container hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                        Proceed to Checkout
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<div class="flex items-center justify-center gap-2 py-2 text-on-surface-variant text-label-sm font-label-sm border-t border-outline-variant pt-6">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+                        Secure Checkout Guaranteed
+                    </div>
+<div class="flex justify-center gap-4 opacity-50">
+<span class="material-symbols-outlined text-[32px]">credit_card</span>
+<span class="material-symbols-outlined text-[32px]">payments</span>
+<span class="material-symbols-outlined text-[32px]">account_balance_wallet</span>
+</div>
+</div>
+<div class="mt-6 p-4 bg-primary-fixed text-on-primary-fixed rounded-xl flex gap-4 items-center">
+<span class="material-symbols-outlined text-primary text-[32px]">eco</span>
+<p class="text-body-md leading-tight">Your purchase supports <strong>Fair Trade herbal farming</strong> in organic villages.</p>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-high dark:bg-surface-container-lowest full-width mt-auto">
+<div class="w-full px-base md:px-margin-desktop py-12 grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto">
+<div class="flex flex-col gap-4">
+<span class="font-display-lg text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Ayurwellness</span>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">Blending ancient wisdom with modern living to help you achieve holistic health through nature's most potent remedies.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-title-lg text-title-lg text-primary">Quick Links</h4>
+<ul class="flex flex-col gap-2">
+<li><a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim underline transition-all" href="#">About Us</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim underline transition-all" href="#">Our Experts</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim underline transition-all" href="#">Wellness Blog</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-title-lg text-title-lg text-primary">Support</h4>
+<ul class="flex flex-col gap-2">
+<li><a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim underline transition-all" href="#">Terms of Service</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-primary dark:hover:text-primary-fixed-dim underline transition-all" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-title-lg text-title-lg text-primary">Newsletter</h4>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">Get wellness tips and exclusive herbal offers.</p>
+<div class="flex gap-2">
+<input class="bg-surface-container-lowest dark:bg-surface-dim border-none rounded-lg px-4 py-2 flex-grow outline-none focus:ring-1 focus:ring-primary" placeholder="Email address" type="email"/>
+<button class="bg-primary text-white p-2 rounded-lg">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="w-full px-base md:px-margin-desktop py-6 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto text-on-surface-variant opacity-90">
+<span class="font-body-md text-body-md">© 2024 Ayurwellness. Holistic Healing, Modern Efficiency.</span>
+<div class="flex gap-6 mt-4 md:mt-0">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">face_nod</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">camera</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">share</span>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for item quantity simulation
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.innerText === '+' || this.innerText === '-') {
+                    const span = this.parentElement.querySelector('span');
+                    let val = parseInt(span.innerText);
+                    if (this.innerText === '+') val++;
+                    if (this.innerText === '-' && val > 1) val--;
+                    span.innerText = val;
+                }
+            });
+        });
+
+        // Theme Switcher Mock (for demo purposes)
+        window.toggleDarkMode = () => {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body></html>

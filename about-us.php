@@ -4,213 +4,178 @@ $site_title = 'About Us';
 require_once __DIR__ . '/includes/header.php';
 ?>
 
-<!-- 1. Hero Section -->
-<section class="relative h-[819px] flex items-center overflow-hidden">
+<style>
+.herbal-gradient {
+    background: linear-gradient(135deg, rgba(0, 82, 33, 0.05) 0%, rgba(244, 249, 241, 1) 100%);
+}
+</style>
+
+<!-- Hero Section -->
+<section class="relative w-full h-[716px] min-h-[500px] flex items-center overflow-hidden">
 <div class="absolute inset-0 z-0">
-<img alt="Ancient Wisdom Modern Precision" class="w-full h-full object-cover brightness-75" data-alt="A high-end cinematic shot of fresh Ayurvedic herbs like Ashwagandha and Brahmi arranged on a clean, light ivory stone surface. The lighting is soft and ethereal, capturing the fine textures and vibrant greens of the leaves. The aesthetic is clean, medical-grade minimalism blended with traditional botanical heritage, using a palette of deep forest green and soft cream tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMFr7zJc1aoyvW5h0fi27sI4oYC9u-V5iUgfdVQs3obhW1HplTEi9R886lnmMKWm6x0cPWkxyul1KfCsFSe9DJ382Uh-SIxxwCEDoN_T21z0tFwQXbuv6euYBHGwI60K6lR-GcJ1Fc-h4p4qnZ5RdgyEELG0NhRoRBbMjlQDjLCeSy--qqoWt3Wrsr7xbW62ldKwCFrixEkB1-aHLtDLmYW9rUX4TuI37E7GfquLR7pWbdFttQhymuzYX9riZTfYpa_umlbjLKYE4"/>
-<div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent"></div>
+<img alt="Ayurvedic Heritage" class="w-full h-full object-cover brightness-[0.75]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC58D1ovvqUINGsOwx8IAkH7FI4GIq-8jdMZP3JqY0ou9Z0JZzfMYImddK_c8l6kK-DM0hXW_UG20wAYuLOlty9jO0XtSiYGTW3fRf5zFs9rx5BpZbCouIbq87TeId3n_dotiqawnSl5ZIzMaxHtgUbDPRdu3BPDAoVcUybB5vtaHi5tL9GIicZhi2OeD4SFYU7QLrYTROtnBzv5yFZc9_ICE5RpWs66ALUO-Qv4L6L06666G394_eIAku-tttdwGYw64WXJWfmoU"/>
 </div>
-<div class="relative z-10 px-gutter max-w-container-max mx-auto w-full">
-<div class="max-w-2xl">
-<h1 class="font-display-lg text-display-lg text-white mb-6">Ancient Wisdom, Modern Precision</h1>
-<p class="text-body-lg text-white/90 mb-8 max-w-lg">Bridging the gap between timeless Ayurvedic healing and contemporary medical excellence to nurture your enduring wellness.</p>
-<div class="flex gap-4">
-<a class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-full font-label-md hover:scale-105 transition-transform inline-block" href="<?= BASE_URL ?>/about-us.php">Explore Our Heritage</a>
+<div class="relative z-10 w-full px-base md:px-margin-desktop max-w-container-max mx-auto text-white">
+<div class="max-w-3xl">
+<h1 class="font-display-lg text-display-lg md:text-[64px] leading-tight mb-6">Our Roots in Nature, Our Heart in Wellness.</h1>
+<p class="font-body-lg text-body-lg md:text-title-lg text-white/90 leading-relaxed mb-8">The story of how <?= SITE_NAME ?> is bridging ancient Ayurvedic wisdom with modern wellness needs.</p>
+</div>
+</div>
+</section>
+
+<!-- The Heritage Story -->
+<section class="py-20 bg-background">
+<div class="max-w-container-max mx-auto px-base md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="order-2 md:order-1">
+<h2 class="font-display-lg text-headline-lg text-primary mb-6">A Legacy of Healing</h2>
+<div class="space-y-4 font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+<p>Our journey began in the lush valley of Kerala, where the rhythm of life is dictated by the seasons and the soil. For generations, our founders studied the sacred texts of Ayurveda, learning the delicate art of balancing the three doshas—Vata, Pitta, and Kapha.</p>
+<p><?= SITE_NAME ?> was born from a vision to take this time-honored expertise out of the local village and into the digital age. We believed that the path to true health shouldn't be a trade-off between tradition and convenience.</p>
+<p>Today, we serve as a bridge, preserving the authenticity of traditional herbal extraction while utilizing modern quality control and clinical insights to ensure every drop and capsule meets the highest standards of safety and efficacy.</p>
+</div>
+</div>
+<div class="order-1 md:order-2 rounded-2xl overflow-hidden shadow-xl">
+<img alt="Heritage Tradition" class="w-full h-[500px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZuyaTvDIEG8YHKy4Ji57cS2Fb-hsBaKcu4ALDICXuYwVVHl8z6SQGPw4foDZHcM19PWDtpRfHup57ORYG2lKc0rwSemcbLYov7_xX62bsLDHFnVWug2L4ddvDg25VBYxyojh8Wx--J3xFQE7TE6dj9m2a7RfChvnSlNKjBabOKMW0q4eZnon8yFULL2_oMg-nlfD1U5YIiC0rYfKQJF5w6LCj3YWJNnQy7GPprRafJFwJ4AlvGHTEPItHk7gSN0roRy2cYvLYrao"/>
+</div>
+</div>
+</section>
+
+<!-- Our Mission & Vision -->
+<section class="py-20 bg-secondary-container/30">
+<div class="max-w-container-max mx-auto px-base md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-surface-container-lowest p-12 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-center text-center">
+<span class="material-symbols-outlined text-primary text-5xl mb-6">eco</span>
+<h3 class="font-headline-lg text-headline-lg text-primary mb-4">Our Mission</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant italic">"To empower every individual with natural, balanced, and healthy living through authentic Ayurveda."</p>
+</div>
+<div class="bg-primary p-12 rounded-xl shadow-lg flex flex-col justify-center text-center text-white">
+<span class="material-symbols-outlined text-primary-fixed text-5xl mb-6">visibility</span>
+<h3 class="font-headline-lg text-headline-lg text-primary-fixed mb-4">Our Vision</h3>
+<p class="font-body-lg text-body-lg text-white/90 italic">"To be the world's most trusted destination for holistic wellness and herbal healing."</p>
 </div>
 </div>
 </div>
 </section>
 
-<!-- 2. Company Story -->
-<section class="py-section-gap px-gutter max-w-container-max mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
-<div class="relative">
-<div class="aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl">
-<img alt="Our Origins 1994" class="w-full h-full object-cover" data-alt="A vintage black and white photograph of an early Ayurvedic apothecary from 1994, showing glass jars filled with botanical powders and a dedicated practitioner. The image is presented with a modern, high-contrast edit on a pristine white background, framed by elegant borders to signify trust and clinical legacy in the field of natural healthcare." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOJxywUJa4m7ToXdIYhnmdpI8p8r-QX8ofgLauwPrOjWbOL_v7k_cRfkUsgU5kPbtsfxSxx7Y1u6xIuHuwHryR-vT-6dW-5Og0O5jcYwnKz6NYORP_o_kKQVyuxYfsLrOhs5LzoRwzOMotS1ZYgJ92V2hKCTrKhsXjRXFwoV8jrAUWXsDAOSSge13tDHwhCucpFQP09mNopS591DBGw0m4H3lF6x7jQyLi3eYr5hAHqpkyLhu5uGfSdBW7903VJeXJP4mM-yH-xBE"/>
+<!-- The Pillars -->
+<section class="py-24 bg-white">
+<div class="max-w-container-max mx-auto px-base md:px-margin-desktop text-center mb-16">
+<h2 class="font-display-lg text-headline-lg text-primary mb-4">The Pillars of <?= SITE_NAME ?></h2>
+<div class="w-24 h-1 bg-tertiary-fixed-dim mx-auto rounded-full"></div>
 </div>
-<div class="absolute -bottom-8 -right-8 bg-primary p-8 rounded-2xl text-white shadow-xl hidden md:block">
-<div class="text-[48px] font-bold leading-none">30+</div>
-<div class="text-label-md opacity-80">Years of Clinical Excellence</div>
+<div class="max-w-container-max mx-auto px-base md:px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="group flex flex-col items-center text-center p-8 hover:bg-surface-container-low transition-all duration-300 rounded-2xl">
+<div class="w-20 h-20 flex items-center justify-center bg-primary-container/10 rounded-full mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-4xl">verified</span>
 </div>
+<h4 class="font-title-lg text-title-lg text-primary mb-3">Authenticity</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Sourcing the purest herbs from organic farms, ensuring every ingredient is harvested at its peak medicinal potency.</p>
 </div>
-<div class="space-y-6 md:pl-12">
-<span class="text-secondary font-label-md tracking-widest uppercase">Our Heritage</span>
-<h2 class="font-headline-lg text-headline-lg text-primary">Born from a passion for holistic integrity in 1994.</h2>
-<p class="text-on-surface-variant leading-relaxed">Ayurwellness began as a small research clinic dedicated to validating the profound effects of traditional botanical medicine. Over three decades, we have evolved into a leading authority in Ayurvedic healthcare, maintaining the same rigor and respect for nature that guided our first formulations.</p>
-<p class="text-on-surface-variant leading-relaxed">Today, we operate a vertically integrated ecosystem—from organic herb cultivation to state-of-the-art clinical testing—ensuring that every bottle carries the promise of purity and potency.</p>
+<div class="group flex flex-col items-center text-center p-8 hover:bg-surface-container-low transition-all duration-300 rounded-2xl">
+<div class="w-20 h-20 flex items-center justify-center bg-primary-container/10 rounded-full mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-4xl">medical_services</span>
 </div>
+<h4 class="font-title-lg text-title-lg text-primary mb-3">Expertise</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Guided by certified Ayurvedic doctors and practitioners who ensure ancient formulas are applied with modern wisdom.</p>
 </div>
-</section>
-
-<!-- 3. Mission & Vision -->
-<section class="bg-surface-container-low py-section-gap px-gutter">
-<div class="max-w-container-max mx-auto">
-<div class="text-center mb-16">
-<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Values that Root Our Practice</h2>
-<p class="text-on-surface-variant max-w-2xl mx-auto">Our principles are the bedrock of every consultation and product we deliver to our global community.</p>
+<div class="group flex flex-col items-center text-center p-8 hover:bg-surface-container-low transition-all duration-300 rounded-2xl">
+<div class="w-20 h-20 flex items-center justify-center bg-primary-container/10 rounded-full mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-4xl">biotech</span>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<div class="bg-white p-10 rounded-[24px] border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
-<div class="w-12 h-12 bg-primary-container rounded-xl flex items-center justify-center mb-6">
-<span class="material-symbols-outlined text-primary-fixed">clinical_notes</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary mb-3">Our Mission</h3>
-<p class="text-on-surface-variant">To empower individuals through personalized Ayurvedic protocols backed by modern clinical research and ethical sourcing.</p>
-</div>
-<div class="bg-white p-10 rounded-[24px] border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
-<div class="w-12 h-12 bg-primary-container rounded-xl flex items-center justify-center mb-6">
-<span class="material-symbols-outlined text-primary-fixed">visibility</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary mb-3">Our Vision</h3>
-<p class="text-on-surface-variant">To be the global gold standard for integrative botanical healthcare, where tradition and science coexist for human longevity.</p>
-</div>
-<div class="bg-white p-10 rounded-[24px] border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
-<div class="w-12 h-12 bg-primary-container rounded-xl flex items-center justify-center mb-6">
-<span class="material-symbols-outlined text-primary-fixed">eco</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary mb-3">Core Integrity</h3>
-<p class="text-on-surface-variant">Uncompromising commitment to organic purity, sustainable harvesting, and complete transparency in our manufacturing process.</p>
-</div>
+<h4 class="font-title-lg text-title-lg text-primary mb-3">Innovation</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Modern scientific rigor applied to ancient formulas to create bio-available, effective, and safe wellness solutions.</p>
 </div>
 </div>
 </section>
 
-<!-- 4. Team -->
-<section class="py-section-gap px-gutter max-w-container-max mx-auto">
-<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-<div class="max-w-xl">
-<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Leadership &amp; Medical Board</h2>
-<p class="text-on-surface-variant">Guided by a diverse team of Ayurvedic scholars, modern pharmacologists, and clinical specialists.</p>
+<!-- Meet Our Team -->
+<section class="py-20 bg-background overflow-hidden">
+<div class="max-w-container-max mx-auto px-base md:px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div>
+<h2 class="font-display-lg text-headline-lg text-primary mb-2">Meet Our Experts</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">A panel of world-class practitioners dedicated to your health.</p>
 </div>
-<a class="border border-primary text-primary px-8 py-3 rounded-full font-label-md hover:bg-primary hover:text-white transition-all inline-block" href="<?= BASE_URL ?>/doctor-listing.php">View All Members</a>
+<a class="text-primary font-label-lg hover:underline flex items-center gap-2" href="<?= BASE_URL ?>/doctor-listing.php">View All Experts <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
-<div class="group">
-<div class="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
-<img alt="Dr. Aruna Varma" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A professional portrait of a senior medical director in a minimalist modern clinical setting. The doctor is wearing a clean white coat with a sophisticated botanical lapel pin. The lighting is bright and warm, conveying a sense of authoritative kindness and medical precision. The overall style is editorial and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFCE4gzH34usGEOY5haA4gcrrBp-LrMKWKLsNGPuvRy9UxEbEKt1Rp2jipDFZD6vOrnCtp98h7je1lq-q12jhJeq7_AZPod48u5drp3MJZPuWWQvJ2G6b8YUB61QhErDSDV_ag3ZARAH23_9d4EHqgCS4lHBNjLGcGlM6HjTBIn2d4GQD7ef_f-jj52Egl5PPBomZVUAuxCUAbMewJeb6BcbgogK4FikLwdFe5Bhtj7dBGrqAEJ9gTu58dIDp00K_i9BEPp3-e5hg"/>
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-<div class="flex gap-4">
-<span class="material-symbols-outlined text-white cursor-pointer">share</span>
-</div>
-</div>
-</div>
-<h4 class="font-headline-md text-headline-md text-primary">Dr. Aruna Varma</h4>
-<p class="text-label-md text-secondary uppercase">Chief Medical Officer</p>
-</div>
-<div class="group">
-<div class="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
-<img alt="Dr. Vikram Singh" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A portrait of a male Ayurvedic scholar and researcher in a high-tech laboratory filled with glass flasks and botanical extracts. He is dressed in professional clinical attire, exuding confidence and expertise. The lighting emphasizes the intersection of nature and science, with soft focus on the botanical elements in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChFH-ZSRrwYAPI7mjj5mHwayheMWyfe5fuuRLJFhggrhdkVvpBcNREzqkejletVivDipV6EDkLn3QYuLO_nX8lHsXz97ZHgjdkwRFAw_nYl6dT14sHYCwYOdy2ododQCNXQqrU1gnaJB2GACA5mZDyBghgPtjpQos_GGnzIZ5-9IUAScp_nBVqX9hOTGkGYxGvdbs6kRR4pbC-e5kfm_R6_inAPIjAoyeIDkponDwRNlpAxJ8lhMXzZ2_6zR0RghorggZlGgVkXbU"/>
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-<div class="flex gap-4">
-<span class="material-symbols-outlined text-white cursor-pointer">share</span>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img alt="Dr. Vaidya Anand" class="w-full h-64 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfQub61zTAsRw661ad8_jdHEzA-S6ribEQQENYPpn5WKSMfKHeiCmryGOhyviRhT2mB-QJdxDFEErGdwQDhsp50V17ZUVZBVi6zGIaQLzLpid-4793q7OAq6IigrRPyT0e9JGp1cD7P-uRRZR--ARyP26jFIRubOUtTdrYIudPZvhxjVyIcKQzDL4wX4hN4dwLPRuC8njaCM3Pw5YdlMeqRrPzg369TtBCShcgAfe_0uxzWPWgHHHbriN7vAU3zQNh0zqgUB6ohIg"/>
+<div class="p-6 text-center">
+<h5 class="font-title-lg text-primary mb-1">Dr. Vaidya Anand</h5>
+<p class="font-label-sm text-secondary mb-4 uppercase tracking-wider">Chief Consultant, BAMS</p>
+<p class="text-body-md text-on-surface-variant line-clamp-2">20+ years of experience in classical Ayurvedic internal medicine.</p>
 </div>
 </div>
-</div>
-<h4 class="font-headline-md text-headline-md text-primary">Dr. Vikram Singh</h4>
-<p class="text-label-md text-secondary uppercase">Head of Research</p>
-</div>
-<div class="group">
-<div class="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
-<img alt="Meera Kapoor" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A portrait of a female pharmaceutical operations lead in a sleek, modern corporate office environment. The background shows soft-focus glass partitions and botanical plants. She has a composed, professional expression. The aesthetic is clean and high-contrast, representing modern operational excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1I3vw-DPUdQ3m9EmJnSJziz25-JJnU73TVGF5Iyg1hoHCxYd3UlGDA9DiI0Dn6-iyZEhbiOvqWknctlPA9k2Nd87uaR5AvIxLn_CN91EYxRB40iKMLI8ArlQhmkoDGeTSLqxk_MoCWSU4da1BptLhj0iTvFyWghpuTIbGaIyrFbVzwqxB8mL9kKOMDXTqCZqiv0McI4ga0oKGhPkoE_z_ZRxrhQBKfYH5nLbaQ42zbj8xG8OZp3DfkJEdD5xqcZcpi9pUX17f8dg"/>
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-<div class="flex gap-4">
-<span class="material-symbols-outlined text-white cursor-pointer">share</span>
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img alt="Dr. Priyanka Sharma" class="w-full h-64 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuiW5XmOvBQQJgR4NrukF2_uayvrKfQFArb2HJvK9B854qrEl11se0Ft3mPauuxUAK1juZFzeSfFl3X9fhwdnyvmzcRsAvOUrf5Tfy8WeSYVATK4xAcg44oH42VjXLv8yn-Is_eRp13QSutdCSZdCby1l2qvuXndzk3_MQ0fz4znWMJuU8eFn6UzGuOJILG71nxBNYKN5AYbvgEa6l7-czFYDFJxwu3HRFkTJyIq2N149VKkYEuquIPsKT4QoUpNxMJf7iI8i9C00"/>
+<div class="p-6 text-center">
+<h5 class="font-title-lg text-primary mb-1">Dr. Priyanka Sharma</h5>
+<p class="font-label-sm text-secondary mb-4 uppercase tracking-wider">Herbal Pharmacist, MD</p>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Specializing in botanical formulations and modern safety protocols.</p>
 </div>
 </div>
-</div>
-<h4 class="font-headline-md text-headline-md text-primary">Meera Kapoor</h4>
-<p class="text-label-md text-secondary uppercase">Operations Director</p>
-</div>
-<div class="group">
-<div class="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
-<img alt="Dr. Rajesh Iyer" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A portrait of a senior Ayurvedic practitioner and board member. The setting is a serene, traditionally-inspired healthcare suite with wood paneling and soft warm lighting. He has a warm, welcoming presence. The style reflects a deep respect for heritage and patient-focused wellness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMuzg0E0wfk8rHLVRZnLREoYizqoUbSh8y6iUMLqzka71ANM7aqprsCe_HC8m0j__7EdwCWJgBlZD2PXykWFFhrzypCmuWUkoZ2BgkkX-FwN1VrDNV0e4n4Le5Wa5Lpyem1O5lJcC4AtcSeGNe95mnYex2EU4lnboYqMkh3ULBCOCcGVMREyXWDkz433ZRDgpuu5lEZ78D1csIASudJvCW02wxg_zlrOj_d7RJP9zPPgTR186KXUUjbLLm_bkB9_8qY0dL7kt5cVw"/>
-<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-<div class="flex gap-4">
-<span class="material-symbols-outlined text-white cursor-pointer">share</span>
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img alt="Acharya Rishi" class="w-full h-64 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4mhyIyFEri6_gkGU02Dj0K2dmZFDmbBPaUJFbxfMh-CWSI1LXbE7qQwVZrqTEAovSJjaX5dHjEuXYFHmF3ehyjjpTZDsMpH3_iLEgFPaSlH7emSBSmmSHIcrwuVu9z1_9Unt4_ESR92cKQGWksrJs5soohdIBznj5GZfuLc-MIBf0vP_8xpjWMhbMUp-Ni0cdbKgSIiYASDSd695OBI5CGwP_RKFujbf9zNL_PxMwDoX9ACz0kNBFALkCS9ae1_Mq8DGFyvWHjLE"/>
+<div class="p-6 text-center">
+<h5 class="font-title-lg text-primary mb-1">Acharya Rishi</h5>
+<p class="font-label-sm text-secondary mb-4 uppercase tracking-wider">Lifestyle Coach</p>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Expert in Yogic practices and holistic daily wellness routines.</p>
 </div>
 </div>
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<img alt="Dr. Meera Iyer" class="w-full h-64 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX2blHF08sMRdZuQhk-xn7XZSV3XPQyjn6KnD6s0LUYKiwh40HDueaAzsKQIbxaPNHmCgWFDIyYp6AP2ciTt5EUWZ8fvk4Dc6vQY_d3PqrMiFO-PDOzoihSHY1C-8B91Cs_R8AZ5fQf-_W6Tu9IigPgfhDmKOQfW8MBi4ehm3sFOrdRryxu9YpPWLoHj94o5_83kZoaiagPjLlxJ2w8eP0gaETyJmckWCToUgE6I5HBz1TSe8h16Z6aay1uf-6NiRwa9TI5MDOfnY"/>
+<div class="p-6 text-center">
+<h5 class="font-title-lg text-primary mb-1">Dr. Meera Iyer</h5>
+<p class="font-label-sm text-secondary mb-4 uppercase tracking-wider">Clinical Researcher</p>
+<p class="text-body-md text-on-surface-variant line-clamp-2">Focused on bridging clinical research with traditional Ayurvedic remedies.</p>
 </div>
-<h4 class="font-headline-md text-headline-md text-primary">Dr. Rajesh Iyer</h4>
-<p class="text-label-md text-secondary uppercase">Senior Board Member</p>
-</div>
-</div>
-</section>
-
-<!-- 5. Certifications -->
-<section class="bg-primary py-16">
-<div class="px-gutter max-w-container-max mx-auto">
-<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 hover:opacity-100 transition-opacity">
-<div class="flex flex-col items-center gap-2">
-<span class="material-symbols-outlined text-white text-[48px]">verified</span>
-<span class="text-white font-label-md">ISO 9001:2015</span>
-</div>
-<div class="flex flex-col items-center gap-2">
-<span class="material-symbols-outlined text-white text-[48px]">health_and_safety</span>
-<span class="text-white font-label-md">WHO GMP Certified</span>
-</div>
-<div class="flex flex-col items-center gap-2">
-<span class="material-symbols-outlined text-white text-[48px]">nature</span>
-<span class="text-white font-label-md">USDA Organic</span>
-</div>
-<div class="flex flex-col items-center gap-2">
-<span class="material-symbols-outlined text-white text-[48px]">science</span>
-<span class="text-white font-label-md">NABL Accredited</span>
 </div>
 </div>
 </div>
 </section>
 
-<!-- 6. Manufacturing Process -->
-<section class="py-section-gap px-gutter max-w-container-max mx-auto">
-<div class="text-center mb-16">
-<h2 class="font-headline-lg text-headline-lg text-primary mb-4">The Alchemy of Excellence</h2>
-<p class="text-on-surface-variant max-w-2xl mx-auto">From the forest floor to your doorstep, our 4-step process ensures unrivaled quality control.</p>
+<!-- Sustainability & Community -->
+<section class="py-20 relative overflow-hidden">
+<div class="absolute inset-0 z-0 bg-secondary-container/10"></div>
+<div class="max-w-container-max mx-auto px-base md:px-margin-desktop relative z-10 flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1">
+<img alt="Organic Farming" class="w-full h-[400px] object-cover rounded-3xl shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHTywBIs-LhGLV0SrX7XRH1Dhncus3suR9iYAFZT1EIaGfyQnpcp2wGIDWpVQMi72BOAyCXlYCaoN4Vntwlo941bcO0Eb-QPraqG7yva-s_bKDQmKe1UY_2vtaIf4Ub-O0zaCzznp_NwA4QZLwZOSmCdctVaU-56V-kObtpSUvsd7dN11X5-kSuZbgCf8T4NuyGkgIaAc9efuLsJUCFsDd0HZnI_PWTtgLbyrnHK94q89ExppMvCdxRCADAq_ryI-8yiYt5hTCYag"/>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-<div class="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-outline-variant -z-10"></div>
-<div class="bg-white p-8 rounded-[32px] border border-outline-variant flex flex-col items-center text-center group hover:border-primary transition-colors">
-<div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mb-6 border border-outline-variant group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-primary group-hover:text-white">potted_plant</span>
+<div class="flex-1 space-y-6">
+<h2 class="font-display-lg text-headline-lg text-primary">Nurturing Earth & Community</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Our commitment extends beyond your health. We believe in the health of the planet and the prosperity of those who tend it.</p>
+<div class="space-y-4">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-2 rounded-lg h-fit">handshake</span>
+<div>
+<h6 class="font-title-lg text-primary mb-1">Fair Trade Practices</h6>
+<p class="text-body-md text-on-surface-variant">We partner directly with small-scale farmers, ensuring they receive fair wages and technical support for organic cultivation.</p>
 </div>
-<h4 class="font-headline-md text-headline-md text-primary mb-2">Source</h4>
-<p class="text-body-md text-on-surface-variant">Sustainably wild-harvested from certified organic forest beds.</p>
 </div>
-<div class="bg-white p-8 rounded-[32px] border border-outline-variant flex flex-col items-center text-center group hover:border-primary transition-colors">
-<div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mb-6 border border-outline-variant group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-primary group-hover:text-white">biotech</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-2 rounded-lg h-fit">compost</span>
+<div>
+<h6 class="font-title-lg text-primary mb-1">Zero Waste Packaging</h6>
+<p class="text-body-md text-on-surface-variant">Reducing our footprint with eco-friendly, recyclable, and biodegradable packaging for all our wellness products.</p>
 </div>
-<h4 class="font-headline-md text-headline-md text-primary mb-2">Extract</h4>
-<p class="text-body-md text-on-surface-variant">Cold-press and CO2 extraction to preserve vital nutrients.</p>
 </div>
-<div class="bg-white p-8 rounded-[32px] border border-outline-variant flex flex-col items-center text-center group hover:border-primary transition-colors">
-<div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mb-6 border border-outline-variant group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-primary group-hover:text-white">microscope</span>
 </div>
-<h4 class="font-headline-md text-headline-md text-primary mb-2">Test</h4>
-<p class="text-body-md text-on-surface-variant">Third-party lab verification for purity and active compounds.</p>
-</div>
-<div class="bg-white p-8 rounded-[32px] border border-outline-variant flex flex-col items-center text-center group hover:border-primary transition-colors">
-<div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mb-6 border border-outline-variant group-hover:bg-primary transition-colors">
-<span class="material-symbols-outlined text-primary group-hover:text-white">inventory_2</span>
-</div>
-<h4 class="font-headline-md text-headline-md text-primary mb-2">Package</h4>
-<p class="text-body-md text-on-surface-variant">Miron violet glass to protect potency from light degradation.</p>
 </div>
 </div>
 </section>
 
 <!-- CTA Section -->
-<section class="mb-section-gap px-gutter max-w-container-max mx-auto">
-<div class="bg-primary-container rounded-[40px] p-12 md:p-24 text-center relative overflow-hidden">
-<div class="absolute inset-0 opacity-10">
-<div class="absolute top-0 right-0 w-96 h-96 bg-primary-fixed rounded-full blur-[100px]"></div>
-<div class="absolute bottom-0 left-0 w-96 h-96 bg-tertiary-fixed rounded-full blur-[100px]"></div>
-</div>
-<div class="relative z-10">
-<h2 class="font-display-lg text-display-lg text-white mb-6">Ready to start your wellness journey?</h2>
-<p class="text-body-lg text-white/80 mb-10 max-w-xl mx-auto">Our specialists are here to guide you toward a balanced life with personalized care.</p>
-<a class="bg-secondary-container text-on-secondary-container px-12 py-5 rounded-full font-headline-md hover:scale-105 transition-transform shadow-lg inline-block" href="<?= BASE_URL ?>/appointment-booking.php">Book Your Consultation</a>
-</div>
+<section class="py-24 text-center px-base">
+<div class="max-w-3xl mx-auto bg-primary py-16 px-8 rounded-[40px] shadow-2xl relative overflow-hidden">
+<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-64 h-64 bg-primary-fixed opacity-10 rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-64 h-64 bg-primary-fixed opacity-10 rounded-full blur-3xl"></div>
+<h2 class="font-display-lg text-headline-lg md:text-[40px] text-white mb-6 relative z-10">Ready to transform your lifestyle?</h2>
+<p class="font-body-lg text-body-lg text-primary-fixed mb-10 relative z-10">Discover personalized wellness solutions tailored to your unique body constitution.</p>
+<a class="inline-flex items-center justify-center px-10 py-4 bg-white text-primary font-title-lg rounded-full hover:bg-primary-fixed-dim hover:text-on-primary-fixed transition-all active:scale-95 shadow-lg relative z-10" href="<?= BASE_URL ?>/appointment-booking.php">
+Start Your Wellness Journey
+</a>
 </div>
 </section>
 

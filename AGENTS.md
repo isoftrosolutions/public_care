@@ -1,225 +1,118 @@
-# Public Care Ayurveda — Project Documentation
+# Ayurviro — AGENTS.md
 
-## Project Overview
+**Brand name is "Ayurviro"** (`includes/config.php:6` — `SITE_NAME`). Repo name is historical.
 
-Public Care Ayurveda is a PHP-based Ayurvedic healthcare website with e-commerce, doctor consultation booking, and a wellness blog. The admin panel manages products, orders, appointments, and site data.
+## Quickstart
 
-## Tech Stack
+- Standard LAMP: PHP 8.1+, MySQL, Apache (XAMPP), no build step
+- DB: `public_care_ayurveda`. Import `sql/schema.sql` (tables + seed data)
+- URL: `http://localhost/www/public_care_ayurveda`
+- `config/database.php` is git-ignored. Copy from `config/database.example.php` (credentials: root/empty)
+- `includes/config-local.php` is git-ignored — use for env overrides (e.g. OpenAI key)
 
-| Layer       | Technology                        |
-|-------------|-----------------------------------|
-| Backend     | PHP 8.x                           |
-| Database    | MySQL                             |
-| Frontend    | Tailwind CSS (inline via CDN)     |
-| Server      | Apache (XAMPP)                    |
+## Page Architecture
 
-## Directory Structure
-
-```
-public_care_ayurveda/
-├── includes/         # Header, footer, config
-├── admin/            # Admin panel (dashboard, appointments, orders)
-├── config/           # Database connection
-├── sql/              # SQL schema
-├── assets/           # CSS, JS, images, uploads
-├── src/              # Original HTML templates (reference)
-├── docs/             # Design docs, notes
-├── .htaccess         # Security: blocks directory listing & .git access
-├── cart-update.php   # Ajax cart handler (add/remove/delete)
-├── subscribe.php     # Newsletter signup handler
-└── *.php             # Public-facing pages
-```
-
-## Database
-
-**Database name:** `public_care_ayurveda`
-
-### Tables
-
-| Table         | Purpose                           |
-|---------------|-----------------------------------|
-| `users`       | Registered users & admin accounts |
-| `products`    | Ayurvedic products                |
-| `categories`  | Product categories                |
-| `doctors`     | Ayurvedic doctors                 |
-| `appointments`| Doctor appointment bookings       |
-| `orders`      | Product orders (with shipping address columns) |
-| `order_items` | Line items within an order        |
-| `cart`        | Shopping cart items               |
-| `contacts`    | Contact form submissions          |
-| `reviews`     | Product reviews                   |
-| `blog_posts`  | Health & wellness articles        |
-| `subscribers` | Newsletter email subscribers      |
-
-## Key Files
-
-| File                                   | Purpose                                          |
-|----------------------------------------|--------------------------------------------------|
-| `config/database.php`                  | MySQL connection — logs errors, no user exposure |
-| `includes/config.php`                  | Session config, CSRF token, BASE_URL, security headers, error suppression |
-| `includes/header.php`                  | HTML head, nav, Tailwind CDN, Google Fonts, cart badge |
-| `includes/footer.php`                  | Closing tags, mobile menu toggle JS, scroll animations |
-| `cart-update.php`                      | Add/remove/delete cart items (DB for logged-in, session for guests) |
-| `subscribe.php`                        | Newsletter signup with CSRF validation            |
-| `.htaccess`                            | Directory listing disabled, .git access blocked   |
-
-## Base URL
+Every PHP page follows this pattern:
 
 ```php
-define('BASE_URL', '/www/public_care_ayurveda');
+require_once 'includes/config.php';  // session, CSRF, security headers, BASE_URL, language
+include 'includes/header.php';       // <head>, nav, cart badge, language switcher
+// page content
+include 'includes/footer.php';       // close tags, mobile menu JS
 ```
 
-Access the site at `http://localhost/www/public_care_ayurveda`.
+- `$current_page` set automatically via `basename($_SERVER['SCRIPT_NAME'])` — header uses it for nav active styling
+- All forms include hidden `<input name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">` — **every POST handler must validate it**
+- Admin pages use standalone layout: `admin/includes/head.php` + `admin/includes/sidebar.php` (NOT public header/footer). Use `$active_page` variable matched against sidebar keys.
 
-## Database Credentials
+## Multi-Language
 
-```php
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db   = 'public_care_ayurveda';
-```
+Languages: `hi` (Hindi, default), `en`, `pa` (Punjabi), `bg` (Haryanvi), `bho` (Bhojpuri).
+- Translation keys in `includes/translations/{lang}.json`. Usage: `<?= __('nav_home') ?>`
+- Lang selection via `?lang=code` query param; saved to `users.preferred_language` for logged-in users
+- `$_SESSION['lang']` defaults to browser Accept-Language or `'hi'`
 
-## Security Features
+## Authentication & Authorization
 
-### CSRF Protection
-- Token generated per session in `includes/config.php`
-- Validated on all POST handlers: login, register, contact, checkout, booking, newsletter, cart-update
-- Hidden `csrf_token` field included in every form
+- **Auth handlers** live in `auth/`: `auth/login.php`, `auth/register.php`, `auth/logout.php`, `auth/google-callback.php`. The root pages (`login.php`, `register.php`, `logout.php`) delegate POST processing to these via `require __DIR__ . '/auth/...'`
+- **Google OAuth**: `auth/google-callback.php` verifies the GIS credential token, links/creates user by `google_id` column, and sets session. Client ID in `GOOGLE_CLIENT_ID` constant (from `config-local.php`).
+- Session keys: `user_id`, `user_name`, `role`, `csrf_token`
+- Admin guard: `$_SESSION['role'] !== 'admin'`
+- Login saves `$_SESSION['redirect_after_login']` (used by checkout)
+- Session timeout: 7200s (2h), `session_regenerate_id(true)` after login/register
+- `feature_helpers.php` provides `require_login()`, `current_user($db)`, `h()`, `money()`
 
-### Session Security
-- `session_regenerate_id(true)` after login and registration
-- Session timeout after 7200 seconds (2 hours) of inactivity
-- HttpOnly cookies enabled (`session.cookie_httponly = 1`)
-- Strict session mode (`session.use_strict_mode = 1`)
+## Key Patterns
 
-### SQL Injection Prevention
-- All queries use prepared statements (`bind_param`) where user input is involved
-- Cart keys filtered through `array_map('intval', ...)` before SQL use
-- Only integer-cast values used in inline SQL for internal operations
-
-### XSS Prevention
-- All user/output data wrapped in `htmlspecialchars()`
-- Error details never exposed to users (logged server-side)
-
-### Security Headers
-- `X-Content-Type-Options: nosniff`
-- `X-Frame-Options: DENY`
-- `Referrer-Policy: strict-origin-when-cross-origin`
-
-### Directory Protection
-- `.htaccess` with `Options -Indexes` disables directory listing
-- `.git/` access blocked via mod_rewrite
-- All empty directories have `index.php` redirect placeholders
-
-## How Pages Work
-
-1. Every page starts with `require_once 'includes/config.php';` — session boot, constants, security headers
-2. `include 'includes/header.php';` renders `<head>`, Tailwind CDN, Google Fonts, Material Symbols, navigation
-3. Page-specific content rendered in the middle
-4. `include 'includes/footer.php';` closes HTML, includes mobile menu JS and scroll animations
-
-### Navigation & Active Detection
-
-`$current_page` is set before including the header (uses `basename($_SERVER['SCRIPT_NAME'])` automatically via config). Header checks it to apply active styling to nav links.
+- **CSRF**: Every POST handler: `if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'] ?? ''))`
+- **DB**: `getDB()` singleton from `config/database.php`. Use prepared statements for user input. Inline SQL only with `intval()`/direct int-cast values
+- **Errors**: `display_errors = 0, log_errors = 1` — never expose to users
+- **Security headers**: `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`
+- **.htaccess**: Directory listing disabled, `.git/` access blocked
+- **No CI, no build step**
 
 ## Ecommerce Flow
 
-1. **Shop** (`shop.php`) — Browse products with category/search/price/sort filters and pagination
-2. **Product Detail** (`product-details.php`) — View product, add to cart via POST to `cart-update.php`
-3. **Add to Cart** — Shop & homepage `.add-to-cart` buttons use `fetch()` to `cart-update.php?action=add&id=X` with live badge update
-4. **Cart** (`shopping-cart.php`) — View items, adjust quantity (+/-/delete) via `cart-update.php`
-5. **Checkout** (`checkout.php`) — Requires login, collects shipping address, validates stock, saves order + address to DB
-6. **Order** — PRG pattern (redirect after POST), order number displayed, cart cleared
+1. Shop: `shop.php` (filters: category, search, price, sort, pagination)
+2. Product detail: `product-details.php?id=N` — add-to-cart POSTs to `cart-update.php`
+3. Add to cart uses `fetch()` to `cart-update.php?action=add&id=N` with live badge update
+4. Cart: `shopping-cart.php` — quantity +/-/delete via `cart-update.php`
+5. Checkout: `checkout.php` — requires login, PRG pattern (redirect after POST)
+6. **Logged-in**: cart in `cart` table keyed by `user_id`. **Guest**: `$_SESSION['cart']` associative array
+7. `$_SESSION['cart_count']` synced on every cart mutation for header badge
 
-### Cart Behavior
-- **Logged-in users**: Cart stored in `cart` table (DB), keyed by `user_id`
-- **Guest users**: Cart stored in `$_SESSION['cart']` associative array
-- `$_SESSION['cart_count']` always synced for header badge display
+## API (`/api/*.php`)
 
-### Payment Methods (Indian Gateways)
-- Razorpay — UPI, cards, net banking & wallets
-- Paytm — Paytm wallet, UPI & cards
-- UPI — Google Pay, PhonePe, BHIM & more
+JSON endpoints. All include `api/helpers.php` (session, CORS, OPTIONS handler). Helpers: `jsonResponse()`, `jsonError()`, `requireAuth()`. These all call `exit()` — tested via subprocess `exec()`, not `@runInSeparateProcess`.
 
-## Frontend Dependencies (CDN)
+## Frontend (inline Tailwind via CDN)
 
-| Resource              | URL                                                                 |
-|-----------------------|---------------------------------------------------------------------|
-| Tailwind CSS          | `cdn.tailwindcss.com`                                               |
-| Google Font Serif     | `Source Serif 4`                                                    |
-| Google Font Sans      | `Manrope`                                                           |
-| Material Symbols      | `fonts.googleapis.com/css2?family=Material+Symbols+Outlined`        |
+| Property | Public | Admin |
+|---|---|---|
+| Tailwind | `cdn.tailwindcss.com` + forms + container-queries | Same |
+| Headings | DM Sans | Source Serif 4 |
+| Body | Plus Jakarta Sans | Manrope |
+| Icons | Material Symbols Outlined | Same |
+| Primary | `#005221` | `#012d1d` |
 
-## Color Scheme
+Tailwind config inlined in `<script>` in `header.php` / `admin/includes/head.php`. Custom classes: `.hover-lift`, `.hide-scrollbar`, `.bento-card`.
 
-| Role       | Name         | Hex       |
-|------------|--------------|-----------|
-| Primary    | Forest Green | `#1B4332` |
-| Accent     | Warm Gold    | `#D4AF37` |
-| Secondary  | Sage Green   | `#B7E4C7` |
-| Background | Cool White   | `#F8FAF5` |
-| Text       | Dark Charcoal| `#1A1A2E` |
+## Notable Pages & Features
 
-## Session-Based Authentication
+- **Multi-tier commerce**: `retailer-dashboard.php`, `retailer-orders.php`, `retailer-reports.php`, `retailer-stock.php`, `distributor-panel.php`
+- **Lab tests**: `lab-tests.php`, `lab-booking.php`
+- **Health features**: `health-coach.php`, `my-health.php`, `health-records.php`, `video-consult.php`, `prescriptions.php`
+- **Order Punch**: `order-punch.php` — quick ordering flow
+- **Wallet / Wishlist / Subscriptions / Notifications**: `wallet.php`, `wishlist.php`, `subscriptions.php`, `notifications.php`
+- **Static prototypes**: `src/pages/` — standalone HTML mockups of key pages
+- **Design experiments**: `new-flow/stitch_unified_design_system/`
 
-```php
-$_SESSION['user_id']   // user ID
-$_SESSION['user_name'] // display name
-$_SESSION['role']      // 'admin' or 'customer'
-$_SESSION['csrf_token']// CSRF protection token
-```
+## Database (`sql/schema.sql` — canonical)
 
-- Login redirects to `$_SESSION['redirect_after_login']` if set (used by checkout)
-- Admin check: `$_SESSION['role'] !== 'admin'`
+**Core**: `users`, `products`, `categories`, `doctors`, `appointments`, `orders`, `order_items`, `cart`, `contacts`, `reviews`, `blog_posts`, `settings`
 
-### Session-Protected Pages
-- `checkout.php` — redirects to login with `redirect_after_login` if not authenticated
-- All `/admin/` pages require admin role
+**Feature**: `dosha_questions`, `dosha_assessments`, `dosha_responses`, `health_reminders`, `reminder_logs`, `patient_metrics`, `family_members`, `consultations`, `prescriptions`, `user_languages`
 
-## Public Pages
+Schema caveats:
+- `users`: `preferred_language`, `email_notifications`, `google_id` added via ALTER, not in CREATE
+- `appointments`: `consultation_id`, `meeting_link` added via ALTER (lines 319-320) referencing `notes` column that **doesn't exist** — ALTER will fail unless `notes` column is added first
+- `orders` in `payment.php` references `discount_amount`, `wallet_used`, `gst_amount` columns defined in `sql/vedmitra_schema.sql` but **not** in canonical `schema.sql`
 
-| Page                    | Description                                |
-|-------------------------|--------------------------------------------|
-| `index.php`             | Home page — hero, featured products, doctors, blog, wellness plans (`#wellness-plans`) |
-| `about-us.php`          | About us                                    |
-| `shop.php`              | Product listing with filters & pagination   |
-| `product-details.php`   | Single product detail + add to cart         |
-| `doctor-listing.php`    | Doctor listing / profiles                   |
-| `doctor-profile.php`    | Single doctor profile                       |
-| `wellness-blog.php`     | Blog listing                                |
-| `appointment-booking.php`| Book consultation (requires login)          |
-| `contact-us.php`        | Contact form                                |
-| `checkout.php`          | Checkout (requires login)                   |
-| `shopping-cart.php`     | Shopping cart                               |
-| `login.php`             | Login form                                  |
-| `register.php`          | Registration form                           |
-| `logout.php`            | Logout + session destroy + redirect         |
-| `cart-update.php`       | Cart CRUD handler (add/remove/delete)       |
-| `subscribe.php`         | Newsletter signup handler                   |
+## AI Features
 
-## Admin Pages (`/admin/`)
+- OpenAI: API key from `settings` table (`openai_api_key`) or `OPENAI_API_KEY` env var
+- Model stored as `openai_model` in `settings` (default `'gpt-5.2'`)
+- `includes/ai-helper.php` — health assistant API
+- `includes/chatbot.php` — keyword-based chatbot widget
 
-| Page                  | Description                               |
-|-----------------------|-------------------------------------------|
-| `admin/dashboard.php` | Dashboard with stats (revenue, orders, users) |
-| `admin/appointments.php` | View/manage appointments               |
-| `admin/orders.php`    | View/manage orders                        |
+## Tests
 
-## How to Add Features
-
-### New Public Page
-1. Create `your-page.php` at root
-2. Add `require_once 'includes/config.php';` at top
-3. Include header/footer
-4. Add nav link in `includes/header.php` with active detection
-
-### New Admin Page
-1. Create `admin/your-page.php`
-2. Auth guard: `if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'admin')`
-3. Include header styles directly (admin pages have standalone HTML)
-
-### DB Queries
-- Use `getDB()` from `config/database.php` for the connection
-- Always use prepared statements for user-supplied data
-- Error details are logged server-side, never shown to users
+- **Framework**: PHPUnit 11 (`require-dev`)
+- **Run**: `composer test` or `vendor/bin/phpunit -c tests/phpunit.xml`
+- **Unit only** (no DB): `composer test:unit`
+- **Integration only** (MySQL required): `composer test:integration`
+- `tests/phpunit.xml`: 2 suites (`unit`, `integration`), bootstrap mocks `$_SERVER` + `$_SESSION`
+- API helper tests use `exec()` subprocess via `tests/Fixtures/test_json_response.php` (not `@runInSeparateProcess`)
+- Integration tests never close DB in teardown (static `$conn` singleton)
+- Cleanup queries use `intval()`; data ops use prepared statements
+- `$conn->insert_id` instead of `LAST_INSERT_ID()`

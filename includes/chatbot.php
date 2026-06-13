@@ -237,7 +237,7 @@ if (isset($_GET['chatbot_ajax']) && isset($_GET['message'])) {
     }
     
     // Step 4: Fallback: show products directly or keyword matching
-    $response = "I didn't quite understand. Could you try asking differently?\n\nTry: order, doctor, dosha, health coach, dashboard, family, contact, about";
+    $response = "OpenAI is not configured yet. Add your OpenAI API key in Admin > Settings, then AyurBot can answer general wellness questions. For now, try: order, doctor, dosha, health coach, dashboard, family, contact, about.";
     
     // Show matched products as fallback
     if (!empty($matchedProducts)) {

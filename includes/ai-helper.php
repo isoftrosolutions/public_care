@@ -1,52 +1,104 @@
 <?php
-function getGroqApiKey() {
-    if (defined('GROQ_API_KEY') && !empty(GROQ_API_KEY)) {
-        return GROQ_API_KEY;
-    }
+
+function getSettingValue(string $key, string $default = ''): string
+{
     try {
         $db = getDB();
-        $stmt = $db->prepare("SELECT setting_value FROM settings WHERE setting_key = 'groq_api_key' LIMIT 1");
+        $stmt = $db->prepare('SELECT setting_value FROM settings WHERE setting_key = ? LIMIT 1');
+        if (!$stmt) {
+            return $default;
+        }
+        $stmt->bind_param('s', $key);
         $stmt->execute();
         $result = $stmt->get_result()->fetch_row();
-        return $result[0] ?? '';
+        $stmt->close();
+        return $result[0] ?? $default;
     } catch (Exception $e) {
-        error_log('Failed to fetch GROQ API key from DB: ' . $e->getMessage());
-        return '';
+        error_log("Failed to fetch setting {$key}: " . $e->getMessage());
+        return $default;
     }
 }
 
-function callGroq($systemPrompt, $userMessage, $model = 'llama-3.3-70b-versatile') {
-    $apiKey = getGroqApiKey();
-    if (empty($apiKey)) {
-        error_log('GROQ_API_KEY not defined');
+function getOpenAIApiKey(): string
+{
+    if (defined('OPENAI_API_KEY') && OPENAI_API_KEY) {
+        return OPENAI_API_KEY;
+    }
+    $envKey = getenv('OPENAI_API_KEY');
+    if ($envKey) {
+        return $envKey;
+    }
+    return getSettingValue('openai_api_key');
+}
+
+function getOpenAIModel(string $fallback = 'gpt-5.2'): string
+{
+    if (defined('OPENAI_MODEL') && OPENAI_MODEL) {
+        return OPENAI_MODEL;
+    }
+    $envModel = getenv('OPENAI_MODEL');
+    if ($envModel) {
+        return $envModel;
+    }
+    return getSettingValue('openai_model', $fallback) ?: $fallback;
+}
+
+function openAIExtractText(array $result): ?string
+{
+    if (!empty($result['output_text']) && is_string($result['output_text'])) {
+        return trim($result['output_text']);
+    }
+    if (!empty($result['output']) && is_array($result['output'])) {
+        $parts = [];
+        foreach ($result['output'] as $item) {
+            foreach (($item['content'] ?? []) as $content) {
+                if (isset($content['text']) && is_string($content['text'])) {
+                    $parts[] = $content['text'];
+                }
+            }
+        }
+        if ($parts) {
+            return trim(implode("\n", $parts));
+        }
+    }
+    return null;
+}
+
+function callOpenAI(string $systemPrompt, string $userMessage, ?string $model = null, int $maxOutputTokens = 800): ?string
+{
+    $apiKey = getOpenAIApiKey();
+    if ($apiKey === '') {
+        error_log('OPENAI_API_KEY is not configured.');
         return null;
     }
 
-    $url = 'https://api.groq.com/openai/v1/chat/completions';
-
-    $data = [
-        'model' => $model,
-        'messages' => [
-            ['role' => 'system', 'content' => $systemPrompt],
-            ['role' => 'user', 'content' => $userMessage]
+    $payload = [
+        'model' => $model ?: getOpenAIModel(),
+        'input' => [
+            [
+                'role' => 'developer',
+                'content' => $systemPrompt,
+            ],
+            [
+                'role' => 'user',
+                'content' => $userMessage,
+            ],
         ],
-        'temperature' => 0.7,
-        'max_tokens' => 800
+        'max_output_tokens' => $maxOutputTokens,
     ];
 
-    $ch = curl_init();
+    $ch = curl_init('https://api.openai.com/v1/responses');
     curl_setopt_array($ch, [
-        CURLOPT_URL => $url,
         CURLOPT_POST => true,
-        CURLOPT_POSTFIELDS => json_encode($data),
+        CURLOPT_POSTFIELDS => json_encode($payload, JSON_UNESCAPED_UNICODE),
         CURLOPT_HTTPHEADER => [
             'Authorization: Bearer ' . $apiKey,
-            'Content-Type: application/json'
+            'Content-Type: application/json',
         ],
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT => 20,
+        CURLOPT_TIMEOUT => 30,
         CURLOPT_CONNECTTIMEOUT => 10,
-        CURLOPT_SSL_VERIFYPEER => false
+        CURLOPT_SSL_VERIFYPEER => true,
     ]);
 
     $response = curl_exec($ch);
@@ -55,87 +107,102 @@ function callGroq($systemPrompt, $userMessage, $model = 'llama-3.3-70b-versatile
     curl_close($ch);
 
     if ($error) {
-        error_log("Groq API curl error: $error");
+        error_log('OpenAI API curl error: ' . $error);
         return null;
     }
 
-    if ($httpCode !== 200) {
-        error_log("Groq API HTTP $httpCode: $response");
+    if ($httpCode < 200 || $httpCode >= 300) {
+        error_log("OpenAI API HTTP {$httpCode}: {$response}");
         return null;
     }
 
-    $result = json_decode($response, true);
-    return $result['choices'][0]['message']['content'] ?? null;
+    $result = json_decode((string)$response, true);
+    if (!is_array($result)) {
+        error_log('OpenAI API returned invalid JSON.');
+        return null;
+    }
+
+    return openAIExtractText($result);
 }
 
-function doshaAIRecommendations($scores, $dominant, $lang = 'hi') {
-    $langHint = $lang === 'hi' ? 'हिंदी' : 'English';
+function doshaAIRecommendations($scores, $dominant, $lang = 'hi')
+{
+    $langHint = $lang === 'hi' ? 'Hindi' : 'English';
     $userMessage = "My dosha assessment results:\n"
-        . "- Vata (वात) score: {$scores['vata']}\n"
-        . "- Pitta (पित्त) score: {$scores['pitta']}\n"
-        . "- Kapha (कफ) score: {$scores['kapha']}\n"
+        . "- Vata score: {$scores['vata']}\n"
+        . "- Pitta score: {$scores['pitta']}\n"
+        . "- Kapha score: {$scores['kapha']}\n"
         . "Dominant dosha: {$dominant}\n\n"
-        . "Please provide personalized Ayurvedic recommendations in {$langHint}.";
+        . "Provide personalized Ayurvedic recommendations in {$langHint}.";
 
-    $systemPrompt = "You are an expert Ayurvedic practitioner with 30+ years of clinical experience. "
-        . "Provide personalized wellness recommendations based on dosha scores. "
-        . "Format your response in {$langHint} with the following sections using emoji markers:\n"
-        . "🥗 **आहार (Diet)** — specific foods to eat and avoid\n"
-        . "🧘 **जीवनशैली (Lifestyle)** — daily routine adjustments\n"
-        . "🧎 **योग (Yoga)** — specific asanas and pranayama\n"
-        . "🌿 **जड़ी-बूटियाँ (Herbs)** — recommended herbs with benefits\n"
-        . "📋 **दैनिक दिनचर्या (Daily Routine)** — sample daily schedule\n\n"
-        . "Be specific, practical, and actionable. Write in a warm, encouraging tone. "
-        . "Mention specific yoga poses, foods, and herbs by name. "
-        . "Keep recommendations to 3-5 points per section. "
-        . "If scores are close between doshas, address the imbalance comprehensively.";
+    $systemPrompt = "You are AyurBot, an Ayurvedic wellness assistant for Ayurviro. "
+        . "Give educational wellness guidance, not a medical diagnosis. "
+        . "Use warm, practical language and include these sections: Diet, Lifestyle, Yoga, Herbs, Daily Routine. "
+        . "Keep each section to 3-5 concise, actionable bullets. "
+        . "Recommend consulting a qualified practitioner for persistent, severe, pregnancy-related, pediatric, or chronic concerns.";
 
-    return callGroq($systemPrompt, $userMessage, 'llama-3.3-70b-versatile');
+    return callOpenAI($systemPrompt, $userMessage, null, 1000);
 }
 
-function chatbotAIResponseProduct($message, $lang, $products, $productContext) {
-    $langHint = $lang === 'hi' ? 'हिंदी में' : 'in English';
-    $productList = '';
-    foreach ($products as $p) {
-        $productList .= "- {$p['name']}: ₹{$p['price']} | {$p['description']}\n";
+function chatbotAIResponseProduct($message, $lang, $products, $productContext)
+{
+    $langHint = $lang === 'hi' ? 'Hindi' : 'English';
+    $systemPrompt = "You are AyurBot, the official AI wellness assistant for Ayurviro, an Ayurvedic e-commerce and consultation platform. "
+        . "Reply in {$langHint}. Be concise, warm, and practical. "
+        . "Use only the product data supplied by the app for product names, prices, and availability. Never invent pricing or stock. "
+        . "When appropriate, guide users to " . BASE_URL . "/shop.php. "
+        . "For health claims, keep wording educational and suggest consulting a qualified doctor for personal treatment.";
+
+    $userMessage = "User message:\n{$message}\n\nReal product data from the database:\n{$productContext}";
+    return callOpenAI($systemPrompt, $userMessage, null, 700);
+}
+
+function chatbotAIResponse($message, $lang = 'en')
+{
+    $langHint = $lang === 'hi' ? 'Hindi' : 'English';
+    $systemPrompt = "You are AyurBot, the official AI wellness assistant for Ayurviro. "
+        . "Reply in {$langHint}. Keep answers concise, helpful, and suitable for an Ayurvedic healthcare website. "
+        . "You can route users to: Shop " . BASE_URL . "/shop.php, Consultation " . BASE_URL . "/appointment-booking.php, Video Consult " . BASE_URL . "/video-consult.php, Dosha Quiz " . BASE_URL . "/dosha-quiz.php, Health Dashboard " . BASE_URL . "/my-health.php, Doctors " . BASE_URL . "/doctor-listing.php, Blog " . BASE_URL . "/wellness-blog.php, Contact " . BASE_URL . "/contact-us.php. "
+        . "Do not diagnose disease or prescribe medication. For urgent, severe, pediatric, pregnancy-related, chronic, or worsening symptoms, advise professional medical care. "
+        . "Never invent product pricing or availability.";
+
+    return callOpenAI($systemPrompt, $message, null, 700);
+}
+
+function healthAssistantAIResponse(string $message, array $chatHistory = [], array $drugContext = []): ?string
+{
+    $historyText = '';
+    foreach (array_slice($chatHistory, -8) as $entry) {
+        $role = $entry['role'] ?? 'user';
+        $text = trim((string)($entry['message'] ?? ''));
+        if ($text !== '') {
+            $historyText .= strtoupper($role) . ': ' . $text . "\n";
+        }
     }
-    $systemPrompt = "You are AyurBot, the official AI wellness assistant for Ayurwellness.com. "
-        . "Respond {$langHint}. Be warm, concise (2-4 sentences), and helpful. "
-        . "Always use '🙏 Namaste' or 'नमस्ते' greetings.\n\n"
-        . "The user is asking about products. BELOW is REAL product data from our database — use these exact prices and names, NEVER make up pricing:\n\n"
-        . "{$productContext}\n\n"
-        . "When discussing benefits, summarize from the product descriptions above. Guide users to shop.php for more."
-        . "Current user language: " . strtoupper($lang);
 
-    return callGroq($systemPrompt, $message, 'llama-3.1-8b-instant');
+    $drugText = '';
+    foreach (array_slice($drugContext, 0, 5) as $drug) {
+        $drugText .= "- {$drug['name']}";
+        if (!empty($drug['generic_name'])) {
+            $drugText .= " ({$drug['generic_name']})";
+        }
+        if (!empty($drug['uses'])) {
+            $drugText .= ": {$drug['uses']}";
+        }
+        $drugText .= "\n";
+    }
+
+    $systemPrompt = "You are Ayurviro's AI Health Assistant. Provide general educational health information, medicine lookup help, Ayurvedic wellness guidance, and safe next steps. "
+        . "Do not diagnose, prescribe, or replace a clinician. Include a brief safety note when symptoms, medication, dosage, interactions, pregnancy, children, chronic disease, or emergencies are mentioned. "
+        . "If local medicine data is provided, use it as context and do not invent missing details. Keep answers readable in short paragraphs or bullets.";
+
+    $userPrompt = "Recent conversation:\n{$historyText}\n"
+        . ($drugText ? "Relevant local medicine data:\n{$drugText}\n" : '')
+        . "Current user question:\n{$message}";
+
+    return callOpenAI($systemPrompt, $userPrompt, null, 900);
 }
 
-function chatbotAIResponse($message, $lang = 'en') {
-    $langHint = $lang === 'hi' ? 'हिंदी में' : 'in English';
-    $systemPrompt = "You are AyurBot, the official AI wellness assistant for Ayurwellness.com — an Ayurvedic e-commerce and consultation platform. "
-        . "Respond {$langHint}. Be warm, concise (2-4 sentences), and helpful. "
-        . "Always use '🙏 Namaste' or 'नमस्ते' greetings.\n\n"
-        . "SITE FEATURES you can guide users to:\n"
-        . "- 🛒 **Shop**: " . BASE_URL . "/shop.php — Ayurvedic products (immunity, digestion, hair, skin, weight management)\n"
-        . "- 📅 **Consultation**: " . BASE_URL . "/appointment-booking.php — Book doctor appointments\n"
-        . "- 📹 **Video Consult**: " . BASE_URL . "/video-consult.php — Online video consultations via Jitsi\n"
-        . "- 🌿 **Dosha Analysis**: " . BASE_URL . "/dosha-quiz.php — 3-minute AI body type analysis\n"
-        . "- 📊 **Health Dashboard**: " . BASE_URL . "/my-health.php — 90-day wellness tracking\n"
-        . "- 👨‍👩‍👧‍👦 **Family Account**: " . BASE_URL . "/my-family.php — Manage family health\n"
-        . "- 📧 **Health Coach**: " . BASE_URL . "/health-coach.php — Email reminders for medicine, water, yoga, diet\n"
-        . "- 👨‍⚕️ **Doctors**: " . BASE_URL . "/doctor-listing.php — View all Ayurvedic practitioners\n"
-        . "- 📖 **Blog**: " . BASE_URL . "/wellness-blog.php — Health & wellness articles\n"
-        . "- ℹ️ **About**: " . BASE_URL . "/about-us.php — About Ayurwellness\n"
-        . "- 📞 **Contact**: " . BASE_URL . "/contact-us.php — Get in touch\n\n"
-        . "When users mention health issues, ask about their dosha type and suggest relevant products/consultations. "
-        . "Provide complete HTML links with <a> tags for navigation. "
-        . "Never invent pricing or availability — redirect them to the relevant page.\n\n"
-        . "Current user language: " . strtoupper($lang);
-
-    return callGroq($systemPrompt, $message, 'llama-3.1-8b-instant');
-}
-
-// AJAX endpoint for dosha AI recommendations
 if (isset($_GET['dosha_ai_ajax'])) {
     header('Content-Type: application/json');
     require_once __DIR__ . '/config.php';
@@ -153,9 +220,9 @@ if (isset($_GET['dosha_ai_ajax'])) {
     $aiResponse = doshaAIRecommendations($scores, $dominant, $lang);
 
     if ($aiResponse !== null) {
-        echo json_encode(['response' => nl2br($aiResponse)]);
+        echo json_encode(['response' => nl2br(htmlspecialchars($aiResponse, ENT_QUOTES, 'UTF-8'))]);
     } else {
-        echo json_encode(['error' => 'AI service unavailable. Please try again later.']);
+        echo json_encode(['error' => 'OpenAI is not configured or is temporarily unavailable.']);
     }
     exit;
 }

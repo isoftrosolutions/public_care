@@ -1,0 +1,499 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Vedmitra | Ayurvedic Wellness Redefined</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed": "#002109",
+            "on-primary": "#ffffff",
+            "secondary-container": "#dfe4dc",
+            "on-surface": "#1b1c1c",
+            "outline-variant": "#bfc9bc",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#dfe4dc",
+            "surface-container-low": "#f5f3f3",
+            "on-secondary-fixed": "#181d18",
+            "inverse-on-surface": "#f2f0f0",
+            "primary-fixed-dim": "#8bd895",
+            "surface-container-high": "#eae8e7",
+            "error": "#ba1a1a",
+            "tertiary": "#5a4200",
+            "inverse-surface": "#303030",
+            "surface": "#fbf9f8",
+            "secondary-fixed-dim": "#c3c8c1",
+            "on-tertiary-container": "#ffd06c",
+            "surface-tint": "#1f6c35",
+            "on-secondary-container": "#606660",
+            "outline": "#707a6e",
+            "error-container": "#ffdad6",
+            "surface-container-highest": "#e4e2e2",
+            "on-primary-fixed-variant": "#005321",
+            "tertiary-fixed": "#ffdf9f",
+            "tertiary-container": "#785800",
+            "on-error-container": "#93000a",
+            "primary-container": "#1e6b34",
+            "on-surface-variant": "#40493f",
+            "secondary": "#5a605a",
+            "on-secondary-fixed-variant": "#434843",
+            "on-tertiary": "#ffffff",
+            "primary-fixed": "#a6f5af",
+            "on-background": "#1b1c1c",
+            "surface-variant": "#e4e2e2",
+            "on-tertiary-fixed-variant": "#5c4300",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed-dim": "#f6be35",
+            "primary": "#005221",
+            "on-primary-container": "#9be9a4",
+            "inverse-primary": "#8bd895",
+            "surface-container": "#efeded",
+            "background": "#fbf9f8",
+            "surface-bright": "#fbf9f8",
+            "surface-dim": "#dbd9d9",
+            "on-tertiary-fixed": "#261a00"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "24px",
+            "margin-mobile": "16px",
+            "margin-desktop": "64px",
+            "container-max": "1280px",
+            "base": "8px"
+          },
+          "fontFamily": {
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["DM Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["DM Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "display-lg": ["DM Sans"],
+            "headline-lg": ["DM Sans"],
+            "body-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #fbf9f8;
+      color: #1b1c1c;
+      overflow-x: hidden;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .hover-lift {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.08);
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- TopNavBar (The Anchor) -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface dark:bg-surface-container-high dark:shadow-none transition-all duration-300 py-4 shadow-sm">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-12">
+<a class="font-headline-lg text-headline-lg font-bold text-primary dark:text-inverse-primary tracking-tight" href="#">Ayurwellness</a>
+<nav class="hidden md:flex gap-8">
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 font-label-lg text-label-lg" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-lg text-label-lg" href="#">Categories</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-lg text-label-lg" href="#">AI Assistant</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-lg text-label-lg" href="#">Orders</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-lg text-label-lg" href="#">Consult Doctor</a></nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container rounded-full px-4 py-2 w-80">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-body-md font-body-md" placeholder="Search for products, categories..." type="text">
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-secondary-container rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface">shopping_cart</span>
+</button>
+<button class="p-2 hover:bg-secondary-container rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface">notifications</span>
+</button>
+<button class="p-2 hover:bg-secondary-container rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 space-y-16 pb-24">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-desktop">
+<div class="relative w-full rounded-xl overflow-hidden shadow-lg h-[640px]">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A premium wide shot of a modern Ayurvedic wellness setup featuring a wooden mortar and pestle surrounded by fresh green herbs, turmeric roots, and sleek dark glass apothecary bottles. The background is a clean, bright, off-white minimalist space with soft natural morning light creating gentle shadows. The overall aesthetic is professional, corporate modern, and deeply rooted in nature with a palette of forest greens and warm earthy tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo11Xq4d49gQxM0_vENu4Qofi6nZ3iRK1tr--Pdm22dy9TiiDv7FYFz_MlDipFOceI4NAmcK4eohhVsVjx6WfD59jYTP9Tr_CDF3zS1oFCS-QG8L4BZEfoSnUi35osHRACMq1HJlWMrfoj9h84U-fkT-VXFC6Ih9H-kSzgP6mAn_sDA5ai6r6c9rSkZRehbsZEYxeTrxBF5yRpUf4OBK1mpfg-IdYRGDHG2Sh0ho53ntdBRKHWo0HFk8rbj9w5qJ9FYeQ6EJhQJbw">
+<div class="absolute inset-0 bg-gradient-to-r from-on-primary-fixed/60 to-transparent flex items-center bg-black/20">
+<div class="px-16 space-y-6 max-w-2xl">
+<h1 class="font-display-lg text-on-primary leading-tight text-6xl">Natural Care,<br>Ayurvedic Cure</h1>
+<p class="font-headline-md text-headline-md text-primary-fixed">Up to 30% OFF</p>
+<p class="font-body-lg text-body-lg text-on-primary opacity-90 max-w-md">Experience the fusion of ancient herbal wisdom and modern science for a healthier, vibrant tomorrow.</p>
+<div class="pt-4">
+<button class="bg-primary hover:bg-on-primary-fixed-variant text-on-primary px-10 py-4 rounded-lg font-label-lg text-label-lg transition-all active:scale-95 shadow-md px-16 py-5 text-title-lg">
+                Shop Now
+              </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Quick-Links -->
+<section class="max-w-container-max mx-auto px-margin-desktop overflow-hidden">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Shop by Category</h2>
+<a class="text-primary font-label-lg text-label-lg hover:underline" href="#">View All</a>
+</div>
+<div class="flex gap-12 overflow-x-auto pb-4 hide-scrollbar">
+<!-- Categories Loop -->
+<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">oil_barrel</span>
+</div>
+<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Oil</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">medication</span>
+</div>
+<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Capsules</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">nutrition</span>
+</div>
+<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Churna</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">vaccines</span>
+</div>
+<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Syrup</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">water_drop</span>
+</div>
+<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Juice</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">grain</span>
+</div>
+<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Powder</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">emoji_food_beverage</span>
+</div>
+<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Herbal Tea</span>
+</div>
+</div>
+</section>
+<!-- Trust Signals Bar -->
+<section class="w-full bg-secondary-container/30 py-8">
+<div class="max-w-container-max mx-auto px-margin-desktop flex flex-wrap justify-between gap-8">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">verified</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">100% Ayurvedic &amp; Natural</p>
+<p class="text-label-sm text-on-surface-variant">Pure, potent formulations</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">shield_lock</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">No Side Effects</p>
+<p class="text-label-sm text-on-surface-variant">Gentle on your body</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">groups</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Trusted by Thousands</p>
+<p class="text-label-sm text-on-surface-variant">Over 50,000+ happy lives</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Best Sellers -->
+<section class="max-w-container-max mx-auto px-margin-desktop">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Our Bestsellers</h2>
+<a class="text-primary font-label-lg text-label-lg hover:underline" href="#">View All Products</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Product Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 hover-lift group border border-outline-variant/30 relative">
+<span class="absolute top-4 left-4 bg-tertiary-fixed text-on-tertiary-fixed text-label-sm px-2 py-1 rounded-full z-10">Bestseller</span>
+<div class="h-64 rounded-lg overflow-hidden mb-4 bg-surface flex items-center justify-center">
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" data-alt="A professional product photography shot of an Ashwagandha capsule bottle with dark green labeling and copper accents. The bottle is placed on a textured stone surface with pieces of raw ashwagandha root scattered artistically around it. Soft studio lighting highlights the texture of the labels and the natural roots, evoking a sense of premium pharmaceutical-grade herbal wellness in a clean, clinical yet natural setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPYEkANgvfgd1LTNAistVGjx-7Mtsb0Bl398X6NOjw8_8XHMtmibKeZMAP9Q9T2wYgDfo5xcbsJXMCFMJOecyQRX6UW0CqoSy-DJO_BzA1lys3iBWWQXEZkgMF6RCVwG7covEA8I6_DUvcTdIUZ6FmFgE_VjRKSAwAzDG_GCeqo05IZeCX6WOv-gTbvm4gT4MP01Vf2_aUlkT0XwadlDLMmgN2XPLEz4tEf9v133Gz3V0nH5V7LIB1o1ac_5xm7wHDzfm4qW0PnQM">
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-1">Ashwagandha Capsule</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="flex text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg">star</span>
+</div>
+<span class="text-label-sm text-on-surface-variant">(1,256)</span>
+</div>
+<div class="flex items-end gap-2 mb-6">
+<span class="font-headline-md text-headline-md text-primary">₹299</span>
+<span class="text-label-lg text-on-surface-variant line-through mb-1">₹399</span>
+<span class="text-label-sm font-bold text-error mb-1">25% OFF</span>
+</div>
+<button class="w-full py-3 border border-primary text-primary font-label-lg rounded-lg hover:bg-primary hover:text-on-primary transition-all">Add to Cart</button>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 hover-lift group border border-outline-variant/30">
+<div class="h-64 rounded-lg overflow-hidden mb-4 bg-surface flex items-center justify-center">
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of a glass jar filled with dark, textured Triphala powder, placed against a background of fresh Indian gooseberry and dried haritaki fruits. The lighting is warm and organic, emphasizing the natural textures and rich earthy colors of the ingredients. The image is styled as high-end health product marketing, clean and inviting, with a focus on purity and authenticity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHuvbXljijJUw9tT2ZCnt5zPoX6zrfSc3pz80aGTvg6EzDVGwtwQPBymxABCkUILQCdfXxV7ncwCdi7j12Mn-_c3m3eJHy0-u587A7HjgV9vrDw-l2iS_7ya_hHr13XkGrNWJOhuEHr6ZybCzcscxuhDGX1wmgA5J1SYJlGVTo52_cck1EOuXBsCRHefn_CtEkwsgjnKKJVIHI2OuyyPYrBzVKnPqzfhNxTZoUo27W3aUWcCke9OTHg1GTmT2pEDamo5tXFs-_NCU">
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-1">Triphala Churna</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="flex text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<span class="text-label-sm text-on-surface-variant">(940)</span>
+</div>
+<div class="flex items-end gap-2 mb-6">
+<span class="font-headline-md text-headline-md text-primary">₹199</span>
+<span class="text-label-lg text-on-surface-variant line-through mb-1">₹249</span>
+<span class="text-label-sm font-bold text-error mb-1">20% OFF</span>
+</div>
+<button class="w-full py-3 border border-primary text-primary font-label-lg rounded-lg hover:bg-primary hover:text-on-primary transition-all">Add to Cart</button>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 hover-lift group border border-outline-variant/30 relative">
+<span class="absolute top-4 left-4 bg-primary-fixed text-on-primary-fixed-variant text-label-sm px-2 py-1 rounded-full z-10">New Launch</span>
+<div class="h-64 rounded-lg overflow-hidden mb-4 bg-surface flex items-center justify-center">
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" data-alt="An elegant amber glass bottle of herbal hair oil with a sleek wooden dropper cap. The bottle is positioned on a reflective surface alongside green curry leaves and hibiscus flowers. Soft, cinematic lighting highlights the golden clarity of the oil. The aesthetic is luxurious and holistic, showcasing premium Ayurvedic hair care with a modern corporate elegance and a palette of rich deep greens and warm ambers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA1yzzfJnC5v3X_EWNY-dHp56o_HR13p6dWiUvHe1qUnnIZO4M_bgqduJYbnJNjJBFsbyMHeKINABPlwyKpQjouvVhQ5aY_ZFd9rvfiYHV0YaiZcuOYzQEQeiwpfvIlLkMPeM3wjdKzUKf5N_87RLkMiXJhbDWeCadC8r8Zvh9SJoy-SihOsKPWxjkRCP4E1WOlKKtwD6LZpWDBv0jWKRqdVmNIT95qRhuRLkc_cjn4m1GerhFpXzQKJzaJ4u4IGxBnQwqHRoJEr8">
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-1">Keshmitra Hair Oil</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="flex text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-label-sm text-on-surface-variant">(2,110)</span>
+</div>
+<div class="flex items-end gap-2 mb-6">
+<span class="font-headline-md text-headline-md text-primary">₹349</span>
+<span class="text-label-lg text-on-surface-variant line-through mb-1">₹449</span>
+<span class="text-label-sm font-bold text-error mb-1">22% OFF</span>
+</div>
+<button class="w-full py-3 border border-primary text-primary font-label-lg rounded-lg hover:bg-primary hover:text-on-primary transition-all">Add to Cart</button>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 hover-lift group border border-outline-variant/30">
+<div class="h-64 rounded-lg overflow-hidden mb-4 bg-surface flex items-center justify-center">
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" data-alt="A stylized shot of a vibrant green bottle containing pure Giloy juice. The bottle is placed in a bright, airy wellness room with soft shadows of palm leaves falling across the scene. Fresh giloy stems are arranged around the base. The lighting is crisp and refreshing, emphasizing the detoxifying and immune-boosting nature of the product. The color palette centers on vibrant botanical greens and clean whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALTv2lPlmJ6wLtHz0pd523_u8pTkP1kewPfJqd9dZdOLL2ycHRsR5es5Bs5kQzprmNmao8zdhEgDOtXx7b6OtVzFzqYdj8ldZuKJZyIrYFBIIK92tQwlb11IDQvNMV_8bPNc0hH2miRLyYE0j13MKe4kwXSLr4EpBxKrwMyVVL-5o8zrCtqUM2amNhFCkkMtICrxG90Tk5dJmbPNvIn5rfFNGJmGbI9JjKJPwie48iaumF1YodFMFHL_IlTFomweGuXEdmejch2Jo">
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface mb-1">Giloy Juice (Purity)</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="flex text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg">star</span>
+</div>
+<span class="text-label-sm text-on-surface-variant">(680)</span>
+</div>
+<div class="flex items-end gap-2 mb-6">
+<span class="font-headline-md text-headline-md text-primary">₹249</span>
+<span class="text-label-lg text-on-surface-variant line-through mb-1">₹310</span>
+<span class="text-label-sm font-bold text-error mb-1">19% OFF</span>
+</div>
+<button class="w-full py-3 border border-primary text-primary font-label-lg rounded-lg hover:bg-primary hover:text-on-primary transition-all">Add to Cart</button>
+</div>
+</div>
+</section>
+<!-- AI Assistant & Experts (Bento Grid Style) -->
+<section class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- AI Health Assistant Teaser -->
+<div class="lg:col-span-7 bg-primary text-on-primary rounded-xl p-8 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-80 h-80 bg-primary-container rounded-full opacity-20 blur-3xl"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 bg-on-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">smart_toy</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg">Ayurwellness AI Assistant</h2>
+</div>
+<p class="font-body-lg text-body-lg opacity-90 max-w-lg mb-8">Namaste! I'm your dedicated Ayurvedic companion. I can help you find the right herbs for your unique Prakriti. How can I assist you today?</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<button class="bg-on-primary/10 hover:bg-on-primary/20 p-4 rounded-lg text-left transition-colors border border-on-primary/20 group">
+<p class="text-label-sm opacity-60 mb-1">Try asking:</p>
+<p class="font-label-lg group-hover:translate-x-1 transition-transform">Suggest medicine for immunity</p>
+</button>
+<button class="bg-on-primary/10 hover:bg-on-primary/20 p-4 rounded-lg text-left transition-colors border border-on-primary/20 group">
+<p class="text-label-sm opacity-60 mb-1">Try asking:</p>
+<p class="font-label-lg group-hover:translate-x-1 transition-transform">Home remedy for headache</p>
+</button>
+</div>
+</div>
+<div class="mt-8 relative z-10">
+<button class="bg-on-primary text-primary px-8 py-3 rounded-full font-label-lg hover:bg-primary-fixed transition-colors">Start Chat Now</button>
+</div>
+</div>
+<!-- Expert Doctors Section -->
+<div class="lg:col-span-5 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Consult Experts</h2>
+<a class="text-primary font-label-lg" href="#">View All</a>
+</div>
+<div class="space-y-4 flex-grow">
+<!-- Expert 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 flex items-center gap-4 hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-secondary-container">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a friendly Indian Ayurvedic doctor in a clean white coat with a stethoscope. He has a warm, confident smile and is photographed in a well-lit modern clinic setting with a few medicinal plants in the background. The style is professional and trustworthy, maintaining a high-key light mode corporate aesthetic with natural tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcT8CfNWtCA5inN3DIFJMb1fuYm7-48sYjLPHzvXUhWJYVpQW218o3aMqTpMRF7cXGXY4VB6UycYMCiX8I8djKXySQpfl_sgFgt5OjQU2YCV3rsuNGpIQqLvU58fm45EhVr9EaJ3jW3nP5_sDCKo-UQcPPlTX7HXTS65aL4S1hRRZQIStc3FSFcDoMuueneSTJk2NlYUa2cPjmFg-Rd99DPbYyBcqdFbt2pW_uwA-t8lbCqhMou7dR9lgIDpLtxLdIdL8mAsuqlB4">
+</div>
+<div class="flex-grow">
+<h4 class="font-title-lg text-title-lg text-on-surface">Dr. Vaidya Anand</h4>
+<p class="text-label-sm text-on-surface-variant">BAMS, MD (Ayurveda) • 15+ Yrs</p>
+<div class="flex items-center gap-1 mt-1 text-tertiary">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-bold">4.8</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- Expert 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 flex items-center gap-4 hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-secondary-container">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a female Ayurvedic specialist with a calm and welcoming expression. She is wearing professional attire and is set against a minimalist modern office background with soft lighting. The image emphasizes professional expertise and holistic care, using a clean corporate style with a palette of soft whites and deep natural greens." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeQVJlfX4LRnPCR-cUmYKZHJKWvUz1wE3yACjnBBvdjSGNWct2YDBLF_mzKznvlVgR25A56L1emsEvlDNKSbNpelz9m52ySgA2GuUL5E19rWx-bDmOOLPynGqCs2sNLgR1prL7fO3ac2CszsIbseg5s8mS6kieT6eqejuJBGchZUF5YMRnecAkjKIvvE4_KBPJt9xVDvA9DOoWcNPxC0JG92L52vCMHRwCaOvDciOOuXQ23URx7dt4RJehW6iIfdCUJUj7ru_c9dY">
+</div>
+<div class="flex-grow">
+<h4 class="font-title-lg text-title-lg text-on-surface">Dr. Priyanka Sharma</h4>
+<p class="text-label-sm text-on-surface-variant">BAMS, MD (Ayurveda) • 8+ Yrs</p>
+<div class="flex items-center gap-1 mt-1 text-tertiary">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-bold">4.7</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<button class="w-full py-4 bg-primary-container text-on-primary-container rounded-xl font-label-lg hover:opacity-90 transition-opacity">Book a Consultation</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Detailed) -->
+<footer class="bg-surface-container-highest dark:bg-surface-dim">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-16 w-full max-w-container-max mx-auto">
+<div class="space-y-6">
+<h3 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">Ayurwellness</h3>
+<p class="text-on-surface-variant font-body-md">Your trusted partner in holistic wellness and traditional Ayurvedic care for a modern lifestyle.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 bg-surface flex items-center justify-center rounded-full text-primary hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="w-10 h-10 bg-surface flex items-center justify-center rounded-full text-primary hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+<a class="w-10 h-10 bg-surface flex items-center justify-center rounded-full text-primary hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined">call</span>
+</a>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="font-label-lg text-label-lg text-on-surface font-bold">Quick Links</h4>
+<ul class="space-y-3">
+<li class=""><a class="text-on-surface-variant hover:text-primary underline transition-all text-label-sm" href="#">About Us</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary underline transition-all text-label-sm" href="#">Consult Doctor</a></li><li class=""><a class="text-on-surface-variant hover:text-primary underline transition-all text-label-sm" href="#">Contact Us</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary underline transition-all text-label-sm" href="#">FAQs</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary underline transition-all text-label-sm" href="#">My Orders</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-label-lg text-label-lg text-on-surface font-bold">Policies</h4>
+<ul class="space-y-3">
+<li class=""><a class="text-on-surface-variant hover:text-primary underline transition-all text-label-sm" href="#">Terms of Service</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary underline transition-all text-label-sm" href="#">Privacy Policy</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary underline transition-all text-label-sm" href="#">Return Policy</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary underline transition-all text-label-sm" href="#">Shipping Info</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-label-lg text-label-lg text-on-surface font-bold">Newsletter</h4>
+<p class="text-on-surface-variant text-label-sm">Subscribe to get wellness tips and exclusive offers.</p>
+<div class="flex gap-2">
+<input class="bg-surface-container-lowest border-outline-variant rounded-lg flex-grow px-4 py-2 focus:ring-primary focus:border-primary text-body-md" placeholder="Email address" type="email">
+<button class="bg-primary text-on-primary p-2 rounded-lg"><span class="material-symbols-outlined">send</span></button>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 py-8 px-margin-desktop text-center">
+<p class="text-on-surface-variant text-label-sm">© 2024 Ayurwellness Ayurvedic Wellness. All rights reserved.</p>
+</div>
+</footer>
+<script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 20) {
+        header.classList.add('py-2', 'shadow-md');
+        header.classList.remove('py-4', 'shadow-sm');
+      } else {
+        header.classList.remove('py-2', 'shadow-md');
+        header.classList.add('py-4', 'shadow-sm');
+      }
+    });
+
+    // Simple interaction logic for cards
+    document.querySelectorAll('.hover-lift').forEach(card => {
+      card.addEventListener('mousedown', () => card.style.transform = 'scale(0.98)');
+      card.addEventListener('mouseup', () => card.style.transform = 'translateY(-4px)');
+    });
+  </script>
+
+
+</body></html>

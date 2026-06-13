@@ -19,3 +19,12 @@ Thumbs.db
 # Environment
 .env
 *.env.local
+
+# PHPUnit cache
+tests/.phpunit.cache/
+
+# Runtime temp (mPDF, cache, etc)
+var/
+
+# Generated invoices (not committed)
+uploads/invoices/

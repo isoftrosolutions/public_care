@@ -141,7 +141,9 @@ CREATE TABLE IF NOT EXISTS settings (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT IGNORE INTO settings (setting_key, setting_value) VALUES ('groq_api_key', '');
+INSERT IGNORE INTO settings (setting_key, setting_value) VALUES
+('openai_api_key', ''),
+('openai_model', 'gpt-5.2');
 
 -- Seed data: dosha_questions (only if table is empty)
 INSERT INTO dosha_questions (question_text, category, weight, display_order) 
@@ -166,3 +168,82 @@ SELECT * FROM (
     SELECT 'मैं शांत स्वभाव का हूँ और गुस्सा जल्दी नहीं करता', 'kapha', 1, 18
 ) AS tmp
 WHERE NOT EXISTS (SELECT 1 FROM dosha_questions LIMIT 1);
+
+-- Checkout/order address columns. Some older local databases have the enhanced
+-- payment columns but are missing the canonical shipping fields used by checkout,
+-- payment, orders, returns, and tracking pages.
+SET @orders_shipping_name := (SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'orders' AND COLUMN_NAME = 'shipping_name');
+SET @sql := IF(@orders_shipping_name = 0, 'ALTER TABLE orders ADD COLUMN shipping_name VARCHAR(100) NULL AFTER shipping', 'SELECT 1');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+SET @orders_shipping_phone := (SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'orders' AND COLUMN_NAME = 'shipping_phone');
+SET @sql := IF(@orders_shipping_phone = 0, 'ALTER TABLE orders ADD COLUMN shipping_phone VARCHAR(20) NULL AFTER shipping_name', 'SELECT 1');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+SET @orders_shipping_address := (SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'orders' AND COLUMN_NAME = 'shipping_address');
+SET @sql := IF(@orders_shipping_address = 0, 'ALTER TABLE orders ADD COLUMN shipping_address TEXT NULL AFTER shipping_phone', 'SELECT 1');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+SET @orders_shipping_city := (SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'orders' AND COLUMN_NAME = 'shipping_city');
+SET @sql := IF(@orders_shipping_city = 0, 'ALTER TABLE orders ADD COLUMN shipping_city VARCHAR(100) NULL AFTER shipping_address', 'SELECT 1');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+SET @orders_shipping_zip := (SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'orders' AND COLUMN_NAME = 'shipping_zip');
+SET @sql := IF(@orders_shipping_zip = 0, 'ALTER TABLE orders ADD COLUMN shipping_zip VARCHAR(20) NULL AFTER shipping_city', 'SELECT 1');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+CREATE TABLE IF NOT EXISTS invoices (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NULL,
+    order_punch_id INT NULL,
+    invoice_number VARCHAR(50) UNIQUE NOT NULL,
+    pdf_path VARCHAR(255) NULL,
+    email_status ENUM('pending','sent','failed') DEFAULT 'pending',
+    email_error TEXT NULL,
+    emailed_at TIMESTAMP NULL,
+    gst_number VARCHAR(50) NULL,
+    sub_total DECIMAL(12,2) NOT NULL DEFAULT 0.00,
+    discount DECIMAL(10,2) DEFAULT 0.00,
+    taxable_amount DECIMAL(12,2) NOT NULL DEFAULT 0.00,
+    cgst DECIMAL(10,2) DEFAULT 0.00,
+    sgst DECIMAL(10,2) DEFAULT 0.00,
+    igst DECIMAL(10,2) DEFAULT 0.00,
+    total_amount DECIMAL(12,2) NOT NULL DEFAULT 0.00,
+    amount_in_words VARCHAR(500) NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
+);
+
+SET @invoices_pdf_path := (SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'invoices' AND COLUMN_NAME = 'pdf_path');
+SET @sql := IF(@invoices_pdf_path = 0, 'ALTER TABLE invoices ADD COLUMN pdf_path VARCHAR(255) NULL AFTER invoice_number', 'SELECT 1');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+SET @invoices_email_status := (SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'invoices' AND COLUMN_NAME = 'email_status');
+SET @sql := IF(@invoices_email_status = 0, 'ALTER TABLE invoices ADD COLUMN email_status ENUM(''pending'',''sent'',''failed'') DEFAULT ''pending'' AFTER pdf_path', 'SELECT 1');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+SET @invoices_email_error := (SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'invoices' AND COLUMN_NAME = 'email_error');
+SET @sql := IF(@invoices_email_error = 0, 'ALTER TABLE invoices ADD COLUMN email_error TEXT NULL AFTER email_status', 'SELECT 1');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+SET @invoices_emailed_at := (SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'invoices' AND COLUMN_NAME = 'emailed_at');
+SET @sql := IF(@invoices_emailed_at = 0, 'ALTER TABLE invoices ADD COLUMN emailed_at TIMESTAMP NULL AFTER email_error', 'SELECT 1');
+PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;
+
+-- Feature 8: Email Log (tracks all outgoing emails from PHPMailer)
+CREATE TABLE IF NOT EXISTS email_log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    recipient VARCHAR(255) NOT NULL,
+    recipient_name VARCHAR(255) DEFAULT NULL,
+    subject VARCHAR(500) NOT NULL,
+    body TEXT DEFAULT NULL,
+    status ENUM('sent','failed') NOT NULL DEFAULT 'sent',
+    error_message TEXT DEFAULT NULL,
+    email_type VARCHAR(100) DEFAULT NULL,
+    reference_type VARCHAR(50) DEFAULT NULL,
+    reference_id INT DEFAULT NULL,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_status (status),
+    INDEX idx_type (email_type),
+    INDEX idx_sent_at (sent_at)
+);

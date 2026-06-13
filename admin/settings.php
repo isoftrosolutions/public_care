@@ -16,22 +16,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         $error = 'Invalid CSRF token.';
     } else {
-        $groqKey = trim($_POST['groq_api_key'] ?? '');
-        $stmt = $db->prepare("UPDATE settings SET setting_value = ? WHERE setting_key = 'groq_api_key'");
-        $stmt->bind_param('s', $groqKey);
-        if ($stmt->execute()) {
-            $message = 'Settings saved successfully.';
-        } else {
-            $error = 'Failed to save settings.';
+        $settings = [
+            'openai_api_key' => trim($_POST['openai_api_key'] ?? ''),
+            'openai_model' => trim($_POST['openai_model'] ?? 'gpt-5.2'),
+        ];
+
+        $ok = true;
+        foreach ($settings as $key => $value) {
+            $stmt = $db->prepare("INSERT INTO settings (setting_key, setting_value) VALUES (?, ?) ON DUPLICATE KEY UPDATE setting_value = VALUES(setting_value)");
+            $stmt->bind_param('ss', $key, $value);
+            if (!$stmt->execute()) {
+                $ok = false;
+            }
+            $stmt->close();
         }
-        $stmt->close();
+
+        $message = $ok ? 'OpenAI settings saved successfully.' : '';
+        $error = $ok ? '' : 'Failed to save one or more settings.';
     }
 }
 
-$stmt = $db->prepare("SELECT setting_value FROM settings WHERE setting_key = 'groq_api_key' LIMIT 1");
-$stmt->execute();
-$groqApiKey = $stmt->get_result()->fetch_row()[0] ?? '';
-$stmt->close();
+$settings = [];
+$result = $db->query("SELECT setting_key, setting_value FROM settings WHERE setting_key IN ('openai_api_key', 'openai_model')");
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $settings[$row['setting_key']] = $row['setting_value'];
+    }
+}
+$openaiApiKey = $settings['openai_api_key'] ?? '';
+$openaiModel = $settings['openai_model'] ?? 'gpt-5.2';
 ?>
 <?php require_once __DIR__ . '/includes/head.php'; ?>
 <body class="bg-surface font-body-md text-on-surface flex min-h-screen">
@@ -62,13 +75,23 @@ $stmt->close();
     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 
     <div class="mb-6">
-        <label class="text-label-md text-on-surface block mb-2">GROQ API Key</label>
-        <input type="password" name="groq_api_key" value="<?= htmlspecialchars($groqApiKey) ?>"
+        <label class="text-label-md text-on-surface block mb-2">OpenAI API Key</label>
+        <input type="password" name="openai_api_key" value="<?= htmlspecialchars($openaiApiKey) ?>"
                class="w-full px-4 py-3 rounded-lg border border-outline bg-surface text-on-surface focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-               placeholder="gsk_...">
+               placeholder="sk-...">
         <p class="text-label-sm text-on-surface-variant mt-2">
-            Used by AyurBot AI chatbot and Dosha AI recommendations.
-            Get your key at <a href="https://console.groq.com" target="_blank" class="text-primary underline">console.groq.com</a>.
+            Used by AyurBot chatbot, AI Health Assistant, and Dosha AI recommendations.
+            You can also define <code>OPENAI_API_KEY</code> in <code>includes/config-local.php</code> for local development.
+        </p>
+    </div>
+
+    <div class="mb-6">
+        <label class="text-label-md text-on-surface block mb-2">OpenAI Model</label>
+        <input type="text" name="openai_model" value="<?= htmlspecialchars($openaiModel) ?>"
+               class="w-full px-4 py-3 rounded-lg border border-outline bg-surface text-on-surface focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+               placeholder="gpt-5.2">
+        <p class="text-label-sm text-on-surface-variant mt-2">
+            Default model for text health assistant responses. Override with <code>OPENAI_MODEL</code> in local config if needed.
         </p>
     </div>
 

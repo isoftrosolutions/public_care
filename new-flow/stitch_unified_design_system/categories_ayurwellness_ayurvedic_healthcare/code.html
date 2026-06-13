@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ayurwellness - Explore Categories</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#005321",
+                    "on-surface": "#1b1c1c",
+                    "on-secondary-fixed-variant": "#434843",
+                    "surface-tint": "#1f6c35",
+                    "on-surface-variant": "#40493f",
+                    "background": "#fbf9f8",
+                    "inverse-surface": "#303030",
+                    "surface-dim": "#dbd9d9",
+                    "surface-bright": "#fbf9f8",
+                    "primary-fixed-dim": "#8bd895",
+                    "primary-fixed": "#a6f5af",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#dfe4dc",
+                    "on-tertiary-container": "#ffd06c",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#5c4300",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-secondary-fixed": "#181d18",
+                    "surface-variant": "#e4e2e2",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#707a6e",
+                    "primary-container": "#1e6b34",
+                    "on-background": "#1b1c1c",
+                    "surface-container": "#efeded",
+                    "secondary-fixed": "#dfe4dc",
+                    "inverse-primary": "#8bd895",
+                    "tertiary-fixed-dim": "#f6be35",
+                    "surface": "#fbf9f8",
+                    "inverse-on-surface": "#f2f0f0",
+                    "secondary-fixed-dim": "#c3c8c1",
+                    "on-secondary-container": "#606660",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#eae8e7",
+                    "outline-variant": "#bfc9bc",
+                    "tertiary-container": "#785800",
+                    "secondary": "#5a605a",
+                    "tertiary-fixed": "#ffdf9f",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#002109",
+                    "on-primary-container": "#9be9a4",
+                    "surface-container-low": "#f5f3f3",
+                    "primary": "#005221",
+                    "tertiary": "#5a4200"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["DM Sans"],
+                    "label-lg": ["Plus Jakarta Sans"],
+                    "headline-lg": ["DM Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["DM Sans"],
+                    "title-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["DM Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fbf9f8; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .bg-pattern { background-image: radial-gradient(#00522110 1px, transparent 0); background-size: 24px 24px; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #dfe4dc; border-radius: 10px; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="bg-surface sticky top-0 z-50 shadow-sm transition-all duration-300">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<a class="font-display-lg text-display-lg font-bold text-primary flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">eco</span>
+                    Ayurwellness
+                </a>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Categories</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#">Consultations</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#">About Us</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-low border-none rounded-full px-10 py-2 w-64 focus:ring-2 focus:ring-primary text-body-md font-body-md outline-none" placeholder="Search herbal products..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-primary hover:bg-primary/10 rounded-full transition-transform active:scale-90">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="p-2 text-primary hover:bg-primary/10 rounded-full transition-transform active:scale-90">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<button class="p-2 text-primary hover:bg-primary/10 rounded-full transition-transform active:scale-90">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="p-2 text-primary hover:bg-primary/10 rounded-full transition-transform active:scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Hero Banner Section -->
+<section class="relative overflow-hidden bg-primary py-16 md:py-24">
+<div class="absolute inset-0 opacity-10 bg-pattern"></div>
+
+<div class="max-w-container-max mx-auto px-margin-desktop relative z-10 flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1 text-center md:text-left">
+<p class="text-primary-fixed font-label-lg text-label-lg mb-4 tracking-widest uppercase">Natural • Balanced • Healthy</p>
+<h1 class="font-display-lg text-display-lg text-on-primary-container mb-6">Explore Natural <br/>Wellness Categories</h1>
+<p class="text-on-primary-container/80 font-body-lg text-body-lg max-w-xl mx-auto md:mx-0">
+                    Discover authentic Ayurvedic products, expert consultations, herbal remedies, and wellness solutions designed for your holistic growth.
+                </p>
+</div>
+<div class="flex-1 w-full max-w-md">
+<div class="relative group">
+<div class="absolute -inset-4 bg-primary-fixed/20 blur-3xl rounded-full"></div>
+<img class="rounded-2xl shadow-2xl relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500 object-cover aspect-square" data-alt="A high-end, premium Ayurvedic setup featuring organic wooden bowls filled with various dried herbs, powdered turmeric, and green leaves resting on a stone surface. The lighting is soft and golden, highlighting the textures of the natural ingredients against a clean, minimalist background. The mood is serene, professional, and health-focused, embodying a modern wellness aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB11f5yaVl2I07DrrZo-AJEVtqrdAwiXF8a1NiYwdtAqdy0dnUz6p6Q0l81W5v893n8zpK3U1fS1Q7ZuSmQ44CkU_Xr0KqQ_PQjoxStMYqZtXXWNAN9B2eyNRCd8anAF5Nx5nnXExyy7dsu7ip4FAfQCczMB6lXSEoVm894cxpCgz4p8Egar4JFGnkhOghx2YHd1LjfHZWl2uck-4X-CMG_nFJVWTYFnm_0AoLYgKmt0k0qv5_g9gv1fcD4X1y5DP-4CUARiXMPsHc"/>
+</div>
+</div>
+</div>
+</section>
+<main class="max-w-container-max mx-auto px-margin-desktop py-12">
+<div class="flex flex-col md:flex-row gap-gutter">
+<!-- Sidebar Filters -->
+<aside class="w-full md:w-64 space-y-8 flex-shrink-0">
+<div class="sticky top-28">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-title-lg text-title-lg text-on-surface">Filters</h3>
+<button class="text-primary text-label-sm font-label-sm hover:underline">Clear all</button>
+</div>
+<!-- Filter Groups -->
+<div class="space-y-6">
+<div>
+<label class="font-label-lg text-label-lg block mb-3">Health Concern</label>
+<div class="flex flex-col gap-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md font-body-md text-on-surface-variant group-hover:text-primary">Stress Relief</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md font-body-md text-on-surface-variant group-hover:text-primary">Immunity Booster</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md font-body-md text-on-surface-variant group-hover:text-primary">Better Sleep</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md font-body-md text-on-surface-variant group-hover:text-primary">Digestive Health</span>
+</label>
+</div>
+</div>
+<hr class="border-outline-variant/30"/>
+<div>
+<label class="font-label-lg text-label-lg block mb-3">Ayurvedic Dosha</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-1.5 rounded-full border border-outline-variant text-label-sm font-label-sm hover:bg-primary hover:text-white transition-colors">Vata</button>
+<button class="px-4 py-1.5 rounded-full border border-outline-variant text-label-sm font-label-sm hover:bg-primary hover:text-white transition-colors">Pitta</button>
+<button class="px-4 py-1.5 rounded-full border border-outline-variant text-label-sm font-label-sm hover:bg-primary hover:text-white transition-colors">Kapha</button>
+</div>
+</div>
+<hr class="border-outline-variant/30"/>
+<div>
+<label class="font-label-lg text-label-lg block mb-3">Price Range</label>
+<input class="w-full accent-primary h-1.5 bg-surface-container rounded-lg appearance-none cursor-pointer" type="range"/>
+<div class="flex justify-between mt-2 text-label-sm text-on-surface-variant">
+<span>₹0</span>
+<span>₹5000+</span>
+</div>
+</div>
+<hr class="border-outline-variant/30"/>
+<div>
+<label class="font-label-lg text-label-lg block mb-3">Sort By</label>
+<select class="w-full bg-surface-container-low border-outline-variant rounded-lg p-2 text-body-md outline-none focus:ring-1 focus:ring-primary">
+<option>Best Sellers</option>
+<option>New Arrivals</option>
+<option>Popularity</option>
+</select>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 space-y-16">
+<!-- Shop by Health Concern (Bento Style) -->
+<section>
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline-md text-headline-md text-on-surface">Shop by Health Concern</h2>
+<button class="text-primary font-label-lg flex items-center gap-1 group">
+                            View All Concerns <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Stress Relief -->
+<div class="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">self_improvement</span>
+</div>
+<h4 class="font-title-lg text-title-lg mb-1">Stress Relief</h4>
+<p class="text-on-surface-variant text-body-md font-body-md">Natural adaptogens</p>
+</div>
+<!-- Better Sleep -->
+<div class="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20">
+<div class="w-12 h-12 bg-tertiary-fixed/30 rounded-full flex items-center justify-center mb-4 text-tertiary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bedtime</span>
+</div>
+<h4 class="font-title-lg text-title-lg mb-1">Better Sleep</h4>
+<p class="text-on-surface-variant text-body-md font-body-md">Deep restorative rest</p>
+</div>
+<!-- Immunity -->
+<div class="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20">
+<div class="w-12 h-12 bg-primary-fixed/30 rounded-full flex items-center justify-center mb-4 text-on-primary-fixed-variant group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<h4 class="font-title-lg text-title-lg mb-1">Immunity</h4>
+<p class="text-on-surface-variant text-body-md font-body-md">Defense support</p>
+</div>
+<!-- Digestion -->
+<div class="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20">
+<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center mb-4 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">nutrition</span>
+</div>
+<h4 class="font-title-lg text-title-lg mb-1">Digestive</h4>
+<p class="text-on-surface-variant text-body-md font-body-md">Gut health &amp; detox</p>
+</div>
+</div>
+</section>
+<!-- Featured Categories Grid -->
+<section>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-8">Featured Categories</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Ayurvedic Medicines -->
+<div class="group cursor-pointer">
+<div class="relative h-48 rounded-2xl overflow-hidden mb-4 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Close-up of traditional Ayurvedic herbs including ginger, turmeric, and dried neem leaves arranged on an antique bronze plate. The background is a rustic wooden table with soft side-lighting creating elegant shadows. The visual aesthetic is organic, grounded, and medical-grade herbalism. The color palette emphasizes earthy tones and natural greens." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpbHmFvLBVpR6y-_QCsgDzlzKb7qVzm9ZF59O3my6pyd_uMLpkCMjwja1weQUm3n1qSm6JjhwZARMzwkFxx5f3FA8CqEC7nTmRmZ7eX6bv27_dgxFCgW1vE081m6nIobNVDbL-7YNH87fJb8L71HZY9B5pc1DQgEe8J11gbdtPjHxldVM4dTYUCmIK0GojYl5OCPzuUqjKnY4R_B6_zkJOQNspdi4ogq7hoU_Ta4eGDGq8uizHsblOG_IRTc9DgsZHro9tNwuXWWg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-primary/90 text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold">New arrivals</span>
+</div>
+</div>
+<h3 class="font-title-lg text-title-lg mb-1 group-hover:text-primary transition-colors">Ayurvedic Medicines</h3>
+<p class="text-on-surface-variant text-body-md font-body-md">120+ Products</p>
+</div>
+<!-- Herbal Supplements -->
+<div class="group cursor-pointer">
+<div class="relative h-48 rounded-2xl overflow-hidden mb-4 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Clear glass amber bottles of herbal extracts and green plant capsules placed next to fresh green leaves on a clean, bright marble surface. High-key lighting creates a sterile yet natural clinical pharmacy aesthetic. The composition is clean and modern, focusing on wellness and supplement quality. Touches of emerald green contrast beautifully with the white marble." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN6TCdrTYyiPMVc6vGjOtQQRelo3kYzKcN7OJigPTcg0kvgC1XMgDl7UJFz_9DbG5bWJ7GwpU8GYzyJPgDMOiwiRnUHnQih1gwUbWWbaUynFRgMnkByIw9lqEFtQNFlWjrtbQxNAWCLg4Wt2v5hlACQR3NiiZuky-DHjodyttjZVaTFOkPdgJn5PHovyoj2N8upjTM0ws7GxZ7FnGkpqFxxBvRbwREdHwOiDRpBsYXqmgdZONeu0rX8nZdwAlpErgNzzKOH-KBt7s"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+<h3 class="font-title-lg text-title-lg mb-1 group-hover:text-primary transition-colors">Herbal Supplements</h3>
+<p class="text-on-surface-variant text-body-md font-body-md">85+ Products</p>
+</div>
+<!-- Personal Care -->
+<div class="group cursor-pointer">
+<div class="relative h-48 rounded-2xl overflow-hidden mb-4 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Minimalist skincare arrangement with eco-friendly packaging, glass jars, and fresh aloe vera leaves. The scene is bright and airy with soft natural light streaming in, creating a peaceful spa-like atmosphere. The background is a soft beige linen texture. The focus is on clean beauty, organic ingredients, and modern self-care aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsoFH6dMGfvzjZpANeazOnD2MshDGm24NcVPAb2t-CuxcRUnkApbtGe1fSlpWebpMPcGUOwu_ejuBqbkVI2_Zpr-y60XLYS811_0i8BOfYG3eDnxxkQjA3Yq6Chca9fyCX4H1AJ1t2kOruLCMQVbcVW3s-YtdvvZPSoSe2mwiM_hCsdQ4_YuEP2GquUyFLRUuG9SdO5nnaKKyjWkL0NY5bU5YKuX4aJVsrr3n1hi8xQK2ZPeVqaVfnG_eN2yPUaLEv9i5Q2PAr_ME"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+<h3 class="font-title-lg text-title-lg mb-1 group-hover:text-primary transition-colors">Personal Care</h3>
+<p class="text-on-surface-variant text-body-md font-body-md">240+ Products</p>
+</div>
+</div>
+</section>
+<!-- Product Formats (Minimalist Row) -->
+<section class="bg-surface-container-low rounded-3xl p-8">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-8">Browse by Format</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+<div class="text-center group cursor-pointer">
+<div class="aspect-square bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all">
+<span class="material-symbols-outlined text-3xl text-primary">pill</span>
+</div>
+<p class="font-label-lg text-label-lg">Capsules</p>
+</div>
+<div class="text-center group cursor-pointer">
+<div class="aspect-square bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all">
+<span class="material-symbols-outlined text-3xl text-primary">liquor</span>
+</div>
+<p class="font-label-lg text-label-lg">Syrups</p>
+</div>
+<div class="text-center group cursor-pointer">
+<div class="aspect-square bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all">
+<span class="material-symbols-outlined text-3xl text-primary">opacity</span>
+</div>
+<p class="font-label-lg text-label-lg">Oils</p>
+</div>
+<div class="text-center group cursor-pointer">
+<div class="aspect-square bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all">
+<span class="material-symbols-outlined text-3xl text-primary">coffee</span>
+</div>
+<p class="font-label-lg text-label-lg">Herbal Tea</p>
+</div>
+<div class="text-center group cursor-pointer">
+<div class="aspect-square bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all">
+<span class="material-symbols-outlined text-3xl text-primary">eco</span>
+</div>
+<p class="font-label-lg text-label-lg">Powders</p>
+</div>
+<div class="text-center group cursor-pointer">
+<div class="aspect-square bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all">
+<span class="material-symbols-outlined text-3xl text-primary">redeem</span>
+</div>
+<p class="font-label-lg text-label-lg">Combos</p>
+</div>
+</div>
+</section>
+<!-- Healthcare Services (Elegant Row) -->
+<section>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-8">Expert Consultations</h2>
+<div class="flex flex-col lg:flex-row gap-gutter">
+<div class="flex-1 bg-white border border-outline-variant/30 rounded-3xl p-8 flex items-center gap-8 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-32 h-32 rounded-2xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional female Ayurvedic doctor in a clean white coat with a stethoscope around her neck, smiling warmly at the camera in a modern, plant-filled office. The environment is professional yet inviting, featuring wooden accents and soft lighting. The image conveys trust, expertise, and personalized care in a holistic healthcare setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3hGX4_nQCApx-s8yhMpbu2WwnRHNUnQp--yvUNmnarIhqCCeBrpiyV75lROJ6FdsLzp9C21wAOae6ouNxzg9auJ-mEO8cMR9cSExXN8PWhKVFqvedci9xJ12Yt1EXsO_O-qYPNBj1sWGOZ1CswH78Ybc80gbGlYAW-FOQ-nu25tbyeemeUM5sbxVmHVZK-pMoj6PvsYMavD3VMhbMAjYwqqBQHy18t_QwGoupudZDNAMsXWcJNrlanH3ncgcrmYD3aJl19CzMiG8"/>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg mb-2">Ayurvedic Consultation</h3>
+<p class="text-on-surface-variant font-body-md text-body-md mb-4">Get personalized advice from our top experts based on your unique body constitution (Dosha).</p>
+<button class="bg-primary text-white font-label-lg text-label-lg px-6 py-2.5 rounded-full hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+<div class="flex-1 bg-tertiary-container text-on-tertiary-container rounded-3xl p-8 flex items-center gap-8 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-32 h-32 rounded-2xl overflow-hidden bg-white/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-5xl text-on-tertiary-container">spa</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg mb-2">Panchakarma Therapy</h3>
+<p class="text-on-tertiary-container/80 font-body-md text-body-md mb-4">Detoxify and rejuvenate your body with ancient therapeutic practices performed by skilled professionals.</p>
+<button class="bg-on-tertiary-container text-tertiary-container font-label-lg text-label-lg px-6 py-2.5 rounded-full hover:opacity-90 transition-opacity">Learn More</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest mt-24">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<a class="font-headline-md text-headline-md font-bold text-primary mb-4 block" href="#">Ayurwellness</a>
+<p class="text-secondary font-body-md text-body-md mb-6">Authentic Ayurvedic solutions for a balanced and healthy life. Experience the wisdom of nature.</p>
+<div class="flex gap-4">
+<a class="text-primary hover:opacity-80" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-primary hover:opacity-80" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-primary mb-4">Explore</h4>
+<ul class="space-y-2">
+<li><a class="text-secondary hover:text-on-primary-fixed-variant transition-colors font-body-md text-body-md" href="#">About Us</a></li>
+<li><a class="text-secondary hover:text-on-primary-fixed-variant transition-colors font-body-md text-body-md" href="#">Herbal Guide</a></li>
+<li><a class="text-secondary hover:text-on-primary-fixed-variant transition-colors font-body-md text-body-md" href="#">Consultations</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-primary mb-4">Support</h4>
+<ul class="space-y-2">
+<li><a class="text-secondary hover:text-on-primary-fixed-variant transition-colors font-body-md text-body-md" href="#">Shipping Policy</a></li>
+<li><a class="text-secondary hover:text-on-primary-fixed-variant transition-colors font-body-md text-body-md" href="#">Privacy Policy</a></li>
+<li><a class="text-secondary hover:text-on-primary-fixed-variant transition-colors font-body-md text-body-md" href="#">Contact Support</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-primary mb-4">Newsletter</h4>
+<p class="text-secondary font-body-md text-body-md mb-4">Get wellness tips and offers.</p>
+<div class="flex gap-2">
+<input class="bg-surface border-none rounded-lg px-4 py-2 w-full focus:ring-1 focus:ring-primary text-body-md" placeholder="Email" type="email"/>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 py-6 text-center text-secondary font-label-sm text-label-sm">
+            © 2024 Ayurwellness. All rights reserved.
+        </div>
+</footer>
+<!-- Back to Top FAB (Only visible on scroll conceptually) -->
+<button class="fixed bottom-8 right-8 bg-primary text-white p-4 rounded-full shadow-lg transform translate-y-24 transition-all duration-300 active:scale-90 hover:shadow-xl" id="scrollToTop">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<script>
+        // Micro-interactions and scroll effects
+        const header = document.querySelector('header');
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            // Sticky Header shadow
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+                scrollToTopBtn.classList.remove('translate-y-24');
+            } else {
+                header.classList.remove('shadow-md');
+                scrollToTopBtn.classList.add('translate-y-24');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Hover effect for filter checkboxes
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                const label = e.target.closest('label').querySelector('span');
+                if (e.target.checked) {
+                    label.classList.add('text-primary', 'font-semibold');
+                } else {
+                    label.classList.remove('text-primary', 'font-semibold');
+                }
+            });
+        });
+    </script>
+</body></html>

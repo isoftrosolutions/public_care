@@ -4,164 +4,105 @@ $site_title = 'Home';
 require_once __DIR__ . '/includes/header.php';
 ?>
 
-<!-- Hero Banner -->
-<section class="relative min-h-[85vh] flex items-center overflow-hidden">
-<div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover" data-alt="A serene wide-angle lifestyle photograph featuring a healthy, smiling family practicing mindful meditation in a lush, green sunlit garden. The composition includes premium glass jars of Ayurvedic supplements in the soft-focus foreground, illuminated by warm, golden-hour lighting. The overall aesthetic is clinical yet grounded in nature, using deep forest greens and soft sage tones to evoke professional wellness and ancient botanical wisdom." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQdELDR0Pm1B_DXVpYpAXgL_bV4U3mjfRxGB0lf2E-fxailJkJw4E2JDlwgMhIWQaCsQ9Un6j0hEvm_u96aCxxwaXhlimp2goqL2gpk6Ff4yOFP0IpJ1yP6aAWDOYZa9wNY8ObAhhA-l6jMDiXpWXX_dUk-gMBqlR3sZOpOtifW145kNTl2ffJDWaM4g1K9Z7kVlLvje7PitgymvTWu27RhWtpfxHOOQn3o40HEAaFPum2jV6hNfWr2RX7zJ4amoXbqxPqJRHbTFA"/>
-<div class="absolute inset-0 bg-gradient-to-r from-surface/95 via-surface/60 to-transparent"></div>
+<div class="pt-24 space-y-16 pb-24">
+
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-desktop">
+<div class="relative w-full rounded-xl overflow-hidden shadow-lg h-[640px]">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A premium wide shot of a modern Ayurvedic wellness setup featuring a wooden mortar and pestle surrounded by fresh green herbs, turmeric roots, and sleek dark glass apothecary bottles. The background is a clean, bright, off-white minimalist space with soft natural morning light creating gentle shadows. The overall aesthetic is professional, corporate modern, and deeply rooted in nature with a palette of forest greens and warm earthy tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo11Xq4d49gQxM0_vENu4Qofi6nZ3iRK1tr--Pdm22dy9TiiDv7FYFz_MlDipFOceI4NAmcK4eohhVsVjx6WfD59jYTP9Tr_CDF3zS1oFCS-QG8L4BZEfoSnUi35osHRACMq1HJlWMrfoj9h84U-fkT-VXFC6Ih9H-kSzgP6mAn_sDA5ai6r6c9rSkZRehbsZEYxeTrxBF5yRpUf4OBK1mpfg-IdYRGDHG2Sh0ho53ntdBRKHWo0HFk8rbj9w5qJ9FYeQ6EJhQJbw">
+<div class="absolute inset-0 bg-gradient-to-r from-on-primary-fixed/60 to-transparent flex items-center bg-black/20">
+<div class="px-16 space-y-6 max-w-2xl">
+<h1 class="font-display-lg text-on-primary leading-tight text-6xl">Natural Care,<br>Ayurvedic Cure</h1>
+<p class="font-headline-md text-headline-md text-primary-fixed">Up to 30% OFF</p>
+<p class="font-body-lg text-body-lg text-on-primary opacity-90 max-w-md">Experience the fusion of ancient herbal wisdom and modern science for a healthier, vibrant tomorrow.</p>
+<div class="pt-4">
+<a class="bg-primary hover:bg-on-primary-fixed-variant text-on-primary px-10 py-4 rounded-lg font-label-lg text-label-lg transition-all active:scale-95 shadow-md inline-block" href="<?= BASE_URL ?>/shop.php">Shop Now</a>
 </div>
-<div class="relative z-10 w-full max-w-container-max mx-auto px-gutter">
-<div class="max-w-2xl animate-fade-in">
-<span class="text-primary-container font-label-md text-label-md tracking-widest block mb-4">TRADITION MEETS CLINICAL SCIENCE</span>
-<h1 class="font-display-lg text-display-lg lg:text-[64px] lg:leading-[72px] text-primary mb-6">Ancient Wisdom for Modern Living</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
-Experience the healing power of authentic Ayurveda. Trusted by families, recommended by doctors, and formulated with 5,000 years of botanical heritage.
-</p>
-<div class="flex flex-wrap gap-4">
-<a class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-md text-label-md hover:bg-primary-container shadow-lg transition-all hover:-translate-y-1 inline-block" href="<?= BASE_URL ?>/shop.php">Start Your Journey</a>
-<a class="border-2 border-primary text-primary px-8 py-4 rounded-full font-label-md text-label-md hover:bg-surface-container-low transition-all inline-block" href="<?= BASE_URL ?>/doctor-listing.php">Consult a Doctor</a>
 </div>
 </div>
 </div>
 </section>
 
-<!-- Trust Indicators Bar -->
-<section class="bg-surface-container-low py-8">
-<div class="max-w-container-max mx-auto px-gutter flex flex-wrap justify-between items-center gap-8">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
-<span class="font-label-md text-label-md text-primary">GMP CERTIFIED</span>
+<!-- Category Quick-Links -->
+<section class="max-w-container-max mx-auto px-margin-desktop overflow-hidden">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Shop by Category</h2>
+<a class="text-primary font-label-lg text-label-lg hover:underline" href="<?= BASE_URL ?>/shop.php">View All</a>
 </div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-3xl">nature</span>
-<span class="font-label-md text-label-md text-primary">100% AYURVEDIC</span>
+<div class="flex gap-12 overflow-x-auto pb-4 hide-scrollbar">
+<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">oil_barrel</span>
 </div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-3xl">medical_services</span>
-<span class="font-label-md text-label-md text-primary">DOCTOR RECOMMENDED</span>
+<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Oil</span>
 </div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-3xl">lock</span>
-<span class="font-label-md text-label-md text-primary">SECURE PAYMENTS</span>
+<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">medication</span>
+</div>
+<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Capsules</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">nutrition</span>
+</div>
+<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Churna</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">vaccines</span>
+</div>
+<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Syrup</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">water_drop</span>
+</div>
+<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Juice</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">grain</span>
+</div>
+<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Powder</span>
+</div>
+<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
+<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">emoji_food_beverage</span>
+</div>
+<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Herbal Tea</span>
+</div>
+</div>
+</section>
+
+<!-- Trust Signals Bar -->
+<section class="w-full bg-secondary-container/30 py-8">
+<div class="max-w-container-max mx-auto px-margin-desktop flex flex-wrap justify-between gap-8">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">verified</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">100% Ayurvedic &amp; Natural</p>
+<p class="text-label-sm text-on-surface-variant">Pure, potent formulations</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">shield_lock</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">No Side Effects</p>
+<p class="text-label-sm text-on-surface-variant">Gentle on your body</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">groups</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Trusted by Thousands</p>
+<p class="text-label-sm text-on-surface-variant">Over 50,000+ happy lives</p>
+</div>
 </div>
 </div>
 </section>
 
-<!-- Smart Ayurveda Features -->
-<section class="py-section-gap bg-surface">
-<div class="max-w-container-max mx-auto px-gutter">
-    <div class="text-center mb-12">
-        <span class="inline-block bg-secondary-container/30 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-4"><span class="material-symbols-outlined text-sm align-text-bottom">auto_awesome</span> AI + आयुर्वेद — What Makes Us Different</span>
-        <h2 class="font-headline-lg text-headline-lg text-primary mb-2">Beyond Products — Your Complete Wellness Ecosystem</h2>
-        <p class="text-on-surface-variant max-w-2xl mx-auto">6 powerful features designed to keep you healthy, informed, and connected with your Ayurvedic journey.</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Feature 1: AI Body Analysis -->
-        <a href="<?= BASE_URL ?>/dosha-quiz.php" class="group bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6] hover:shadow-lg hover:border-primary transition-all">
-            <div class="w-12 h-12 rounded-xl bg-[#1b4332]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-2xl text-primary">biotech</span></div>
-            <h3 class="font-bold text-on-surface mb-2">AI Body Analysis</h3>
-            <p class="text-sm text-on-surface-variant">3-minute test to know your Vata-Pitta-Kapha profile with Groq AI-powered personalized diet, yoga & lifestyle recommendations.</p>
-            <span class="text-xs font-bold text-primary mt-3 inline-block group-hover:translate-x-1 transition-transform">Try Now →</span>
-        </a>
-        <!-- Feature 2: Email Health Coach -->
-        <a href="<?= BASE_URL ?>/health-coach.php" class="group bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6] hover:shadow-lg hover:border-primary transition-all">
-            <div class="w-12 h-12 rounded-xl bg-[#1b4332]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-2xl text-primary">notifications_active</span></div>
-            <h3 class="font-bold text-on-surface mb-2">Email Health Coach</h3>
-            <p class="text-sm text-on-surface-variant">Daily reminders for medicine, water, yoga & diet plans — because we care beyond the purchase.</p>
-            <span class="text-xs font-bold text-primary mt-3 inline-block group-hover:translate-x-1 transition-transform">Set Reminders →</span>
-        </a>
-        <!-- Feature 3: 90-Day Dashboard -->
-        <a href="<?= BASE_URL ?>/my-health.php" class="group bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6] hover:shadow-lg hover:border-primary transition-all">
-            <div class="w-12 h-12 rounded-xl bg-[#1b4332]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-2xl text-primary">monitoring</span></div>
-            <h3 class="font-bold text-on-surface mb-2">90-Day Dashboard</h3>
-            <p class="text-sm text-on-surface-variant">Track weight, sleep, pain score, BP & sugar. See your progress over 7, 30 or 90 days.</p>
-            <span class="text-xs font-bold text-primary mt-3 inline-block group-hover:translate-x-1 transition-transform">View Dashboard →</span>
-        </a>
-        <!-- Feature 4: Family Health -->
-        <a href="<?= BASE_URL ?>/my-family.php" class="group bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6] hover:shadow-lg hover:border-primary transition-all">
-            <div class="w-12 h-12 rounded-xl bg-[#1b4332]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-2xl text-primary">family_history</span></div>
-            <h3 class="font-bold text-on-surface mb-2">Family Health Account</h3>
-            <p class="text-sm text-on-surface-variant">One login for your whole family — manage reports, medicines, and appointments together.</p>
-            <span class="text-xs font-bold text-primary mt-3 inline-block group-hover:translate-x-1 transition-transform">Add Family →</span>
-        </a>
-        <!-- Feature 5: Video Consult -->
-        <a href="<?= BASE_URL ?>/video-consult.php" class="group bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6] hover:shadow-lg hover:border-primary transition-all">
-            <div class="w-12 h-12 rounded-xl bg-[#1b4332]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-2xl text-primary">videocam</span></div>
-            <h3 class="font-bold text-on-surface mb-2">Video Doctor Call</h3>
-            <p class="text-sm text-on-surface-variant">Face-to-face video consultations with digital prescriptions delivered on email & WhatsApp.</p>
-            <span class="text-xs font-bold text-primary mt-3 inline-block group-hover:translate-x-1 transition-transform">Book Now →</span>
-        </a>
-        <!-- Feature 6: Multi-Language -->
-        <div class="group bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6] hover:shadow-lg hover:border-primary transition-all">
-            <div class="w-12 h-12 rounded-xl bg-[#1b4332]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-2xl text-primary">language</span></div>
-            <h3 class="font-bold text-on-surface mb-2">भाषा आधारित सेवा</h3>
-            <p class="text-sm text-on-surface-variant">हिन्दी, हरियाणवी, ਪੰਜਾਬੀ, भोजपुरी और English — अपनी भाषा में आयुर्वेद की सेवाएँ लें।</p>
-            <span class="text-xs font-bold text-primary mt-3 inline-block">Change Language ↑</span>
-        </div>
-    </div>
-</div>
-</section>
-
-<!-- Product Categories -->
-<section class="py-section-gap max-w-container-max mx-auto px-gutter">
-<div class="text-center mb-16">
-<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Targeted Care Solutions</h2>
-<div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
-<p class="text-on-surface-variant max-w-lg mx-auto">Discover holistic treatments tailored to your unique biological constitution (Dosha) and health goals.</p>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-<a class="group relative aspect-square overflow-hidden rounded-xl bg-surface-container-highest shadow-sm hover:shadow-md transition-all" href="<?= BASE_URL ?>/shop.php">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Close-up artistic photography of vibrant citrus and ginger on a matte white ceramic surface, symbolizing natural immunity. The lighting is bright and editorial, reflecting high-end clinical hygiene and botanical purity. Soft sage green tones and forest green shadows create a premium Ayurvedic healthcare aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkyDg0HnVV4EP5dWjPpwv37e9ZTNqA8uwnQmspn9DivMTrM9Ck3rAQR_sug5uWGKlJMe-0VbvD7JAfZ5LBPDYpgLIPT3zZC_9GDzy57rLHQsRSb29R4_OZ-AJ6Bzj3DkIBsIQEeciVclaLnmWppRsLPOBogyAdsjGfT43NTtTsowVUHXyt0wurSvxbqC6fQa-TY145FpcchbcVUpZRUjGRDEw0Y4Xs_sBtL34xUMZSDuEmfPo2JANljtADgfkqYB9A0gKyoZVxgPs"/>
-<div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors flex items-center justify-center">
-<span class="text-on-primary font-headline-md text-headline-md tracking-wide">Immunity</span>
-</div>
-</a>
-<a class="group relative aspect-square overflow-hidden rounded-xl bg-surface-container-highest shadow-sm hover:shadow-md transition-all" href="<?= BASE_URL ?>/shop.php">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A minimalist arrangement of raw cinnamon sticks and bitter melon on a light stone background, focused on metabolic health and diabetes care. The visual style is modern traditionalism with generous whitespace and high-contrast, soft textures. Deep earthy botanical tones align with the Public Care Ayurveda brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoGVCoC7RwEoIYFqIS9dv6ov9M_rYwTSm-zKqf66NjkcjDdk7xOpLw5QsZ17cjud_fNb2mqmWuQV4wymien5WbXPEuOQAMnlJLpyJ1qF1eOhCgefwbLByX6lm0-16znC3bY13v7i_8QA7Mw7slHEP5L1ypV0SuLfeS2mxsOMlBdq2ohyM2_KsenTpwEjPFTZe-N1M0ovU9u30wmQ9_UrrZNYsAs5E3jkDpupvwjKzSPNwrZUlNuu06-zUk-uZQTXMbApX10P5jQH0"/>
-<div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors flex items-center justify-center">
-<span class="text-on-primary font-headline-md text-headline-md tracking-wide">Diabetes</span>
-</div>
-</a>
-<a class="group relative aspect-square overflow-hidden rounded-xl bg-surface-container-highest shadow-sm hover:shadow-md transition-all" href="<?= BASE_URL ?>/shop.php">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Overhead shot of green tea leaves and healthy superfoods arranged in an asymmetric bento-style composition for weight loss. The lighting is soft and airy, emphasizing professional care and wellness through order. The color palette features Forest Green accents and clean off-white surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHBIzhbMGKexbonM1ND7XIhjHT9X4m0lZj2JIK-LVa44r-o4um6bGZGHxB3lRIcF1CpKBWTL76PjWfJ53JF6at9hxcg4uQdmgQO0Zmh7QVvZZA2KccjshsDo2OzU1oU8ZchkmzN7vwOBvTsBGc4Q4dIvqOczp_7N2fyic-CM6CM0zSWKs4r0d-I_8IznFiciUs2XrAJcDHm1K6gHzFdb-u-1D99d3GmoPv_UMykc-TpWqlxmxDkkkWq8dAeTFP7MHDav1bT_nsRvs"/>
-<div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors flex items-center justify-center">
-<span class="text-on-primary font-headline-md text-headline-md tracking-wide">Weight Loss</span>
-</div>
-</a>
-<a class="group relative aspect-square overflow-hidden rounded-xl bg-surface-container-highest shadow-sm hover:shadow-md transition-all" href="<?= BASE_URL ?>/shop.php">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Luxurious macro photography of herbal hair oil infused with jasmine and amla, shown on a matte medical equipment texture for hair care. The composition is clean and editorial, using ambient shadows and Forest Green tints to create depth and a premium healthcare identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8HqhJCe7QqmKMPMeUYGLso0ayAqMgpaEVBNkgCDf_TczhP2h-pKE5tYrGR0M1GDX25WhMAvISYjolh4VYcMkQ5Pr7fb_yplWz52paYaF1lZSQQg_z0PMLG88744k96DHOHPSHsZOVSk24SVauXBK3f81jzqLwGvheA0HkdxsJu3YWoomr_ZClJqUS03uRv8Ri1BgLedhQYSdAtB0oo93zq_FtqQj_KgqkP8q90IMpEry_9BRAVETqiYHkc-IQJ5aSkLa9uk7Sl3E"/>
-<div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors flex items-center justify-center">
-<span class="text-on-primary font-headline-md text-headline-md tracking-wide">Hair Care</span>
-</div>
-</a>
-<a class="group relative aspect-square overflow-hidden rounded-xl bg-surface-container-highest shadow-sm hover:shadow-md transition-all" href="<?= BASE_URL ?>/shop.php">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Soft, high-key photography of organic aloe vera and sandalwood paste on a white paper surface for skin care. The style reflects clinical precision and ancient holistic wisdom, featuring a timeless, authoritative presence with breathable layout and botanical accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_zXPHqsV2MxuDnF6AhnMGBQ8jZl4Un9lfXs7ZxqDgeA9aZMpoeY9s6HUCbqMOB1kutV4MM9ILr1SVbkhfTpCbXmeU-r8x4sqXCquMRSqaXw5WjKq8BYkYAXcXHyvzoke_nytbN1yoVCiGcaZpv8bYX-K-DowjSu8ZA3F2vi5OOV5-6TlUsHzQaP9_ZUABDjtKylt7L86XQN8p4IAXvxB9fBruI88rFDASfJ6duGjsPBb7AKAOI-QY0vXfs3a-CSD2pJZjWSXrDa0"/>
-<div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors flex items-center justify-center">
-<span class="text-on-primary font-headline-md text-headline-md tracking-wide">Skin Care</span>
-</div>
-</a>
-<a class="group relative aspect-square overflow-hidden rounded-xl bg-surface-container-highest shadow-sm hover:shadow-md transition-all" href="<?= BASE_URL ?>/shop.php">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A tranquil scene showing a woman drinking herbal tea by a window, representing women's health. The mood is serene and technologically advanced in its clarity, utilizing a palette of deep blacks, whites, and Forest Green. High-contrast, soft lighting creates a premium medical-paper feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtWWV7wJFWU9LUWYdbmCowtSHu2v1ZP7y4ju2-_jDmcktUq59Dz11RWFe-SNZKLgsSkZonO2LQMhUbjW-Rxu9vhHQgJnxAVispleXFju6Ejkcd2tzNgZ9m1A4j_XZLg17_dUSv26RlwXJfday7FOQQlKSi7VLS00wKSttqlzpHq2J_xkb3k9396ILqV4jlkYElRWihjhObssjTvtvthMTDxhsc83YSmiXFv-dCL0yBk0q-Nez_q2IOxzm0R09riKfXkJudrJJrm2o"/>
-<div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors flex items-center justify-center">
-<span class="text-on-primary font-headline-md text-headline-md tracking-wide">Women's Health</span>
-</div>
-</a>
-<a class="group relative aspect-square overflow-hidden rounded-xl bg-surface-container-highest shadow-sm hover:shadow-md transition-all" href="<?= BASE_URL ?>/shop.php">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Minimalist clinical shot of herbal supplements for men's vitality on a matte surface. The aesthetic is modern traditionalism, focusing on longevity and professional care. Deep earthy botanical tones and 8px baseline grid movement ensure a breathable and premium layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMwXWrzfAuvncQGQvSXRUQ81pFMJNoE8RDrQu6al3wN0W1ApwdOOuvmxoX7wX-evBqRtFvHfrcxxLALjexcNhrTGJQVZTpFebbQyfpGYu9eM5rgBH_kda4tIJ4iFb7ufTKVmcPTElWNedrzNt5_gweVhSeXof9aJObAoytA9M5p3YgcWEoIjiHglG6af_xGDAGZAFGGemxX8WxCg0GnXN5ud-JAcH7gNjM1p5ivshWGJxLA7L0mWEA_xadwtjoJkd8zjmL7LrAR18"/>
-<div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors flex items-center justify-center">
-<span class="text-on-primary font-headline-md text-headline-md tracking-wide">Men's Health</span>
-</div>
-</a>
-<a class="group relative aspect-square overflow-hidden rounded-xl bg-surface-container-highest shadow-sm hover:shadow-md transition-all" href="<?= BASE_URL ?>/shop.php">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Artistic macro detail of fennel seeds and cardamom on a premium textured paper, symbolizing digestive care. The lighting is high-key and professional, using a Forest Green and Sage Green palette. The mood is calm, signifying wellness through order." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd0NS1CekJufnkArOUwSpMKPE-j-N5YdtlL4X0Xf40FypV9HwpfzkV1is7Qj9OjucD9LMSR6s7zZdExz3lxgfBtIPNR99ALDv7QolGJ_fdqaL1cFb0LNvEyNUKwCi2JDD_KKULe38cjwGaIvmzpve4AtJ-HbDOPVI2TYc5QuI6lz3kVoAITF1VeLbFu1eZ3jPlMjB5rRoIDLj_QNiMgVHRyMAb6g_PGwiatfAfAmgmiNqaoo1NgF5b8lVD4imBB44zYRsE2HGlKbQ"/>
-<div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors flex items-center justify-center">
-<span class="text-on-primary font-headline-md text-headline-md tracking-wide">Digestive Care</span>
-</div>
-</a>
-</div>
-</section>
-
-<!-- Featured Products -->
+<!-- Best Sellers -->
 <?php
 $conn = getDB();
 $featured_query = "SELECT * FROM products WHERE is_bestseller = TRUE ORDER BY created_at DESC LIMIT 4";
@@ -173,46 +114,43 @@ if ($featured_result && $featured_result->num_rows > 0) {
     }
 }
 ?>
-<section class="bg-surface-container py-section-gap">
-<div class="max-w-container-max mx-auto px-gutter">
-<div class="flex justify-between items-end mb-12">
-<div>
-<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Our Healing Staples</h2>
-<p class="text-on-surface-variant">Best-selling formulations loved by thousands.</p>
+<section class="max-w-container-max mx-auto px-margin-desktop">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Our Bestsellers</h2>
+<a class="text-primary font-label-lg text-label-lg hover:underline" href="<?= BASE_URL ?>/shop.php">View All Products</a>
 </div>
-<a class="text-primary font-label-md text-label-md border-b-2 border-primary pb-1" href="<?= BASE_URL ?>/shop.php">VIEW ALL PRODUCTS</a>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
 <?php if (count($featured_products) > 0): ?>
 <?php foreach ($featured_products as $product): ?>
-<div class="bg-surface rounded-2xl p-6 border border-outline-variant shadow-sm hover:shadow-lg transition-all group">
-<div class="relative overflow-hidden rounded-xl mb-6 aspect-square bg-surface-container-low">
-<img alt="<?= htmlspecialchars($product['name']) ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="<?= htmlspecialchars($product['image_url']) ?>"/>
+<?php $discount = ($product['compare_price'] > 0) ? round((1 - $product['price'] / $product['compare_price']) * 100) : 0; ?>
+<div class="bg-surface-container-lowest rounded-xl p-4 hover-lift group border border-outline-variant/30 relative">
 <?php if ($product['is_bestseller']): ?>
-<span class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold">BEST SELLER</span>
+<span class="absolute top-4 left-4 bg-tertiary-fixed text-on-tertiary-fixed text-label-sm px-2 py-1 rounded-full z-10">Bestseller</span>
 <?php endif; ?>
+<div class="h-64 rounded-lg overflow-hidden mb-4 bg-surface flex items-center justify-center">
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" src="<?= htmlspecialchars($product['image_url']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
 </div>
-<h3 class="font-headline-md text-headline-md text-primary mb-2"><?= htmlspecialchars($product['name']) ?></h3>
-<div class="flex items-center gap-1 mb-3">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-1"><?= htmlspecialchars($product['name']) ?></h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="flex text-tertiary-fixed-dim">
 <?php $full_stars = round($product['rating']); for ($i = 1; $i <= 5; $i++): ?>
-<span class="material-symbols-outlined <?= $i <= $full_stars ? 'text-secondary' : 'text-outline-variant' ?> text-sm" style="<?= $i <= $full_stars ? "font-variation-settings: 'FILL' 1;" : '' ?>">star</span>
+<span class="material-symbols-outlined text-lg" style="<?= $i <= $full_stars ? "font-variation-settings: 'FILL' 1;" : '' ?>"><?= $i <= $full_stars ? 'star' : ($i - 0.5 <= $product['rating'] ? 'star_half' : 'star') ?></span>
 <?php endfor; ?>
-<span class="text-xs text-on-surface-variant ml-1">(<?= (int)$product['reviews_count'] ?>)</span>
 </div>
-<div class="flex items-center justify-between">
-<span class="text-xl font-bold text-primary">₹<?= number_format($product['price'], 2) ?></span>
+<span class="text-label-sm text-on-surface-variant">(<?= number_format((int)$product['reviews_count']) ?>)</span>
+</div>
+<div class="flex items-end gap-2 mb-6">
+<span class="font-headline-md text-headline-md text-primary">₹<?= number_format($product['price'], 2) ?></span>
 <?php if ($product['compare_price'] > 0): ?>
-<span class="text-sm text-outline-variant line-through ml-2">₹<?= number_format($product['compare_price'], 2) ?></span>
+<span class="text-label-lg text-on-surface-variant line-through mb-1">₹<?= number_format($product['compare_price'], 2) ?></span>
+<span class="text-label-sm font-bold text-error mb-1"><?= $discount ?>% OFF</span>
 <?php endif; ?>
-<button class="bg-primary text-on-primary p-2 rounded-full hover:bg-primary-container transition-all add-to-cart" data-product-id="<?= $product['id'] ?>">
-<span class="material-symbols-outlined">add_shopping_cart</span>
-</button>
 </div>
+<button class="w-full py-3 border border-primary text-primary font-label-lg rounded-lg hover:bg-primary hover:text-on-primary transition-all add-to-cart" data-product-id="<?= $product['id'] ?>">Add to Cart</button>
 </div>
 <?php endforeach; ?>
 <?php else: ?>
 <?php
-// Fallback: fetch any 4 products
 $fallback_query = "SELECT * FROM products ORDER BY created_at DESC LIMIT 4";
 $fallback_result = $conn->query($fallback_query);
 if ($fallback_result && $fallback_result->num_rows > 0) {
@@ -223,129 +161,110 @@ if ($fallback_result && $fallback_result->num_rows > 0) {
 ?>
 <?php if (count($featured_products) > 0): ?>
 <?php foreach ($featured_products as $product): ?>
-<div class="bg-surface rounded-2xl p-6 border border-outline-variant shadow-sm hover:shadow-lg transition-all group">
-<div class="relative overflow-hidden rounded-xl mb-6 aspect-square bg-surface-container-low">
-<img alt="<?= htmlspecialchars($product['name']) ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="<?= htmlspecialchars($product['image_url']) ?>"/>
+<?php $discount = ($product['compare_price'] > 0) ? round((1 - $product['price'] / $product['compare_price']) * 100) : 0; ?>
+<div class="bg-surface-container-lowest rounded-xl p-4 hover-lift group border border-outline-variant/30 relative">
 <?php if ($product['is_bestseller']): ?>
-<span class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold">BEST SELLER</span>
+<span class="absolute top-4 left-4 bg-tertiary-fixed text-on-tertiary-fixed text-label-sm px-2 py-1 rounded-full z-10">Bestseller</span>
 <?php endif; ?>
+<div class="h-64 rounded-lg overflow-hidden mb-4 bg-surface flex items-center justify-center">
+<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" src="<?= htmlspecialchars($product['image_url']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
 </div>
-<h3 class="font-headline-md text-headline-md text-primary mb-2"><?= htmlspecialchars($product['name']) ?></h3>
-<div class="flex items-center gap-1 mb-3">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-1"><?= htmlspecialchars($product['name']) ?></h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="flex text-tertiary-fixed-dim">
 <?php $full_stars = round($product['rating']); for ($i = 1; $i <= 5; $i++): ?>
-<span class="material-symbols-outlined <?= $i <= $full_stars ? 'text-secondary' : 'text-outline-variant' ?> text-sm" style="<?= $i <= $full_stars ? "font-variation-settings: 'FILL' 1;" : '' ?>">star</span>
+<span class="material-symbols-outlined text-lg" style="<?= $i <= $full_stars ? "font-variation-settings: 'FILL' 1;" : '' ?>"><?= $i <= $full_stars ? 'star' : ($i - 0.5 <= $product['rating'] ? 'star_half' : 'star') ?></span>
 <?php endfor; ?>
-<span class="text-xs text-on-surface-variant ml-1">(<?= (int)$product['reviews_count'] ?>)</span>
 </div>
-<div class="flex items-center justify-between">
-<span class="text-xl font-bold text-primary">₹<?= number_format($product['price'], 2) ?></span>
+<span class="text-label-sm text-on-surface-variant">(<?= number_format((int)$product['reviews_count']) ?>)</span>
+</div>
+<div class="flex items-end gap-2 mb-6">
+<span class="font-headline-md text-headline-md text-primary">₹<?= number_format($product['price'], 2) ?></span>
 <?php if ($product['compare_price'] > 0): ?>
-<span class="text-sm text-outline-variant line-through ml-2">₹<?= number_format($product['compare_price'], 2) ?></span>
+<span class="text-label-lg text-on-surface-variant line-through mb-1">₹<?= number_format($product['compare_price'], 2) ?></span>
+<span class="text-label-sm font-bold text-error mb-1"><?= $discount ?>% OFF</span>
 <?php endif; ?>
-<button class="bg-primary text-on-primary p-2 rounded-full hover:bg-primary-container transition-all add-to-cart" data-product-id="<?= $product['id'] ?>">
-<span class="material-symbols-outlined">add_shopping_cart</span>
-</button>
 </div>
+<button class="w-full py-3 border border-primary text-primary font-label-lg rounded-lg hover:bg-primary hover:text-on-primary transition-all add-to-cart" data-product-id="<?= $product['id'] ?>">Add to Cart</button>
 </div>
 <?php endforeach; ?>
 <?php endif; ?>
 <?php endif; ?>
 </div>
-</div>
 </section>
 
-<!-- Doctor Consultation Banner -->
-<section class="py-section-gap max-w-container-max mx-auto px-gutter">
-<div class="flex flex-col lg:flex-row items-center bg-primary text-on-primary rounded-[32px] overflow-hidden shadow-2xl">
-<div class="w-full lg:w-1/2 h-[500px]">
-<img class="w-full h-full object-cover" data-alt="A professional Ayurvedic doctor in a clean, white consultation room, smiling warmly while reviewing health charts. The setting is modern and high-end with subtle botanical elements like a small desk plant. The lighting is bright and inviting, reinforcing a trust-based clinical environment. The composition focuses on expert care and professional authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr7Qz_qGS3_L5dvUwMGBvCCIBAcyQE9hZy4sMLG7YnieFe8crtX9kmDZfJ8TJU1PIkWwqt0_D3kHrkUmqRm_YrIqQYFUQ3ZHQEqX83dpiBaqXOrDMa9tyeY85aeWKd-DVWR21HeiLcgrFgrxC9qC1sP3p2BAMf1lAjTwG9QGzcwg6zNy5KohIpXKjmoUeNp55b-EORH9GVhrXoYOmqIg_zeiSqSlrADvHj9bTb4kuOzCG0Ma5EEU2oz262jU1KMwOiWhU52tTjjXs"/>
+<!-- AI Assistant & Experts (Bento Grid Style) -->
+<section class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<div class="lg:col-span-7 bg-primary text-on-primary rounded-xl p-8 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-80 h-80 bg-primary-container rounded-full opacity-20 blur-3xl"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 bg-on-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">smart_toy</span>
 </div>
-<div class="w-full lg:w-1/2 p-12 lg:p-20">
-<h2 class="font-display-lg text-display-lg mb-6 leading-tight">Expert Guidance at Your Fingertips</h2>
-<p class="font-body-lg text-body-lg mb-10 opacity-90 leading-relaxed">
-Navigate your wellness journey with personalized advice. Speak with our certified Ayurvedic practitioners for a deep-dive into your health history and a customized roadmap to recovery.
-</p>
-<ul class="space-y-4 mb-10">
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary-fixed">check_circle</span>
-<span>Personalized Dosha Analysis</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary-fixed">check_circle</span>
-<span>Diet &amp; Lifestyle Roadmap</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-symbols-outlined text-secondary-fixed">check_circle</span>
-<span>15-Minute Free Initial Consult</span>
-</li>
-</ul>
-<a class="bg-secondary-container text-on-secondary-container px-10 py-5 rounded-full font-label-md text-label-md hover:scale-105 transition-all shadow-lg inline-block" href="<?= BASE_URL ?>/appointment-booking.php">Book Free Consultation</a>
+<h2 class="font-headline-lg text-headline-lg">Ayurwellness AI Assistant</h2>
+</div>
+<p class="font-body-lg text-body-lg opacity-90 max-w-lg mb-8">Namaste! I'm your dedicated Ayurvedic companion. I can help you find the right herbs for your unique Prakriti. How can I assist you today?</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<a href="<?= BASE_URL ?>/dosha-quiz.php" class="bg-on-primary/10 hover:bg-on-primary/20 p-4 rounded-lg text-left transition-colors border border-on-primary/20 group block">
+<p class="text-label-sm opacity-60 mb-1">Try asking:</p>
+<p class="font-label-lg group-hover:translate-x-1 transition-transform">Suggest medicine for immunity</p>
+</a>
+<a href="<?= BASE_URL ?>/dosha-quiz.php" class="bg-on-primary/10 hover:bg-on-primary/20 p-4 rounded-lg text-left transition-colors border border-on-primary/20 group block">
+<p class="text-label-sm opacity-60 mb-1">Try asking:</p>
+<p class="font-label-lg group-hover:translate-x-1 transition-transform">Home remedy for headache</p>
+</a>
+</div>
+</div>
+<div class="mt-8 relative z-10">
+<a class="bg-on-primary text-primary px-8 py-3 rounded-full font-label-lg hover:bg-primary-fixed transition-colors inline-block" href="<?= BASE_URL ?>/dosha-quiz.php">Start Chat Now</a>
+</div>
+</div>
+<div class="lg:col-span-5 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Consult Experts</h2>
+<a class="text-primary font-label-lg" href="<?= BASE_URL ?>/doctor-listing.php">View All</a>
+</div>
+<div class="space-y-4 flex-grow">
+<a href="<?= BASE_URL ?>/doctor-listing.php" class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 flex items-center gap-4 hover:shadow-md transition-shadow cursor-pointer block">
+<div class="w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-secondary-container">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a friendly Indian Ayurvedic doctor in a white coat with a stethoscope, warm confident smile in a well-lit modern clinic with medicinal plants in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcT8CfNWtCA5inN3DIFJMb1fuYm7-48sYjLPHzvXUhWJYVpQW218o3aMqTpMRF7cXGXY4VB6UycYMCiX8I8djKXySQpfl_sgFgt5OjQU2YCV3rsuNGpIQqLvU58fm45EhVr9EaJ3jW3nP5_sDCKo-UQcPPlTX7HXTS65aL4S1hRRZQIStc3FSFcDoMuueneSTJk2NlYUa2cPjmFg-Rd99DPbYyBcqdFbt2pW_uwA-t8lbCqhMou7dR9lgIDpLtxLdIdL8mAsuqlB4">
+</div>
+<div class="flex-grow">
+<h4 class="font-title-lg text-title-lg text-on-surface">Dr. Vaidya Anand</h4>
+<p class="text-label-sm text-on-surface-variant">BAMS, MD (Ayurveda) • 15+ Yrs</p>
+<div class="flex items-center gap-1 mt-1 text-tertiary">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-bold">4.8</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</a>
+<a href="<?= BASE_URL ?>/doctor-listing.php" class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 flex items-center gap-4 hover:shadow-md transition-shadow cursor-pointer block">
+<div class="w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-secondary-container">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of a female Ayurvedic specialist with calm welcoming expression, professional attire in a minimalist modern office with soft lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeQVJlfX4LRnPCR-cUmYKZHJKWvUz1wE3yACjnBBvdjSGNWct2YDBLF_mzKznvlVgR25A56L1emsEvlDNKSbNpelz9m52ySgA2GuUL5E19rWx-bDmOOLPynGqCs2sNLgR1prL7fO3ac2CszsIbseg5s8mS6kieT6eqejuJBGchZUF5YMRnecAkjKIvvE4_KBPJt9xVDvA9DOoWcNPxC0JG92L52vCMHRwCaOvDciOOuXQ23URx7dt4RJehW6iIfdCUJUj7ru_c9dY">
+</div>
+<div class="flex-grow">
+<h4 class="font-title-lg text-title-lg text-on-surface">Dr. Priyanka Sharma</h4>
+<p class="text-label-sm text-on-surface-variant">BAMS, MD (Ayurveda) • 8+ Yrs</p>
+<div class="flex items-center gap-1 mt-1 text-tertiary">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-bold">4.7</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</a>
+<a class="w-full block py-4 bg-primary-container text-on-primary-container rounded-xl font-label-lg text-center hover:opacity-90 transition-opacity" href="<?= BASE_URL ?>/appointment-booking.php">Book a Consultation</a>
 </div>
 </div>
 </section>
 
 <!-- Wellness Plans -->
-<section id="wellness-plans" class="bg-surface py-section-gap max-w-container-max mx-auto px-gutter">
-<div class="text-center mb-16">
-<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Curated Wellness Plans</h2>
-<p class="text-on-surface-variant">Step-by-step guidance for lasting health transformations.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="flex flex-col p-8 rounded-3xl border border-outline-variant bg-surface hover:border-primary transition-all group">
-<div class="mb-8">
-<div class="w-16 h-16 rounded-2xl bg-surface-container-low flex items-center justify-center mb-6 text-primary">
-<span class="material-symbols-outlined text-4xl">clean_hands</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary mb-2">Body Detox</h3>
-<p class="text-on-surface-variant mb-6">A 21-day program to eliminate toxins and reboot metabolism.</p>
-<div class="text-3xl font-bold text-primary mb-6">₹999 <span class="text-base font-normal text-on-surface-variant">/ plan</span></div>
-</div>
-<ul class="space-y-4 mb-12 flex-grow">
-<li class="flex items-start gap-3 text-sm"><span class="material-symbols-outlined text-primary text-lg">spa</span> Herbal Supplement Kit</li>
-<li class="flex items-start gap-3 text-sm"><span class="material-symbols-outlined text-primary text-lg">restaurant_menu</span> Sattvic Meal Planner</li>
-<li class="flex items-start gap-3 text-sm"><span class="material-symbols-outlined text-primary text-lg">support_agent</span> Weekly Expert Check-ins</li>
-</ul>
-<button class="w-full py-4 rounded-full border-2 border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all">Select Plan</button>
-</div>
-<div class="flex flex-col p-8 rounded-3xl border-2 border-primary bg-surface shadow-xl relative z-10 lg:-mt-4 lg:-mb-4">
-<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-6 py-1 rounded-full text-xs font-bold">MOST POPULAR</div>
-<div class="mb-8">
-<div class="w-16 h-16 rounded-2xl bg-primary-container flex items-center justify-center mb-6 text-on-primary">
-<span class="material-symbols-outlined text-4xl">shield</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary mb-2">Immunity Boost</h3>
-<p class="text-on-surface-variant mb-6">Strengthen your natural defenses with seasonal herbs and yoga.</p>
-<div class="text-3xl font-bold text-primary mb-6">₹1,499 <span class="text-base font-normal text-on-surface-variant">/ plan</span></div>
-</div>
-<ul class="space-y-4 mb-12 flex-grow">
-<li class="flex items-start gap-3 text-sm"><span class="material-symbols-outlined text-primary text-lg">spa</span> Premium Ojas Elixirs</li>
-<li class="flex items-start gap-3 text-sm"><span class="material-symbols-outlined text-primary text-lg">fitness_center</span> Video Yoga Library</li>
-<li class="flex items-start gap-3 text-sm"><span class="material-symbols-outlined text-primary text-lg">notifications_active</span> Daily Habit Tracking</li>
-</ul>
-<button class="w-full py-4 rounded-full bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-all">Select Plan</button>
-</div>
-<div class="flex flex-col p-8 rounded-3xl border border-outline-variant bg-surface hover:border-primary transition-all group">
-<div class="mb-8">
-<div class="w-16 h-16 rounded-2xl bg-surface-container-low flex items-center justify-center mb-6 text-primary">
-<span class="material-symbols-outlined text-4xl">self_improvement</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary mb-2">Stress Care</h3>
-<p class="text-on-surface-variant mb-6">Calm the Vata energy and achieve mental clarity and restful sleep.</p>
-<div class="text-3xl font-bold text-primary mb-6">₹799 <span class="text-base font-normal text-on-surface-variant">/ plan</span></div>
-</div>
-<ul class="space-y-4 mb-12 flex-grow">
-<li class="flex items-start gap-3 text-sm"><span class="material-symbols-outlined text-primary text-lg">spa</span> Brahmi &amp; Jatamansi Kit</li>
-<li class="flex items-start gap-3 text-sm"><span class="material-symbols-outlined text-primary text-lg">psychology</span> Guided Audio Meditations</li>
-<li class="flex items-start gap-3 text-sm"><span class="material-symbols-outlined text-primary text-lg">menu_book</span> Sleep Hygiene Guide</li>
-</ul>
-<button class="w-full py-4 rounded-full border-2 border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all">Select Plan</button>
-</div>
-</div>
-</section>
+
 
 <!-- Testimonials -->
 <section class="bg-surface-container-lowest py-section-gap overflow-hidden">
-<div class="max-w-container-max mx-auto px-gutter">
+<div class="max-w-container-max mx-auto px-margin-desktop">
 <div class="grid lg:grid-cols-3 gap-12 items-center">
 <div class="lg:col-span-1">
 <h2 class="font-display-lg text-display-lg text-primary mb-6">Healing Stories</h2>
@@ -408,10 +327,10 @@ if ($blog_result && $blog_result->num_rows > 0) {
     }
 }
 ?>
-<section class="py-section-gap max-w-container-max mx-auto px-gutter">
+<section class="py-section-gap max-w-container-max mx-auto px-margin-desktop">
 <div class="flex justify-between items-end mb-12">
-<h2 class="font-headline-lg text-headline-lg text-primary">Wellness Insights</h2>
-<a class="text-primary font-label-md text-label-md flex items-center gap-2 group" href="<?= BASE_URL ?>/wellness-blog.php">Read Our Blog <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span></a>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Wellness Insights</h2>
+<a class="text-primary font-label-lg text-label-lg flex items-center gap-2 group" href="<?= BASE_URL ?>/wellness-blog.php">Read Our Blog <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span></a>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <?php if (count($blog_posts) > 0): ?>
@@ -421,7 +340,7 @@ if ($blog_result && $blog_result->num_rows > 0) {
 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<?= htmlspecialchars($post['image_url']) ?>" alt="<?= htmlspecialchars($post['title']) ?>"/>
 </div>
 <span class="text-xs font-bold text-secondary tracking-widest uppercase mb-3 block"><?= htmlspecialchars($post['category']) ?></span>
-<h3 class="font-headline-md text-headline-md text-primary mb-4 group-hover:text-primary-container"><?= htmlspecialchars($post['title']) ?></h3>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 group-hover:text-primary-container"><?= htmlspecialchars($post['title']) ?></h3>
 <p class="text-on-surface-variant line-clamp-2"><?= htmlspecialchars($post['excerpt']) ?></p>
 </article>
 <?php endforeach; ?>
@@ -431,7 +350,7 @@ if ($blog_result && $blog_result->num_rows > 0) {
 
 <!-- Newsletter Signup -->
 <section class="py-section-gap">
-<div class="max-w-container-max mx-auto px-gutter">
+<div class="max-w-container-max mx-auto px-margin-desktop">
 <div class="bg-surface-container-high rounded-[40px] p-12 lg:p-20 text-center relative overflow-hidden">
 <div class="absolute top-0 left-0 w-32 h-32 bg-primary/5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
 <div class="absolute bottom-0 right-0 w-48 h-48 bg-secondary/5 rounded-full translate-x-1/4 translate-y-1/4"></div>
@@ -441,26 +360,40 @@ if ($blog_result && $blog_result->num_rows > 0) {
 <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto" id="newsletter-form" method="POST" action="<?= BASE_URL ?>/subscribe.php">
 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 <input class="flex-grow rounded-full border-outline-variant bg-surface px-6 py-4 focus:ring-primary focus:border-primary" placeholder="Your email address" required name="email" type="email"/>
-<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all" type="submit">Subscribe</button>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-lg text-label-lg hover:bg-primary-container transition-all" type="submit">Subscribe</button>
 </form>
-<p class="hidden text-primary font-bold mt-4 animate-bounce" id="success-msg">Welcome to the family! Check your inbox.</p>
+<div id="newsletter-msg" class="hidden mt-4 font-label-lg text-label-lg"></div>
 </div>
 </div>
 </div>
 </section>
 
+</div>
+
 <script>
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const msg = params.get('newsletter');
+  const el = document.getElementById('newsletter-msg');
+  if (msg && el) {
+    const map = { success: ['Welcome to the family! Check your inbox.', 'text-primary'], invalid: ['Invalid email address.', 'text-error'], exists: ['You are already subscribed!', 'text-tertiary'], error: ['Something went wrong. Please try again.', 'text-error'] };
+    const [text, cls] = map[msg] || ['', ''];
+    if (text) { el.textContent = text; el.className = 'mt-4 font-label-lg text-label-lg ' + cls + ' block'; }
+    if (msg === 'success') { document.getElementById('newsletter-form')?.querySelector('input[type="email"]')?.closest('form')?.classList.add('hidden'); }
+    setTimeout(() => { if (el) el.classList.add('hidden'); }, 5000);
+  }
+})();
 document.querySelectorAll('.add-to-cart').forEach(btn => {
   btn.addEventListener('click', function(e) {
     e.preventDefault();
     const id = this.dataset.productId;
     if (!id) return;
     const btnInner = this.querySelector('.material-symbols-outlined');
-    const orig = btnInner.textContent;
-    btnInner.textContent = 'sync';
+    const orig = btnInner ? btnInner.textContent : '';
+    if (btnInner) btnInner.textContent = 'sync';
     fetch('<?= BASE_URL ?>/cart-update.php?action=add&id=' + id)
       .then(() => {
-        btnInner.textContent = 'check';
+        if (btnInner) btnInner.textContent = 'check';
         this.classList.add('bg-secondary', 'text-on-secondary');
         const badge = document.querySelector('#cart-count-badge');
         if (badge) {
@@ -468,7 +401,7 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
           badge.textContent = c;
         }
         setTimeout(() => {
-          btnInner.textContent = orig;
+          if (btnInner) btnInner.textContent = orig;
           this.classList.remove('bg-secondary', 'text-on-secondary');
           this.classList.add('bg-primary', 'text-on-primary');
         }, 1500);
@@ -476,4 +409,5 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
   });
 });
 </script>
+
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
