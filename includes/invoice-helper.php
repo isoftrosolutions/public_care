@@ -240,7 +240,7 @@ ROW;
     $logo_path = __DIR__ . '/../assets/uploads/logo.jpeg';
     if (is_file($logo_path)) {
         $logo_b64 = base64_encode(file_get_contents($logo_path));
-        $logo_html = '<img src="data:image/jpeg;base64,' . $logo_b64 . '" alt="Ayurviro" style="height: 50px; width: auto;">';
+        $logo_html = '<img src="data:image/jpeg;base64,' . $logo_b64 . '" alt="AyurViora" style="height: 50px; width: auto;">';
     }
 
     $cgst_fmt = number_format($total_cgst, 2);
@@ -304,7 +304,7 @@ body { font-family: 'DejaVu Sans', sans-serif; margin: 0; padding: 0; color: #1a
 <table class="header-table"><tr>
 <td class="header-left">
 {$logo_html}
-<h1>Ayurviro</h1>
+<h1>AyurViora</h1>
 <p class="tagline">Ancient Wisdom for Modern Living</p>
 </td>
 <td class="header-right">
@@ -368,8 +368,8 @@ HTML;
 </div>
 
 <div class="footer">
-<p class="thank-you">Thank you for choosing Ayurviro.</p>
-<p>This is a computer-generated invoice. For support, contact support@ayurviro.com.</p>
+<p class="thank-you">Thank you for choosing AyurViora.</p>
+<p>This is a computer-generated invoice. For support, contact support@AyurViora.com.</p>
 </div>
 </div>
 </div>
@@ -433,13 +433,13 @@ function send_order_invoice_email(mysqli $db, int $order_id, array $invoice): bo
 
     $pdf_path = __DIR__ . '/../' . $invoice['pdf_path'];
     $cust_name = $order['customer_name'] ?? $order['shipping_name'] ?? 'Customer';
-    $subject = 'Your Ayurviro invoice for order ' . $order['order_number'];
+    $subject = 'Your AyurViora invoice for order ' . $order['order_number'];
 
     $html_body = '<p>Namaste ' . h($cust_name) . ',</p>'
         . '<p>Thank you for your order <strong>' . h($order['order_number']) . '</strong>.</p>'
         . '<p>Your invoice <strong>' . h($invoice['invoice_number']) . '</strong> is attached as a PDF.</p>'
         . '<p><a href="' . BASE_URL . '/order-tracking.php?order_number=' . urlencode($order['order_number']) . '" style="background: #005221; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; display: inline-block;">View Order</a></p>'
-        . '<p>Regards,<br>Ayurviro</p>';
+        . '<p>Regards,<br>AyurViora</p>';
 
     $alt_body = "Thank you for your order {$order['order_number']}. Your invoice {$invoice['invoice_number']} is attached.";
 
@@ -475,3 +475,4 @@ function generate_and_email_order_invoice(mysqli $db, int $order_id): void
         error_log('Invoice generation/email failed for order ' . $order_id . ': ' . $e->getMessage());
     }
 }
+

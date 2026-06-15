@@ -123,7 +123,7 @@ require_once __DIR__ . '/includes/header.php';
     <div class="space-y-5">
         <?php
         $methods = [
-            'wallet' => ['account_balance_wallet', 'Wallet', 'Pay using available Ayurviro wallet balance'],
+            'wallet' => ['account_balance_wallet', 'Wallet', 'Pay using available AyurViora wallet balance'],
             'upi' => ['qr_code_2', 'UPI', 'Verify and pay using any UPI app'],
             'card' => ['credit_card', 'Credit / Debit Card', 'Visa, Mastercard, RuPay and Maestro'],
             'netbanking' => ['account_balance', 'Net Banking', 'Popular Indian banks supported'],
@@ -197,3 +197,4 @@ document.querySelector('[data-card-format]')?.addEventListener('input', function
 });
 </script>
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
+

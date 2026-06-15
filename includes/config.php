@@ -3,7 +3,7 @@ ini_set('session.cookie_httponly', 1);
 ini_set('session.use_strict_mode', 1);
 ini_set('session.gc_maxlifetime', 7200);
 
-define('SITE_NAME', 'Ayurviro');
+define('SITE_NAME', 'AyurViora');
 define('SITE_TAGLINE', 'Ancient Wisdom for Modern Living');
 
 if (file_exists(__DIR__ . '/config-local.php')) {

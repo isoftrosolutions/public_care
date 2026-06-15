@@ -5,6 +5,36 @@ require_once __DIR__ . '/includes/header.php';
 
 $db = getDB();
 $posts = $db->query("SELECT * FROM blog_posts ORDER BY published_at DESC")->fetch_all(MYSQLI_ASSOC);
+
+$launchArticles = [
+    ['title' => 'Diabetes se bachav: daily habits that protect blood sugar', 'category' => 'Diabetes Care', 'excerpt' => 'Simple diet, walking, sleep and regular testing habits that help reduce diabetes risk.'],
+    ['title' => 'High BP kya hai? Symptoms, risks and when to see a doctor', 'category' => 'Heart Health', 'excerpt' => 'Understand blood pressure readings, warning signs and lifestyle steps for safer BP control.'],
+    ['title' => 'Pregnancy diet: safe nutrition tips for expecting mothers', 'category' => 'Pregnancy Care', 'excerpt' => 'Balanced meal ideas, hydration, supplements and foods to discuss with your doctor.'],
+    ['title' => 'Dengue ke lakshan: fever warning signs you should not ignore', 'category' => 'Seasonal Health', 'excerpt' => 'Common dengue symptoms, hydration guidance and when urgent medical care is needed.'],
+    ['title' => 'Monsoon health tips for immunity, digestion and infection prevention', 'category' => 'Monsoon Care', 'excerpt' => 'Practical rainy-season precautions for food, water, mosquitoes and everyday wellness.'],
+];
+
+foreach ($posts as $i => &$post) {
+    if (preg_match('/^first-\d+$/', (string)($post['title'] ?? ''))) {
+        $replacement = $launchArticles[$i % count($launchArticles)];
+        $post['title'] = $replacement['title'];
+        $post['category'] = $replacement['category'];
+        $post['excerpt'] = $replacement['excerpt'];
+    }
+}
+unset($post);
+
+if (empty($posts)) {
+    $posts = array_map(function ($article, $idx) {
+        return [
+            'title' => $article['title'],
+            'category' => $article['category'],
+            'excerpt' => $article['excerpt'],
+            'published_at' => date('Y-m-d', strtotime("-{$idx} days")),
+            'image_url' => 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=900&q=80',
+        ];
+    }, $launchArticles, array_keys($launchArticles));
+}
 ?>
 
 <section class="max-w-container-max mx-auto px-margin-desktop py-10">

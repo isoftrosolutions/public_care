@@ -45,7 +45,7 @@ require_once __DIR__ . '/includes/header.php';
 <header class="py-section-gap text-center max-w-3xl mx-auto">
 <h1 class="font-display-lg text-display-lg text-primary mb-6">Get in Touch with Our Experts</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant">
-Whether you're beginning your Ayurvedic journey or require clinical assistance, our team of botanical heritage specialists is here to guide your path to wellness.
+Whether you need blood test booking help, report upload support, doctor consultation guidance or emergency helpline information, the AyurViora team is here to help.
 </p>
 </header>
 <section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-section-gap">
@@ -77,10 +77,11 @@ Whether you're beginning your Ayurvedic journey or require clinical assistance, 
 <div class="space-y-2">
 <label class="font-label-md text-on-surface-variant block" for="subject">Topic of Discussion</label>
 <select class="w-full border-outline-variant rounded-lg focus:ring-primary focus:border-primary bg-surface p-3" id="subject" name="subject">
-<option value="Clinical Consultation" <?= ($form_data['subject'] ?? '') === 'Clinical Consultation' ? 'selected' : '' ?>>Clinical Consultation</option>
-<option value="Product Inquiry" <?= ($form_data['subject'] ?? '') === 'Product Inquiry' ? 'selected' : '' ?>>Product Inquiry</option>
-<option value="Order Tracking" <?= ($form_data['subject'] ?? '') === 'Order Tracking' ? 'selected' : '' ?>>Order Tracking</option>
-<option value="Botanical Sourcing" <?= ($form_data['subject'] ?? '') === 'Botanical Sourcing' ? 'selected' : '' ?>>Botanical Sourcing</option>
+<option value="Blood Test Booking" <?= ($form_data['subject'] ?? '') === 'Blood Test Booking' ? 'selected' : '' ?>>Blood Test Booking</option>
+<option value="Report Upload Help" <?= ($form_data['subject'] ?? '') === 'Report Upload Help' ? 'selected' : '' ?>>Report Upload Help</option>
+<option value="Doctor Consultation" <?= ($form_data['subject'] ?? '') === 'Doctor Consultation' ? 'selected' : '' ?>>Doctor Consultation</option>
+<option value="Payment Support" <?= ($form_data['subject'] ?? '') === 'Payment Support' ? 'selected' : '' ?>>Payment Support</option>
+<option value="Emergency Information" <?= ($form_data['subject'] ?? '') === 'Emergency Information' ? 'selected' : '' ?>>Emergency Information</option>
 </select>
 </div>
 <div class="space-y-2">
@@ -98,31 +99,31 @@ Whether you're beginning your Ayurvedic journey or require clinical assistance, 
 <div class="bg-primary text-on-primary p-8 rounded-[16px] shadow-lg">
 <h3 class="font-headline-md text-headline-md mb-6">Immediate Support</h3>
 <div class="space-y-6">
-<a class="flex items-center gap-4 group" href="tel:+1800AYURCARE">
+<a class="flex items-center gap-4 group" href="tel:+919999999999">
 <div class="bg-primary-container p-3 rounded-full group-hover:bg-tertiary-container transition-colors">
 <span class="material-symbols-outlined">call</span>
 </div>
 <div>
 <p class="text-label-sm opacity-70">Phone Support</p>
-<p class="font-headline-md text-headline-md">+1 (800) AYUR-CARE</p>
+<p class="font-headline-md text-headline-md">+91 99999 99999</p>
 </div>
 </a>
-<a class="flex items-center gap-4 group" href="mailto:expert@publiccare.com">
+<a class="flex items-center gap-4 group" href="mailto:support@ayurviora.com">
 <div class="bg-primary-container p-3 rounded-full group-hover:bg-tertiary-container transition-colors">
 <span class="material-symbols-outlined">mail</span>
 </div>
 <div>
 <p class="text-label-sm opacity-70">Email Us</p>
-<p class="font-headline-md text-headline-md">expert@ayur.care</p>
+<p class="font-headline-md text-headline-md">support@ayurviora.com</p>
 </div>
 </a>
-<a class="flex items-center gap-4 group" href="<?= BASE_URL ?>/index.php">
+<a class="flex items-center gap-4 group" href="https://wa.me/919999999999">
 <div class="bg-primary-container p-3 rounded-full group-hover:bg-tertiary-container transition-colors">
 <span class="material-symbols-outlined">chat</span>
 </div>
 <div>
 <p class="text-label-sm opacity-70">WhatsApp Concierge</p>
-<p class="font-headline-md text-headline-md">Live Chat Active</p>
+<p class="font-headline-md text-headline-md">+91 99999 99999</p>
 </div>
 </a>
 </div>
@@ -135,8 +136,8 @@ Whether you're beginning your Ayurvedic journey or require clinical assistance, 
 New Delhi, India 110001
 </p>
 <div class="pt-4 border-t border-outline-variant">
-<p class="font-label-md text-on-surface">Mon – Sat: 08:00 AM – 08:00 PM</p>
-<p class="font-label-md text-on-surface">Sun: Closed for Botanical Harvest</p>
+<p class="font-label-md text-on-surface">Mon - Sat: 08:00 AM - 08:00 PM</p>
+<p class="font-label-md text-on-surface">Sun: Emergency helpline info only</p>
 </div>
 </div>
 </aside>
@@ -149,8 +150,8 @@ New Delhi, India 110001
 <div class="flex gap-4 items-start">
 <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
 <div>
-<h4 class="font-headline-md text-headline-md text-primary">Public Care Flagship</h4>
-<p class="font-body-md text-on-surface-variant">The heart of our Ayurvedic research and clinical practice.</p>
+<h4 class="font-headline-md text-headline-md text-primary">AyurViora Support Center</h4>
+<p class="font-body-md text-on-surface-variant">Help for tests, consultations, report uploads and patient support.</p>
 <button class="mt-4 text-primary font-bold font-label-md flex items-center gap-1">Get Directions <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
 </div>
 </div>
@@ -158,46 +159,98 @@ New Delhi, India 110001
 </div>
 </div>
 </section>
+<section id="emergency-help" class="mb-section-gap">
+<div class="rounded-[24px] bg-red-50 border border-red-200 p-8">
+<div class="flex flex-col lg:flex-row gap-6 lg:items-center lg:justify-between">
+<div>
+<p class="text-label-md font-label-md text-red-700 uppercase tracking-wider mb-2">Emergency Help Numbers</p>
+<h2 class="font-headline-lg text-headline-lg text-red-900 mb-3">For urgent symptoms, call emergency services immediately</h2>
+<p class="text-red-800 max-w-3xl">AyurViora is not an ambulance or emergency response provider. These helplines are shared for quick access during urgent situations.</p>
+</div>
+<div class="grid sm:grid-cols-3 gap-3 min-w-full lg:min-w-[520px]">
+<a href="tel:112" class="rounded-xl bg-white border border-red-200 p-4 text-center">
+<span class="material-symbols-outlined text-red-700 text-3xl">emergency_home</span>
+<p class="font-bold text-red-900">112</p>
+<p class="text-xs text-red-700">National Emergency</p>
+</a>
+<a href="tel:108" class="rounded-xl bg-white border border-red-200 p-4 text-center">
+<span class="material-symbols-outlined text-red-700 text-3xl">ambulance</span>
+<p class="font-bold text-red-900">108</p>
+<p class="text-xs text-red-700">Ambulance</p>
+</a>
+<a href="tel:102" class="rounded-xl bg-white border border-red-200 p-4 text-center">
+<span class="material-symbols-outlined text-red-700 text-3xl">pregnant_woman</span>
+<p class="font-bold text-red-900">102</p>
+<p class="text-xs text-red-700">Mother & Child</p>
+</a>
+</div>
+</div>
+</div>
+</section>
 <section class="mb-section-gap max-w-4xl mx-auto">
 <div class="text-center mb-12">
 <h2 class="font-display-lg text-display-lg text-primary mb-4">Frequently Asked Questions</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Common inquiries regarding our clinical standards and patient care.</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Common launch questions about tests, reports, consultations and payments.</p>
 </div>
 <div class="space-y-4">
 <details class="faq-accordion group bg-surface-container-low border border-outline-variant rounded-[16px] overflow-hidden">
 <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-primary">local_shipping</span>
-<span class="font-headline-md text-on-surface">Global Shipping &amp; Delivery</span>
+<span class="font-headline-md text-on-surface">Blood sample ghar se liya jayega?</span>
 </div>
 <span class="faq-icon material-symbols-outlined transition-transform duration-300">expand_more</span>
 </summary>
 <div class="p-6 pt-0 font-body-md text-on-surface-variant leading-relaxed">
-We offer climate-controlled international shipping to over 40 countries to ensure the potency of our botanical oils and herbs remains intact. Standard delivery within India is 3-5 business days, while international orders typically arrive within 7-14 days depending on customs.
+Yes. For supported service areas, a trained phlebotomist collects the blood sample from your home at the selected date and time slot.
+</div>
+</details>
+<details class="faq-accordion group bg-surface-container-low border border-outline-variant rounded-[16px] overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">quickreply</span>
+<span class="font-headline-md text-on-surface">Report kitne time mein milegi?</span>
+</div>
+<span class="faq-icon material-symbols-outlined transition-transform duration-300">expand_more</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-on-surface-variant leading-relaxed">
+Most routine reports are delivered digitally within 24-48 hours. Some specialized tests may take longer and the expected time is shown on the lab test card.
 </div>
 </details>
 <details class="faq-accordion group bg-surface-container-low border border-outline-variant rounded-[16px] overflow-hidden">
 <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-primary">video_chat</span>
-<span class="font-headline-md text-on-surface">How do Digital Consultations work?</span>
+<span class="font-headline-md text-on-surface">Doctor video call kaise karega?</span>
 </div>
 <span class="faq-icon material-symbols-outlined transition-transform duration-300">expand_more</span>
 </summary>
 <div class="p-6 pt-0 font-body-md text-on-surface-variant leading-relaxed">
-Our digital consultations are conducted via a secure, HIPAA-compliant telehealth platform. Once you book, you'll receive a pre-consultation Dosha assessment form. Your expert physician will then review your history and conduct a 45-minute live visual diagnosis.
+After booking, you receive appointment details and a secure video consultation link. Join from your phone or computer at the scheduled time.
 </div>
 </details>
 <details class="faq-accordion group bg-surface-container-low border border-outline-variant rounded-[16px] overflow-hidden">
 <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
 <div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary">prescriptions</span>
-<span class="font-headline-md text-on-surface">Safety and Clinical Guidelines</span>
+<span class="material-symbols-outlined text-primary">payments</span>
+<span class="font-headline-md text-on-surface">Payment kaise hogi?</span>
 </div>
 <span class="faq-icon material-symbols-outlined transition-transform duration-300">expand_more</span>
 </summary>
 <div class="p-6 pt-0 font-body-md text-on-surface-variant leading-relaxed">
-All treatments prescribed at Ayurwellness undergo rigorous quality control. Our herbs are sourced from organic heritage farms and tested for purity, heavy metals, and potency. We strictly follow clinical guidelines that bridge traditional Ayurvedic texts with modern safety standards.
+You can pay online during booking where available. The team can also guide you for UPI/payment-link support if manual confirmation is needed.
+</div>
+</details>
+<details class="faq-accordion group bg-surface-container-low border border-outline-variant rounded-[16px] overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">upload_file</span>
+<span class="font-headline-md text-on-surface">Report upload ke baad AI explanation kya karega?</span>
+</div>
+<span class="faq-icon material-symbols-outlined transition-transform duration-300">expand_more</span>
+</summary>
+<div class="p-6 pt-0 font-body-md text-on-surface-variant leading-relaxed">
+AI explanation gives a simple educational summary of common report values and suggests what to discuss with a doctor. It does not replace diagnosis or treatment.
 </div>
 </details>
 </div>
@@ -220,3 +273,4 @@ faqs.forEach(faq => {
 });
 </script>
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
+

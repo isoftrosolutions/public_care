@@ -22,9 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && hash_equals($_SESSION['csrf_token']
         $result = send_email(
             $test_email,
             'Admin Test',
-            'Ayurviro — Test Email from Admin',
-            '<h2>Test Email</h2><p>If you are reading this, your SMTP configuration is working correctly.</p><p>Sent from Ayurviro admin panel.</p>',
-            'Test email from Ayurviro admin panel. SMTP is working correctly.'
+            'AyurViora — Test Email from Admin',
+            '<h2>Test Email</h2><p>If you are reading this, your SMTP configuration is working correctly.</p><p>Sent from AyurViora admin panel.</p>',
+            'Test email from AyurViora admin panel. SMTP is working correctly.'
         );
 
         if ($result['success']) {
@@ -71,3 +71,4 @@ $admin_email = $db->query("SELECT email FROM users WHERE id = " . (int)$_SESSION
 </main>
 </body>
 </html>
+

@@ -28,9 +28,9 @@ function get_mailer(): PHPMailer
 
     $mail->CharSet = 'UTF-8';
     $mail->Encoding = 'base64';
-    $mail->XMailer = 'Ayurviro';
-    $mail->From = defined('MAIL_FROM_EMAIL') ? MAIL_FROM_EMAIL : 'noreply@ayurviro.com';
-    $mail->FromName = defined('MAIL_FROM_NAME') ? MAIL_FROM_NAME : 'Ayurviro';
+    $mail->XMailer = 'AyurViora';
+    $mail->From = defined('MAIL_FROM_EMAIL') ? MAIL_FROM_EMAIL : 'noreply@AyurViora.com';
+    $mail->FromName = defined('MAIL_FROM_NAME') ? MAIL_FROM_NAME : 'AyurViora';
 
     return $mail;
 }
@@ -104,15 +104,15 @@ function apply_mail_settings(array $settings): void
     }
     if (!empty($settings['mail_from_email'])) {
         define('MAIL_FROM_EMAIL', $settings['mail_from_email']);
-        define('MAIL_FROM_NAME', $settings['mail_from_name'] ?? 'Ayurviro');
+        define('MAIL_FROM_NAME', $settings['mail_from_name'] ?? 'AyurViora');
     }
 }
 
 function define_mail_constants(): void
 {
     if (!defined('MAIL_FROM_EMAIL')) {
-        define('MAIL_FROM_EMAIL', 'noreply@ayurviro.com');
-        define('MAIL_FROM_NAME', 'Ayurviro');
+        define('MAIL_FROM_EMAIL', 'noreply@AyurViora.com');
+        define('MAIL_FROM_NAME', 'AyurViora');
     }
     if (!defined('MAIL_SMTP_HOST')) {
         define('MAIL_SMTP_HOST', '');
@@ -140,3 +140,4 @@ function send_email(string $to, string $to_name, string $subject, string $html_b
         return ['success' => false, 'error' => $error];
     }
 }
+

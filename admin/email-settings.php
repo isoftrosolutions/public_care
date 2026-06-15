@@ -99,12 +99,12 @@ $settings = get_mail_settings($db);
 
 <div>
 <label class="text-label-sm text-on-surface-variant uppercase tracking-widest block mb-1">From Email</label>
-<input type="email" name="mail_from_email" value="<?= htmlspecialchars($settings['mail_from_email'] ?? '') ?>" placeholder="noreply@ayurviro.com" class="w-full bg-surface border border-outline-variant text-label-sm rounded-lg focus:ring-primary px-3 py-2.5">
+<input type="email" name="mail_from_email" value="<?= htmlspecialchars($settings['mail_from_email'] ?? '') ?>" placeholder="noreply@AyurViora.com" class="w-full bg-surface border border-outline-variant text-label-sm rounded-lg focus:ring-primary px-3 py-2.5">
 </div>
 
 <div>
 <label class="text-label-sm text-on-surface-variant uppercase tracking-widest block mb-1">From Name</label>
-<input type="text" name="mail_from_name" value="<?= htmlspecialchars($settings['mail_from_name'] ?? '') ?>" placeholder="Ayurviro" class="w-full bg-surface border border-outline-variant text-label-sm rounded-lg focus:ring-primary px-3 py-2.5">
+<input type="text" name="mail_from_name" value="<?= htmlspecialchars($settings['mail_from_name'] ?? '') ?>" placeholder="AyurViora" class="w-full bg-surface border border-outline-variant text-label-sm rounded-lg focus:ring-primary px-3 py-2.5">
 </div>
 
 <div class="md:col-span-2 flex gap-3 pt-4">
@@ -116,3 +116,4 @@ $settings = get_mail_settings($db);
 </main>
 </body>
 </html>
+

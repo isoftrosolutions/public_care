@@ -2,372 +2,462 @@
 require_once __DIR__ . '/includes/config.php';
 $site_title = 'Home';
 require_once __DIR__ . '/includes/header.php';
-?>
 
-<div class="pt-24 space-y-16 pb-24">
-
-<!-- Hero Section -->
-<section class="max-w-container-max mx-auto px-margin-desktop">
-<div class="relative w-full rounded-xl overflow-hidden shadow-lg h-[640px]">
-<img class="absolute inset-0 w-full h-full object-cover" data-alt="A premium wide shot of a modern Ayurvedic wellness setup featuring a wooden mortar and pestle surrounded by fresh green herbs, turmeric roots, and sleek dark glass apothecary bottles. The background is a clean, bright, off-white minimalist space with soft natural morning light creating gentle shadows. The overall aesthetic is professional, corporate modern, and deeply rooted in nature with a palette of forest greens and warm earthy tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo11Xq4d49gQxM0_vENu4Qofi6nZ3iRK1tr--Pdm22dy9TiiDv7FYFz_MlDipFOceI4NAmcK4eohhVsVjx6WfD59jYTP9Tr_CDF3zS1oFCS-QG8L4BZEfoSnUi35osHRACMq1HJlWMrfoj9h84U-fkT-VXFC6Ih9H-kSzgP6mAn_sDA5ai6r6c9rSkZRehbsZEYxeTrxBF5yRpUf4OBK1mpfg-IdYRGDHG2Sh0ho53ntdBRKHWo0HFk8rbj9w5qJ9FYeQ6EJhQJbw">
-<div class="absolute inset-0 bg-gradient-to-r from-on-primary-fixed/60 to-transparent flex items-center bg-black/20">
-<div class="px-16 space-y-6 max-w-2xl">
-<h1 class="font-display-lg text-on-primary leading-tight text-6xl">Natural Care,<br>Ayurvedic Cure</h1>
-<p class="font-headline-md text-headline-md text-primary-fixed">Up to 30% OFF</p>
-<p class="font-body-lg text-body-lg text-on-primary opacity-90 max-w-md">Experience the fusion of ancient herbal wisdom and modern science for a healthier, vibrant tomorrow.</p>
-<div class="pt-4">
-<a class="bg-primary hover:bg-on-primary-fixed-variant text-on-primary px-10 py-4 rounded-lg font-label-lg text-label-lg transition-all active:scale-95 shadow-md inline-block" href="<?= BASE_URL ?>/shop.php">Shop Now</a>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Category Quick-Links -->
-<section class="max-w-container-max mx-auto px-margin-desktop overflow-hidden">
-<div class="flex justify-between items-center mb-8">
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Shop by Category</h2>
-<a class="text-primary font-label-lg text-label-lg hover:underline" href="<?= BASE_URL ?>/shop.php">View All</a>
-</div>
-<div class="flex gap-12 overflow-x-auto pb-4 hide-scrollbar">
-<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
-<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
-<span class="material-symbols-outlined text-primary text-3xl">oil_barrel</span>
-</div>
-<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Oil</span>
-</div>
-<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
-<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
-<span class="material-symbols-outlined text-primary text-3xl">medication</span>
-</div>
-<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Capsules</span>
-</div>
-<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
-<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
-<span class="material-symbols-outlined text-primary text-3xl">nutrition</span>
-</div>
-<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Churna</span>
-</div>
-<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
-<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
-<span class="material-symbols-outlined text-primary text-3xl">vaccines</span>
-</div>
-<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Syrup</span>
-</div>
-<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
-<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
-<span class="material-symbols-outlined text-primary text-3xl">water_drop</span>
-</div>
-<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Juice</span>
-</div>
-<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
-<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
-<span class="material-symbols-outlined text-primary text-3xl">grain</span>
-</div>
-<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Powder</span>
-</div>
-<div class="flex flex-col items-center gap-3 group cursor-pointer shrink-0">
-<div class="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center border-2 border-transparent group-hover:border-primary transition-all duration-300">
-<span class="material-symbols-outlined text-primary text-3xl">emoji_food_beverage</span>
-</div>
-<span class="font-label-lg text-label-lg group-hover:text-primary transition-colors">Herbal Tea</span>
-</div>
-</div>
-</section>
-
-<!-- Trust Signals Bar -->
-<section class="w-full bg-secondary-container/30 py-8">
-<div class="max-w-container-max mx-auto px-margin-desktop flex flex-wrap justify-between gap-8">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary text-3xl">verified</span>
-<div>
-<p class="font-label-lg text-label-lg text-on-surface">100% Ayurvedic &amp; Natural</p>
-<p class="text-label-sm text-on-surface-variant">Pure, potent formulations</p>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary text-3xl">shield_lock</span>
-<div>
-<p class="font-label-lg text-label-lg text-on-surface">No Side Effects</p>
-<p class="text-label-sm text-on-surface-variant">Gentle on your body</p>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary text-3xl">groups</span>
-<div>
-<p class="font-label-lg text-label-lg text-on-surface">Trusted by Thousands</p>
-<p class="text-label-sm text-on-surface-variant">Over 50,000+ happy lives</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Best Sellers -->
-<?php
 $conn = getDB();
-$featured_query = "SELECT * FROM products WHERE is_bestseller = TRUE ORDER BY created_at DESC LIMIT 4";
-$featured_result = $conn->query($featured_query);
+
 $featured_products = [];
-if ($featured_result && $featured_result->num_rows > 0) {
-    while ($row = $featured_result->fetch_assoc()) {
+$product_result = $conn->query("SELECT * FROM products WHERE is_bestseller = TRUE ORDER BY created_at DESC LIMIT 5");
+if (!$product_result || $product_result->num_rows === 0) {
+    $product_result = $conn->query("SELECT * FROM products ORDER BY created_at DESC LIMIT 5");
+}
+if ($product_result) {
+    while ($row = $product_result->fetch_assoc()) {
         $featured_products[] = $row;
     }
 }
-?>
-<section class="max-w-container-max mx-auto px-margin-desktop">
-<div class="flex justify-between items-center mb-8">
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Our Bestsellers</h2>
-<a class="text-primary font-label-lg text-label-lg hover:underline" href="<?= BASE_URL ?>/shop.php">View All Products</a>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
-<?php if (count($featured_products) > 0): ?>
-<?php foreach ($featured_products as $product): ?>
-<?php $discount = ($product['compare_price'] > 0) ? round((1 - $product['price'] / $product['compare_price']) * 100) : 0; ?>
-<div class="bg-surface-container-lowest rounded-xl p-4 hover-lift group border border-outline-variant/30 relative">
-<?php if ($product['is_bestseller']): ?>
-<span class="absolute top-4 left-4 bg-tertiary-fixed text-on-tertiary-fixed text-label-sm px-2 py-1 rounded-full z-10">Bestseller</span>
-<?php endif; ?>
-<div class="h-64 rounded-lg overflow-hidden mb-4 bg-surface flex items-center justify-center">
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" src="<?= htmlspecialchars($product['image_url']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-</div>
-<h3 class="font-title-lg text-title-lg text-on-surface mb-1"><?= htmlspecialchars($product['name']) ?></h3>
-<div class="flex items-center gap-2 mb-3">
-<div class="flex text-tertiary-fixed-dim">
-<?php $full_stars = round($product['rating']); for ($i = 1; $i <= 5; $i++): ?>
-<span class="material-symbols-outlined text-lg" style="<?= $i <= $full_stars ? "font-variation-settings: 'FILL' 1;" : '' ?>"><?= $i <= $full_stars ? 'star' : ($i - 0.5 <= $product['rating'] ? 'star_half' : 'star') ?></span>
-<?php endfor; ?>
-</div>
-<span class="text-label-sm text-on-surface-variant">(<?= number_format((int)$product['reviews_count']) ?>)</span>
-</div>
-<div class="flex items-end gap-2 mb-6">
-<span class="font-headline-md text-headline-md text-primary">₹<?= number_format($product['price'], 2) ?></span>
-<?php if ($product['compare_price'] > 0): ?>
-<span class="text-label-lg text-on-surface-variant line-through mb-1">₹<?= number_format($product['compare_price'], 2) ?></span>
-<span class="text-label-sm font-bold text-error mb-1"><?= $discount ?>% OFF</span>
-<?php endif; ?>
-</div>
-<button class="w-full py-3 border border-primary text-primary font-label-lg rounded-lg hover:bg-primary hover:text-on-primary transition-all add-to-cart" data-product-id="<?= $product['id'] ?>">Add to Cart</button>
-</div>
-<?php endforeach; ?>
-<?php else: ?>
-<?php
-$fallback_query = "SELECT * FROM products ORDER BY created_at DESC LIMIT 4";
-$fallback_result = $conn->query($fallback_query);
-if ($fallback_result && $fallback_result->num_rows > 0) {
-    while ($row = $fallback_result->fetch_assoc()) {
-        $featured_products[] = $row;
+
+$featured_doctors = [];
+$doctor_result = $conn->query("SELECT * FROM doctors WHERE available = 1 ORDER BY rating DESC, reviews_count DESC LIMIT 5");
+if ($doctor_result) {
+    while ($row = $doctor_result->fetch_assoc()) {
+        $featured_doctors[] = $row;
     }
 }
-?>
-<?php if (count($featured_products) > 0): ?>
-<?php foreach ($featured_products as $product): ?>
-<?php $discount = ($product['compare_price'] > 0) ? round((1 - $product['price'] / $product['compare_price']) * 100) : 0; ?>
-<div class="bg-surface-container-lowest rounded-xl p-4 hover-lift group border border-outline-variant/30 relative">
-<?php if ($product['is_bestseller']): ?>
-<span class="absolute top-4 left-4 bg-tertiary-fixed text-on-tertiary-fixed text-label-sm px-2 py-1 rounded-full z-10">Bestseller</span>
-<?php endif; ?>
-<div class="h-64 rounded-lg overflow-hidden mb-4 bg-surface flex items-center justify-center">
-<img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" src="<?= htmlspecialchars($product['image_url']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-</div>
-<h3 class="font-title-lg text-title-lg text-on-surface mb-1"><?= htmlspecialchars($product['name']) ?></h3>
-<div class="flex items-center gap-2 mb-3">
-<div class="flex text-tertiary-fixed-dim">
-<?php $full_stars = round($product['rating']); for ($i = 1; $i <= 5; $i++): ?>
-<span class="material-symbols-outlined text-lg" style="<?= $i <= $full_stars ? "font-variation-settings: 'FILL' 1;" : '' ?>"><?= $i <= $full_stars ? 'star' : ($i - 0.5 <= $product['rating'] ? 'star_half' : 'star') ?></span>
-<?php endfor; ?>
-</div>
-<span class="text-label-sm text-on-surface-variant">(<?= number_format((int)$product['reviews_count']) ?>)</span>
-</div>
-<div class="flex items-end gap-2 mb-6">
-<span class="font-headline-md text-headline-md text-primary">₹<?= number_format($product['price'], 2) ?></span>
-<?php if ($product['compare_price'] > 0): ?>
-<span class="text-label-lg text-on-surface-variant line-through mb-1">₹<?= number_format($product['compare_price'], 2) ?></span>
-<span class="text-label-sm font-bold text-error mb-1"><?= $discount ?>% OFF</span>
-<?php endif; ?>
-</div>
-<button class="w-full py-3 border border-primary text-primary font-label-lg rounded-lg hover:bg-primary hover:text-on-primary transition-all add-to-cart" data-product-id="<?= $product['id'] ?>">Add to Cart</button>
-</div>
-<?php endforeach; ?>
-<?php endif; ?>
-<?php endif; ?>
-</div>
-</section>
 
-<!-- AI Assistant & Experts (Bento Grid Style) -->
-<section class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-<div class="lg:col-span-7 bg-primary text-on-primary rounded-xl p-8 flex flex-col justify-between relative overflow-hidden">
-<div class="absolute -right-20 -top-20 w-80 h-80 bg-primary-container rounded-full opacity-20 blur-3xl"></div>
-<div class="relative z-10">
-<div class="flex items-center gap-3 mb-6">
-<div class="w-10 h-10 bg-on-primary rounded-full flex items-center justify-center">
-<span class="material-symbols-outlined text-primary">smart_toy</span>
-</div>
-<h2 class="font-headline-lg text-headline-lg">Ayurwellness AI Assistant</h2>
-</div>
-<p class="font-body-lg text-body-lg opacity-90 max-w-lg mb-8">Namaste! I'm your dedicated Ayurvedic companion. I can help you find the right herbs for your unique Prakriti. How can I assist you today?</p>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<a href="<?= BASE_URL ?>/dosha-quiz.php" class="bg-on-primary/10 hover:bg-on-primary/20 p-4 rounded-lg text-left transition-colors border border-on-primary/20 group block">
-<p class="text-label-sm opacity-60 mb-1">Try asking:</p>
-<p class="font-label-lg group-hover:translate-x-1 transition-transform">Suggest medicine for immunity</p>
-</a>
-<a href="<?= BASE_URL ?>/dosha-quiz.php" class="bg-on-primary/10 hover:bg-on-primary/20 p-4 rounded-lg text-left transition-colors border border-on-primary/20 group block">
-<p class="text-label-sm opacity-60 mb-1">Try asking:</p>
-<p class="font-label-lg group-hover:translate-x-1 transition-transform">Home remedy for headache</p>
-</a>
-</div>
-</div>
-<div class="mt-8 relative z-10">
-<a class="bg-on-primary text-primary px-8 py-3 rounded-full font-label-lg hover:bg-primary-fixed transition-colors inline-block" href="<?= BASE_URL ?>/dosha-quiz.php">Start Chat Now</a>
-</div>
-</div>
-<div class="lg:col-span-5 flex flex-col">
-<div class="flex justify-between items-center mb-6">
-<h2 class="font-headline-md text-headline-md text-on-surface">Consult Experts</h2>
-<a class="text-primary font-label-lg" href="<?= BASE_URL ?>/doctor-listing.php">View All</a>
-</div>
-<div class="space-y-4 flex-grow">
-<a href="<?= BASE_URL ?>/doctor-listing.php" class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 flex items-center gap-4 hover:shadow-md transition-shadow cursor-pointer block">
-<div class="w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-secondary-container">
-<img class="w-full h-full object-cover" data-alt="Professional headshot of a friendly Indian Ayurvedic doctor in a white coat with a stethoscope, warm confident smile in a well-lit modern clinic with medicinal plants in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcT8CfNWtCA5inN3DIFJMb1fuYm7-48sYjLPHzvXUhWJYVpQW218o3aMqTpMRF7cXGXY4VB6UycYMCiX8I8djKXySQpfl_sgFgt5OjQU2YCV3rsuNGpIQqLvU58fm45EhVr9EaJ3jW3nP5_sDCKo-UQcPPlTX7HXTS65aL4S1hRRZQIStc3FSFcDoMuueneSTJk2NlYUa2cPjmFg-Rd99DPbYyBcqdFbt2pW_uwA-t8lbCqhMou7dR9lgIDpLtxLdIdL8mAsuqlB4">
-</div>
-<div class="flex-grow">
-<h4 class="font-title-lg text-title-lg text-on-surface">Dr. Vaidya Anand</h4>
-<p class="text-label-sm text-on-surface-variant">BAMS, MD (Ayurveda) • 15+ Yrs</p>
-<div class="flex items-center gap-1 mt-1 text-tertiary">
-<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="text-label-sm font-bold">4.8</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-outline">chevron_right</span>
-</a>
-<a href="<?= BASE_URL ?>/doctor-listing.php" class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 flex items-center gap-4 hover:shadow-md transition-shadow cursor-pointer block">
-<div class="w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-secondary-container">
-<img class="w-full h-full object-cover" data-alt="Professional portrait of a female Ayurvedic specialist with calm welcoming expression, professional attire in a minimalist modern office with soft lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeQVJlfX4LRnPCR-cUmYKZHJKWvUz1wE3yACjnBBvdjSGNWct2YDBLF_mzKznvlVgR25A56L1emsEvlDNKSbNpelz9m52ySgA2GuUL5E19rWx-bDmOOLPynGqCs2sNLgR1prL7fO3ac2CszsIbseg5s8mS6kieT6eqejuJBGchZUF5YMRnecAkjKIvvE4_KBPJt9xVDvA9DOoWcNPxC0JG92L52vCMHRwCaOvDciOOuXQ23URx7dt4RJehW6iIfdCUJUj7ru_c9dY">
-</div>
-<div class="flex-grow">
-<h4 class="font-title-lg text-title-lg text-on-surface">Dr. Priyanka Sharma</h4>
-<p class="text-label-sm text-on-surface-variant">BAMS, MD (Ayurveda) • 8+ Yrs</p>
-<div class="flex items-center gap-1 mt-1 text-tertiary">
-<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="text-label-sm font-bold">4.7</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-outline">chevron_right</span>
-</a>
-<a class="w-full block py-4 bg-primary-container text-on-primary-container rounded-xl font-label-lg text-center hover:opacity-90 transition-opacity" href="<?= BASE_URL ?>/appointment-booking.php">Book a Consultation</a>
-</div>
-</div>
-</section>
-
-<!-- Wellness Plans -->
-
-
-<!-- Testimonials -->
-<section class="bg-surface-container-lowest py-section-gap overflow-hidden">
-<div class="max-w-container-max mx-auto px-margin-desktop">
-<div class="grid lg:grid-cols-3 gap-12 items-center">
-<div class="lg:col-span-1">
-<h2 class="font-display-lg text-display-lg text-primary mb-6">Healing Stories</h2>
-<p class="text-on-surface-variant mb-8 font-body-lg">Real results from our global community of wellness seekers.</p>
-<div class="flex gap-4">
-<button class="p-4 rounded-full border border-outline hover:bg-surface-container transition-colors material-symbols-outlined">arrow_back</button>
-<button class="p-4 rounded-full bg-primary text-on-primary hover:bg-primary-container transition-colors material-symbols-outlined">arrow_forward</button>
-</div>
-</div>
-<div class="lg:col-span-2 flex gap-8 overflow-x-auto pb-8 snap-x no-scrollbar">
-<div class="min-w-[400px] snap-center bg-surface-container-low p-10 rounded-3xl relative">
-<span class="material-symbols-outlined text-6xl text-primary opacity-10 absolute top-4 right-8">format_quote</span>
-<div class="flex text-secondary-container mb-6">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-</div>
-<p class="text-body-lg italic text-primary mb-8 font-serif">"The Triphala Digestive Care plan changed my life. After years of struggling with bloating, I finally feel light and energetic. The doctor consultation was so eye-opening!"</p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-primary-fixed"></div>
-<div>
-<div class="font-bold text-primary">Sarah Jenkins</div>
-<div class="text-xs text-on-surface-variant">Verified Patient</div>
-</div>
-</div>
-</div>
-<div class="min-w-[400px] snap-center bg-surface-container-low p-10 rounded-3xl relative border-l-4 border-secondary">
-<span class="material-symbols-outlined text-6xl text-primary opacity-10 absolute top-4 right-8">format_quote</span>
-<div class="flex text-secondary-container mb-6">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-</div>
-<p class="text-body-lg italic text-primary mb-8 font-serif">"I was skeptical about Ayurveda, but the Ashwagandha formulation has noticeably reduced my daily stress levels. Professional quality products."</p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-primary-fixed"></div>
-<div>
-<div class="font-bold text-primary">Mark Roberts</div>
-<div class="text-xs text-on-surface-variant">Verified Patient</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Blog Preview -->
-<?php
-$blog_query = "SELECT * FROM blog_posts ORDER BY published_at DESC LIMIT 3";
-$blog_result = $conn->query($blog_query);
 $blog_posts = [];
-if ($blog_result && $blog_result->num_rows > 0) {
+$blog_result = $conn->query("SELECT * FROM blog_posts ORDER BY published_at DESC LIMIT 3");
+if ($blog_result) {
     while ($row = $blog_result->fetch_assoc()) {
         $blog_posts[] = $row;
     }
 }
+
+$hero_image = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBo11Xq4d49gQxM0_vENu4Qofi6nZ3iRK1tr--Pdm22dy9TiiDv7FYFz_MlDipFOceI4NAmcK4eohhVsVjx6WfD59jYTP9Tr_CDF3zS1oFCS-QG8L4BZEfoSnUi35osHRACMq1HJlWMrfoj9h84U-fkT-VXFC6Ih9H-kSzgP6mAn_sDA5ai6r6c9rSkZRehbsZEYxeTrxBF5yRpUf4OBK1mpfg-IdYRGDHG2Sh0ho53ntdBRKHWo0HFk8rbj9w5qJ9FYeQ6EJhQJbw';
+$default_doctor_image = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBcT8CfNWtCA5inN3DIFJMb1fuYm7-48sYjLPHzvXUhWJYVpQW218o3aMqTpMRF7cXGXY4VB6UycYMCiX8I8djKXySQpfl_sgFgt5OjQU2YCV3rsuNGpIQqLvU58fm45EhVr9EaJ3jW3nP5_sDCKo-UQcPPlTX7HXTS65aL4S1hRRZQIStc3FSFcDoMuueneSTJk2NlYUa2cPjmFg-Rd99DPbYyBcqdFbt2pW_uwA-t8lbCqhMou7dR9lgIDpLtxLdIdL8mAsuqlB4';
+$default_product_image = BASE_URL . '/assets/uploads/logo.jpeg';
+
+$services = [
+    ['icon' => 'science', 'title' => 'Blood Test Booking', 'text' => 'Home sample collection and fast reports.', 'url' => 'lab-tests.php'],
+    ['icon' => 'upload_file', 'title' => 'Upload Report', 'text' => 'Upload reports and request AI explanation.', 'url' => 'upload-report.php'],
+    ['icon' => 'videocam', 'title' => 'Talk to Doctor', 'text' => 'Book secure video consultation.', 'url' => 'doctor-listing.php'],
+    ['icon' => 'smart_toy', 'title' => 'AI Health Assistant', 'text' => 'Get instant wellness guidance.', 'url' => 'ai-assistant.php'],
+    ['icon' => 'emergency_home', 'title' => 'Emergency Numbers', 'text' => 'Quick access to critical helplines.', 'url' => 'contact-us.php#emergency-help'],
+    ['icon' => 'local_shipping', 'title' => 'Medicine Delivery', 'text' => 'Order medicines and wellness care.', 'url' => 'shop.php'],
+    ['icon' => 'event_available', 'title' => 'Appointments', 'text' => 'Schedule in-clinic care.', 'url' => 'appointment-booking.php'],
+    ['icon' => 'description', 'title' => 'Prescriptions', 'text' => 'Store and manage prescriptions.', 'url' => 'prescriptions.php'],
+    ['icon' => 'shopping_bag', 'title' => 'Health Products', 'text' => 'Ayurvedic and daily essentials.', 'url' => 'shop.php'],
+    ['icon' => 'family_restroom', 'title' => 'Family Care', 'text' => 'Manage care for your family.', 'url' => 'my-family.php'],
+];
+
+$why_cards = [
+    ['icon' => 'verified', 'title' => 'AI Powered', 'text' => 'Smart triage and guided next steps.'],
+    ['icon' => 'stethoscope', 'title' => 'Verified Doctors', 'text' => 'Experienced clinicians and Ayurvedic experts.'],
+    ['icon' => 'medication', 'title' => 'Multiple Systems', 'text' => 'Ayurveda, allopathy and homeopathy care.'],
+    ['icon' => 'bolt', 'title' => 'Fast Appointments', 'text' => 'Book online care in a few taps.'],
+    ['icon' => 'shield_lock', 'title' => 'Secure & Private', 'text' => 'Health records stay protected.'],
+    ['icon' => 'support_agent', 'title' => 'Affordable Care', 'text' => 'Useful healthcare access for every family.'],
+];
+
+$steps = [
+    ['icon' => 'science', 'title' => 'Book Test', 'text' => 'Choose test and home sample slot.'],
+    ['icon' => 'upload_file', 'title' => 'Upload Report', 'text' => 'Add PDF or image reports securely.'],
+    ['icon' => 'smart_toy', 'title' => 'Understand Results', 'text' => 'Get simple AI explanation and next steps.'],
+    ['icon' => 'stethoscope', 'title' => 'Consult Doctor', 'text' => 'Talk to a verified doctor if needed.'],
+];
+
+$fallback_testimonials = [
+    ['name' => 'Priya Sharma', 'role' => 'Verified Patient', 'text' => 'Doctor consultation and Ayurvedic medicines were easy to book from one place.'],
+    ['name' => 'Rahul Verma', 'role' => 'Customer', 'text' => 'The AI assistant helped me understand what care route to take before booking.'],
+    ['name' => 'Ananya Patel', 'role' => 'Verified Patient', 'text' => 'Fast medicine delivery and simple prescription storage made follow-up easier.'],
+];
 ?>
-<section class="py-section-gap max-w-container-max mx-auto px-margin-desktop">
-<div class="flex justify-between items-end mb-12">
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Wellness Insights</h2>
-<a class="text-primary font-label-lg text-label-lg flex items-center gap-2 group" href="<?= BASE_URL ?>/wellness-blog.php">Read Our Blog <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span></a>
+
+<style>
+.home-soft-grid {
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(166, 245, 175, 0.34), transparent 24%),
+    radial-gradient(circle at 88% 8%, rgba(223, 228, 220, 0.65), transparent 20%),
+    linear-gradient(180deg, #fbfdf8 0%, #fbf9f8 48%, #ffffff 100%);
+}
+.home-card { box-shadow: 0 14px 40px rgba(0, 82, 33, 0.08); }
+.home-phone { box-shadow: 0 22px 60px rgba(0, 82, 33, 0.2); }
+.home-scroll-snap { scroll-snap-type: x mandatory; }
+.home-scroll-snap > * { scroll-snap-align: start; }
+</style>
+
+<div class="pt-20 bg-background text-on-surface">
+<section class="home-soft-grid overflow-hidden border-b border-outline-variant/20">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 lg:py-10">
+<div class="grid lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-5 space-y-5">
+<div class="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-3 py-1.5 text-[11px] font-bold text-primary shadow-sm">
+<span class="material-symbols-outlined text-base">health_and_safety</span>
+India's Smart Blood Test, Doctor & Report Platform
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<?php if (count($blog_posts) > 0): ?>
-<?php foreach ($blog_posts as $post): ?>
-<article class="group">
-<div class="aspect-[16/10] overflow-hidden rounded-2xl mb-6">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="<?= htmlspecialchars($post['image_url']) ?>" alt="<?= htmlspecialchars($post['title']) ?>"/>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface-variant mb-2">Ayurveda + Allopathy + Homeopathy</p>
+<h1 class="font-display-lg text-[36px] leading-[42px] md:text-[50px] md:leading-[56px] text-primary tracking-tight max-w-xl">AyurViora brings tests, doctors and reports into one simple care flow</h1>
 </div>
-<span class="text-xs font-bold text-secondary tracking-widest uppercase mb-3 block"><?= htmlspecialchars($post['category']) ?></span>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-4 group-hover:text-primary-container"><?= htmlspecialchars($post['title']) ?></h3>
-<p class="text-on-surface-variant line-clamp-2"><?= htmlspecialchars($post['excerpt']) ?></p>
-</article>
+<p class="text-body-lg text-on-surface-variant max-w-xl">AyurViora solves everyday healthcare confusion: book blood tests from home, upload reports for simple AI explanation, and talk to verified doctors when you need expert care.</p>
+<div class="flex flex-col sm:flex-row flex-wrap gap-3">
+<a href="<?= BASE_URL ?>/lab-tests.php" class="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-on-primary font-label-lg shadow-md hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined text-lg">science</span>
+Book Blood Test
+</a>
+<a href="<?= BASE_URL ?>/doctor-listing.php" class="inline-flex items-center justify-center gap-2 rounded-full border border-primary/30 bg-white px-6 py-3 text-primary font-label-lg hover:bg-primary/5 transition-all">
+<span class="material-symbols-outlined text-lg">videocam</span>
+Talk to Doctor
+</a>
+<a href="<?= BASE_URL ?>/upload-report.php" class="inline-flex items-center justify-center gap-2 rounded-full border border-primary/30 bg-white px-6 py-3 text-primary font-label-lg hover:bg-primary/5 transition-all">
+<span class="material-symbols-outlined text-lg">upload_file</span>
+Upload Report
+</a>
+</div>
+<div class="grid grid-cols-3 gap-3 pt-2 text-[12px] text-on-surface-variant">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">verified</span>100% Secure</div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">workspace_premium</span>Verified Doctors</div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">support_agent</span>24x7 Support</div>
+</div>
+</div>
+
+<div class="lg:col-span-7 relative min-h-[420px]">
+<div class="absolute right-0 top-3 hidden md:block w-72 h-72 rounded-full overflow-hidden border-[18px] border-white/70 home-card">
+<img src="<?= htmlspecialchars($hero_image) ?>" alt="Ayurvedic herbs and wellness products" class="w-full h-full object-cover">
+</div>
+<div class="absolute -right-10 bottom-6 hidden lg:block w-48 h-48 rounded-full bg-primary-fixed/45 blur-2xl"></div>
+<div class="relative mx-auto w-[260px] sm:w-[300px] rounded-[34px] border-[10px] border-on-primary-fixed bg-white p-3 home-phone">
+<div class="rounded-[24px] overflow-hidden border border-outline-variant/30 bg-surface-container-lowest">
+<div class="bg-primary text-on-primary p-4">
+<div class="flex items-center justify-between text-[11px] opacity-90">
+<span>9:41</span>
+<span class="material-symbols-outlined text-sm">battery_full</span>
+</div>
+<div class="mt-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center">
+<span class="material-symbols-outlined">waving_hand</span>
+</div>
+<div>
+<p class="text-[12px] opacity-80">Hi, Good Morning</p>
+<p class="font-bold">How can we help?</p>
+</div>
+</div>
+</div>
+<div class="p-4 space-y-3">
+<div class="rounded-2xl bg-primary/8 p-3 border border-primary/10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div>
+<p class="text-sm font-bold text-primary">AI Health Assistant</p>
+<p class="text-[11px] text-on-surface-variant">Ask symptoms, products or care</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-2 text-center">
+<?php foreach (array_slice($services, 0, 4) as $service): ?>
+<div class="rounded-xl bg-surface-container-low p-2">
+<span class="material-symbols-outlined text-primary text-xl"><?= htmlspecialchars($service['icon']) ?></span>
+<p class="text-[9px] leading-tight mt-1"><?= htmlspecialchars(explode(' ', $service['title'])[0]) ?></p>
+</div>
+<?php endforeach; ?>
+</div>
+<div class="rounded-2xl border border-outline-variant/30 p-3">
+<div class="flex items-center justify-between mb-2">
+<p class="text-xs font-bold">Upcoming Care</p>
+<span class="text-[10px] text-primary font-bold">Today</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg">stethoscope</span>
+</div>
+<div>
+<p class="text-xs font-bold">Doctor consultation</p>
+<p class="text-[10px] text-on-surface-variant">10:30 AM, video call</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<a href="<?= BASE_URL ?>/shop.php" class="rounded-xl bg-primary text-on-primary text-center py-2 text-xs font-bold">Buy Medicine</a>
+<a href="<?= BASE_URL ?>/lab-tests.php" class="rounded-xl bg-surface-container text-primary text-center py-2 text-xs font-bold">Book Lab Test</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8">
+<div class="home-card rounded-xl bg-white border border-outline-variant/20 p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">groups</span>
+<div><p class="font-headline-md text-xl text-primary">50,000+</p><p class="text-xs text-on-surface-variant">Happy Patients</p></div>
+</div>
+<div class="home-card rounded-xl bg-white border border-outline-variant/20 p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">stethoscope</span>
+<div><p class="font-headline-md text-xl text-primary">5,000+</p><p class="text-xs text-on-surface-variant">Verified Experts</p></div>
+</div>
+<div class="home-card rounded-xl bg-white border border-outline-variant/20 p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">support_agent</span>
+<div><p class="font-headline-md text-xl text-primary">24x7</p><p class="text-xs text-on-surface-variant">Support</p></div>
+</div>
+<div class="home-card rounded-xl bg-white border border-outline-variant/20 p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">medical_services</span>
+<div><p class="font-headline-md text-xl text-primary">100+</p><p class="text-xs text-on-surface-variant">Care Services</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="space-y-12 md:space-y-14 py-10 md:py-14">
+
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="rounded-2xl bg-white border border-outline-variant/25 p-5 md:p-7 home-card">
+<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-5">
+<div>
+<p class="text-label-md font-label-md text-primary uppercase tracking-wider">Launch Services</p>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Start with the care people need most</h2>
+</div>
+<p class="text-sm text-on-surface-variant max-w-xl">Blood test booking, report explanation, doctor video consultation, health articles and emergency help numbers are ready as the first user journey.</p>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
+<?php foreach ([
+    ['science', 'Blood Test Booking', 'Book CBC, Sugar, Thyroid, LFT, KFT, vitamins and more.'],
+    ['upload_file', 'Report Upload & AI Explanation', 'Upload PDF/image reports and get plain-language guidance.'],
+    ['videocam', 'Doctor Video Consultation', 'Book verified doctors for secure online care.'],
+    ['article', 'Health Articles', 'Daily practical articles on diabetes, BP, pregnancy, dengue and seasonal care.'],
+    ['emergency_home', 'Emergency Help Numbers', 'Quick helplines with clear emergency disclaimer.'],
+] as $item): ?>
+<div class="rounded-xl bg-surface-container-low border border-outline-variant/25 p-4">
+<span class="material-symbols-outlined text-primary text-3xl"><?= htmlspecialchars($item[0]) ?></span>
+<h3 class="mt-3 font-bold text-on-surface"><?= htmlspecialchars($item[1]) ?></h3>
+<p class="mt-1 text-xs text-on-surface-variant leading-5"><?= htmlspecialchars($item[2]) ?></p>
+</div>
+<?php endforeach; ?>
+</div>
+</div>
+</section>
+
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-6">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Our Services</h2>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-9 gap-3">
+<?php foreach ($services as $service): ?>
+<a href="<?= BASE_URL ?>/<?= htmlspecialchars($service['url']) ?>" class="group min-h-[148px] rounded-xl border border-outline-variant/25 bg-white p-3 text-center home-card hover:-translate-y-1 hover:border-primary/30 transition-all">
+<div class="mx-auto mb-3 w-12 h-12 rounded-2xl bg-primary/8 flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary text-primary transition-colors">
+<span class="material-symbols-outlined"><?= htmlspecialchars($service['icon']) ?></span>
+</div>
+<h3 class="text-sm font-bold text-on-surface leading-tight"><?= htmlspecialchars($service['title']) ?></h3>
+<p class="mt-2 text-[11px] leading-4 text-on-surface-variant"><?= htmlspecialchars($service['text']) ?></p>
+</a>
+<?php endforeach; ?>
+</div>
+</section>
+
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid lg:grid-cols-12 gap-6 items-center">
+<div class="lg:col-span-4 rounded-2xl overflow-hidden bg-primary/8 min-h-[280px]">
+<img src="<?= htmlspecialchars($hero_image) ?>" alt="Family wellness care with AyurViora" class="w-full h-full min-h-[280px] object-cover">
+</div>
+<div class="lg:col-span-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-5">Why Choose AyurViora?</h2>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+<?php foreach ($why_cards as $card): ?>
+<div class="rounded-xl bg-white border border-outline-variant/25 p-4 home-card">
+<div class="w-10 h-10 rounded-xl bg-primary/8 text-primary flex items-center justify-center mb-3">
+<span class="material-symbols-outlined"><?= htmlspecialchars($card['icon']) ?></span>
+</div>
+<h3 class="font-bold text-sm text-on-surface"><?= htmlspecialchars($card['title']) ?></h3>
+<p class="text-xs text-on-surface-variant mt-1"><?= htmlspecialchars($card['text']) ?></p>
+</div>
+<?php endforeach; ?>
+</div>
+</div>
+</div>
+</section>
+
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex items-end justify-between gap-4 mb-5">
+<h2 class="font-headline-lg text-headline-lg text-primary">How It Works?</h2>
+<a href="<?= BASE_URL ?>/ai-assistant.php" class="hidden sm:inline-flex items-center gap-1 text-primary font-label-lg">Start Now <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+</div>
+<div class="grid md:grid-cols-4 gap-3">
+<?php foreach ($steps as $index => $step): ?>
+<div class="relative rounded-xl bg-white border border-outline-variant/25 p-4 home-card">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined"><?= htmlspecialchars($step['icon']) ?></span>
+</div>
+<span class="absolute right-4 top-4 text-xs font-bold text-primary/35">0<?= $index + 1 ?></span>
+</div>
+<h3 class="font-bold text-on-surface mt-4"><?= htmlspecialchars($step['title']) ?></h3>
+<p class="text-xs text-on-surface-variant mt-1"><?= htmlspecialchars($step['text']) ?></p>
+</div>
+<?php endforeach; ?>
+</div>
+</section>
+
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center justify-between mb-5">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Featured Doctors</h2>
+<a class="text-primary font-label-lg text-label-lg flex items-center gap-1" href="<?= BASE_URL ?>/doctor-listing.php">View All <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2 home-scroll-snap">
+<?php if (count($featured_doctors) > 0): ?>
+<?php foreach ($featured_doctors as $doctor): ?>
+<a href="<?= BASE_URL ?>/doctor-profile.php?id=<?= (int)$doctor['id'] ?>" class="min-w-[220px] rounded-xl bg-white border border-outline-variant/25 p-4 home-card hover:-translate-y-1 transition-all">
+<img src="<?= htmlspecialchars($doctor['image_url'] ?: $default_doctor_image) ?>" alt="<?= htmlspecialchars($doctor['name']) ?>" class="w-full h-36 object-cover rounded-lg bg-surface-container mb-3" onerror="this.onerror=null;this.src='<?= htmlspecialchars($default_doctor_image) ?>';">
+<h3 class="font-bold text-sm text-on-surface"><?= htmlspecialchars($doctor['name']) ?></h3>
+<p class="text-xs text-on-surface-variant mt-1"><?= htmlspecialchars($doctor['specialty'] ?: 'Ayurvedic Specialist') ?></p>
+<p class="text-[11px] text-on-surface-variant mt-1"><?= htmlspecialchars($doctor['qualifications'] ?: 'BAMS') ?> &bull; <?= (int)($doctor['experience_years'] ?? 5) ?>+ yrs</p>
+<div class="flex items-center justify-between mt-3">
+<span class="inline-flex items-center gap-1 text-xs font-bold text-tertiary"><span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span><?= number_format((float)$doctor['rating'], 1) ?></span>
+<span class="rounded-full bg-primary px-3 py-1 text-[11px] font-bold text-on-primary">Book Now</span>
+</div>
+</a>
+<?php endforeach; ?>
+<?php else: ?>
+<?php foreach ([['Dr. Ajay Vaidya','Ayurvedic Doctor'], ['Dr. Bhavna Mishra','General Physician'], ['Dr. Kavita Sharma','Women Health Expert'], ['Dr. Amit Singh','Child Specialist'], ['Dr. Neha Kapoor','Homeopathy Expert']] as $doctor): ?>
+<a href="<?= BASE_URL ?>/doctor-listing.php" class="min-w-[220px] rounded-xl bg-white border border-outline-variant/25 p-4 home-card hover:-translate-y-1 transition-all">
+<img src="<?= htmlspecialchars($default_doctor_image) ?>" alt="<?= htmlspecialchars($doctor[0]) ?>" class="w-full h-36 object-cover rounded-lg bg-surface-container mb-3">
+<h3 class="font-bold text-sm text-on-surface"><?= htmlspecialchars($doctor[0]) ?></h3>
+<p class="text-xs text-on-surface-variant mt-1"><?= htmlspecialchars($doctor[1]) ?></p>
+<p class="text-[11px] text-on-surface-variant mt-1">BAMS &bull; 8+ yrs</p>
+<div class="flex items-center justify-between mt-3">
+<span class="inline-flex items-center gap-1 text-xs font-bold text-tertiary"><span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>4.8</span>
+<span class="rounded-full bg-primary px-3 py-1 text-[11px] font-bold text-on-primary">Book Now</span>
+</div>
+</a>
 <?php endforeach; ?>
 <?php endif; ?>
 </div>
 </section>
 
-<!-- Newsletter Signup -->
-<section class="py-section-gap">
-<div class="max-w-container-max mx-auto px-margin-desktop">
-<div class="bg-surface-container-high rounded-[40px] p-12 lg:p-20 text-center relative overflow-hidden">
-<div class="absolute top-0 left-0 w-32 h-32 bg-primary/5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-<div class="absolute bottom-0 right-0 w-48 h-48 bg-secondary/5 rounded-full translate-x-1/4 translate-y-1/4"></div>
-<div class="relative z-10 max-w-2xl mx-auto">
-<h2 class="font-display-lg text-display-lg text-primary mb-4">Join Our Wellness Community</h2>
-<p class="text-on-surface-variant mb-10">Get exclusive Ayurvedic tips, product launches, and 10% off your first order.</p>
-<form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto" id="newsletter-form" method="POST" action="<?= BASE_URL ?>/subscribe.php">
-<input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
-<input class="flex-grow rounded-full border-outline-variant bg-surface px-6 py-4 focus:ring-primary focus:border-primary" placeholder="Your email address" required name="email" type="email"/>
-<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-lg text-label-lg hover:bg-primary-container transition-all" type="submit">Subscribe</button>
-</form>
-<div id="newsletter-msg" class="hidden mt-4 font-label-lg text-label-lg"></div>
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="rounded-2xl bg-primary text-on-primary overflow-hidden home-card">
+<div class="grid lg:grid-cols-12 gap-6 p-5 md:p-7 items-center">
+<div class="lg:col-span-4 flex items-center gap-4">
+<div class="w-16 h-16 rounded-2xl bg-white text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl">smart_toy</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md">Your Personal AI Health Assistant</h2>
+<p class="text-sm text-on-primary/75">Ask symptoms, medicine questions and next steps.</p>
+</div>
+</div>
+<div class="lg:col-span-6 grid sm:grid-cols-4 gap-2">
+<?php foreach (['What should I eat?', 'Tips to control diabetes?', 'Ayurveda for immunity?', 'Is homeopathy effective?'] as $question): ?>
+<a href="<?= BASE_URL ?>/ai-assistant.php" class="rounded-full bg-white/10 border border-white/15 px-3 py-2 text-center text-xs hover:bg-white/20 transition-colors"><?= htmlspecialchars($question) ?></a>
+<?php endforeach; ?>
+</div>
+<div class="lg:col-span-2 lg:text-right">
+<a href="<?= BASE_URL ?>/ai-assistant.php" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-primary font-bold text-sm">Ask AI Now <span class="material-symbols-outlined text-base">arrow_forward</span></a>
 </div>
 </div>
 </div>
 </section>
 
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center justify-between mb-5">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Popular Medicines</h2>
+<a class="text-primary font-label-lg text-label-lg flex items-center gap-1" href="<?= BASE_URL ?>/shop.php">View All Products <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2 home-scroll-snap">
+<?php foreach ($featured_products as $product): ?>
+<?php $discount = ((float)($product['compare_price'] ?? 0) > 0) ? round((1 - (float)$product['price'] / (float)$product['compare_price']) * 100) : 0; ?>
+<?php $product_image = trim((string)($product['image_url'] ?? '')) !== '' ? $product['image_url'] : $default_product_image; ?>
+<article class="min-w-[230px] rounded-xl bg-white border border-outline-variant/25 p-4 home-card">
+<a href="<?= BASE_URL ?>/product-details.php?id=<?= (int)$product['id'] ?>" class="block">
+<div class="relative h-36 rounded-lg bg-surface-container-low overflow-hidden mb-3 flex items-center justify-center">
+<?php if (!empty($product['is_bestseller'])): ?><span class="absolute left-2 top-2 rounded-full bg-tertiary-fixed px-2 py-1 text-[10px] font-bold text-on-tertiary-fixed">Bestseller</span><?php endif; ?>
+<img src="<?= htmlspecialchars($product_image) ?>" alt="<?= htmlspecialchars($product['name']) ?>" class="w-full h-full object-contain p-2" onerror="this.onerror=null;this.src='<?= htmlspecialchars($default_product_image) ?>';">
+</div>
+<h3 class="font-bold text-sm text-on-surface line-clamp-2 min-h-[40px]"><?= htmlspecialchars($product['name']) ?></h3>
+<div class="flex items-center gap-1 mt-2 text-tertiary">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold"><?= number_format((float)$product['rating'], 1) ?></span>
+<span class="text-xs text-on-surface-variant">(<?= number_format((int)$product['reviews_count']) ?>)</span>
+</div>
+<div class="flex items-end gap-2 mt-2">
+<span class="font-bold text-primary">&#8377;<?= number_format((float)$product['price'], 2) ?></span>
+<?php if ((float)($product['compare_price'] ?? 0) > 0): ?>
+<span class="text-xs text-on-surface-variant line-through">&#8377;<?= number_format((float)$product['compare_price'], 2) ?></span>
+<span class="text-[10px] font-bold text-error"><?= $discount ?>% OFF</span>
+<?php endif; ?>
+</div>
+</a>
+<button class="mt-3 w-full rounded-full border border-primary px-4 py-2 text-sm font-bold text-primary hover:bg-primary hover:text-on-primary transition-all add-to-cart" data-product-id="<?= (int)$product['id'] ?>">
+<span class="material-symbols-outlined text-base align-[-3px] mr-1">add_shopping_cart</span>Add to Cart
+</button>
+</article>
+<?php endforeach; ?>
+<?php if (count($featured_products) === 0): ?>
+<div class="rounded-xl bg-white border border-outline-variant/25 p-6 text-on-surface-variant">Products will appear here after medicines are added.</div>
+<?php endif; ?>
+</div>
+</section>
+
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center justify-between mb-5">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">What Our Patients Say</h2>
+<a class="text-primary font-label-lg text-label-lg" href="<?= BASE_URL ?>/wellness-blog.php">View All Reviews</a>
+</div>
+<div class="grid md:grid-cols-3 gap-4">
+<?php foreach ($fallback_testimonials as $item): ?>
+<article class="rounded-xl bg-white border border-outline-variant/25 p-5 home-card">
+<div class="flex text-tertiary-fixed-dim mb-3">
+<?php for ($i = 0; $i < 5; $i++): ?><span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span><?php endfor; ?>
+</div>
+<p class="text-sm text-on-surface-variant">"<?= htmlspecialchars($item['text']) ?>"</p>
+<div class="flex items-center gap-3 mt-4">
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-primary flex items-center justify-center font-bold"><?= htmlspecialchars(substr($item['name'], 0, 1)) ?></div>
+<div>
+<p class="text-sm font-bold text-on-surface"><?= htmlspecialchars($item['name']) ?></p>
+<p class="text-xs text-primary"><?= htmlspecialchars($item['role']) ?></p>
+</div>
+</div>
+</article>
+<?php endforeach; ?>
+</div>
+</section>
+
+<?php if (count($blog_posts) > 0): ?>
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex items-end justify-between mb-5">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Wellness Insights</h2>
+<a class="text-primary font-label-lg text-label-lg flex items-center gap-1" href="<?= BASE_URL ?>/wellness-blog.php">Read Blog <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+</div>
+<div class="grid md:grid-cols-3 gap-4">
+<?php foreach ($blog_posts as $post): ?>
+<article class="rounded-xl bg-white border border-outline-variant/25 overflow-hidden home-card group">
+<img class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500" src="<?= htmlspecialchars($post['image_url']) ?>" alt="<?= htmlspecialchars($post['title']) ?>" onerror="this.onerror=null;this.src='<?= htmlspecialchars($hero_image) ?>';">
+<div class="p-4">
+<span class="text-[11px] font-bold uppercase tracking-wide text-primary"><?= htmlspecialchars($post['category']) ?></span>
+<h3 class="font-bold text-on-surface mt-2"><?= htmlspecialchars($post['title']) ?></h3>
+<p class="text-sm text-on-surface-variant mt-2 line-clamp-2"><?= htmlspecialchars($post['excerpt']) ?></p>
+</div>
+</article>
+<?php endforeach; ?>
+</div>
+</section>
+<?php endif; ?>
+
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="rounded-2xl bg-surface-container-high p-6 md:p-10 text-center relative overflow-hidden">
+<div class="relative z-10 max-w-2xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-3">Join Our Wellness Community</h2>
+<p class="text-on-surface-variant mb-6">Get Ayurvedic tips, health reminders, product launches and care updates.</p>
+<form class="flex flex-col md:flex-row gap-3 max-w-md mx-auto" id="newsletter-form" method="POST" action="<?= BASE_URL ?>/subscribe.php">
+<input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+<input class="flex-grow rounded-full border-outline-variant bg-white px-5 py-3 focus:ring-primary focus:border-primary" placeholder="Your email address" required name="email" type="email">
+<button class="bg-primary text-on-primary px-7 py-3 rounded-full font-label-lg text-label-lg hover:bg-primary-container transition-all" type="submit">Subscribe</button>
+</form>
+<div id="newsletter-msg" class="hidden mt-4 font-label-lg text-label-lg"></div>
+</div>
+</div>
+</section>
+
+</div>
 </div>
 
 <script>
@@ -376,38 +466,58 @@ if ($blog_result && $blog_result->num_rows > 0) {
   const msg = params.get('newsletter');
   const el = document.getElementById('newsletter-msg');
   if (msg && el) {
-    const map = { success: ['Welcome to the family! Check your inbox.', 'text-primary'], invalid: ['Invalid email address.', 'text-error'], exists: ['You are already subscribed!', 'text-tertiary'], error: ['Something went wrong. Please try again.', 'text-error'] };
-    const [text, cls] = map[msg] || ['', ''];
-    if (text) { el.textContent = text; el.className = 'mt-4 font-label-lg text-label-lg ' + cls + ' block'; }
-    if (msg === 'success') { document.getElementById('newsletter-form')?.querySelector('input[type="email"]')?.closest('form')?.classList.add('hidden'); }
+    const map = {
+      success: ['Welcome to the family! Check your inbox.', 'text-primary'],
+      invalid: ['Invalid email address.', 'text-error'],
+      exists: ['You are already subscribed!', 'text-tertiary'],
+      error: ['Something went wrong. Please try again.', 'text-error']
+    };
+    const selected = map[msg] || ['', ''];
+    if (selected[0]) {
+      el.textContent = selected[0];
+      el.className = 'mt-4 font-label-lg text-label-lg ' + selected[1] + ' block';
+    }
+    if (msg === 'success') {
+      document.getElementById('newsletter-form')?.classList.add('hidden');
+    }
     setTimeout(() => { if (el) el.classList.add('hidden'); }, 5000);
   }
 })();
+
 document.querySelectorAll('.add-to-cart').forEach(btn => {
   btn.addEventListener('click', function(e) {
     e.preventDefault();
     const id = this.dataset.productId;
     if (!id) return;
-    const btnInner = this.querySelector('.material-symbols-outlined');
-    const orig = btnInner ? btnInner.textContent : '';
-    if (btnInner) btnInner.textContent = 'sync';
+    const icon = this.querySelector('.material-symbols-outlined');
+    const originalIcon = icon ? icon.textContent : '';
+    const originalText = this.textContent;
+    if (icon) icon.textContent = 'sync';
+    this.disabled = true;
     fetch('<?= BASE_URL ?>/cart-update.php?action=add&id=' + id)
       .then(() => {
-        if (btnInner) btnInner.textContent = 'check';
-        this.classList.add('bg-secondary', 'text-on-secondary');
+        if (icon) icon.textContent = 'check';
+        this.classList.add('bg-primary', 'text-on-primary');
         const badge = document.querySelector('#cart-count-badge');
         if (badge) {
-          const c = parseInt(badge.textContent) + 1;
-          badge.textContent = c;
+          const current = parseInt(badge.textContent || '0', 10) || 0;
+          badge.textContent = current + 1;
         }
+      })
+      .catch(() => {
+        this.textContent = 'Try Again';
+      })
+      .finally(() => {
         setTimeout(() => {
-          if (btnInner) btnInner.textContent = orig;
-          this.classList.remove('bg-secondary', 'text-on-secondary');
-          this.classList.add('bg-primary', 'text-on-primary');
-        }, 1500);
+          this.disabled = false;
+          if (icon) icon.textContent = originalIcon;
+          if (!icon) this.textContent = originalText;
+          this.classList.remove('bg-primary', 'text-on-primary');
+        }, 1400);
       });
   });
 });
 </script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
+

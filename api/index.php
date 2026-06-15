@@ -3,7 +3,7 @@ require_once __DIR__ . '/helpers.php';
 
 jsonResponse([
     'success' => true,
-    'name' => 'Ayurwellness API',
+    'name' => 'AyurViora API',
     'version' => '1.0',
     'endpoints' => [
         'GET /api/products' => 'List products (query: category, search, sort, min_price, max_price, page, per_page)',
@@ -18,3 +18,4 @@ jsonResponse([
         'POST /api/cart' => 'Add/update/remove cart item (body: product_id, action: add|remove|delete)',
     ],
 ]);
+

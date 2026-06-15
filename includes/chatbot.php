@@ -1,48 +1,53 @@
 <?php
 /**
- * Ayurwellness AI Chatbot Widget
+ * AyurViora AI Chatbot Widget
  * Handles ordering, consultations, FAQs, and customer support
  */
+function chatbotIcon($name)
+{
+    return '<span class="material-symbols-outlined align-[-4px] text-primary" style="font-size:18px;">' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . '</span>';
+}
+
 $botResponses = [
     'greeting' => [
         'keywords' => ['hi', 'hello', 'hey', 'namaste', 'नमस्ते', 'नमस्कार', 'hii', 'hello ji'],
-        'response' => "🙏 Namaste! I'm AyurBot, your Ayurvedic wellness assistant. I can help you with:\n\n🛒 Placing orders\n📅 Booking consultations\n🌿 Learning about Ayurveda\n❓ Answering FAQs\n\nHow can I help you today?"
+        'response' => chatbotIcon('waving_hand') . " Namaste! I'm AyurBot, your Ayurvedic wellness assistant. I can help you with:\n\n" . chatbotIcon('shopping_cart') . " Placing orders\n" . chatbotIcon('calendar_month') . " Booking consultations\n" . chatbotIcon('spa') . " Learning about Ayurveda\n" . chatbotIcon('help') . " Answering FAQs\n\nHow can I help you today?"
     ],
     'order' => [
         'keywords' => ['order', 'buy', 'purchase', 'खरीद', 'ऑर्डर', 'product', 'उत्पाद', 'add to cart', 'cart'],
-        'response' => "Sure! I can help you order products. Here are our top categories:\n\n🌿 <a href='shop.php' class='text-primary font-bold'>Immunity Boosters</a>\n🍃 <a href='shop.php' class='text-primary font-bold'>Digestive Care</a>\n💆 <a href='shop.php' class='text-primary font-bold'>Hair & Skin Care</a>\n⚖️ <a href='shop.php' class='text-primary font-bold'>Weight Management</a>\n\nOr <a href='shop.php' class='text-primary font-bold'>browse all products →</a>\n\nTell me which category interests you!"
+        'response' => "Sure! I can help you order products. Here are our top categories:\n\n" . chatbotIcon('spa') . " <a href='shop.php' class='text-primary font-bold'>Immunity Boosters</a>\n" . chatbotIcon('nutrition') . " <a href='shop.php' class='text-primary font-bold'>Digestive Care</a>\n" . chatbotIcon('dermatology') . " <a href='shop.php' class='text-primary font-bold'>Hair & Skin Care</a>\n" . chatbotIcon('monitor_weight') . " <a href='shop.php' class='text-primary font-bold'>Weight Management</a>\n\nOr <a href='shop.php' class='text-primary font-bold'>browse all products →</a>\n\nTell me which category interests you!"
     ],
     'consult' => [
         'keywords' => ['doctor', 'consult', 'appointment', 'अपॉइंटमेंट', 'डॉक्टर', 'consultation', 'book', 'video call', 'वीडियो'],
-        'response' => "I can help you book a consultation! We offer:\n\n📹 <a href='video-consult.php' class='text-primary font-bold'>Video Consultations</a> — Face-to-face with doctors\n🏥 <a href='appointment-booking.php' class='text-primary font-bold'>Clinic Appointment</a> — In-person visits\n\nOur expert doctors specialize in:\n• Internal Medicine (Kayachikitsa)\n• Panchakarma Detox\n• Women's Health\n• Stress & Lifestyle Management\n\n<a href='doctor-listing.php' class='text-primary font-bold'>View all doctors →</a>"
+        'response' => "I can help you book a consultation! We offer:\n\n" . chatbotIcon('videocam') . " <a href='video-consult.php' class='text-primary font-bold'>Video Consultations</a> — Face-to-face with doctors\n" . chatbotIcon('local_hospital') . " <a href='appointment-booking.php' class='text-primary font-bold'>Clinic Appointment</a> — In-person visits\n\nOur expert doctors specialize in:\n• Internal Medicine (Kayachikitsa)\n• Panchakarma Detox\n• Women's Health\n• Stress & Lifestyle Management\n\n<a href='doctor-listing.php' class='text-primary font-bold'>View all doctors →</a>"
     ],
     'dosha' => [
         'keywords' => ['dosha', 'दोष', 'vata', 'pitta', 'kapha', 'body type', 'prakriti', 'प्रकृति', 'ayurvedic analysis'],
-        'response' => "🌿 Knowing your Dosha is the first step to wellness!\n\nTake our <a href='dosha-quiz.php' class='text-primary font-bold'>3-minute AI Body Analysis</a> to discover your Vata-Pitta-Kapha profile.\n\nYou'll get:\n✅ Your dominant Dosha\n✅ Personalized diet plan\n✅ Yoga & lifestyle tips\n✅ Herbal recommendations"
+        'response' => chatbotIcon('spa') . " Knowing your Dosha is the first step to wellness!\n\nTake our <a href='dosha-quiz.php' class='text-primary font-bold'>3-minute AI Body Analysis</a> to discover your Vata-Pitta-Kapha profile.\n\nYou'll get:\n" . chatbotIcon('check_circle') . " Your dominant Dosha\n" . chatbotIcon('check_circle') . " Personalized diet plan\n" . chatbotIcon('check_circle') . " Yoga & lifestyle tips\n" . chatbotIcon('check_circle') . " Herbal recommendations"
     ],
     'health_coach' => [
         'keywords' => ['reminder', 'रिमाइंडर', 'health coach', 'हेल्थ कोच', 'medicine', 'दवा', 'water', 'पानी', 'yoga', 'योग'],
-        'response' => "📧 Set up your <a href='health-coach.php' class='text-primary font-bold'>Email Health Coach</a>!\n\nGet daily reminders for:\n💊 Medicine timings\n💧 Water intake (every 2 hours)\n🧘 Yoga & exercise\n🥗 Diet & meals\n\n<a href='health-coach.php' class='text-primary font-bold'>Set up reminders →</a>"
+        'response' => chatbotIcon('mark_email_unread') . " Set up your <a href='health-coach.php' class='text-primary font-bold'>Email Health Coach</a>!\n\nGet daily reminders for:\n" . chatbotIcon('medication') . " Medicine timings\n" . chatbotIcon('water_drop') . " Water intake (every 2 hours)\n" . chatbotIcon('self_improvement') . " Yoga & exercise\n" . chatbotIcon('restaurant') . " Diet & meals\n\n<a href='health-coach.php' class='text-primary font-bold'>Set up reminders →</a>"
     ],
     'dashboard' => [
         'keywords' => ['dashboard', 'डैशबोर्ड', 'my health', 'मेरा स्वास्थ्य', 'progress', 'प्रोग्रेस', 'weight', 'वजन', 'track'],
-        'response' => "📊 Track your health journey with your <a href='my-health.php' class='text-primary font-bold'>90-Day Dashboard</a>!\n\nYou can log:\n⚖️ Weight\n😴 Sleep hours\n🤕 Pain score\n❤️ BP & Blood Sugar\n\n<a href='my-health.php' class='text-primary font-bold'>View my dashboard →</a>"
+        'response' => chatbotIcon('monitoring') . " Track your health journey with your <a href='my-health.php' class='text-primary font-bold'>90-Day Dashboard</a>!\n\nYou can log:\n" . chatbotIcon('monitor_weight') . " Weight\n" . chatbotIcon('bedtime') . " Sleep hours\n" . chatbotIcon('personal_injury') . " Pain score\n" . chatbotIcon('cardiology') . " BP & Blood Sugar\n\n<a href='my-health.php' class='text-primary font-bold'>View my dashboard →</a>"
     ],
     'family' => [
         'keywords' => ['family', 'परिवार', 'family account', 'spouse', 'बच्चे', 'parents'],
-        'response' => "👨‍👩‍👧‍👦 Manage your whole family's health with one account!\n\nAdd family members and track health for:\n• Spouse\n• Children\n• Parents\n\nAll reports & medicines at one place.\n<a href='my-family.php' class='text-primary font-bold'>Manage family →</a>"
+        'response' => chatbotIcon('family_restroom') . " Manage your whole family's health with one account!\n\nAdd family members and track health for:\n• Spouse\n• Children\n• Parents\n\nAll reports & medicines at one place.\n<a href='my-family.php' class='text-primary font-bold'>Manage family →</a>"
     ],
     'contact' => [
         'keywords' => ['contact', 'संपर्क', 'support', 'help', 'मदद', 'call', 'phone', 'फोन', 'email'],
-        'response' => "📞 Get in touch with us:\n\n📧 Email: support@ayurwellness.com\n📱 Phone: +91-XXXXXXXXXX\n💬 <a href='contact-us.php' class='text-primary font-bold'>Contact Form</a>\n\nWe're here Mon-Sat, 9AM to 7PM!"
+        'response' => chatbotIcon('call') . " Get in touch with us:\n\n" . chatbotIcon('mail') . " Email: support@ayurviora.com\n" . chatbotIcon('smartphone') . " Phone: +91 99999 99999\n" . chatbotIcon('chat') . " <a href='contact-us.php' class='text-primary font-bold'>Contact Form</a>\n\nWe're here Mon-Sat, 8AM to 8PM!"
     ],
     'pricing' => [
         'keywords' => ['price', 'कीमत', 'cost', 'fee', 'फीस', 'rate', 'charge', '₹'],
-        'response' => "💰 Our consultations start at just ₹500!\n\n• Video Consult: ₹500 - ₹1000\n• Clinic Visit: ₹750 - ₹1500\n• Wellness Plans: ₹799 - ₹1499\n\n<a href='doctor-listing.php' class='text-primary font-bold'>See all doctors & fees →</a>"
+        'response' => chatbotIcon('payments') . " Our consultations start at just ₹500!\n\n• Video Consult: ₹500 - ₹1000\n• Clinic Visit: ₹750 - ₹1500\n• Wellness Plans: ₹799 - ₹1499\n\n<a href='doctor-listing.php' class='text-primary font-bold'>See all doctors & fees →</a>"
     ],
     'about' => [
-        'keywords' => ['about', 'बारे में', 'who', 'कौन', 'company', 'ayurwellness'],
-        'response' => "🌿 <b>Ayurwellness</b> — Ancient Wisdom for Modern Living.\n\nWe are a team of certified Ayurvedic practitioners dedicated to bringing authentic Ayurveda to your doorstep. With 30+ years of clinical experience, we combine traditional knowledge with modern quality standards.\n\n<a href='about-us.php' class='text-primary font-bold'>Learn more →</a>"
+        'keywords' => ['about', 'बारे में', 'who', 'कौन', 'company', 'AyurViora'],
+        'response' => chatbotIcon('spa') . " <b>AyurViora</b> — Ancient Wisdom for Modern Living.\n\nWe are a team of certified Ayurvedic practitioners dedicated to bringing authentic Ayurveda to your doorstep. With 30+ years of clinical experience, we combine traditional knowledge with modern quality standards.\n\n<a href='about-us.php' class='text-primary font-bold'>Learn more →</a>"
     ]
 ];
 
@@ -79,8 +84,8 @@ function formatSingleProductHtml($p, $lang) {
     $savings = $p['compare_price'] > $p['price']
         ? round((($p['compare_price'] - $p['price']) / $p['compare_price']) * 100) : 0;
     $bestseller = $p['is_bestseller']
-        ? '<span style="background:#fed65b;color:#012d1d;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:bold;">★ ' . ($isHi ? 'बेस्टसेलर' : 'Bestseller') . '</span>' : '';
-    $stars = str_repeat('⭐', round($p['rating'] ?? 0));
+        ? '<span style="background:#fed65b;color:#012d1d;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:bold;"><span class="material-symbols-outlined" style="font-size:13px;vertical-align:-2px;">workspace_premium</span> ' . ($isHi ? 'बेस्टसेलर' : 'Bestseller') . '</span>' : '';
+    $stars = str_repeat('<span class="material-symbols-outlined" style="font-size:14px;vertical-align:-2px;color:#b7791f;">star</span>', (int)round($p['rating'] ?? 0));
 
     $html = '<div style="background:linear-gradient(135deg,#f0faf5,#f4fafd);padding:14px;border-radius:12px;border:1px solid #b7e4c7;">';
     $html .= '<div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:6px;">';
@@ -99,11 +104,11 @@ function formatSingleProductHtml($p, $lang) {
     if ($p['rating']) {
         $html .= '<div style="font-size:13px;color:#666;margin-top:4px;">' . $stars . ' <span style="font-weight:600;">' . $p['rating'] . '</span>/5 (' . $p['reviews_count'] . ' ' . ($isHi ? 'समीक्षाएँ' : 'reviews') . ')</div>';
     }
-    $html .= '<div style="font-size:12px;color:#888;margin-top:2px;">📁 ' . ($isHi ? 'श्रेणी' : 'Category') . ': ' . htmlspecialchars($p['category'] ?? '') . ($p['stock'] > 0 ? ' | ✅ ' . ($isHi ? 'स्टॉक में' : 'In Stock') : ' | ❌ ' . ($isHi ? 'स्टॉक खत्म' : 'Out of Stock')) . '</div>';
+    $html .= '<div style="font-size:12px;color:#888;margin-top:2px;"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:-3px;color:#012d1d;">category</span> ' . ($isHi ? 'श्रेणी' : 'Category') . ': ' . htmlspecialchars($p['category'] ?? '') . ($p['stock'] > 0 ? ' | <span class="material-symbols-outlined" style="font-size:14px;vertical-align:-3px;color:#16a34a;">check_circle</span> ' . ($isHi ? 'स्टॉक में' : 'In Stock') : ' | <span class="material-symbols-outlined" style="font-size:14px;vertical-align:-3px;color:#dc2626;">cancel</span> ' . ($isHi ? 'स्टॉक खत्म' : 'Out of Stock')) . '</div>';
     $html .= '</div>';
     $html .= '<div style="display:flex;gap:8px;">';
-    $html .= '<a href="' . BASE_URL . '/product-details.php?slug=' . urlencode($p['slug']) . '" style="background:#012d1d;color:white;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;">' . ($isHi ? '📄 विवरण देखें' : '📄 View Details') . '</a>';
-    $html .= '<button onclick="addToCartBtn(' . $p['id'] . ',\'' . htmlspecialchars($p['name'], ENT_QUOTES) . '\')" style="background:#fed65b;color:#012d1d;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;border:none;cursor:pointer;">' . ($isHi ? '🛒 कार्ट में डालें' : '🛒 Add to Cart') . '</button>';
+    $html .= '<a href="' . BASE_URL . '/product-details.php?slug=' . urlencode($p['slug']) . '" style="background:#012d1d;color:white;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:15px;vertical-align:-3px;">description</span> ' . ($isHi ? 'विवरण देखें' : 'View Details') . '</a>';
+    $html .= '<button onclick="addToCartBtn(' . $p['id'] . ',\'' . htmlspecialchars($p['name'], ENT_QUOTES) . '\')" style="background:#fed65b;color:#012d1d;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;border:none;cursor:pointer;"><span class="material-symbols-outlined" style="font-size:15px;vertical-align:-3px;">add_shopping_cart</span> ' . ($isHi ? 'कार्ट में डालें' : 'Add to Cart') . '</button>';
     $html .= '</div>';
     $html .= '</div>';
     return $html;
@@ -119,9 +124,9 @@ function formatProductsHtml($products, $lang) {
             ? '<span style="color:#16a34a;font-size:12px;"> ' . round((($p['compare_price'] - $p['price']) / $p['compare_price']) * 100) . '% off</span>'
             : '';
         $bestseller = $p['is_bestseller']
-            ? '<span style="background:#fed65b;color:#012d1d;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:bold;margin-left:6px;">★ ' . ($isHi ? 'बेस्टसेलर' : 'Bestseller') . '</span>'
+            ? '<span style="background:#fed65b;color:#012d1d;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:bold;margin-left:6px;"><span class="material-symbols-outlined" style="font-size:12px;vertical-align:-2px;">workspace_premium</span> ' . ($isHi ? 'बेस्टसेलर' : 'Bestseller') . '</span>'
             : '';
-        $stars = str_repeat('⭐', round($p['rating'] ?? 0));
+        $stars = str_repeat('<span class="material-symbols-outlined" style="font-size:13px;vertical-align:-2px;color:#b7791f;">star</span>', (int)round($p['rating'] ?? 0));
         $html .= '<div style="background:#f4fafd;padding:10px 12px;border-radius:10px;border:1px solid #dde4e6;">';
         $html .= '<div style="font-weight:700;font-size:14px;color:#012d1d;">' . htmlspecialchars($p['name']) . $bestseller . '</div>';
         $html .= '<div style="font-size:13px;color:#555;margin:3px 0;">' . htmlspecialchars(mb_substr($p['description'], 0, 120)) . '...</div>';
@@ -137,11 +142,11 @@ function formatProductsHtml($products, $lang) {
         }
         $html .= '<div style="display:flex;gap:6px;margin-top:6px;">';
         $html .= '<a href="' . BASE_URL . '/product-details.php?slug=' . urlencode($p['slug']) . '" style="font-size:12px;font-weight:600;color:#012d1d;text-decoration:underline;">' . ($isHi ? 'विवरण →' : 'Details →') . '</a>';
-        $html .= '<button onclick="addToCartBtn(' . $p['id'] . ',\'' . htmlspecialchars($p['name'], ENT_QUOTES) . '\')" style="font-size:12px;font-weight:600;color:#012d1d;background:none;border:none;cursor:pointer;text-decoration:underline;padding:0;">' . ($isHi ? '🛒 कार्ट में डालें' : '🛒 Add to Cart') . '</button>';
+        $html .= '<button onclick="addToCartBtn(' . $p['id'] . ',\'' . htmlspecialchars($p['name'], ENT_QUOTES) . '\')" style="font-size:12px;font-weight:600;color:#012d1d;background:none;border:none;cursor:pointer;text-decoration:underline;padding:0;"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:-3px;">add_shopping_cart</span> ' . ($isHi ? 'कार्ट में डालें' : 'Add to Cart') . '</button>';
         $html .= '</div>';
         $html .= '</div>';
     }
-    $html .= '<a href="' . BASE_URL . '/shop.php" style="text-align:center;display:block;margin-top:4px;font-size:13px;font-weight:600;color:#012d1d;">' . ($isHi ? '🏪 सभी उत्पाद देखें →' : '🏪 Browse All Products →') . '</a>';
+    $html .= '<a href="' . BASE_URL . '/shop.php" style="text-align:center;display:block;margin-top:4px;font-size:13px;font-weight:600;color:#012d1d;"><span class="material-symbols-outlined" style="font-size:15px;vertical-align:-3px;">storefront</span> ' . ($isHi ? 'सभी उत्पाद देखें →' : 'Browse All Products →') . '</a>';
     $html .= '</div>';
     return $html;
 }
@@ -263,7 +268,7 @@ if (isset($_GET['chatbot_ajax']) && isset($_GET['message'])) {
         $stmt->execute();
         $product = $stmt->get_result()->fetch_assoc();
         if ($product) {
-            $response = "🛒 Added <b>" . htmlspecialchars($product['name']) . "</b> (₹" . $product['price'] . ") to your cart! <a href='shopping-cart.php' class='text-primary font-bold'>View Cart →</a>";
+            $response = chatbotIcon('add_shopping_cart') . " Added <b>" . htmlspecialchars($product['name']) . "</b> (₹" . $product['price'] . ") to your cart! <a href='shopping-cart.php' class='text-primary font-bold'>View Cart →</a>";
         } else {
             $response = "Sorry, I couldn't find \"$productName\". <a href='shop.php' class='text-primary font-bold'>Browse all products →</a>";
         }
@@ -276,7 +281,7 @@ if (isset($_GET['chatbot_ajax']) && isset($_GET['message'])) {
 // Display the chatbot HTML
 $isLoggedIn = isset($_SESSION['user_id']);
 ?>
-<!-- Ayurwellness Chatbot Widget -->
+<!-- AyurViora Chatbot Widget -->
 <style>
 .chatbot-btn {
     position: fixed;
@@ -450,16 +455,19 @@ $isLoggedIn = isset($_SESSION['user_id']);
     0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); }
     30% { opacity: 1; transform: scale(1); }
 }
-@media (max-width: 480px) {
+@media (max-width: 767px) {
     .chatbot-window {
         width: calc(100vw - 32px);
         right: 16px;
-        bottom: 88px;
-        height: 70vh;
+        bottom: calc(158px + env(safe-area-inset-bottom));
+        height: calc(100dvh - 190px);
+        max-height: 560px;
     }
     .chatbot-btn {
         right: 16px;
-        bottom: 16px;
+        bottom: calc(96px + env(safe-area-inset-bottom));
+        width: 54px;
+        height: 54px;
     }
 }
 </style>
@@ -477,7 +485,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
         </button>
     </div>
     <div class="chatbot-messages" id="chatbot-messages">
-        <div class="chatbot-msg bot">🙏 Namaste! I'm <b>AyurBot</b>, your wellness assistant.<br><br>I can help you:<br>🛒 Order products<br>📅 Book consultations<br>🌿 Learn about Ayurveda<br>❓ Answer questions<br><br>How can I help you today?</div>
+        <div class="chatbot-msg bot"><?= chatbotIcon('waving_hand') ?> Namaste! I'm <b>AyurBot</b>, your wellness assistant.<br><br>I can help you:<br><?= chatbotIcon('shopping_cart') ?> Order products<br><?= chatbotIcon('calendar_month') ?> Book consultations<br><?= chatbotIcon('spa') ?> Learn about Ayurveda<br><?= chatbotIcon('help') ?> Answer questions<br><br>How can I help you today?</div>
     </div>
     <div class="chatbot-typing" id="chatbot-typing">
         <span></span><span></span><span></span>
@@ -512,7 +520,7 @@ function addToCartBtn(id, name) {
             const msgs = document.getElementById('chatbot-messages');
             const div = document.createElement('div');
             div.className = 'chatbot-msg bot';
-            div.innerHTML = '🛒 <b>' + name + '</b> added to cart! <a href="<?= BASE_URL ?>/shopping-cart.php" style="color:#012d1d;font-weight:700;">View Cart →</a>';
+            div.innerHTML = '<span class="material-symbols-outlined align-[-4px] text-primary" style="font-size:18px;">add_shopping_cart</span> <b>' + name + '</b> added to cart! <a href="<?= BASE_URL ?>/shopping-cart.php" style="color:#012d1d;font-weight:700;">View Cart →</a>';
             msgs.appendChild(div);
             msgs.scrollTop = msgs.scrollHeight;
         });
@@ -555,3 +563,4 @@ function sendMessage() {
         });
 }
 </script>
+

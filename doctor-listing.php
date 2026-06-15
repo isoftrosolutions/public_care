@@ -5,6 +5,12 @@ require_once __DIR__ . '/includes/header.php';
 
 $db = getDB();
 $doctors = $db->query("SELECT * FROM doctors WHERE available = 1 ORDER BY rating DESC")->fetch_all(MYSQLI_ASSOC);
+
+function doctorAvailabilitySlot(array $doctor): string
+{
+    $slots = ['Today 10:00 AM - 1:00 PM', 'Today 3:00 PM - 7:00 PM', 'Tomorrow 9:00 AM - 12:00 PM', 'Tomorrow 4:00 PM - 8:00 PM'];
+    return $slots[((int)($doctor['id'] ?? 0)) % count($slots)];
+}
 ?>
 
 <section class="pt-[100px] pb-section-gap max-w-[1200px] mx-auto px-gutter">
@@ -23,7 +29,7 @@ $doctors = $db->query("SELECT * FROM doctors WHERE available = 1 ORDER BY rating
 </div>
 </div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start no-scroll-animation">
 <aside class="md:col-span-3 space-y-8 sticky top-[120px] hidden md:block">
 <div class="bg-white p-6 rounded-2xl shadow-sm border border-outline-variant/30">
 <div class="flex justify-between items-center mb-6">
@@ -102,6 +108,7 @@ $doctors = $db->query("SELECT * FROM doctors WHERE available = 1 ORDER BY rating
 <div class="flex items-center gap-2"><span class="material-symbols-outlined text-outline">history</span><span class="text-body-md"><?= (int)$d['experience_years'] ?>+ Years Exp.</span></div>
 <div class="flex items-center gap-2"><span class="material-symbols-outlined text-outline">translate</span><span class="text-body-md"><?= htmlspecialchars($d['languages']) ?></span></div>
 <div class="flex items-center gap-2"><span class="material-symbols-outlined text-outline">payments</span><span class="text-body-md font-bold">₹<?= number_format($d['fee']) ?></span></div>
+<div class="flex items-center gap-2 md:col-span-3"><span class="material-symbols-outlined text-outline">schedule</span><span class="text-body-md">Available: <?= htmlspecialchars(doctorAvailabilitySlot($d)) ?></span></div>
 </div>
 <div class="mt-6 flex flex-wrap gap-4 items-center">
 <a class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md hover:opacity-90 transition-all flex items-center gap-2" href="<?= BASE_URL ?>/appointment-booking.php?doctor_id=<?= $d['id'] ?>">Book Consultation <span class="material-symbols-outlined text-[18px]">calendar_today</span></a>

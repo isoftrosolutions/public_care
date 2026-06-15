@@ -135,7 +135,7 @@ function doshaAIRecommendations($scores, $dominant, $lang = 'hi')
         . "Dominant dosha: {$dominant}\n\n"
         . "Provide personalized Ayurvedic recommendations in {$langHint}.";
 
-    $systemPrompt = "You are AyurBot, an Ayurvedic wellness assistant for Ayurviro. "
+    $systemPrompt = "You are AyurBot, an Ayurvedic wellness assistant for AyurViora. "
         . "Give educational wellness guidance, not a medical diagnosis. "
         . "Use warm, practical language and include these sections: Diet, Lifestyle, Yoga, Herbs, Daily Routine. "
         . "Keep each section to 3-5 concise, actionable bullets. "
@@ -147,7 +147,7 @@ function doshaAIRecommendations($scores, $dominant, $lang = 'hi')
 function chatbotAIResponseProduct($message, $lang, $products, $productContext)
 {
     $langHint = $lang === 'hi' ? 'Hindi' : 'English';
-    $systemPrompt = "You are AyurBot, the official AI wellness assistant for Ayurviro, an Ayurvedic e-commerce and consultation platform. "
+    $systemPrompt = "You are AyurBot, the official AI wellness assistant for AyurViora, an Ayurvedic e-commerce and consultation platform. "
         . "Reply in {$langHint}. Be concise, warm, and practical. "
         . "Use only the product data supplied by the app for product names, prices, and availability. Never invent pricing or stock. "
         . "When appropriate, guide users to " . BASE_URL . "/shop.php. "
@@ -160,7 +160,7 @@ function chatbotAIResponseProduct($message, $lang, $products, $productContext)
 function chatbotAIResponse($message, $lang = 'en')
 {
     $langHint = $lang === 'hi' ? 'Hindi' : 'English';
-    $systemPrompt = "You are AyurBot, the official AI wellness assistant for Ayurviro. "
+    $systemPrompt = "You are AyurBot, the official AI wellness assistant for AyurViora. "
         . "Reply in {$langHint}. Keep answers concise, helpful, and suitable for an Ayurvedic healthcare website. "
         . "You can route users to: Shop " . BASE_URL . "/shop.php, Consultation " . BASE_URL . "/appointment-booking.php, Video Consult " . BASE_URL . "/video-consult.php, Dosha Quiz " . BASE_URL . "/dosha-quiz.php, Health Dashboard " . BASE_URL . "/my-health.php, Doctors " . BASE_URL . "/doctor-listing.php, Blog " . BASE_URL . "/wellness-blog.php, Contact " . BASE_URL . "/contact-us.php. "
         . "Do not diagnose disease or prescribe medication. For urgent, severe, pediatric, pregnancy-related, chronic, or worsening symptoms, advise professional medical care. "
@@ -192,7 +192,7 @@ function healthAssistantAIResponse(string $message, array $chatHistory = [], arr
         $drugText .= "\n";
     }
 
-    $systemPrompt = "You are Ayurviro's AI Health Assistant. Provide general educational health information, medicine lookup help, Ayurvedic wellness guidance, and safe next steps. "
+    $systemPrompt = "You are AyurViora's AI Health Assistant. Provide general educational health information, medicine lookup help, Ayurvedic wellness guidance, and safe next steps. "
         . "Do not diagnose, prescribe, or replace a clinician. Include a brief safety note when symptoms, medication, dosage, interactions, pregnancy, children, chronic disease, or emergencies are mentioned. "
         . "If local medicine data is provided, use it as context and do not invent missing details. Keep answers readable in short paragraphs or bullets.";
 
@@ -226,3 +226,4 @@ if (isset($_GET['dosha_ai_ajax'])) {
     }
     exit;
 }
+

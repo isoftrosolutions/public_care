@@ -60,7 +60,7 @@ $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 <header class="flex justify-between items-end mb-8">
 <div>
 <h2 class="text-display-lg font-display-lg text-primary">Products</h2>
-<p class="text-body-lg text-on-surface-variant mt-2">Manage the Ayurviro product catalogue.</p>
+<p class="text-body-lg text-on-surface-variant mt-2">Manage the AyurViora product catalogue.</p>
 </div>
 <a href="product-create.php" class="inline-flex items-center gap-2 bg-primary text-on-primary px-5 py-2.5 rounded-lg text-label-sm hover:opacity-90 transition-opacity"><span class="material-symbols-outlined text-sm">add</span> Create Product</a>
 </header>
@@ -161,3 +161,4 @@ $rating_class = $rating >= 4 ? 'bg-primary-fixed text-on-primary-fixed' : ($rati
 </main>
 </body>
 </html>
+

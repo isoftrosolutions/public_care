@@ -149,9 +149,10 @@ require_once __DIR__ . '/includes/header.php';
         </section>
         <section id="support" class="rounded-xl border border-outline-variant bg-surface-container-lowest p-6">
             <h2 class="font-headline-md text-headline-md text-primary">Support</h2>
-            <div class="mt-4 flex flex-wrap gap-3"><a href="<?= BASE_URL ?>/contact-us.php" class="rounded-lg border border-outline-variant px-4 py-2">Contact support</a><a href="<?= BASE_URL ?>/about-us.php" class="rounded-lg border border-outline-variant px-4 py-2">About Ayurviro v1.0.0</a><a href="<?= BASE_URL ?>/logout.php" class="rounded-lg border border-error px-4 py-2 text-error">Logout</a></div>
+            <div class="mt-4 flex flex-wrap gap-3"><a href="<?= BASE_URL ?>/contact-us.php" class="rounded-lg border border-outline-variant px-4 py-2">Contact support</a><a href="<?= BASE_URL ?>/about-us.php" class="rounded-lg border border-outline-variant px-4 py-2">About AyurViora v1.0.0</a><a href="<?= BASE_URL ?>/logout.php" class="rounded-lg border border-error px-4 py-2 text-error">Logout</a></div>
         </section>
     </div>
 </div>
 </section>
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
+

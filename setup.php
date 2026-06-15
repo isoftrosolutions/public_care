@@ -11,7 +11,7 @@ function log_msg(string $msg): void
     }
 }
 
-log_msg('=== Ayurviro Setup ===');
+log_msg('=== AyurViora Setup ===');
 
 $dirs = [
     'uploads/invoices'      => [0775, 'Invoice PDF storage — .htaccess denies direct HTTP'],

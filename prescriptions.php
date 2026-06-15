@@ -67,7 +67,7 @@ require_once __DIR__ . '/includes/header.php';
     <article class="rounded-xl border border-outline-variant bg-surface-container-lowest p-6">
         <?php if ($selected): ?>
         <div class="flex flex-col gap-4 border-b border-outline-variant pb-5 md:flex-row md:items-start md:justify-between">
-            <div><h2 class="font-headline-md text-headline-md text-primary"><?= h($selected['doctor_name'] ?? 'Doctor') ?></h2><p class="text-on-surface-variant">Ayurviro Clinic · Registration AYU-2026-118</p></div>
+            <div><h2 class="font-headline-md text-headline-md text-primary"><?= h($selected['doctor_name'] ?? 'Doctor') ?></h2><p class="text-on-surface-variant">AyurViora Clinic · Registration AYU-2026-118</p></div>
             <span class="rounded-full bg-primary-fixed px-3 py-1 text-label-sm text-primary">Digital Signature Verified</span>
         </div>
         <div class="mt-5 grid gap-4 rounded-lg bg-surface-container p-4 md:grid-cols-4"><span>Patient: <?= h($_SESSION['user_name'] ?? 'Patient') ?></span><span>Age: 34</span><span>Gender: Not set</span><span>Weight: 68 kg</span></div>
@@ -94,3 +94,4 @@ require_once __DIR__ . '/includes/header.php';
 </div>
 <script>document.querySelector('[data-upload]')?.addEventListener('click', () => { const modal = document.getElementById('upload-modal'); modal.classList.remove('hidden'); modal.classList.add('flex'); });</script>
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
+

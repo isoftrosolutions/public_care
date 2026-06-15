@@ -39,6 +39,18 @@ while ($c = $cat_result->fetch_assoc()) {
 }
 
 require_once __DIR__ . '/includes/header.php';
+
+function labTestFastingText(array $test): string
+{
+    $name = strtolower(($test['name'] ?? '') . ' ' . ($test['description'] ?? ''));
+    if (str_contains($name, 'fasting') || str_contains($name, 'lipid') || str_contains($name, 'liver') || str_contains($name, 'kidney')) {
+        return 'Fasting: 8-12 hours recommended';
+    }
+    if (str_contains($name, 'vitamin') || str_contains($name, 'cbc') || str_contains($name, 'thyroid') || str_contains($name, 'tsh') || str_contains($name, 'hba1c')) {
+        return 'Fasting: Not required';
+    }
+    return 'Fasting: Confirm while booking';
+}
 ?>
 <style>
 .bg-pattern { background-image: radial-gradient(#ffffff20 1px, transparent 0); background-size: 24px 24px; }
@@ -58,6 +70,16 @@ require_once __DIR__ . '/includes/header.php';
 <p class="text-on-primary-container/80 font-body-lg text-body-lg max-w-xl mx-auto md:mx-0">
 NABL accredited labs. Free home sample collection. Get digital reports within 24&ndash;48 hours.
 </p>
+<div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+<a href="<?= BASE_URL ?>/lab-booking.php" class="inline-flex items-center justify-center gap-2 rounded-full bg-primary-fixed text-on-primary-fixed px-6 py-3 font-label-lg hover:bg-primary-fixed-dim transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]">science</span>
+Book Blood Test
+</a>
+<a href="<?= BASE_URL ?>/upload-report.php" class="inline-flex items-center justify-center gap-2 rounded-full border border-primary-fixed/40 text-on-primary-container px-6 py-3 font-label-lg hover:bg-white/10 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]">upload_file</span>
+Upload Lab Report
+</a>
+</div>
 </div>
 <div class="flex-1 w-full max-w-md">
 <div class="relative group">
@@ -136,6 +158,11 @@ $report_text = $report_hours < 24 ? $report_hours . ' hours' : ($report_hours >=
 <span>Free pickup</span>
 </div>
 <?php endif; ?>
+</div>
+
+<div class="flex items-center gap-2 mb-4 text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">restaurant</span>
+<span><?= htmlspecialchars(labTestFastingText($test)) ?></span>
 </div>
 
 <?php if (!empty($test['includes'])): ?>

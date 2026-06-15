@@ -75,20 +75,42 @@ body { background-color: #fbf9f8; color: #1b1c1c; overflow-x: hidden; -webkit-fo
 .nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: #005221; transition: all 0.2s ease; transform: translateX(-50%); }
 .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 .nav-link.active { color: #005221; font-weight: 600; }
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom));
+    background:
+      radial-gradient(circle at 50% -10%, rgba(166, 245, 175, 0.28), transparent 34%),
+      #fbf9f8;
+  }
+  header {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border-bottom: 1px solid rgba(191, 201, 188, 0.45);
+  }
+  header > div {
+    min-height: 64px;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  main {
+    min-height: 100dvh;
+  }
+  input, select, textarea, button, a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
 </style>
 </head>
 <body class="bg-background text-on-surface font-body-md overflow-x-hidden">
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-lg transition-all duration-300 shadow-sm">
-<div class="flex justify-between items-center w-full px-base md:px-margin-desktop py-3 max-w-container-max mx-auto">
-<div class="flex items-center gap-6 lg:gap-10">
-<a class="font-display-lg text-headline-md font-bold text-primary tracking-tight" href="<?= BASE_URL ?>/index.php"><?= SITE_NAME ?></a>
-<nav class="hidden xl:flex items-center gap-1">
+<div class="flex justify-between items-center gap-6 w-full px-base md:px-margin-desktop py-3 max-w-container-max mx-auto">
+<div class="flex items-center gap-8 min-w-0">
+<a class="font-display-lg text-headline-md font-bold text-primary tracking-tight shrink-0" href="<?= BASE_URL ?>/index.php"><?= SITE_NAME ?></a>
+<nav class="hidden xl:flex items-center gap-2">
 <a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'index.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/index.php">Home</a>
-<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'order-punch.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/order-punch.php">Order Punch</a>
 <a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'shop.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/shop.php">Medicine</a>
 <a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'lab-tests.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/lab-tests.php">Lab Tests</a>
-<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= in_array($current_page, ['doctor-listing.php','doctor-profile.php','video-consult.php']) ? 'active' : '' ?>" href="<?= BASE_URL ?>/doctor-listing.php">Consult</a>
+<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= in_array($current_page, ['doctor-listing.php','doctor-profile.php','video-consult.php']) ? 'active' : '' ?>" href="<?= BASE_URL ?>/doctor-listing.php">Doctors</a>
 <a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'ai-assistant.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/ai-assistant.php">AI Health</a>
 <a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'orders.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/orders.php">Orders</a>
 <a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'returns.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/returns.php">Returns</a>
@@ -103,7 +125,7 @@ body { background-color: #fbf9f8; color: #1b1c1c; overflow-x: hidden; -webkit-fo
 <?php endif; ?>
 <a href="<?= BASE_URL ?>/shopping-cart.php" class="relative p-2 text-on-surface-variant hover:text-primary transition-colors rounded-lg hover:bg-surface-container">
 <span class="material-symbols-outlined text-xl">shopping_cart</span>
-<span id="cart-count-badge" class="absolute -top-0.5 -right-0.5 bg-primary text-on-primary text-[10px] min-w-[18px] h-[18px] rounded-full flex items-center justify-center font-bold px-1"><?= htmlspecialchars($_SESSION['cart_count'] ?? 0) ?></span>
+<span id="cart-count-badge" class="cart-count-badge absolute -top-0.5 -right-0.5 bg-primary text-on-primary text-[10px] min-w-[18px] h-[18px] rounded-full flex items-center justify-center font-bold px-1"><?= htmlspecialchars($_SESSION['cart_count'] ?? 0) ?></span>
 </a>
 
 <div class="relative" id="lang-switcher">
@@ -201,10 +223,9 @@ body { background-color: #fbf9f8; color: #1b1c1c; overflow-x: hidden; -webkit-fo
 <div class="flex-1 overflow-y-auto">
 <nav class="py-2">
 <a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'index.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/index.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">home</span> Home</a>
-<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'order-punch.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/order-punch.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">bolt</span> Order Punch</a>
 <a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'shop.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/shop.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">medication</span> Medicine</a>
 <a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'lab-tests.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/lab-tests.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">science</span> Lab Tests</a>
-<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= in_array($current_page, ['doctor-listing.php','doctor-profile.php','video-consult.php']) ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/doctor-listing.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">stethoscope</span> Consult</a>
+<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= in_array($current_page, ['doctor-listing.php','doctor-profile.php','video-consult.php']) ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/doctor-listing.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">stethoscope</span> Doctors</a>
 <a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'ai-assistant.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/ai-assistant.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">psychology</span> AI Health</a>
 <a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'orders.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/orders.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">shopping_bag</span> Orders</a>
 <a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'returns.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/returns.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">assignment_return</span> Returns</a>

@@ -50,7 +50,7 @@ include 'includes/header.php';
 <div class="min-h-screen bg-surface py-12">
     <div class="max-w-3xl mx-auto px-6">
         <div class="text-center mb-10">
-            <span class="text-4xl">📧</span>
+            <span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings:'FILL' 1;">mark_email_unread</span>
             <h1 class="text-headline-lg font-headline-lg text-on-surface mt-2">Email Health Coach</h1>
             <p class="text-on-surface-variant mt-2">अपने स्वास्थ्य रिमाइंडर सेट करें — दवा, पानी, योग और आहार के लिए ईमेल पाएँ</p>
         </div>
@@ -68,7 +68,7 @@ include 'includes/header.php';
             <div class="bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6]">
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center gap-3">
-                        <span class="text-2xl">💊</span>
+                        <span class="material-symbols-outlined text-primary text-2xl">medication</span>
                         <div>
                             <h3 class="font-bold text-on-surface">दवा रिमाइंडर</h3>
                             <p class="text-sm text-on-surface-variant">दवा लेने का समय सेट करें</p>
@@ -85,7 +85,7 @@ include 'includes/header.php';
             <div class="bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6]">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
-                        <span class="text-2xl">💧</span>
+                        <span class="material-symbols-outlined text-primary text-2xl">water_drop</span>
                         <div>
                             <h3 class="font-bold text-on-surface">पानी रिमाइंडर</h3>
                             <p class="text-sm text-on-surface-variant">हर 2 घंटे में (सुबह 9 से रात 9 बजे तक)</p>
@@ -102,7 +102,7 @@ include 'includes/header.php';
             <div class="bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6]">
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center gap-3">
-                        <span class="text-2xl">🧘</span>
+                        <span class="material-symbols-outlined text-primary text-2xl">self_improvement</span>
                         <div>
                             <h3 class="font-bold text-on-surface">योग रिमाइंडर</h3>
                             <p class="text-sm text-on-surface-variant">योग और व्यायाम का समय</p>
@@ -119,7 +119,7 @@ include 'includes/header.php';
             <div class="bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6]">
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center gap-3">
-                        <span class="text-2xl">🥗</span>
+                        <span class="material-symbols-outlined text-primary text-2xl">restaurant</span>
                         <div>
                             <h3 class="font-bold text-on-surface">आहार रिमाइंडर</h3>
                             <p class="text-sm text-on-surface-variant">भोजन का समय सेट करें</p>

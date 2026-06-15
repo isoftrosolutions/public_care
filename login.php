@@ -19,7 +19,7 @@ require_once __DIR__ . '/includes/header.php';
   <section class="hidden md:flex md:w-1/2 bg-background hero-gradient relative items-center justify-center p-margin-desktop overflow-hidden border-r border-surface-container">
     <div class="max-w-xl relative z-10">
       <div class="mb-12">
-        <img alt="Ayurwellness Logo" class="h-16 w-auto object-contain mb-4" src="<?= BASE_URL ?>/assets/uploads/logo.jpeg"/>
+        <img alt="AyurViora Logo" class="h-16 w-auto object-contain mb-4" src="<?= BASE_URL ?>/assets/uploads/logo.jpeg"/>
         <p class="text-primary font-bold tracking-widest text-label-sm uppercase">Natural &bull; Balanced &bull; Healthy</p>
       </div>
       <h1 class="font-display-lg text-display-lg leading-[1.1] text-primary mb-6">
@@ -61,12 +61,12 @@ require_once __DIR__ . '/includes/header.php';
   </section>
   <section class="w-full md:w-1/2 flex items-center justify-center p-margin-mobile md:p-margin-desktop bg-surface">
     <div class="md:hidden fixed top-[72px] left-margin-mobile z-10">
-      <img alt="Ayurwellness Logo" class="h-10 w-auto" src="<?= BASE_URL ?>/assets/uploads/logo.jpeg"/>
+      <img alt="AyurViora Logo" class="h-10 w-auto" src="<?= BASE_URL ?>/assets/uploads/logo.jpeg"/>
     </div>
     <div class="w-full max-w-md">
       <div class="md:hidden mb-8 mt-16">
         <h2 class="font-headline-lg text-primary mb-2">Welcome Back</h2>
-        <p class="text-body-md text-secondary">Join the thousands who trust Ayurwellness for their holistic health journey.</p>
+        <p class="text-body-md text-secondary">Join the thousands who trust AyurViora for their holistic health journey.</p>
       </div>
       <div class="bg-white p-6 md:p-10 rounded-2xl md:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08)] md:border border-surface-container-low transition-all duration-300">
         <div class="hidden md:block mb-8">
@@ -203,3 +203,4 @@ window.onload = function () {
 };
 </script>
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
+

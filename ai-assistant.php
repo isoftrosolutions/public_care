@@ -3,7 +3,8 @@ require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/ai-helper.php';
 $site_title = 'AI Health Assistant';
 
-function getOrCreateSession() {
+function getOrCreateSession()
+{
     $db = getDB();
     $sid = session_id();
     $stmt = $db->prepare("SELECT id FROM ai_chat_sessions WHERE session_id = ? AND is_active = 1");
@@ -19,7 +20,8 @@ function getOrCreateSession() {
     return (int)$stmt->insert_id;
 }
 
-function getChatHistory($sessionId) {
+function getChatHistory($sessionId)
+{
     $db = getDB();
     $stmt = $db->prepare("SELECT role, message, created_at FROM ai_chat_messages WHERE session_id = ? ORDER BY created_at ASC");
     $stmt->bind_param("i", $sessionId);
@@ -27,14 +29,16 @@ function getChatHistory($sessionId) {
     return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 }
 
-function saveMessage($sessionId, $role, $message) {
+function saveMessage($sessionId, $role, $message)
+{
     $db = getDB();
     $stmt = $db->prepare("INSERT INTO ai_chat_messages (session_id, role, message) VALUES (?, ?, ?)");
     $stmt->bind_param("iss", $sessionId, $role, $message);
     $stmt->execute();
 }
 
-function searchDrugs($query) {
+function searchDrugs($query)
+{
     $db = getDB();
     $like = '%' . $query . '%';
     $stmt = $db->prepare("SELECT id, name, generic_name, category, uses, side_effects, precautions, dosage, brand_names FROM drug_information WHERE name LIKE ? OR generic_name LIKE ? OR brand_names LIKE ? LIMIT 10");
@@ -43,7 +47,8 @@ function searchDrugs($query) {
     return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 }
 
-function getDrugById($id) {
+function getDrugById($id)
+{
     $db = getDB();
     $stmt = $db->prepare("SELECT * FROM drug_information WHERE id = ?");
     $stmt->bind_param("i", $id);
@@ -51,7 +56,8 @@ function getDrugById($id) {
     return $stmt->get_result()->fetch_assoc();
 }
 
-function checkInteractions($drug1Id, $drug2Id) {
+function checkInteractions($drug1Id, $drug2Id)
+{
     $db = getDB();
     $stmt = $db->prepare("SELECT di.severity, di.description, di.mechanism, d1.name AS drug1_name, d2.name AS drug2_name FROM drug_interactions di JOIN drug_information d1 ON di.drug1_id = d1.id JOIN drug_information d2 ON di.drug2_id = d2.id WHERE (di.drug1_id = ? AND di.drug2_id = ?) OR (di.drug1_id = ? AND di.drug2_id = ?)");
     $stmt->bind_param("iiii", $drug1Id, $drug2Id, $drug2Id, $drug1Id);
@@ -59,7 +65,8 @@ function checkInteractions($drug1Id, $drug2Id) {
     return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 }
 
-function generateChatResponse($message, $sessionId) {
+function generateChatResponse($message, $sessionId)
+{
     $db = getDB();
     $msg = strtolower(trim($message));
     $drugs = searchDrugs($msg);
@@ -124,12 +131,12 @@ function generateChatResponse($message, $sessionId) {
                     $resp = "**Interaction between {$d1[0]['name']} and {$d2[0]['name']}:**\n\n";
                     foreach ($interactions as $ix) {
                         $sev = $ix['severity'];
-                        $emoji = '⚠️';
-                        if ($sev === 'severe') $emoji = '🔴';
-                        elseif ($sev === 'contraindicated') $emoji = '🚫';
-                        elseif ($sev === 'moderate') $emoji = '🟡';
-                        elseif ($sev === 'minor') $emoji = '🟢';
-                        $resp .= "{$emoji} **Severity:** {$sev}\n**Effect:** {$ix['description']}\n";
+                        $label = 'Caution';
+                        if ($sev === 'severe') $label = 'Severe';
+                        elseif ($sev === 'contraindicated') $label = 'Contraindicated';
+                        elseif ($sev === 'moderate') $label = 'Moderate';
+                        elseif ($sev === 'minor') $label = 'Minor';
+                        $resp .= "**{$label} severity:** {$sev}\n**Effect:** {$ix['description']}\n";
                         if ($ix['mechanism']) $resp .= "**Mechanism:** {$ix['mechanism']}\n";
                     }
                     return $resp;
@@ -143,7 +150,7 @@ function generateChatResponse($message, $sessionId) {
     $greetings = ['hi', 'hello', 'hey', 'namaste', 'नमस्ते', 'नमस्कार', 'hii', 'hello ji'];
     foreach ($greetings as $g) {
         if (strpos($msg, $g) !== false) {
-            return "🙏 Namaste! I'm your **Ayurviro AI Health Assistant**. I can help you with:\n\n💊 **Medicine Information** — Look up any medicine\n⚠️ **Side Effects** — Check possible side effects\n🔄 **Drug Interactions** — Check interactions between medicines\n🩺 **Symptom Guidance** — Get general guidance on symptoms\n🥗 **Ayurvedic Diet Tips** — Diet and wellness suggestions\n\nHow can I help you today?";
+            return "Namaste! I'm your **AyurViora AI Health Assistant**. I can help you with:\n\n**Medicine Information** — Look up any medicine\n**Side Effects** — Check possible side effects\n**Drug Interactions** — Check interactions between medicines\n**Symptom Guidance** — Get general guidance on symptoms\n**Ayurvedic Diet Tips** — Diet and wellness suggestions\n\nHow can I help you today?";
         }
     }
 
@@ -164,7 +171,7 @@ function generateChatResponse($message, $sessionId) {
     }
 
     if (strpos($msg, 'thank') !== false || strpos($msg, 'धन्यवाद') !== false) {
-        return "You're welcome! 🙏 I'm always here to help with your health queries. Feel free to ask me about medicines, symptoms, or Ayurvedic wellness tips. Stay healthy! 🌿";
+        return "You're welcome! I'm always here to help with your health queries. Feel free to ask me about medicines, symptoms, or Ayurvedic wellness tips. Stay healthy.";
     }
 
     $drugNames = [];
@@ -222,9 +229,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($drug['uses']) $html .= '<p class="text-sm text-on-surface-variant mb-1"><span class="font-medium">Uses:</span> ' . htmlspecialchars($drug['uses']) . '</p>';
             $html .= '<button class="mt-3 text-sm font-medium text-primary hover:underline toggle-detail" data-drug-id="' . $drug['id'] . '">View Full Details +</button>';
             $html .= '<div id="detail-' . $drug['id'] . '" class="hidden mt-3 pt-3 border-t border-outline-variant/30 space-y-2">';
-            if ($drug['side_effects']) $html .= '<p class="text-sm"><span class="font-medium text-on-surface">⚠️ Side Effects:</span> <span class="text-on-surface-variant">' . htmlspecialchars($drug['side_effects']) . '</span></p>';
-            if ($drug['precautions']) $html .= '<p class="text-sm"><span class="font-medium text-on-surface">🛡️ Precautions:</span> <span class="text-on-surface-variant">' . htmlspecialchars($drug['precautions']) . '</span></p>';
-            if ($drug['dosage']) $html .= '<p class="text-sm"><span class="font-medium text-on-surface">💊 Dosage:</span> <span class="text-on-surface-variant">' . htmlspecialchars($drug['dosage']) . '</span></p>';
+            if ($drug['side_effects']) $html .= '<p class="text-sm"><span class="font-medium text-on-surface inline-flex items-center gap-1"><span class="material-symbols-outlined text-base text-primary">warning</span> Side Effects:</span> <span class="text-on-surface-variant">' . htmlspecialchars($drug['side_effects']) . '</span></p>';
+            if ($drug['precautions']) $html .= '<p class="text-sm"><span class="font-medium text-on-surface inline-flex items-center gap-1"><span class="material-symbols-outlined text-base text-primary">health_and_safety</span> Precautions:</span> <span class="text-on-surface-variant">' . htmlspecialchars($drug['precautions']) . '</span></p>';
+            if ($drug['dosage']) $html .= '<p class="text-sm"><span class="font-medium text-on-surface inline-flex items-center gap-1"><span class="material-symbols-outlined text-base text-primary">medication</span> Dosage:</span> <span class="text-on-surface-variant">' . htmlspecialchars($drug['dosage']) . '</span></p>';
             $html .= '</div>';
             $html .= '</div>';
         }
@@ -241,148 +248,153 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once __DIR__ . '/includes/header.php';
 ?>
 <style>
-@keyframes messageSlide {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.message-enter { animation: messageSlide 0.3s ease; }
-.chat-messages { scroll-behavior: smooth; }
-.pulse-dot { animation: pulse 1.4s infinite; }
-.pulse-dot:nth-child(2) { animation-delay: 0.2s; }
-.pulse-dot:nth-child(3) { animation-delay: 0.4s; }
-@keyframes pulse {
-    0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); }
-    30% { opacity: 1; transform: scale(1); }
-}
-.gradient-hero {
-    background: linear-gradient(135deg, #005221 0%, #0a6e3a 50%, #1a8a4e 100%);
-}
-.glass-card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-}
-.chat-input::placeholder { color: #9ca3af; }
-.hide-scrollbar::-webkit-scrollbar { display: none; }
-.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    @keyframes messageSlide {
+        from {
+            opacity: 0;
+            transform: translateY(12px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .message-enter {
+        animation: messageSlide 0.3s ease;
+    }
+
+    .chat-messages {
+        scroll-behavior: smooth;
+    }
+
+    .pulse-dot {
+        animation: pulse 1.4s infinite;
+    }
+
+    .pulse-dot:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .pulse-dot:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes pulse {
+
+        0%,
+        60%,
+        100% {
+            opacity: 0.3;
+            transform: scale(0.8);
+        }
+
+        30% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .gradient-hero {
+        background: linear-gradient(135deg, #003d1b 0%, #005221 58%, #0b6b39 100%);
+    }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+    }
+
+    .chat-input::placeholder {
+        color: #9ca3af;
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .assistant-shell {
+        background:
+            radial-gradient(circle at top left, rgba(0, 82, 33, 0.08), transparent 34rem),
+            linear-gradient(180deg, #f8fbf8 0%, #ffffff 100%);
+    }
+
+    .assistant-panel {
+        box-shadow: 0 18px 45px rgba(1, 45, 29, 0.08);
+    }
 </style>
 
-<section class="gradient-hero relative overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32">
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
-        <div class="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
-    </div>
-    <div class="relative max-w-container-max mx-auto px-base md:px-margin-desktop text-center">
-        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/15 backdrop-blur-sm mb-6 border border-white/20">
-            <span class="material-symbols-outlined text-4xl text-white" style="font-variation-settings:'FILL' 1;">psychology</span>
-        </div>
-        <h1 class="font-display-lg text-display-lg text-white mb-4">Your AI Health Companion</h1>
-        <p class="font-body-lg text-body-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
-            Get instant information about medicines, check drug interactions, explore Ayurvedic wellness tips, and receive general health guidance — all powered by our intelligent health assistant.
-        </p>
-        <div class="flex flex-wrap justify-center gap-3 mt-8">
-            <span class="inline-flex items-center gap-1.5 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white/90">💊 Medicine Info</span>
-            <span class="inline-flex items-center gap-1.5 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white/90">⚠️ Side Effects</span>
-            <span class="inline-flex items-center gap-1.5 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white/90">🔄 Drug Interactions</span>
-            <span class="inline-flex items-center gap-1.5 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-white/90">🥗 Diet Tips</span>
-        </div>
-    </div>
-</section>
-
-<section class="py-section-gap bg-background">
-    <div class="max-w-container-max mx-auto px-base md:px-margin-desktop">
-        <div class="text-center mb-12">
-            <h2 class="font-headline-lg text-headline-lg text-primary mb-3">Quick Actions</h2>
-            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">Choose from common health queries to get started instantly</p>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            <div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/40 hover-lift cursor-pointer quick-card" data-query="Tell me about common medicines">
-                <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <span class="text-2xl">💊</span>
-                </div>
-                <h3 class="font-headline-md text-title-lg font-bold text-on-surface mb-2">Medicine Information</h3>
-                <p class="font-body-md text-body-md text-on-surface-variant">Look up any medicine — uses, side effects, dosage, and more</p>
+<section class="gradient-hero relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-24">
+    <div class="relative max-w-container-max mx-auto px-base md:px-margin-desktop">
+        <div class="max-w-3xl">
+            <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white/90 mb-6">
+                <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1;">verified</span>
+                General health guidance from AyurViora
             </div>
-            <div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/40 hover-lift cursor-pointer quick-card" data-query="What are common side effects of medicines">
-                <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <span class="text-2xl">⚠️</span>
-                </div>
-                <h3 class="font-headline-md text-title-lg font-bold text-on-surface mb-2">Side Effects</h3>
-                <p class="font-body-md text-body-md text-on-surface-variant">Check possible side effects and precautions for any medicine</p>
-            </div>
-            <div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/40 hover-lift cursor-pointer quick-card" data-query="How can I check drug interactions">
-                <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <span class="text-2xl">🔄</span>
-                </div>
-                <h3 class="font-headline-md text-title-lg font-bold text-on-surface mb-2">Drug Interactions</h3>
-                <p class="font-body-md text-body-md text-on-surface-variant">Check interactions between different medicines</p>
-            </div>
-            <div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/40 hover-lift cursor-pointer quick-card" data-query="Set a dosage reminder for me">
-                <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <span class="text-2xl">⏰</span>
-                </div>
-                <h3 class="font-headline-md text-title-lg font-bold text-on-surface mb-2">Dosage Reminder</h3>
-                <p class="font-body-md text-body-md text-on-surface-variant">Set reminders for your medication schedule</p>
-            </div>
-            <div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/40 hover-lift cursor-pointer quick-card" data-query="I have some symptoms I want to check">
-                <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <span class="text-2xl">🩺</span>
-                </div>
-                <h3 class="font-headline-md text-title-lg font-bold text-on-surface mb-2">Symptom Checker</h3>
-                <p class="font-body-md text-body-md text-on-surface-variant">Get guidance on symptoms and when to see a doctor</p>
-            </div>
-            <div class="p-6 bg-surface-container-lowest rounded-xl border border-outline-variant/40 hover-lift cursor-pointer quick-card" data-query="Give me Ayurvedic diet tips">
-                <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <span class="text-2xl">🥗</span>
-                </div>
-                <h3 class="font-headline-md text-title-lg font-bold text-on-surface mb-2">Diet Suggestions</h3>
-                <p class="font-body-md text-body-md text-on-surface-variant">Ayurvedic diet tips for better health and wellness</p>
+            <h1 class="font-display-lg text-display-lg text-white mb-4 max-w-2xl">AI Health Assistant</h1>
+            <p class="font-body-lg text-body-lg text-white/80 max-w-2xl leading-relaxed">
+                Ask about medicines, side effects, drug interactions, symptoms, and Ayurvedic wellness tips. Clear answers, with safety-first guidance.
+            </p>
+            <div class="grid grid-cols-1 sm:flex sm:flex-wrap gap-3 mt-8">
+                <a href="#chat-assistant" class="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-bold text-primary hover:bg-white/90 transition-colors">Start chat <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+                <a href="#medicine-lookup" class="inline-flex items-center justify-center gap-2 rounded-lg border border-white/25 bg-white/10 px-5 py-3 text-sm font-bold text-white hover:bg-white/15 transition-colors">Medicine lookup <span class="material-symbols-outlined text-base">search</span></a>
             </div>
         </div>
     </div>
 </section>
 
-<section class="py-section-gap bg-surface-container-low">
+
+<section id="chat-assistant" class="assistant-shell py-14 md:py-20">
     <div class="max-w-container-max mx-auto px-base md:px-margin-desktop">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-start">
             <div class="lg:col-span-2">
-                <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden shadow-sm">
-                    <div class="bg-primary px-6 py-4 flex items-center justify-between">
+                <div class="assistant-panel bg-surface-container-lowest rounded-xl border border-outline-variant/40 overflow-hidden">
+                    <div class="bg-white px-5 md:px-6 py-4 flex items-center justify-between border-b border-outline-variant/30">
                         <div class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-on-primary" style="font-variation-settings:'FILL' 1;">psychology</span>
-                            <h3 class="font-headline-md text-title-lg font-bold text-on-primary">AI Health Chat</h3>
+                            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">psychology</span>
+                            </div>
+                            <div>
+                                <h3 class="font-headline-md text-title-lg font-bold text-on-surface">AI Health Chat</h3>
+                                <p class="text-xs text-on-surface-variant">Educational guidance only</p>
+                            </div>
                         </div>
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs text-on-primary">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 rounded-full text-xs font-medium text-primary">
                             <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> Online
                         </span>
                     </div>
-                    <div id="chat-messages" class="chat-messages h-96 overflow-y-auto p-6 space-y-4 bg-[#fafafa] hide-scrollbar">
+                    <div id="chat-messages" class="chat-messages h-[30rem] overflow-y-auto p-4 md:p-6 space-y-4 bg-[#f7faf7] hide-scrollbar">
                         <div class="flex items-start gap-3 message-enter">
                             <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
                                 <span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings:'FILL' 1;">psychology</span>
                             </div>
                             <div class="bg-white border border-outline-variant/30 rounded-2xl rounded-tl-sm px-5 py-3.5 max-w-[85%] shadow-sm">
-                                <p class="text-sm text-on-surface leading-relaxed">🙏 Namaste! I'm your <strong>Ayurviro AI Health Assistant</strong>. Ask me about medicines, side effects, drug interactions, symptoms, or Ayurvedic wellness tips!</p>
+                                <p class="text-sm text-on-surface leading-relaxed">Namaste. I'm your <strong>AyurViora AI Health Assistant</strong>. Ask me about medicines, side effects, drug interactions, symptoms, or Ayurvedic wellness tips.</p>
                             </div>
                         </div>
                         <?php foreach ($chatHistory as $msg): ?>
                             <?php if ($msg['role'] === 'user'): ?>
-                            <div class="flex items-start justify-end gap-3 message-enter">
-                                <div class="bg-primary rounded-2xl rounded-br-sm px-5 py-3.5 max-w-[80%] shadow-sm">
-                                    <p class="text-sm text-on-primary"><?= htmlspecialchars($msg['message']) ?></p>
+                                <div class="flex items-start justify-end gap-3 message-enter">
+                                    <div class="bg-primary rounded-2xl rounded-br-sm px-5 py-3.5 max-w-[80%] shadow-sm">
+                                        <p class="text-sm text-on-primary"><?= htmlspecialchars($msg['message']) ?></p>
+                                    </div>
+                                    <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-1">
+                                        <span class="material-symbols-outlined text-sm text-on-primary">person</span>
+                                    </div>
                                 </div>
-                                <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 mt-1">
-                                    <span class="material-symbols-outlined text-sm text-on-primary">person</span>
-                                </div>
-                            </div>
                             <?php elseif ($msg['role'] === 'assistant'): ?>
-                            <div class="flex items-start gap-3 message-enter">
-                                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
-                                    <span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings:'FILL' 1;">psychology</span>
+                                <div class="flex items-start gap-3 message-enter">
+                                    <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
+                                        <span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings:'FILL' 1;">psychology</span>
+                                    </div>
+                                    <div class="bg-white border border-outline-variant/30 rounded-2xl rounded-tl-sm px-5 py-3.5 max-w-[85%] shadow-sm">
+                                        <p class="text-sm text-on-surface leading-relaxed"><?= nl2br(htmlspecialchars($msg['message'])) ?></p>
+                                    </div>
                                 </div>
-                                <div class="bg-white border border-outline-variant/30 rounded-2xl rounded-tl-sm px-5 py-3.5 max-w-[85%] shadow-sm">
-                                    <p class="text-sm text-on-surface leading-relaxed"><?= nl2br(htmlspecialchars($msg['message'])) ?></p>
-                                </div>
-                            </div>
                             <?php endif; ?>
                         <?php endforeach; ?>
                         <div id="typing-indicator" class="hidden items-start gap-3">
@@ -398,33 +410,33 @@ require_once __DIR__ . '/includes/header.php';
                             </div>
                         </div>
                     </div>
-                    <div class="border-t border-outline-variant/30 px-6 py-4 bg-white">
+                    <div class="border-t border-outline-variant/30 px-4 md:px-6 py-4 bg-white">
                         <form id="chat-form" class="flex items-center gap-3">
-                            <input type="text" id="chat-input" class="chat-input flex-1 px-5 py-3 bg-surface-container-low rounded-xl border border-outline-variant/40 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary text-sm transition-all" placeholder="Ask about medicines, symptoms, diet..." autocomplete="off">
-                            <button type="submit" class="w-11 h-11 rounded-xl bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container transition-all active:scale-95 flex-shrink-0">
+                            <input type="text" id="chat-input" class="chat-input flex-1 px-4 py-3 bg-surface-container-low rounded-lg border border-outline-variant/50 focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary text-sm transition-all" placeholder="Ask about medicines, symptoms, diet..." autocomplete="off">
+                            <button type="submit" class="w-11 h-11 rounded-lg bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container transition-all active:scale-95 flex-shrink-0" aria-label="Send message">
                                 <span class="material-symbols-outlined text-lg">send</span>
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="space-y-6">
-                <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-6">
+            <div class="space-y-5">
+                <div class="assistant-panel bg-white rounded-xl border border-outline-variant/40 p-5">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">lightbulb</span>
                         <h3 class="font-headline-md text-title-lg font-bold text-on-surface">Try Asking</h3>
                     </div>
-                    <ul class="space-y-3">
-                        <li><button class="w-full text-left text-sm text-on-surface-variant hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-surface-container flex items-center gap-2 suggest-btn"><span class="text-base">💊</span> "Tell me about Paracetamol"</button></li>
-                        <li><button class="w-full text-left text-sm text-on-surface-variant hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-surface-container flex items-center gap-2 suggest-btn"><span class="text-base">⚠️</span> "Side effects of Metformin"</button></li>
-                        <li><button class="w-full text-left text-sm text-on-surface-variant hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-surface-container flex items-center gap-2 suggest-btn"><span class="text-base">🔄</span> "Interaction between Paracetamol and Omeprazole"</button></li>
-                        <li><button class="w-full text-left text-sm text-on-surface-variant hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-surface-container flex items-center gap-2 suggest-btn"><span class="text-base">🥗</span> "Ayurvedic diet tips"</button></li>
-                        <li><button class="w-full text-left text-sm text-on-surface-variant hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-surface-container flex items-center gap-2 suggest-btn"><span class="text-base">🩺</span> "I have a headache"</button></li>
+                    <ul class="space-y-2">
+                        <li><button class="w-full text-left text-sm text-on-surface-variant hover:text-primary transition-colors px-3 py-2.5 rounded-lg hover:bg-surface-container flex items-center gap-2 suggest-btn" data-query="Tell me about Paracetamol"><span class="material-symbols-outlined text-base text-primary">medication</span> "Tell me about Paracetamol"</button></li>
+                        <li><button class="w-full text-left text-sm text-on-surface-variant hover:text-primary transition-colors px-3 py-2.5 rounded-lg hover:bg-surface-container flex items-center gap-2 suggest-btn" data-query="Side effects of Metformin"><span class="material-symbols-outlined text-base text-primary">warning</span> "Side effects of Metformin"</button></li>
+                        <li><button class="w-full text-left text-sm text-on-surface-variant hover:text-primary transition-colors px-3 py-2.5 rounded-lg hover:bg-surface-container flex items-center gap-2 suggest-btn" data-query="Interaction between Paracetamol and Omeprazole"><span class="material-symbols-outlined text-base text-primary">sync_alt</span> "Interaction between Paracetamol and Omeprazole"</button></li>
+                        <li><button class="w-full text-left text-sm text-on-surface-variant hover:text-primary transition-colors px-3 py-2.5 rounded-lg hover:bg-surface-container flex items-center gap-2 suggest-btn" data-query="Ayurvedic diet tips"><span class="material-symbols-outlined text-base text-primary">spa</span> "Ayurvedic diet tips"</button></li>
+                        <li><button class="w-full text-left text-sm text-on-surface-variant hover:text-primary transition-colors px-3 py-2.5 rounded-lg hover:bg-surface-container flex items-center gap-2 suggest-btn" data-query="I have a headache"><span class="material-symbols-outlined text-base text-primary">sick</span> "I have a headache"</button></li>
                     </ul>
                 </div>
                 <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
                     <div class="flex items-start gap-3">
-                        <span class="text-xl flex-shrink-0">⚠️</span>
+                        <span class="material-symbols-outlined text-amber-700 flex-shrink-0 mt-0.5">warning</span>
                         <div>
                             <h4 class="font-headline-md text-sm font-bold text-amber-800 mb-1">Medical Disclaimer</h4>
                             <p class="text-xs text-amber-700 leading-relaxed">This AI assistant provides general health information for educational purposes only. It does not replace professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider.</p>
@@ -460,14 +472,14 @@ require_once __DIR__ . '/includes/header.php';
         <div class="bg-white rounded-2xl border border-amber-200 overflow-hidden shadow-sm">
             <div class="p-8 md:p-12 text-center">
                 <div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-5">
-                    <span class="text-3xl">🩺</span>
+                    <span class="material-symbols-outlined text-amber-700 text-4xl">stethoscope</span>
                 </div>
                 <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Symptom Checker</h2>
                 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-6 leading-relaxed">
                     Describe your symptoms in the chat above and I'll provide general guidance. Remember, this information is for educational purposes only.
                 </p>
                 <div class="inline-flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl p-5 text-left max-w-lg mx-auto">
-                    <span class="text-lg flex-shrink-0 mt-0.5">⚠️</span>
+                    <span class="material-symbols-outlined text-amber-700 flex-shrink-0 mt-0.5">warning</span>
                     <div>
                         <p class="text-sm font-bold text-amber-800 mb-1">This is for guidance only</p>
                         <p class="text-sm text-amber-700 leading-relaxed">The symptom checker provides general information and possible causes. It is <strong>not</strong> a medical diagnosis. Always consult a qualified doctor for proper evaluation and treatment, especially for persistent or severe symptoms.</p>
@@ -513,20 +525,20 @@ require_once __DIR__ . '/includes/header.php';
 </section>
 
 <script>
-const chatMessages = document.getElementById('chat-messages');
-const chatForm = document.getElementById('chat-form');
-const chatInput = document.getElementById('chat-input');
-const typingIndicator = document.getElementById('typing-indicator');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const typingIndicator = document.getElementById('typing-indicator');
 
-function scrollChat() {
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+    function scrollChat() {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 
-function addMessage(text, isUser) {
-    const div = document.createElement('div');
-    div.className = 'message-enter flex items-start' + (isUser ? ' justify-end gap-3' : ' gap-3');
-    if (isUser) {
-        div.innerHTML = `
+    function addMessage(text, isUser) {
+        const div = document.createElement('div');
+        div.className = 'message-enter flex items-start' + (isUser ? ' justify-end gap-3' : ' gap-3');
+        if (isUser) {
+            div.innerHTML = `
             <div class="bg-primary rounded-2xl rounded-br-sm px-5 py-3.5 max-w-[80%] shadow-sm">
                 <p class="text-sm text-on-primary">${text}</p>
             </div>
@@ -534,8 +546,8 @@ function addMessage(text, isUser) {
                 <span class="material-symbols-outlined text-sm text-on-primary">person</span>
             </div>
         `;
-    } else {
-        div.innerHTML = `
+        } else {
+            div.innerHTML = `
             <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
                 <span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings:'FILL' 1;">psychology</span>
             </div>
@@ -543,107 +555,103 @@ function addMessage(text, isUser) {
                 <p class="text-sm text-on-surface leading-relaxed">${text}</p>
             </div>
         `;
+        }
+        chatMessages.insertBefore(div, typingIndicator);
+        scrollChat();
     }
-    chatMessages.insertBefore(div, typingIndicator);
-    scrollChat();
-}
 
-function showTyping(show) {
-    typingIndicator.classList.toggle('hidden', !show);
-    scrollChat();
-}
+    function showTyping(show) {
+        typingIndicator.classList.toggle('hidden', !show);
+        scrollChat();
+    }
 
-chatForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const msg = chatInput.value.trim();
-    if (!msg) return;
+    chatForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const msg = chatInput.value.trim();
+        if (!msg) return;
 
-    addMessage(escapeHtml(msg), true);
-    chatInput.value = '';
-    showTyping(true);
+        addMessage(escapeHtml(msg), true);
+        chatInput.value = '';
+        showTyping(true);
 
-    const formData = new FormData();
-    formData.append('action', 'chat');
-    formData.append('message', msg);
+        const formData = new FormData();
+        formData.append('action', 'chat');
+        formData.append('message', msg);
 
-    fetch('<?= BASE_URL ?>/ai-assistant.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(r => r.json())
-    .then(data => {
-        showTyping(false);
-        addMessage(data.response, false);
-    })
-    .catch(() => {
-        showTyping(false);
-        addMessage('Sorry, I encountered an error. Please try again.', false);
-    });
-});
-
-function escapeHtml(text) {
-    const d = document.createElement('div');
-    d.textContent = text;
-    return d.innerHTML;
-}
-
-document.querySelectorAll('.quick-card').forEach(card => {
-    card.addEventListener('click', function() {
-        chatInput.value = this.dataset.query;
-        chatForm.dispatchEvent(new Event('submit'));
-        document.querySelector('#chat-messages').closest('section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-});
-
-document.querySelectorAll('.suggest-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        chatInput.value = this.textContent.trim().replace(/^["']|["']$/g, '');
-        chatForm.dispatchEvent(new Event('submit'));
-    });
-});
-
-document.getElementById('medicine-search-btn').addEventListener('click', function() {
-    const q = document.getElementById('medicine-search-input').value.trim();
-    if (!q) return;
-    const resultsDiv = document.getElementById('medicine-results');
-    resultsDiv.innerHTML = '<div class="text-center py-8 text-on-surface-variant"><div class="inline-block w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mb-3"></div><p>Searching...</p></div>';
-    const formData = new FormData();
-    formData.append('action', 'medicine_search');
-    formData.append('q', q);
-    fetch('<?= BASE_URL ?>/ai-assistant.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(r => r.json())
-    .then(data => {
-        resultsDiv.innerHTML = data.html;
-        resultsDiv.querySelectorAll('.toggle-detail').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const detail = document.getElementById('detail-' + this.dataset.drugId);
-                const isHidden = detail.classList.contains('hidden');
-                detail.classList.toggle('hidden');
-                this.textContent = isHidden ? 'Hide Details -' : 'View Full Details +';
+        fetch('<?= BASE_URL ?>/ai-assistant.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(r => r.json())
+            .then(data => {
+                showTyping(false);
+                addMessage(data.response, false);
+            })
+            .catch(() => {
+                showTyping(false);
+                addMessage('Sorry, I encountered an error. Please try again.', false);
             });
-        });
-        resultsDiv.querySelectorAll('.medicine-result').forEach(card => {
-            card.addEventListener('click', function(e) {
-                if (e.target.closest('.toggle-detail')) return;
-                const name = this.querySelector('h4')?.textContent || '';
-                if (name) {
-                    chatInput.value = 'Tell me about ' + name;
-                    chatForm.dispatchEvent(new Event('submit'));
-                    document.querySelector('#chat-messages').closest('section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
+    });
+
+    function escapeHtml(text) {
+        const d = document.createElement('div');
+        d.textContent = text;
+        return d.innerHTML;
+    }
+
+    document.querySelectorAll('.suggest-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            chatInput.value = this.dataset.query || this.textContent.trim().replace(/^["']|["']$/g, '');
+            chatForm.dispatchEvent(new Event('submit'));
         });
     });
-});
 
-document.getElementById('medicine-search-input').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') document.getElementById('medicine-search-btn').click();
-});
+    document.getElementById('medicine-search-btn').addEventListener('click', function() {
+        const q = document.getElementById('medicine-search-input').value.trim();
+        if (!q) return;
+        const resultsDiv = document.getElementById('medicine-results');
+        resultsDiv.innerHTML = '<div class="text-center py-8 text-on-surface-variant"><div class="inline-block w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mb-3"></div><p>Searching...</p></div>';
+        const formData = new FormData();
+        formData.append('action', 'medicine_search');
+        formData.append('q', q);
+        fetch('<?= BASE_URL ?>/ai-assistant.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(r => r.json())
+            .then(data => {
+                resultsDiv.innerHTML = data.html;
+                resultsDiv.querySelectorAll('.toggle-detail').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const detail = document.getElementById('detail-' + this.dataset.drugId);
+                        const isHidden = detail.classList.contains('hidden');
+                        detail.classList.toggle('hidden');
+                        this.textContent = isHidden ? 'Hide Details -' : 'View Full Details +';
+                    });
+                });
+                resultsDiv.querySelectorAll('.medicine-result').forEach(card => {
+                    card.addEventListener('click', function(e) {
+                        if (e.target.closest('.toggle-detail')) return;
+                        const name = this.querySelector('h4')?.textContent || '';
+                        if (name) {
+                            chatInput.value = 'Tell me about ' + name;
+                            chatForm.dispatchEvent(new Event('submit'));
+                            document.querySelector('#chat-messages').closest('section').scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
+            });
+    });
 
-scrollChat();
+    document.getElementById('medicine-search-input').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') document.getElementById('medicine-search-btn').click();
+    });
+
+    scrollChat();
 </script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
+

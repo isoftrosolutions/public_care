@@ -82,6 +82,7 @@ if ($price_result && $price_result->num_rows > 0) {
 }
 $min_price = $min_price ?: 0;
 $max_price = $max_price ?: $max_price_in_db;
+$default_product_image = BASE_URL . '/assets/uploads/logo.jpeg';
 ?>
 
 <style>
@@ -113,27 +114,20 @@ input[type="range"] { -webkit-appearance: none; appearance: none; }
 </style>
 
 <!-- Hero Banner Section -->
-<section class="relative overflow-hidden bg-primary py-16 md:py-24">
-<div class="absolute inset-0 opacity-10 bg-pattern"></div>
+<section class="relative overflow-hidden bg-primary py-16 md:py-24 hidden md:block">
 <div class="max-w-container-max mx-auto px-base md:px-margin-desktop relative z-10 flex flex-col md:flex-row items-center gap-12">
 <div class="flex-1 text-center md:text-left">
 <p class="text-primary-fixed font-label-lg text-label-lg mb-4 tracking-widest uppercase">Natural • Balanced • Healthy</p>
-<h1 class="font-display-lg text-display-lg text-on-primary-container mb-6">Explore Natural <br/>Wellness Categories</h1>
+<h2 class="font-display-lg text-display-lg text-on-primary-container mb-6">Explore Natural <br/>Wellness Categories</h2>
 <p class="text-on-primary-container/80 font-body-lg text-body-lg max-w-xl mx-auto md:mx-0">
 Discover authentic Ayurvedic products, expert consultations, herbal remedies, and wellness solutions designed for your holistic growth.
 </p>
-</div>
-<div class="flex-1 w-full max-w-md">
-<div class="relative group">
-<div class="absolute -inset-4 bg-primary-fixed/20 blur-3xl rounded-full"></div>
-<img class="rounded-2xl shadow-2xl relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500 object-cover aspect-square" alt="Ayurvedic herbs and remedies" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB11f5yaVl2I07DrrZo-AJEVtqrdAwiXF8a1NiYwdtAqdy0dnUz6p6Q0l81W5v893n8zpK3U1fS1Q7ZuSmQ44CkU_Xr0KqQ_PQjoxStMYqZtXXWNAN9B2eyNRCd8anAF5Nx5nnXExyy7dsu7ip4FAfQCczMB6lXSEoVm894cxpCgz4p8Egar4JFGnkhOghx2YHd1LjfHZWl2uck-4X-CMG_nFJVWTYFnm_0AoLYgKmt0k0qv5_g9gv1fcD4X1y5DP-4CUARiXMPsHc"/>
-</div>
 </div>
 </div>
 </section>
 
 <!-- Breadcrumb -->
-<div class="max-w-container-max mx-auto px-base md:px-margin-desktop pt-8">
+<div class="hidden md:block max-w-container-max mx-auto px-base md:px-margin-desktop pt-8">
 <nav class="flex items-center gap-2 text-label-sm text-outline mb-2">
 <a href="<?= BASE_URL ?>/index.php" class="hover:text-primary transition-colors">Home</a>
 <span class="material-symbols-outlined text-[16px]">chevron_right</span>
@@ -142,8 +136,8 @@ Discover authentic Ayurvedic products, expert consultations, herbal remedies, an
 </div>
 
 <!-- Main Content: Filters + Products -->
-<div class="max-w-container-max mx-auto px-base md:px-margin-desktop py-8 lg:py-12">
-<div class="flex flex-col lg:flex-row gap-10 relative">
+<div class="max-w-container-max mx-auto px-4 md:px-margin-desktop pt-5 pb-8 md:py-8 lg:py-12">
+<div class="flex flex-col lg:flex-row gap-6 lg:gap-10 relative">
 <!-- Mobile Overlay -->
 <div id="mobile-filter-overlay" class="fixed inset-0 bg-black/40 z-40 hidden opacity-0 transition-opacity duration-300 lg:hidden"></div>
 
@@ -213,14 +207,15 @@ Clear All
 
 <!-- Main Product Area -->
 <div class="flex-1 min-w-0">
-<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+<div class="sticky top-[64px] z-30 -mx-4 mb-4 border-b border-outline-variant/30 bg-background/95 px-4 py-3 backdrop-blur md:static md:z-auto md:mx-0 md:mb-6 md:border-0 md:bg-transparent md:px-0 md:py-0 md:backdrop-blur-0 flex flex-row items-center justify-between gap-3">
 <div>
-<h1 class="font-headline-lg text-headline-lg text-primary">Shop All</h1>
-<p class="text-body-md text-on-surface-variant mt-1">Explore our range of authentic Ayurvedic formulations</p>
+<h1 class="font-headline-lg text-2xl leading-8 md:text-headline-lg md:leading-[40px] text-primary">Shop All</h1>
+<p class="hidden md:block text-body-md text-on-surface-variant mt-1">Explore our range of authentic Ayurvedic formulations</p>
+<p class="md:hidden text-xs text-on-surface-variant"><?= number_format((int)$total_products) ?> products available</p>
 </div>
-<button id="mobile-filter-toggle" class="lg:hidden flex items-center gap-2 px-5 py-2.5 border border-outline-variant rounded-full text-label-md text-primary hover:bg-surface-container-low transition-colors">
+<button id="mobile-filter-toggle" class="lg:hidden flex items-center gap-2 px-4 py-2.5 border border-outline-variant rounded-full text-sm font-bold text-primary bg-white hover:bg-surface-container-low transition-colors">
 <span class="material-symbols-outlined text-[20px]">tune</span>
-Filters
+Filter
 <?php if ($any_filter_active): ?>
 <span class="w-2 h-2 rounded-full bg-secondary"></span>
 <?php endif; ?>
@@ -229,8 +224,8 @@ Filters
 
 <!-- Active Filters Chips -->
 <?php if ($any_filter_active): ?>
-<div class="flex flex-wrap items-center gap-2 mb-6">
-<span class="text-label-sm text-outline">Active filters:</span>
+<div class="flex flex-nowrap md:flex-wrap items-center gap-2 mb-4 md:mb-6 overflow-x-auto hide-scrollbar">
+<span class="hidden md:inline text-label-sm text-outline">Active filters:</span>
 <?php if ($search_term !== ''): ?>
 <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/5 text-primary rounded-full text-label-sm">
 Search: "<?= htmlspecialchars($search_term) ?>"
@@ -261,14 +256,17 @@ Search: "<?= htmlspecialchars($search_term) ?>"
 <?php endif; ?>
 
 <!-- Toolbar -->
-<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
-<p class="text-body-md text-on-surface-variant">
+<div class="flex flex-row justify-between items-center mb-4 md:mb-8 gap-3">
+<p class="hidden md:block text-body-md text-on-surface-variant">
 Showing <span class="font-semibold text-on-surface"><?= count($products) ?></span> of <span class="font-semibold text-on-surface"><?= $total_products ?></span> result<?= $total_products !== 1 ? 's' : '' ?>
 <?php if ($search_term !== ''): ?> for "<span class="text-primary font-medium"><?= htmlspecialchars($search_term) ?></span>"<?php endif; ?>
 </p>
-<div class="flex items-center gap-3 w-full sm:w-auto">
-<span class="text-label-sm text-outline whitespace-nowrap">Sort by:</span>
-<select class="flex-1 sm:flex-none border border-outline-variant rounded-xl bg-surface text-on-surface px-4 py-2.5 font-label-md focus:ring-1 focus:ring-primary focus:border-primary outline-none cursor-pointer" id="sort-select">
+<p class="md:hidden text-xs text-on-surface-variant">
+Showing <span class="font-bold text-on-surface"><?= count($products) ?></span>
+</p>
+<div class="flex items-center gap-2 w-auto">
+<span class="hidden md:inline text-label-sm text-outline whitespace-nowrap">Sort by:</span>
+<select class="w-[150px] md:w-auto border border-outline-variant rounded-xl bg-white md:bg-surface text-on-surface px-3 md:px-4 py-2.5 text-xs md:text-sm font-bold md:font-label-md focus:ring-1 focus:ring-primary focus:border-primary outline-none cursor-pointer" id="sort-select">
 <option value="featured" <?= $sort === 'featured' ? 'selected' : '' ?>>Featured</option>
 <option value="name" <?= $sort === 'name' ? 'selected' : '' ?>>Name A–Z</option>
 <option value="price_asc" <?= $sort === 'price_asc' ? 'selected' : '' ?>>Price: Low to High</option>
@@ -279,25 +277,25 @@ Showing <span class="font-semibold text-on-surface"><?= count($products) ?></spa
 </div>
 
 <!-- Product Grid -->
-<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6" id="product-grid">
+<div class="grid grid-cols-2 xl:grid-cols-3 gap-3 md:gap-6" id="product-grid">
 <?php if (count($products) > 0): ?>
 <?php foreach ($products as $index => $product): ?>
 <div class="product-card group bg-surface-container-lowest rounded-2xl border border-outline-variant/20 overflow-hidden hover:shadow-xl hover:border-primary/20 transition-all duration-500 flex flex-col" style="animation: fadeSlideUp 0.5s ease-out <?= $index * 0.05 ?>s both;">
 <div class="relative aspect-square bg-surface-container-low overflow-hidden">
 <a href="<?= BASE_URL ?>/product-details.php?id=<?= $product['id'] ?>">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="<?= htmlspecialchars($product['image_url']) ?>" alt="<?= htmlspecialchars($product['name']) ?>"/>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="<?= htmlspecialchars(trim((string)($product['image_url'] ?? '')) !== '' ? $product['image_url'] : $default_product_image) ?>" alt="<?= htmlspecialchars($product['name']) ?>" onerror="this.onerror=null;this.src='<?= htmlspecialchars($default_product_image) ?>';"/>
 </a>
 
 <?php if ($product['is_bestseller']): ?>
-<div class="absolute top-3 left-3">
-<span class="bg-secondary text-on-secondary px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm">Best Seller</span>
+<div class="absolute top-2 left-2 md:top-3 md:left-3">
+<span class="bg-secondary text-on-secondary px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-wider shadow-sm">Best</span>
 </div>
 <?php endif; ?>
 
 <?php if ($product['compare_price'] > 0): ?>
 <?php $discount = round((1 - $product['price'] / $product['compare_price']) * 100); ?>
-<div class="absolute top-3 <?= $product['is_bestseller'] ? 'right-3' : 'left-3' ?>">
-<span class="bg-error text-on-error px-2.5 py-1 rounded-full text-[10px] font-bold shadow-sm">-<?= $discount ?>%</span>
+<div class="absolute top-2 <?= $product['is_bestseller'] ? 'right-2 md:right-3' : 'left-2 md:left-3' ?> md:top-3">
+<span class="bg-error text-on-error px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[9px] md:text-[10px] font-bold shadow-sm">-<?= $discount ?>%</span>
 </div>
 <?php endif; ?>
 
@@ -311,7 +309,7 @@ Showing <span class="font-semibold text-on-surface"><?= count($products) ?></spa
 </div>
 <?php endif; ?>
 
-<div class="product-card-overlay absolute inset-0 bg-primary/5 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+<div class="product-card-overlay absolute inset-0 bg-primary/5 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center justify-center gap-3">
 <a href="<?= BASE_URL ?>/product-details.php?id=<?= $product['id'] ?>" class="bg-white text-primary px-5 py-2.5 rounded-xl font-label-md shadow-lg hover:bg-primary hover:text-white transition-all transform -translate-y-2 group-hover:translate-y-0 duration-300">
 Quick View
 </a>
@@ -323,14 +321,14 @@ Quick View
 </div>
 </div>
 
-<div class="p-5 flex-1 flex flex-col">
-<span class="text-[11px] font-medium text-tertiary uppercase tracking-widest mb-1.5"><?= htmlspecialchars($product['category_name'] ?? 'General') ?></span>
+<div class="p-3 md:p-5 flex-1 flex flex-col">
+<span class="text-[10px] md:text-[11px] font-medium text-tertiary uppercase tracking-widest mb-1 md:mb-1.5 truncate"><?= htmlspecialchars($product['category_name'] ?? 'General') ?></span>
 <a href="<?= BASE_URL ?>/product-details.php?id=<?= $product['id'] ?>">
-<h3 class="font-headline-md text-headline-md text-primary mb-1.5 line-clamp-1 group-hover:text-primary-container transition-colors"><?= htmlspecialchars($product['name']) ?></h3>
+<h3 class="font-bold md:font-headline-md text-sm leading-5 md:text-headline-md md:leading-[32px] text-primary mb-1 md:mb-1.5 line-clamp-2 md:line-clamp-1 group-hover:text-primary-container transition-colors"><?= htmlspecialchars($product['name']) ?></h3>
 </a>
-<p class="text-body-md text-on-surface-variant line-clamp-2 mb-4 leading-relaxed"><?= htmlspecialchars($product['description']) ?></p>
+<p class="hidden md:block text-body-md text-on-surface-variant line-clamp-2 mb-4 leading-relaxed"><?= htmlspecialchars($product['description']) ?></p>
 
-<div class="flex items-center gap-1 mb-3">
+<div class="hidden md:flex items-center gap-1 mb-3">
 <div class="flex text-secondary">
 <?php $full_stars = round($product['rating']); for ($i = 1; $i <= 5; $i++): ?>
 <span class="material-symbols-outlined <?= $i <= $full_stars ? '' : 'text-outline-variant' ?> text-[16px]"><?= $i <= $full_stars ? 'star' : 'star' ?></span>
@@ -339,16 +337,16 @@ Quick View
 <span class="text-label-sm text-outline ml-1">(<?= (int)$product['reviews_count'] ?>)</span>
 </div>
 
-<div class="mt-auto flex items-center justify-between">
-<div class="flex items-baseline gap-2">
-<span class="font-headline-md text-primary">₹<?= number_format($product['price'], 2) ?></span>
+<div class="mt-auto flex items-center justify-between gap-2">
+<div class="min-w-0 flex flex-col md:flex-row md:items-baseline md:gap-2">
+<span class="font-bold md:font-headline-md text-sm md:text-base text-primary">₹<?= number_format($product['price'], 2) ?></span>
 <?php if ($product['compare_price'] > 0): ?>
-<span class="text-label-sm text-outline-variant line-through">₹<?= number_format($product['compare_price'], 2) ?></span>
+<span class="text-[10px] md:text-label-sm text-outline-variant line-through">₹<?= number_format($product['compare_price'], 2) ?></span>
 <?php endif; ?>
 </div>
 <?php if ((int)$product['stock'] > 0): ?>
-<button class="w-10 h-10 rounded-xl bg-primary/5 text-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all add-to-cart active:scale-90" data-product-id="<?= $product['id'] ?>">
-<span class="material-symbols-outlined text-[20px]">add</span>
+<button class="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-primary text-on-primary md:bg-primary/5 md:text-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all add-to-cart active:scale-90 shrink-0" data-product-id="<?= $product['id'] ?>">
+<span class="material-symbols-outlined text-[19px] md:text-[20px]">add</span>
 </button>
 <?php endif; ?>
 </div>
@@ -406,47 +404,47 @@ if ($start_page > 1): ?>
 </div>
 
 <!-- Shop by Health Concern (Bento Style) -->
-<section class="max-w-container-max mx-auto px-base md:px-margin-desktop py-16">
-<div class="flex items-center justify-between mb-8">
+<section class="max-w-container-max mx-auto px-4 md:px-margin-desktop py-8 md:py-16">
+<div class="flex items-center justify-between mb-4 md:mb-8">
 <h2 class="font-headline-md text-headline-md text-on-surface">Shop by Health Concern</h2>
-<a href="<?= BASE_URL ?>/shop.php" class="text-primary font-label-lg flex items-center gap-1 group">
+<a href="<?= BASE_URL ?>/shop.php" class="hidden md:flex text-primary font-label-lg items-center gap-1 group">
 View All Concerns <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
 </a>
 </div>
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-<div class="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20">
-<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+<div class="group relative overflow-hidden rounded-2xl bg-white p-4 md:p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20">
+<div class="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3 md:mb-4 text-primary group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">self_improvement</span>
 </div>
-<h4 class="font-title-lg text-title-lg mb-1">Stress Relief</h4>
-<p class="text-on-surface-variant text-body-md font-body-md">Natural adaptogens</p>
+<h4 class="font-bold md:font-title-lg text-sm md:text-title-lg mb-1">Stress Relief</h4>
+<p class="text-on-surface-variant text-xs md:text-body-md font-body-md">Natural adaptogens</p>
 </div>
-<div class="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20">
-<div class="w-12 h-12 bg-tertiary-fixed/30 rounded-full flex items-center justify-center mb-4 text-tertiary group-hover:scale-110 transition-transform">
+<div class="group relative overflow-hidden rounded-2xl bg-white p-4 md:p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20">
+<div class="w-10 h-10 md:w-12 md:h-12 bg-tertiary-fixed/30 rounded-full flex items-center justify-center mb-3 md:mb-4 text-tertiary group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bedtime</span>
 </div>
-<h4 class="font-title-lg text-title-lg mb-1">Better Sleep</h4>
-<p class="text-on-surface-variant text-body-md font-body-md">Deep restorative rest</p>
+<h4 class="font-bold md:font-title-lg text-sm md:text-title-lg mb-1">Better Sleep</h4>
+<p class="text-on-surface-variant text-xs md:text-body-md font-body-md">Restorative rest</p>
 </div>
-<div class="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20">
-<div class="w-12 h-12 bg-primary-fixed/30 rounded-full flex items-center justify-center mb-4 text-on-primary-fixed-variant group-hover:scale-110 transition-transform">
+<div class="group relative overflow-hidden rounded-2xl bg-white p-4 md:p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20">
+<div class="w-10 h-10 md:w-12 md:h-12 bg-primary-fixed/30 rounded-full flex items-center justify-center mb-3 md:mb-4 text-on-primary-fixed-variant group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
 </div>
-<h4 class="font-title-lg text-title-lg mb-1">Immunity</h4>
-<p class="text-on-surface-variant text-body-md font-body-md">Defense support</p>
+<h4 class="font-bold md:font-title-lg text-sm md:text-title-lg mb-1">Immunity</h4>
+<p class="text-on-surface-variant text-xs md:text-body-md font-body-md">Defense support</p>
 </div>
-<div class="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20">
-<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center mb-4 text-secondary group-hover:scale-110 transition-transform">
+<div class="group relative overflow-hidden rounded-2xl bg-white p-4 md:p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-primary/20">
+<div class="w-10 h-10 md:w-12 md:h-12 bg-secondary-container rounded-full flex items-center justify-center mb-3 md:mb-4 text-secondary group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">nutrition</span>
 </div>
-<h4 class="font-title-lg text-title-lg mb-1">Digestive</h4>
-<p class="text-on-surface-variant text-body-md font-body-md">Gut health & detox</p>
+<h4 class="font-bold md:font-title-lg text-sm md:text-title-lg mb-1">Digestive</h4>
+<p class="text-on-surface-variant text-xs md:text-body-md font-body-md">Gut health</p>
 </div>
 </div>
 </section>
 
 <!-- Categories Grid from DB -->
-<section class="max-w-container-max mx-auto px-base md:px-margin-desktop py-8">
+<section class="hidden md:block max-w-container-max mx-auto px-base md:px-margin-desktop py-8">
 <h2 class="font-headline-md text-headline-md text-on-surface mb-8">Featured Categories</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 <?php foreach ($categories as $cat): ?>
@@ -478,10 +476,10 @@ if ($count_r) { $cat_count = $count_r->fetch_assoc()['cnt']; }
 </section>
 
 <!-- Browse by Format -->
-<section class="max-w-container-max mx-auto px-base md:px-margin-desktop py-8">
-<div class="bg-surface-container-low rounded-3xl p-8">
-<h2 class="font-headline-md text-headline-md text-on-surface mb-8">Browse by Format</h2>
-<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+<section class="max-w-container-max mx-auto px-4 md:px-margin-desktop py-6 md:py-8">
+<div class="bg-surface-container-low rounded-3xl p-5 md:p-8">
+<h2 class="font-headline-md text-xl md:text-headline-md text-on-surface mb-5 md:mb-8">Browse by Format</h2>
+<div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
 <div class="text-center group cursor-pointer">
 <div class="aspect-square bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all">
 <span class="material-symbols-outlined text-3xl text-primary">pill</span>
@@ -523,27 +521,27 @@ if ($count_r) { $cat_count = $count_r->fetch_assoc()['cnt']; }
 </section>
 
 <!-- Expert Consultations -->
-<section class="max-w-container-max mx-auto px-base md:px-margin-desktop py-8 pb-16">
-<h2 class="font-headline-md text-headline-md text-on-surface mb-8">Expert Consultations</h2>
-<div class="flex flex-col lg:flex-row gap-gutter">
-<div class="flex-1 bg-white border border-outline-variant/30 rounded-3xl p-8 flex items-center gap-8 shadow-sm hover:shadow-md transition-shadow">
-<div class="w-32 h-32 rounded-2xl overflow-hidden flex-shrink-0">
+<section class="max-w-container-max mx-auto px-4 md:px-margin-desktop py-6 md:py-8 pb-10 md:pb-16">
+<h2 class="font-headline-md text-xl md:text-headline-md text-on-surface mb-5 md:mb-8">Expert Consultations</h2>
+<div class="flex flex-col lg:flex-row gap-4 md:gap-gutter">
+<div class="flex-1 bg-white border border-outline-variant/30 rounded-3xl p-5 md:p-8 flex items-center gap-4 md:gap-8 shadow-sm hover:shadow-md transition-shadow">
+<div class="hidden md:block w-32 h-32 rounded-2xl overflow-hidden flex-shrink-0">
 <img class="w-full h-full object-cover" alt="Ayurvedic doctor consultation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3hGX4_nQCApx-s8yhMpbu2WwnRHNUnQp--yvUNmnarIhqCCeBrpiyV75lROJ6FdsLzp9C21wAOae6ouNxzg9auJ-mEO8cMR9cSExXN8PWhKVFqvedci9xJ12Yt1EXsO_O-qYPNBj1sWGOZ1CswH78Ybc80gbGlYAW-FOQ-nu25tbyeemeUM5sbxVmHVZK-pMoj6PvsYMavD3VMhbMAjYwqqBQHy18t_QwGoupudZDNAMsXWcJNrlanH3ncgcrmYD3aJl19CzMiG8"/>
 </div>
 <div>
-<h3 class="font-title-lg text-title-lg mb-2">Ayurvedic Consultation</h3>
-<p class="text-on-surface-variant font-body-md text-body-md mb-4">Get personalized advice from our top experts based on your unique body constitution (Dosha).</p>
-<a href="<?= BASE_URL ?>/appointment-booking.php" class="inline-block bg-primary text-white font-label-lg text-label-lg px-6 py-2.5 rounded-full hover:bg-primary/90 transition-colors">Book Now</a>
+<h3 class="font-bold md:font-title-lg text-base md:text-title-lg mb-1 md:mb-2">Ayurvedic Consultation</h3>
+<p class="text-on-surface-variant font-body-md text-sm md:text-body-md mb-4">Personalized advice from experts based on your body constitution.</p>
+<a href="<?= BASE_URL ?>/appointment-booking.php" class="inline-block bg-primary text-white font-label-lg text-sm md:text-label-lg px-5 md:px-6 py-2.5 rounded-full hover:bg-primary/90 transition-colors">Book Now</a>
 </div>
 </div>
-<div class="flex-1 bg-tertiary-container text-on-tertiary-container rounded-3xl p-8 flex items-center gap-8 shadow-sm hover:shadow-md transition-shadow">
-<div class="w-32 h-32 rounded-2xl overflow-hidden bg-white/10 flex items-center justify-center flex-shrink-0">
+<div class="flex-1 bg-tertiary-container text-on-tertiary-container rounded-3xl p-5 md:p-8 flex items-center gap-4 md:gap-8 shadow-sm hover:shadow-md transition-shadow">
+<div class="hidden md:flex w-32 h-32 rounded-2xl overflow-hidden bg-white/10 items-center justify-center flex-shrink-0">
 <span class="material-symbols-outlined text-5xl text-on-tertiary-container">spa</span>
 </div>
 <div>
-<h3 class="font-title-lg text-title-lg mb-2">Panchakarma Therapy</h3>
-<p class="text-on-tertiary-container/80 font-body-md text-body-md mb-4">Detoxify and rejuvenate your body with ancient therapeutic practices performed by skilled professionals.</p>
-<a href="<?= BASE_URL ?>/appointment-booking.php" class="inline-block bg-on-tertiary-container text-tertiary-container font-label-lg text-label-lg px-6 py-2.5 rounded-full hover:opacity-90 transition-opacity">Learn More</a>
+<h3 class="font-bold md:font-title-lg text-base md:text-title-lg mb-1 md:mb-2">Panchakarma Therapy</h3>
+<p class="text-on-tertiary-container/80 font-body-md text-sm md:text-body-md mb-4">Detox and rejuvenation support from trained professionals.</p>
+<a href="<?= BASE_URL ?>/appointment-booking.php" class="inline-block bg-on-tertiary-container text-tertiary-container font-label-lg text-sm md:text-label-lg px-5 md:px-6 py-2.5 rounded-full hover:opacity-90 transition-opacity">Learn More</a>
 </div>
 </div>
 </div>
@@ -663,3 +661,4 @@ this.classList.add('bg-primary', 'text-on-primary');
 </script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
+

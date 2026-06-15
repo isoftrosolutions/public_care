@@ -92,15 +92,17 @@ include 'includes/header.php';
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             <?php
-            $icons = ['self'=>'👤', 'spouse'=>'👩', 'son'=>'👦', 'daughter'=>'👧', 'father'=>'👨', 'mother'=>'👩‍🦳', 'other'=>'👤'];
+            $icons = ['self'=>'person', 'spouse'=>'supervisor_account', 'son'=>'boy', 'daughter'=>'girl', 'father'=>'man', 'mother'=>'woman', 'other'=>'person'];
             $relationshipNames = ['self'=>'स्वयं', 'spouse'=>'पति/पत्नी', 'son'=>'पुत्र', 'daughter'=>'पुत्री', 'father'=>'पिता', 'mother'=>'माता', 'other'=>'अन्य'];
             foreach ($members as $m):
                 $isActive = ($m['id'] == $activeMemberId);
-                $icon = $icons[$m['relationship']] ?? '👤';
+                $icon = $icons[$m['relationship']] ?? 'person';
             ?>
             <div class="bg-white rounded-xl p-6 shadow-sm border <?= $isActive ? 'border-[#1b4332] ring-2 ring-[#1b4332]/20' : 'border-[#dde4e6]' ?> transition-all">
                 <div class="flex items-center gap-4 mb-4">
-                    <div class="w-14 h-14 rounded-full bg-[#1b4332]/10 flex items-center justify-center text-2xl"><?= $icon ?></div>
+                    <div class="w-14 h-14 rounded-full bg-[#1b4332]/10 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-3xl"><?= htmlspecialchars($icon) ?></span>
+                    </div>
                     <div>
                         <h3 class="font-bold text-on-surface"><?= htmlspecialchars($m['full_name']) ?></h3>
                         <p class="text-sm text-on-surface-variant">
@@ -159,12 +161,17 @@ include 'includes/header.php';
         </div>
 
         <div class="bg-gradient-to-br from-[#012d1d] to-[#1b4332] rounded-xl p-8 text-white">
-            <h2 class="text-headline-md font-headline-md mb-2">🏠 पूरे परिवार का स्वास्थ्य डैशबोर्ड</h2>
+            <h2 class="text-headline-md font-headline-md mb-2 flex items-center gap-2">
+                <span class="material-symbols-outlined text-white text-3xl">home_health</span>
+                पूरे परिवार का स्वास्थ्य डैशबोर्ड
+            </h2>
             <p class="text-white/80 mb-6">हर सदस्य का अलग डैशबोर्ड — वजन, नींद, दर्द, BP, शुगर ट्रैक करें</p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                 <?php foreach ($members as $m): ?>
                 <a href="my-health.php?member_id=<?= $m['id'] ?>" class="bg-white/10 hover:bg-white/20 rounded-lg p-4 text-center transition-all backdrop-blur-sm">
-                    <div class="text-3xl mb-1"><?= $icons[$m['relationship']] ?? '👤' ?></div>
+                    <div class="mb-1">
+                        <span class="material-symbols-outlined text-white text-3xl"><?= htmlspecialchars($icons[$m['relationship']] ?? 'person') ?></span>
+                    </div>
                     <div class="text-sm font-bold"><?= htmlspecialchars($m['full_name']) ?></div>
                 </a>
                 <?php endforeach; ?>

@@ -98,28 +98,28 @@ include 'includes/header.php';
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div class="bg-white p-4 rounded-xl shadow-sm border border-[#dde4e6]">
                 <div class="flex items-center gap-2 mb-1">
-                    <span class="text-lg">⚖️</span>
+                    <span class="material-symbols-outlined text-primary text-lg">monitor_weight</span>
                     <span class="text-xs text-on-surface-variant">Weight</span>
                 </div>
                 <p class="text-2xl font-bold"><?= ($latest['weight'] ?? '--') ?> <span class="text-sm font-normal text-on-surface-variant">kg</span></p>
             </div>
             <div class="bg-white p-4 rounded-xl shadow-sm border border-[#dde4e6]">
                 <div class="flex items-center gap-2 mb-1">
-                    <span class="text-lg">😴</span>
+                    <span class="material-symbols-outlined text-primary text-lg">bedtime</span>
                     <span class="text-xs text-on-surface-variant">Sleep</span>
                 </div>
                 <p class="text-2xl font-bold"><?= ($latest['sleep_hours'] ?? '--') ?> <span class="text-sm font-normal text-on-surface-variant">hrs</span></p>
             </div>
             <div class="bg-white p-4 rounded-xl shadow-sm border border-[#dde4e6]">
                 <div class="flex items-center gap-2 mb-1">
-                    <span class="text-lg">🤕</span>
+                    <span class="material-symbols-outlined text-primary text-lg">personal_injury</span>
                     <span class="text-xs text-on-surface-variant">Pain</span>
                 </div>
                 <p class="text-2xl font-bold"><?= ($latest['pain_score'] ?? '--') ?> <span class="text-sm font-normal text-on-surface-variant">/10</span></p>
             </div>
             <div class="bg-white p-4 rounded-xl shadow-sm border border-[#dde4e6]">
                 <div class="flex items-center gap-2 mb-1">
-                    <span class="text-lg">❤️</span>
+                    <span class="material-symbols-outlined text-primary text-lg">cardiology</span>
                     <span class="text-xs text-on-surface-variant">BP</span>
                 </div>
                 <p class="text-2xl font-bold"><?= ($latest['bp_systolic'] ?? '--') . '/' . ($latest['bp_diastolic'] ?? '--') ?></p>
@@ -167,7 +167,7 @@ include 'includes/header.php';
 
             <div class="space-y-6">
                 <div class="bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6]">
-                    <h3 class="font-bold mb-4">⚖️ Weight Trend</h3>
+                    <h3 class="font-bold mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">monitor_weight</span> Weight Trend</h3>
                     <?php if (!empty($metricsChart)): ?>
                     <div class="space-y-2">
                         <?php foreach (array_slice($metricsChart, -10) as $m): ?>
@@ -186,7 +186,7 @@ include 'includes/header.php';
                 </div>
 
                 <div class="bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6]">
-                    <h3 class="font-bold mb-4">😴 Sleep Trend</h3>
+                    <h3 class="font-bold mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">bedtime</span> Sleep Trend</h3>
                     <?php if (!empty($metricsChart)): ?>
                     <div class="space-y-2">
                         <?php foreach (array_slice($metricsChart, -10) as $m): ?>
@@ -205,7 +205,7 @@ include 'includes/header.php';
                 </div>
 
                 <div class="bg-white rounded-xl p-6 shadow-sm border border-[#dde4e6]">
-                    <h3 class="font-bold mb-4">🤕 Pain Score Trend</h3>
+                    <h3 class="font-bold mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">personal_injury</span> Pain Score Trend</h3>
                     <?php if (!empty($metricsChart)): ?>
                     <div class="space-y-2">
                         <?php foreach (array_slice($metricsChart, -10) as $m): ?>

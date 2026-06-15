@@ -31,13 +31,17 @@ require_once __DIR__ . '/includes/header.php';
             <p class="font-body-md text-body-md text-on-surface-variant">Scan product barcodes for lightning-fast addition.</p>
         </div>
         <div class="group bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/40 hover-lift cursor-pointer transition-all" onclick="document.getElementById('prescription-upload')?.click()">
-            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-on-primary transition-all text-2xl">📄</div>
+            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-on-primary transition-all">
+                <span class="material-symbols-outlined text-3xl">description</span>
+            </div>
             <h3 class="font-headline-md text-headline-md text-on-surface mb-1 group-hover:text-primary transition-colors">Upload Prescription</h3>
             <p class="font-body-md text-body-md text-on-surface-variant">Snap or upload a handwritten prescription image.</p>
             <input type="file" id="prescription-upload" accept="image/*,.pdf" class="hidden" onchange="uploadPrescription(this)">
         </div>
         <div class="group bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/40 hover-lift cursor-pointer transition-all" onclick="document.getElementById('excel-upload')?.click()">
-            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-on-primary transition-all text-2xl">📊</div>
+            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-on-primary transition-all">
+                <span class="material-symbols-outlined text-3xl">table_chart</span>
+            </div>
             <h3 class="font-headline-md text-headline-md text-on-surface mb-1 group-hover:text-primary transition-colors">Excel/CSV Upload</h3>
             <p class="font-body-md text-body-md text-on-surface-variant">Upload a spreadsheet with product codes & quantities.</p>
             <input type="file" id="excel-upload" accept=".csv,.xlsx,.xls" class="hidden" onchange="uploadExcel(this)">
@@ -263,7 +267,7 @@ try {
 
                     <div id="order-items">
                         <div class="text-center py-8 text-on-surface-variant font-body-md text-body-md">
-                            <span class="text-3xl block mb-2">🛒</span>
+                            <span class="material-symbols-outlined text-primary text-4xl block mb-2">add_shopping_cart</span>
                             No items added yet. Start typing above to search and add products.
                         </div>
                     </div>
@@ -351,7 +355,7 @@ try {
                 </ul>
                 <hr class="my-5 border-outline-variant/30">
                 <div class="text-center">
-                    <span class="text-3xl">💊</span>
+                    <span class="material-symbols-outlined text-primary text-4xl">medication</span>
                     <p class="font-body-md text-body-md text-on-surface-variant mt-2">Need help? Call our B2B helpline</p>
                     <a href="tel:+919999999999" class="font-title-lg text-title-lg text-primary hover:underline">+91 99999 99999</a>
                 </div>
@@ -366,7 +370,7 @@ try {
 
     <?php if (empty($recentOrders)): ?>
     <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/40 p-12 text-center">
-        <span class="text-5xl block mb-4">📦</span>
+        <span class="material-symbols-outlined text-primary text-5xl block mb-4">inventory_2</span>
         <h3 class="font-headline-md text-headline-md text-on-surface mb-2">No orders yet</h3>
         <p class="font-body-md text-body-md text-on-surface-variant">Place your first B2B order above.</p>
     </div>
@@ -526,7 +530,7 @@ function updateItemPrice(index, price) {
 function renderOrderItems() {
     const container = document.getElementById('order-items');
     if (orderItems.length === 0) {
-        container.innerHTML = '<div class="text-center py-8 text-on-surface-variant font-body-md text-body-md"><span class="text-3xl block mb-2">🛒</span>No items added yet. Start typing above to search and add products.</div>';
+        container.innerHTML = '<div class="text-center py-8 text-on-surface-variant font-body-md text-body-md"><span class="material-symbols-outlined text-primary text-4xl block mb-2">add_shopping_cart</span>No items added yet. Start typing above to search and add products.</div>';
         return;
     }
     container.innerHTML = orderItems.map((item, idx) => `
