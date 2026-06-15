@@ -66,6 +66,10 @@ tailwind.config = {
 <style>
 body { background-color: #fbf9f8; color: #1b1c1c; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
+.py-12 {
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+}
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
 .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
 .hover-lift:hover { transform: translateY(-4px); box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.08); }

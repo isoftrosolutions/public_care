@@ -285,10 +285,6 @@ $total = $fee + $tax;
 </main>
 
 <style>
-.py-12 {
-    padding-top: 7rem;
-    padding-bottom: 3rem;
-}
 .step-transition { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 .animate-bounce { animation: bounce 1s infinite; }
 @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
