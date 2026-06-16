@@ -70,6 +70,7 @@ $bottom_nav_items = [
 <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/doctor-listing.php"><?= t('nav_consult') ?></a></li>
 <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/about-us.php"><?= t('footer_about_us') ?></a></li>
 <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/wellness-blog.php"><?= t('footer_wellness_blog') ?></a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/write-review.php"><?= t('write_review') ?></a></li>
 </ul>
 </div>
 <div class="space-y-4">

@@ -65,11 +65,13 @@ $steps = [
     ['icon' => 'stethoscope', 'title' => t('step_consult_title'), 'text' => t('step_consult_desc')],
 ];
 
-$fallback_testimonials = [
-    ['name' => 'Priya Sharma', 'role' => 'Verified Patient', 'text' => 'Doctor consultation and Ayurvedic medicines were easy to book from one place.'],
-    ['name' => 'Rahul Verma', 'role' => 'Customer', 'text' => 'The AI assistant helped me understand what care route to take before booking.'],
-    ['name' => 'Ananya Patel', 'role' => 'Verified Patient', 'text' => 'Fast medicine delivery and simple prescription storage made follow-up easier.'],
-];
+$testimonials = [];
+$testimonial_result = $conn->query("SELECT r.*, u.full_name FROM reviews r LEFT JOIN users u ON r.user_id = u.id WHERE r.comment IS NOT NULL AND r.comment != '' ORDER BY r.created_at DESC LIMIT 3");
+if ($testimonial_result && $testimonial_result->num_rows > 0) {
+    while ($row = $testimonial_result->fetch_assoc()) {
+        $testimonials[] = $row;
+    }
+}
 ?>
 
 <style>
@@ -397,29 +399,34 @@ $fallback_testimonials = [
 </div>
 </section>
 
+<?php if (!empty($testimonials)): ?>
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 <div class="flex items-center justify-between mb-5">
 <h2 class="font-headline-lg text-headline-lg text-on-surface"><?= t('testimonials_title') ?></h2>
-<a class="text-primary font-label-lg text-label-lg" href="<?= BASE_URL ?>/wellness-blog.php"><?= t('view_all') ?></a>
+<a class="text-primary font-label-lg text-label-lg" href="<?= BASE_URL ?>/write-review.php"><?= t('write_review') ?></a>
 </div>
 <div class="grid md:grid-cols-3 gap-4">
-<?php foreach ($fallback_testimonials as $item): ?>
+<?php foreach ($testimonials as $item):
+$review_rating = (int)($item['rating'] ?? 5);
+$initial = strtoupper(substr($item['full_name'] ?? 'U', 0, 1));
+?>
 <article class="rounded-xl bg-white border border-outline-variant/25 p-5 home-card">
 <div class="flex text-tertiary-fixed-dim mb-3">
-<?php for ($i = 0; $i < 5; $i++): ?><span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span><?php endfor; ?>
+<?php for ($i = 0; $i < 5; $i++): ?><span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' <?= $i < $review_rating ? 1 : 0 ?>;">star</span><?php endfor; ?>
 </div>
-<p class="text-sm text-on-surface-variant">"<?= htmlspecialchars($item['text']) ?>"</p>
+<p class="text-sm text-on-surface-variant">"<?= htmlspecialchars($item['comment'] ?? '') ?>"</p>
 <div class="flex items-center gap-3 mt-4">
-<div class="w-9 h-9 rounded-full bg-primary-fixed text-primary flex items-center justify-center font-bold"><?= htmlspecialchars(substr($item['name'], 0, 1)) ?></div>
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-primary flex items-center justify-center font-bold"><?= htmlspecialchars($initial) ?></div>
 <div>
-<p class="text-sm font-bold text-on-surface"><?= htmlspecialchars($item['name']) ?></p>
-<p class="text-xs text-primary"><?= htmlspecialchars($item['role']) ?></p>
+<p class="text-sm font-bold text-on-surface"><?= htmlspecialchars($item['full_name'] ?? 'Anonymous') ?></p>
+<p class="text-xs text-primary">Verified Patient</p>
 </div>
 </div>
 </article>
 <?php endforeach; ?>
 </div>
 </section>
+<?php endif; ?>
 
 <?php if (count($blog_posts) > 0): ?>
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
