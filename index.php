@@ -17,7 +17,7 @@ if ($product_result) {
 }
 
 $featured_doctors = [];
-$doctor_result = $conn->query("SELECT * FROM doctors WHERE available = 1 ORDER BY rating DESC, reviews_count DESC LIMIT 5");
+$doctor_result = $conn->query("SELECT * FROM doctors WHERE available = 1 AND reviews_count > 0 AND name NOT LIKE '%StatusDoc%' AND name NOT LIKE '%BookingDoc%' ORDER BY rating DESC, reviews_count DESC LIMIT 5");
 if ($doctor_result) {
     while ($row = $doctor_result->fetch_assoc()) {
         $featured_doctors[] = $row;
@@ -37,32 +37,32 @@ $default_doctor_image = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBcT
 $default_product_image = BASE_URL . '/assets/uploads/logo.jpeg';
 
 $services = [
-    ['icon' => 'science', 'title' => 'Blood Test Booking', 'text' => 'Home sample collection and fast reports.', 'url' => 'lab-tests.php'],
-    ['icon' => 'upload_file', 'title' => 'Upload Report', 'text' => 'Upload reports and request AI explanation.', 'url' => 'upload-report.php'],
-    ['icon' => 'videocam', 'title' => 'Talk to Doctor', 'text' => 'Book secure video consultation.', 'url' => 'doctor-listing.php'],
-    ['icon' => 'smart_toy', 'title' => 'AI Health Assistant', 'text' => 'Get instant wellness guidance.', 'url' => 'ai-assistant.php'],
-    ['icon' => 'emergency_home', 'title' => 'Emergency Numbers', 'text' => 'Quick access to critical helplines.', 'url' => 'contact-us.php#emergency-help'],
-    ['icon' => 'local_shipping', 'title' => 'Medicine Delivery', 'text' => 'Order medicines and wellness care.', 'url' => 'shop.php'],
-    ['icon' => 'event_available', 'title' => 'Appointments', 'text' => 'Schedule in-clinic care.', 'url' => 'appointment-booking.php'],
-    ['icon' => 'description', 'title' => 'Prescriptions', 'text' => 'Store and manage prescriptions.', 'url' => 'prescriptions.php'],
-    ['icon' => 'shopping_bag', 'title' => 'Health Products', 'text' => 'Ayurvedic and daily essentials.', 'url' => 'shop.php'],
-    ['icon' => 'family_restroom', 'title' => 'Family Care', 'text' => 'Manage care for your family.', 'url' => 'my-family.php'],
+    ['icon' => 'science', 'title' => t('service_blood_test'), 'text' => t('service_blood_test_desc'), 'url' => 'lab-tests.php'],
+    ['icon' => 'upload_file', 'title' => t('service_upload_report'), 'text' => t('service_upload_report_desc'), 'url' => 'upload-report.php'],
+    ['icon' => 'videocam', 'title' => t('service_talk_to_doctor'), 'text' => t('service_talk_to_doctor_desc'), 'url' => 'doctor-listing.php'],
+    ['icon' => 'smart_toy', 'title' => t('service_ai_assistant'), 'text' => t('service_ai_assistant_desc'), 'url' => 'ai-assistant.php'],
+    ['icon' => 'emergency_home', 'title' => t('service_emergency'), 'text' => t('service_emergency_desc'), 'url' => 'contact-us.php#emergency-help'],
+    ['icon' => 'local_shipping', 'title' => t('service_delivery'), 'text' => t('service_delivery_desc'), 'url' => 'shop.php'],
+    ['icon' => 'event_available', 'title' => t('service_appointments'), 'text' => t('service_appointments_desc'), 'url' => 'appointment-booking.php'],
+    ['icon' => 'description', 'title' => t('service_prescriptions'), 'text' => t('service_prescriptions_desc'), 'url' => 'prescriptions.php'],
+    ['icon' => 'shopping_bag', 'title' => t('service_health_products'), 'text' => t('service_health_products_desc'), 'url' => 'shop.php'],
+    ['icon' => 'family_restroom', 'title' => t('service_family_care'), 'text' => t('service_family_care_desc'), 'url' => 'my-family.php'],
 ];
 
 $why_cards = [
-    ['icon' => 'verified', 'title' => 'AI Powered', 'text' => 'Smart triage and guided next steps.'],
-    ['icon' => 'stethoscope', 'title' => 'Verified Doctors', 'text' => 'Experienced clinicians and Ayurvedic experts.'],
-    ['icon' => 'medication', 'title' => 'Multiple Systems', 'text' => 'Ayurveda, allopathy and homeopathy care.'],
-    ['icon' => 'bolt', 'title' => 'Fast Appointments', 'text' => 'Book online care in a few taps.'],
-    ['icon' => 'shield_lock', 'title' => 'Secure & Private', 'text' => 'Health records stay protected.'],
-    ['icon' => 'support_agent', 'title' => 'Affordable Care', 'text' => 'Useful healthcare access for every family.'],
+    ['icon' => 'verified', 'title' => t('why_ai_title'), 'text' => t('why_ai_desc')],
+    ['icon' => 'stethoscope', 'title' => t('hero_verified'), 'text' => t('why_doctors_desc')],
+    ['icon' => 'medication', 'title' => t('why_systems_title'), 'text' => t('why_systems_desc')],
+    ['icon' => 'bolt', 'title' => t('why_fast_title'), 'text' => t('why_fast_desc')],
+    ['icon' => 'shield_lock', 'title' => t('why_secure_title'), 'text' => t('why_secure_desc')],
+    ['icon' => 'support_agent', 'title' => t('why_affordable_title'), 'text' => t('why_affordable_desc')],
 ];
 
 $steps = [
-    ['icon' => 'science', 'title' => 'Book Test', 'text' => 'Choose test and home sample slot.'],
-    ['icon' => 'upload_file', 'title' => 'Upload Report', 'text' => 'Add PDF or image reports securely.'],
-    ['icon' => 'smart_toy', 'title' => 'Understand Results', 'text' => 'Get simple AI explanation and next steps.'],
-    ['icon' => 'stethoscope', 'title' => 'Consult Doctor', 'text' => 'Talk to a verified doctor if needed.'],
+    ['icon' => 'science', 'title' => t('step_book_title'), 'text' => t('step_book_desc')],
+    ['icon' => 'upload_file', 'title' => t('step_upload_title'), 'text' => t('step_upload_desc')],
+    ['icon' => 'smart_toy', 'title' => t('step_understand_title'), 'text' => t('step_understand_desc')],
+    ['icon' => 'stethoscope', 'title' => t('step_consult_title'), 'text' => t('step_consult_desc')],
 ];
 
 $fallback_testimonials = [
@@ -92,37 +92,37 @@ $fallback_testimonials = [
 <div class="lg:col-span-5 space-y-5">
 <div class="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-3 py-1.5 text-[11px] font-bold text-primary shadow-sm">
 <span class="material-symbols-outlined text-base">health_and_safety</span>
-India's Smart Blood Test, Doctor & Report Platform
+<?= t('hero_badge_text') ?>
 </div>
 <div>
-<p class="font-label-lg text-label-lg text-on-surface-variant mb-2">Ayurveda + Allopathy + Homeopathy</p>
-<h1 class="font-display-lg text-[36px] leading-[42px] md:text-[50px] md:leading-[56px] text-primary tracking-tight max-w-xl">AyurViora brings tests, doctors and reports into one simple care flow</h1>
+<p class="font-label-lg text-label-lg text-on-surface-variant mb-2"><?= t('hero_system_text') ?></p>
+<h1 class="font-display-lg text-[36px] leading-[42px] md:text-[50px] md:leading-[56px] text-primary tracking-tight max-w-xl"><?= t('hero_title_text') ?></h1>
 </div>
-<p class="text-body-lg text-on-surface-variant max-w-xl">AyurViora solves everyday healthcare confusion: book blood tests from home, upload reports for simple AI explanation, and talk to verified doctors when you need expert care.</p>
+<p class="text-body-lg text-on-surface-variant max-w-xl"><?= t('hero_subtitle_text') ?></p>
 <div class="flex flex-col sm:flex-row flex-wrap gap-3">
 <a href="<?= BASE_URL ?>/lab-tests.php" class="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-on-primary font-label-lg shadow-md hover:bg-primary-container transition-all">
 <span class="material-symbols-outlined text-lg">science</span>
-Book Blood Test
+<?= t('book_blood_test') ?>
 </a>
 <a href="<?= BASE_URL ?>/doctor-listing.php" class="inline-flex items-center justify-center gap-2 rounded-full border border-primary/30 bg-white px-6 py-3 text-primary font-label-lg hover:bg-primary/5 transition-all">
 <span class="material-symbols-outlined text-lg">videocam</span>
-Talk to Doctor
+<?= t('talk_to_doctor') ?>
 </a>
 <a href="<?= BASE_URL ?>/upload-report.php" class="inline-flex items-center justify-center gap-2 rounded-full border border-primary/30 bg-white px-6 py-3 text-primary font-label-lg hover:bg-primary/5 transition-all">
 <span class="material-symbols-outlined text-lg">upload_file</span>
-Upload Report
+<?= t('upload_report') ?>
 </a>
 </div>
 <div class="grid grid-cols-3 gap-3 pt-2 text-[12px] text-on-surface-variant">
-<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">verified</span>100% Secure</div>
-<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">workspace_premium</span>Verified Doctors</div>
-<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">support_agent</span>24x7 Support</div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">verified</span><?= t('hero_secure') ?></div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">workspace_premium</span><?= t('hero_verified') ?></div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-base">support_agent</span><?= t('hero_support') ?></div>
 </div>
 </div>
 
 <div class="lg:col-span-7 relative min-h-[420px]">
 <div class="absolute right-0 top-3 hidden md:block w-72 h-72 rounded-full overflow-hidden border-[18px] border-white/70 home-card">
-<img src="<?= htmlspecialchars($hero_image) ?>" alt="Ayurvedic herbs and wellness products" class="w-full h-full object-cover">
+<img loading="lazy" src="<?= htmlspecialchars($hero_image) ?>" alt="Ayurvedic herbs and wellness products" class="w-full h-full object-cover">
 </div>
 <div class="absolute -right-10 bottom-6 hidden lg:block w-48 h-48 rounded-full bg-primary-fixed/45 blur-2xl"></div>
 <div class="relative mx-auto w-[260px] sm:w-[300px] rounded-[34px] border-[10px] border-on-primary-fixed bg-white p-3 home-phone">
@@ -137,8 +137,8 @@ Upload Report
 <span class="material-symbols-outlined">waving_hand</span>
 </div>
 <div>
-<p class="text-[12px] opacity-80">Hi, Good Morning</p>
-<p class="font-bold">How can we help?</p>
+<p class="text-[12px] opacity-80"><?= t('hero_morning') ?></p>
+<p class="font-bold"><?= t('hero_help') ?></p>
 </div>
 </div>
 </div>
@@ -149,8 +149,8 @@ Upload Report
 <span class="material-symbols-outlined">smart_toy</span>
 </div>
 <div>
-<p class="text-sm font-bold text-primary">AI Health Assistant</p>
-<p class="text-[11px] text-on-surface-variant">Ask symptoms, products or care</p>
+<p class="text-sm font-bold text-primary"><?= t('hero_ai_title') ?></p>
+<p class="text-[11px] text-on-surface-variant"><?= t('hero_ai_desc') ?></p>
 </div>
 </div>
 </div>
@@ -164,22 +164,22 @@ Upload Report
 </div>
 <div class="rounded-2xl border border-outline-variant/30 p-3">
 <div class="flex items-center justify-between mb-2">
-<p class="text-xs font-bold">Upcoming Care</p>
-<span class="text-[10px] text-primary font-bold">Today</span>
+<p class="text-xs font-bold"><?= t('hero_upcoming') ?></p>
+<span class="text-[10px] text-primary font-bold"><?= t('hero_today') ?></span>
 </div>
 <div class="flex items-center gap-3">
 <div class="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center">
 <span class="material-symbols-outlined text-primary text-lg">stethoscope</span>
 </div>
 <div>
-<p class="text-xs font-bold">Doctor consultation</p>
+<p class="text-xs font-bold"><?= t('nav_consult') ?></p>
 <p class="text-[10px] text-on-surface-variant">10:30 AM, video call</p>
 </div>
 </div>
 </div>
 <div class="grid grid-cols-2 gap-2">
-<a href="<?= BASE_URL ?>/shop.php" class="rounded-xl bg-primary text-on-primary text-center py-2 text-xs font-bold">Buy Medicine</a>
-<a href="<?= BASE_URL ?>/lab-tests.php" class="rounded-xl bg-surface-container text-primary text-center py-2 text-xs font-bold">Book Lab Test</a>
+<a href="<?= BASE_URL ?>/shop.php" class="rounded-xl bg-primary text-on-primary text-center py-2 text-xs font-bold"><?= t('hero_buy_medicine') ?></a>
+<a href="<?= BASE_URL ?>/lab-tests.php" class="rounded-xl bg-surface-container text-primary text-center py-2 text-xs font-bold"><?= t('hero_book_test') ?></a>
 </div>
 </div>
 </div>
@@ -190,19 +190,19 @@ Upload Report
 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8">
 <div class="home-card rounded-xl bg-white border border-outline-variant/20 p-4 flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-3xl">groups</span>
-<div><p class="font-headline-md text-xl text-primary">50,000+</p><p class="text-xs text-on-surface-variant">Happy Patients</p></div>
+<div><p class="font-headline-md text-xl text-primary">50,000+</p><p class="text-xs text-on-surface-variant"><?= t('stat_patients') ?></p></div>
 </div>
 <div class="home-card rounded-xl bg-white border border-outline-variant/20 p-4 flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-3xl">stethoscope</span>
-<div><p class="font-headline-md text-xl text-primary">5,000+</p><p class="text-xs text-on-surface-variant">Verified Experts</p></div>
+<div><p class="font-headline-md text-xl text-primary">5,000+</p><p class="text-xs text-on-surface-variant"><?= t('stat_experts') ?></p></div>
 </div>
 <div class="home-card rounded-xl bg-white border border-outline-variant/20 p-4 flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-3xl">support_agent</span>
-<div><p class="font-headline-md text-xl text-primary">24x7</p><p class="text-xs text-on-surface-variant">Support</p></div>
+<div><p class="font-headline-md text-xl text-primary">24x7</p><p class="text-xs text-on-surface-variant"><?= t('stat_support') ?></p></div>
 </div>
 <div class="home-card rounded-xl bg-white border border-outline-variant/20 p-4 flex items-center gap-3">
 <span class="material-symbols-outlined text-primary text-3xl">medical_services</span>
-<div><p class="font-headline-md text-xl text-primary">100+</p><p class="text-xs text-on-surface-variant">Care Services</p></div>
+<div><p class="font-headline-md text-xl text-primary">100+</p><p class="text-xs text-on-surface-variant"><?= t('stat_services') ?></p></div>
 </div>
 </div>
 </div>
@@ -214,18 +214,18 @@ Upload Report
 <div class="rounded-2xl bg-white border border-outline-variant/25 p-5 md:p-7 home-card">
 <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-5">
 <div>
-<p class="text-label-md font-label-md text-primary uppercase tracking-wider">Launch Services</p>
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Start with the care people need most</h2>
+<p class="text-label-md font-label-md text-primary uppercase tracking-wider"><?= t('launch_services_label') ?></p>
+<h2 class="font-headline-lg text-headline-lg text-on-surface"><?= t('launch_services_title') ?></h2>
 </div>
-<p class="text-sm text-on-surface-variant max-w-xl">Blood test booking, report explanation, doctor video consultation, health articles and emergency help numbers are ready as the first user journey.</p>
+<p class="text-sm text-on-surface-variant max-w-xl"><?= t('launch_services_desc') ?></p>
 </div>
 <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
 <?php foreach ([
-    ['science', 'Blood Test Booking', 'Book CBC, Sugar, Thyroid, LFT, KFT, vitamins and more.'],
-    ['upload_file', 'Report Upload & AI Explanation', 'Upload PDF/image reports and get plain-language guidance.'],
-    ['videocam', 'Doctor Video Consultation', 'Book verified doctors for secure online care.'],
-    ['article', 'Health Articles', 'Daily practical articles on diabetes, BP, pregnancy, dengue and seasonal care.'],
-    ['emergency_home', 'Emergency Help Numbers', 'Quick helplines with clear emergency disclaimer.'],
+    ['science', t('launch_test_title'), t('launch_test_desc')],
+    ['upload_file', t('launch_ai_title'), t('launch_ai_desc')],
+    ['videocam', t('launch_doctor_title'), t('launch_doctor_desc')],
+    ['article', t('launch_articles_title'), t('launch_articles_desc')],
+    ['emergency_home', t('launch_emergency_title'), t('launch_emergency_desc')],
 ] as $item): ?>
 <div class="rounded-xl bg-surface-container-low border border-outline-variant/25 p-4">
 <span class="material-symbols-outlined text-primary text-3xl"><?= htmlspecialchars($item[0]) ?></span>
@@ -239,7 +239,7 @@ Upload Report
 
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 <div class="text-center mb-6">
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Our Services</h2>
+<h2 class="font-headline-lg text-headline-lg text-on-surface"><?= t('services_title') ?></h2>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-9 gap-3">
 <?php foreach ($services as $service): ?>
@@ -257,10 +257,10 @@ Upload Report
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 <div class="grid lg:grid-cols-12 gap-6 items-center">
 <div class="lg:col-span-4 rounded-2xl overflow-hidden bg-primary/8 min-h-[280px]">
-<img src="<?= htmlspecialchars($hero_image) ?>" alt="Family wellness care with AyurViora" class="w-full h-full min-h-[280px] object-cover">
+<img loading="lazy" src="<?= htmlspecialchars($hero_image) ?>" alt="<?= t('family_care_alt') ?>" class="w-full h-full min-h-[280px] object-cover">
 </div>
 <div class="lg:col-span-8">
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-5">Why Choose AyurViora?</h2>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-5"><?= t('why_choose_title') ?></h2>
 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
 <?php foreach ($why_cards as $card): ?>
 <div class="rounded-xl bg-white border border-outline-variant/25 p-4 home-card">
@@ -278,8 +278,8 @@ Upload Report
 
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 <div class="flex items-end justify-between gap-4 mb-5">
-<h2 class="font-headline-lg text-headline-lg text-primary">How It Works?</h2>
-<a href="<?= BASE_URL ?>/ai-assistant.php" class="hidden sm:inline-flex items-center gap-1 text-primary font-label-lg">Start Now <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+<h2 class="font-headline-lg text-headline-lg text-primary"><?= t('how_it_works_title') ?></h2>
+<a href="<?= BASE_URL ?>/ai-assistant.php" class="hidden sm:inline-flex items-center gap-1 text-primary font-label-lg"><?= t('btn_learn_more') ?> <span class="material-symbols-outlined text-base">arrow_forward</span></a>
 </div>
 <div class="grid md:grid-cols-4 gap-3">
 <?php foreach ($steps as $index => $step): ?>
@@ -299,33 +299,33 @@ Upload Report
 
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 <div class="flex items-center justify-between mb-5">
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Featured Doctors</h2>
-<a class="text-primary font-label-lg text-label-lg flex items-center gap-1" href="<?= BASE_URL ?>/doctor-listing.php">View All <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+<h2 class="font-headline-lg text-headline-lg text-on-surface"><?= t('featured_doctors_title') ?></h2>
+<a class="text-primary font-label-lg text-label-lg flex items-center gap-1" href="<?= BASE_URL ?>/doctor-listing.php"><?= t('view_all') ?> <span class="material-symbols-outlined text-base">arrow_forward</span></a>
 </div>
 <div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2 home-scroll-snap">
 <?php if (count($featured_doctors) > 0): ?>
 <?php foreach ($featured_doctors as $doctor): ?>
 <a href="<?= BASE_URL ?>/doctor-profile.php?id=<?= (int)$doctor['id'] ?>" class="min-w-[220px] rounded-xl bg-white border border-outline-variant/25 p-4 home-card hover:-translate-y-1 transition-all">
-<img src="<?= htmlspecialchars($doctor['image_url'] ?: $default_doctor_image) ?>" alt="<?= htmlspecialchars($doctor['name']) ?>" class="w-full h-36 object-cover rounded-lg bg-surface-container mb-3" onerror="this.onerror=null;this.src='<?= htmlspecialchars($default_doctor_image) ?>';">
+<img loading="lazy" src="<?= htmlspecialchars($doctor['image_url'] ?: $default_doctor_image) ?>" alt="<?= htmlspecialchars($doctor['name']) ?>" class="w-full h-36 object-cover rounded-lg bg-surface-container mb-3" onerror="this.onerror=null;this.src='<?= htmlspecialchars($default_doctor_image) ?>';">
 <h3 class="font-bold text-sm text-on-surface"><?= htmlspecialchars($doctor['name']) ?></h3>
-<p class="text-xs text-on-surface-variant mt-1"><?= htmlspecialchars($doctor['specialty'] ?: 'Ayurvedic Specialist') ?></p>
-<p class="text-[11px] text-on-surface-variant mt-1"><?= htmlspecialchars($doctor['qualifications'] ?: 'BAMS') ?> &bull; <?= (int)($doctor['experience_years'] ?? 5) ?>+ yrs</p>
+<p class="text-xs text-on-surface-variant mt-1"><?= htmlspecialchars($doctor['specialty'] ?: t('fallback_specialty')) ?></p>
+<p class="text-[11px] text-on-surface-variant mt-1"><?= htmlspecialchars($doctor['qualifications'] ?: t('fallback_qual')) ?> &bull; <?= (int)($doctor['experience_years'] ?? 5) ?>+ yrs</p>
 <div class="flex items-center justify-between mt-3">
 <span class="inline-flex items-center gap-1 text-xs font-bold text-tertiary"><span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span><?= number_format((float)$doctor['rating'], 1) ?></span>
-<span class="rounded-full bg-primary px-3 py-1 text-[11px] font-bold text-on-primary">Book Now</span>
+<span class="rounded-full bg-primary px-3 py-1 text-[11px] font-bold text-on-primary"><?= t('btn_book_now') ?></span>
 </div>
 </a>
 <?php endforeach; ?>
 <?php else: ?>
 <?php foreach ([['Dr. Ajay Vaidya','Ayurvedic Doctor'], ['Dr. Bhavna Mishra','General Physician'], ['Dr. Kavita Sharma','Women Health Expert'], ['Dr. Amit Singh','Child Specialist'], ['Dr. Neha Kapoor','Homeopathy Expert']] as $doctor): ?>
 <a href="<?= BASE_URL ?>/doctor-listing.php" class="min-w-[220px] rounded-xl bg-white border border-outline-variant/25 p-4 home-card hover:-translate-y-1 transition-all">
-<img src="<?= htmlspecialchars($default_doctor_image) ?>" alt="<?= htmlspecialchars($doctor[0]) ?>" class="w-full h-36 object-cover rounded-lg bg-surface-container mb-3">
+<img loading="lazy" src="<?= htmlspecialchars($default_doctor_image) ?>" alt="<?= htmlspecialchars($doctor[0]) ?>" class="w-full h-36 object-cover rounded-lg bg-surface-container mb-3">
 <h3 class="font-bold text-sm text-on-surface"><?= htmlspecialchars($doctor[0]) ?></h3>
 <p class="text-xs text-on-surface-variant mt-1"><?= htmlspecialchars($doctor[1]) ?></p>
 <p class="text-[11px] text-on-surface-variant mt-1">BAMS &bull; 8+ yrs</p>
 <div class="flex items-center justify-between mt-3">
 <span class="inline-flex items-center gap-1 text-xs font-bold text-tertiary"><span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>4.8</span>
-<span class="rounded-full bg-primary px-3 py-1 text-[11px] font-bold text-on-primary">Book Now</span>
+<span class="rounded-full bg-primary px-3 py-1 text-[11px] font-bold text-on-primary"><?= t('btn_book_now') ?></span>
 </div>
 </a>
 <?php endforeach; ?>
@@ -341,8 +341,8 @@ Upload Report
 <span class="material-symbols-outlined text-4xl">smart_toy</span>
 </div>
 <div>
-<h2 class="font-headline-md text-headline-md">Your Personal AI Health Assistant</h2>
-<p class="text-sm text-on-primary/75">Ask symptoms, medicine questions and next steps.</p>
+<h2 class="font-headline-md text-headline-md"><?= t('hero_ai_title') ?></h2>
+<p class="text-sm text-on-primary/75"><?= t('hero_ai_desc') ?></p>
 </div>
 </div>
 <div class="lg:col-span-6 grid sm:grid-cols-4 gap-2">
@@ -351,7 +351,7 @@ Upload Report
 <?php endforeach; ?>
 </div>
 <div class="lg:col-span-2 lg:text-right">
-<a href="<?= BASE_URL ?>/ai-assistant.php" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-primary font-bold text-sm">Ask AI Now <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+<a href="<?= BASE_URL ?>/ai-assistant.php" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-primary font-bold text-sm"><?= t('btn_learn_more') ?> <span class="material-symbols-outlined text-base">arrow_forward</span></a>
 </div>
 </div>
 </div>
@@ -359,8 +359,8 @@ Upload Report
 
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 <div class="flex items-center justify-between mb-5">
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Popular Medicines</h2>
-<a class="text-primary font-label-lg text-label-lg flex items-center gap-1" href="<?= BASE_URL ?>/shop.php">View All Products <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+<h2 class="font-headline-lg text-headline-lg text-on-surface"><?= t('popular_medicines_title') ?></h2>
+<a class="text-primary font-label-lg text-label-lg flex items-center gap-1" href="<?= BASE_URL ?>/shop.php"><?= t('view_all_products') ?> <span class="material-symbols-outlined text-base">arrow_forward</span></a>
 </div>
 <div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2 home-scroll-snap">
 <?php foreach ($featured_products as $product): ?>
@@ -387,7 +387,7 @@ Upload Report
 </div>
 </a>
 <button class="mt-3 w-full rounded-full border border-primary px-4 py-2 text-sm font-bold text-primary hover:bg-primary hover:text-on-primary transition-all add-to-cart" data-product-id="<?= (int)$product['id'] ?>">
-<span class="material-symbols-outlined text-base align-[-3px] mr-1">add_shopping_cart</span>Add to Cart
+<span class="material-symbols-outlined text-base align-[-3px] mr-1">add_shopping_cart</span><?= t('btn_add_to_cart') ?>
 </button>
 </article>
 <?php endforeach; ?>
@@ -399,8 +399,8 @@ Upload Report
 
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 <div class="flex items-center justify-between mb-5">
-<h2 class="font-headline-lg text-headline-lg text-on-surface">What Our Patients Say</h2>
-<a class="text-primary font-label-lg text-label-lg" href="<?= BASE_URL ?>/wellness-blog.php">View All Reviews</a>
+<h2 class="font-headline-lg text-headline-lg text-on-surface"><?= t('testimonials_title') ?></h2>
+<a class="text-primary font-label-lg text-label-lg" href="<?= BASE_URL ?>/wellness-blog.php"><?= t('view_all') ?></a>
 </div>
 <div class="grid md:grid-cols-3 gap-4">
 <?php foreach ($fallback_testimonials as $item): ?>
@@ -424,8 +424,8 @@ Upload Report
 <?php if (count($blog_posts) > 0): ?>
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 <div class="flex items-end justify-between mb-5">
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Wellness Insights</h2>
-<a class="text-primary font-label-lg text-label-lg flex items-center gap-1" href="<?= BASE_URL ?>/wellness-blog.php">Read Blog <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+<h2 class="font-headline-lg text-headline-lg text-on-surface"><?= t('wellness_insights_title') ?></h2>
+<a class="text-primary font-label-lg text-label-lg flex items-center gap-1" href="<?= BASE_URL ?>/wellness-blog.php"><?= t('btn_read_more') ?> <span class="material-symbols-outlined text-base">arrow_forward</span></a>
 </div>
 <div class="grid md:grid-cols-3 gap-4">
 <?php foreach ($blog_posts as $post): ?>
@@ -445,12 +445,12 @@ Upload Report
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 <div class="rounded-2xl bg-surface-container-high p-6 md:p-10 text-center relative overflow-hidden">
 <div class="relative z-10 max-w-2xl mx-auto">
-<h2 class="font-headline-lg text-headline-lg text-primary mb-3">Join Our Wellness Community</h2>
-<p class="text-on-surface-variant mb-6">Get Ayurvedic tips, health reminders, product launches and care updates.</p>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-3"><?= t('join_community_title') ?></h2>
+<p class="text-on-surface-variant mb-6"><?= t('join_community_desc') ?></p>
 <form class="flex flex-col md:flex-row gap-3 max-w-md mx-auto" id="newsletter-form" method="POST" action="<?= BASE_URL ?>/subscribe.php">
 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
-<input class="flex-grow rounded-full border-outline-variant bg-white px-5 py-3 focus:ring-primary focus:border-primary" placeholder="Your email address" required name="email" type="email">
-<button class="bg-primary text-on-primary px-7 py-3 rounded-full font-label-lg text-label-lg hover:bg-primary-container transition-all" type="submit">Subscribe</button>
+<input class="flex-grow rounded-full border-outline-variant bg-white px-5 py-3 focus:ring-primary focus:border-primary" placeholder="<?= t('email_placeholder') ?>" required name="email" type="email">
+<button class="bg-primary text-on-primary px-7 py-3 rounded-full font-label-lg text-label-lg hover:bg-primary-container transition-all" type="submit"><?= t('subscribe_btn') ?></button>
 </form>
 <div id="newsletter-msg" class="hidden mt-4 font-label-lg text-label-lg"></div>
 </div>
@@ -520,4 +520,3 @@ document.querySelectorAll('.add-to-cart').forEach(btn => {
 </script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
-

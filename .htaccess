@@ -7,3 +7,9 @@ Options -Indexes
 <IfModule mod_rewrite.c>
     RedirectMatch 404 /\.git
 </IfModule>
+
+# Sitemap rewrite
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+</IfModule>

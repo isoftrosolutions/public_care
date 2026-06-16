@@ -3,31 +3,31 @@
 <?php
 $bottom_nav_items = [
     [
-        'label' => 'Home',
+        'label' => t('nav_home'),
         'icon' => 'home',
         'url' => BASE_URL . '/index.php',
         'active' => $current_page === 'index.php',
     ],
     [
-        'label' => 'Medicine',
+        'label' => t('nav_medicine'),
         'icon' => 'medication',
         'url' => BASE_URL . '/shop.php',
         'active' => in_array($current_page, ['shop.php', 'product-details.php', 'shopping-cart.php', 'checkout.php', 'payment.php'], true),
     ],
     [
-        'label' => 'Doctors',
+        'label' => t('nav_consult'),
         'icon' => 'stethoscope',
         'url' => BASE_URL . '/doctor-listing.php',
         'active' => in_array($current_page, ['doctor-listing.php', 'doctor-profile.php', 'appointment-booking.php', 'video-consult.php'], true),
     ],
     [
-        'label' => 'AI',
+        'label' => t('nav_ai_health'),
         'icon' => 'psychology',
         'url' => BASE_URL . '/ai-assistant.php',
         'active' => in_array($current_page, ['ai-assistant.php', 'dosha-quiz.php', 'dosha-result.php', 'health-coach.php'], true),
     ],
     [
-        'label' => 'Cart',
+        'label' => t('nav_cart'),
         'icon' => 'shopping_cart',
         'url' => BASE_URL . '/shopping-cart.php',
         'active' => $current_page === 'shopping-cart.php',
@@ -54,7 +54,7 @@ $bottom_nav_items = [
 <div class="w-full px-base md:px-margin-desktop py-16 grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto">
 <div class="space-y-4">
 <h3 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary"><?= SITE_NAME ?></h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Your trusted partner in holistic wellness and traditional Ayurvedic care for a modern lifestyle.</p>
+<p class="font-body-md text-body-md text-on-surface-variant"><?= t('footer_partner_text') ?></p>
 <div class="flex gap-3 pt-2">
 <a class="w-10 h-10 bg-surface-container flex items-center justify-center rounded-full text-primary hover:bg-primary hover:text-on-primary transition-all" href="#"><span class="material-symbols-outlined">public</span></a>
 <a class="w-10 h-10 bg-surface-container flex items-center justify-center rounded-full text-primary hover:bg-primary hover:text-on-primary transition-all" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
@@ -62,37 +62,37 @@ $bottom_nav_items = [
 </div>
 </div>
 <div class="space-y-4">
-<h4 class="font-label-lg text-label-lg text-on-surface font-bold">Quick Links</h4>
+<h4 class="font-label-lg text-label-lg text-on-surface font-bold"><?= t('footer_quick_links') ?></h4>
 <ul class="space-y-2">
-<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/shop.php">Shop All</a></li>
-<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/order-punch.php">Order Punch</a></li>
-<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/lab-tests.php">Book Blood Test</a></li>
-<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/doctor-listing.php">Doctors</a></li>
-<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/about-us.php">About Us</a></li>
-<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/wellness-blog.php">Wellness Blog</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/shop.php"><?= t('footer_shop_all') ?></a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/order-punch.php"><?= t('footer_order_punch') ?></a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/lab-tests.php"><?= t('book_blood_test') ?></a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/doctor-listing.php"><?= t('nav_consult') ?></a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/about-us.php"><?= t('footer_about_us') ?></a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/wellness-blog.php"><?= t('footer_wellness_blog') ?></a></li>
 </ul>
 </div>
 <div class="space-y-4">
-<h4 class="font-label-lg text-label-lg text-on-surface font-bold">Support</h4>
+<h4 class="font-label-lg text-label-lg text-on-surface font-bold"><?= t('footer_support') ?></h4>
 <ul class="space-y-2">
-<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/contact-us.php">Contact Us</a></li>
-<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/contact-us.php#emergency-help">Emergency Help</a></li>
-<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/returns.php">Shipping &amp; Returns</a></li>
-<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/contact-us.php">Privacy Policy</a></li>
-<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/contact-us.php">Terms of Service</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/contact-us.php"><?= t('btn_contact_us') ?></a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/contact-us.php#emergency-help"><?= t('footer_emergency_help') ?></a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/returns.php"><?= t('footer_shipping_returns') ?></a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/privacy-policy.php"><?= t('footer_privacy_policy') ?></a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all" href="<?= BASE_URL ?>/terms-of-service.php"><?= t('footer_terms_service') ?></a></li>
 </ul>
 </div>
 <div class="space-y-4">
-<h4 class="font-label-lg text-label-lg text-on-surface font-bold">Newsletter</h4>
-<p class="font-body-md text-body-md text-on-surface-variant">Subscribe to get wellness tips and exclusive offers.</p>
+<h4 class="font-label-lg text-label-lg text-on-surface font-bold"><?= t('footer_newsletter') ?></h4>
+<p class="font-body-md text-body-md text-on-surface-variant"><?= t('footer_subscribe_text') ?></p>
 <div class="flex gap-2">
-<input class="bg-surface-container-lowest border border-outline-variant rounded-lg flex-grow px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-body-md text-body-md" placeholder="Email address" type="email"/>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-lg flex-grow px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-body-md text-body-md" placeholder="<?= t('email_placeholder') ?>" type="email"/>
 <button class="bg-primary text-on-primary p-2 rounded-lg hover:bg-primary-container transition-all"><span class="material-symbols-outlined">send</span></button>
 </div>
 </div>
 </div>
 <div class="border-t border-outline-variant/30 py-8 px-base md:px-margin-desktop text-center">
-<p class="font-body-md text-body-md text-on-surface-variant">&copy; <?= date('Y') ?> <?= SITE_NAME ?>. All rights reserved. Holistic wellness through ancient wisdom.</p>
+<p class="font-body-md text-body-md text-on-surface-variant"><?= t('footer_copyright') ?> <?= t('footer_tagline') ?></p>
 </div>
 </footer>
 

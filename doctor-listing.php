@@ -4,7 +4,7 @@ $site_title = 'Consult Our Doctors';
 require_once __DIR__ . '/includes/header.php';
 
 $db = getDB();
-$doctors = $db->query("SELECT * FROM doctors WHERE available = 1 ORDER BY rating DESC")->fetch_all(MYSQLI_ASSOC);
+$doctors = $db->query("SELECT * FROM doctors WHERE available = 1 AND reviews_count > 0 AND name NOT LIKE '%StatusDoc%' AND name NOT LIKE '%BookingDoc%' ORDER BY rating DESC")->fetch_all(MYSQLI_ASSOC);
 
 function doctorAvailabilitySlot(array $doctor): string
 {
@@ -15,17 +15,17 @@ function doctorAvailabilitySlot(array $doctor): string
 
 <section class="pt-[100px] pb-section-gap max-w-[1200px] mx-auto px-gutter">
 <div class="mb-10 space-y-6">
-<h1 class="font-headline-lg text-headline-lg text-primary">Find Your Ayurvedic Expert</h1>
+<h1 class="font-headline-lg text-headline-lg text-primary"><?= t('doctors_title') ?></h1>
 <div class="flex flex-col md:flex-row gap-4 items-center">
 <div class="relative w-full md:max-w-md">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="w-full pl-12 pr-4 py-3 bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Search by name, specialty or health concern..." type="text"/>
+<input class="w-full pl-12 pr-4 py-3 bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="<?= t('shop_search') ?>" type="text"/>
 </div>
 <div class="flex flex-wrap gap-3 overflow-x-auto pb-2 scrollbar-hide">
-<button class="px-4 py-2 bg-primary text-on-primary rounded-full font-label-md text-label-md flex items-center gap-2">Specialty <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
-<button class="px-4 py-2 border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-2">Availability <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
-<button class="px-4 py-2 border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-2">Language <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
-<button class="px-4 py-2 border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-2">Experience <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded-full font-label-md text-label-md flex items-center gap-2"><?= t('doctor_specialty') ?> <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
+<button class="px-4 py-2 border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-2"><?= t('hero_today') ?> <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
+<button class="px-4 py-2 border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-2"><?= t('lang_switch') ?> <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
+<button class="px-4 py-2 border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-2"><?= t('doctor_experience') ?> <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
 </div>
 </div>
 </div>
@@ -90,7 +90,7 @@ function doctorAvailabilitySlot(array $doctor): string
 <?php foreach ($doctors as $d): ?>
 <div class="bg-white rounded-2xl p-6 border border-outline-variant/30 shadow-sm hover:shadow-md transition-shadow flex flex-col lg:flex-row gap-6">
 <div class="flex-shrink-0 relative">
-<img class="w-32 h-32 lg:w-40 lg:h-40 object-cover rounded-2xl" src="<?= htmlspecialchars($d['image_url']) ?>" alt="<?= htmlspecialchars($d['name']) ?>">
+<img loading="lazy" class="w-32 h-32 lg:w-40 lg:h-40 object-cover rounded-2xl" src="<?= htmlspecialchars($d['image_url']) ?>" alt="<?= htmlspecialchars($d['name']) ?>">
 <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-full whitespace-nowrap border-2 border-white">AVAILABLE TODAY</div>
 </div>
 <div class="flex-grow flex flex-col justify-between">
@@ -105,14 +105,14 @@ function doctorAvailabilitySlot(array $doctor): string
 </div>
 </div>
 <div class="grid grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-6 mt-4">
-<div class="flex items-center gap-2"><span class="material-symbols-outlined text-outline">history</span><span class="text-body-md"><?= (int)$d['experience_years'] ?>+ Years Exp.</span></div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-outline">history</span><span class="text-body-md"><?= t('years_exp', ['years' => (int)$d['experience_years']]) ?></span></div>
 <div class="flex items-center gap-2"><span class="material-symbols-outlined text-outline">translate</span><span class="text-body-md"><?= htmlspecialchars($d['languages']) ?></span></div>
 <div class="flex items-center gap-2"><span class="material-symbols-outlined text-outline">payments</span><span class="text-body-md font-bold">₹<?= number_format($d['fee']) ?></span></div>
-<div class="flex items-center gap-2 md:col-span-3"><span class="material-symbols-outlined text-outline">schedule</span><span class="text-body-md">Available: <?= htmlspecialchars(doctorAvailabilitySlot($d)) ?></span></div>
+<div class="flex items-center gap-2 md:col-span-3"><span class="material-symbols-outlined text-outline">schedule</span><span class="text-body-md"><?= t('hero_today') ?>: <?= htmlspecialchars(doctorAvailabilitySlot($d)) ?></span></div>
 </div>
 <div class="mt-6 flex flex-wrap gap-4 items-center">
-<a class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md hover:opacity-90 transition-all flex items-center gap-2" href="<?= BASE_URL ?>/appointment-booking.php?doctor_id=<?= $d['id'] ?>">Book Consultation <span class="material-symbols-outlined text-[18px]">calendar_today</span></a>
-<a class="text-primary font-label-md text-label-md border-b border-primary pb-0.5 hover:text-primary-container transition-colors" href="<?= BASE_URL ?>/doctor-profile.php?id=<?= $d['id'] ?>">View Profile</a>
+<a class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md hover:opacity-90 transition-all flex items-center gap-2" href="<?= BASE_URL ?>/appointment-booking.php?doctor_id=<?= $d['id'] ?>"><?= t('btn_book_now') ?> <span class="material-symbols-outlined text-[18px]">calendar_today</span></a>
+<a class="text-primary font-label-md text-label-md border-b border-primary pb-0.5 hover:text-primary-container transition-colors" href="<?= BASE_URL ?>/doctor-profile.php?id=<?= $d['id'] ?>"><?= t('btn_view_details') ?></a>
 </div>
 </div>
 </div>

@@ -1,9 +1,37 @@
 <!DOCTYPE html>
-<html class="scroll-smooth light" lang="en">
+<html class="scroll-smooth light" lang="<?= getAvailableLanguages()[$currentLang]['html_lang'] ?? 'en' ?>">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title><?= htmlspecialchars($site_title) ?> | <?= SITE_NAME ?></title>
+<?php
+$meta_descriptions = [
+    'Home' => 'AyurViora brings blood tests, AI report analysis, verified doctors and medicines into one simple healthcare platform. Book lab tests, consult doctors online.',
+    'Shop' => 'Shop Ayurvedic medicines, health products and wellness essentials at AyurViora. Herbal remedies, supplements and natural care products with home delivery.',
+    'Consult Our Doctors' => 'Consult verified Ayurvedic doctors online at AyurViora. Book video consultations for personalized healthcare advice from experienced practitioners.',
+    'Lab Tests' => 'Book blood tests and lab tests from home with AyurViora. Home sample collection, fast reports, and AI-powered explanations for your health reports.',
+    'Login' => 'Login to your AyurViora account to manage orders, book appointments, access health records and consult doctors online.',
+    'Register' => 'Create your AyurViora account to access Ayurvedic healthcare, book lab tests, consult doctors and order medicines online.',
+    'Cart' => 'Review your AyurViora shopping cart. Ayurvedic medicines, health products and wellness essentials ready for checkout.',
+    'Checkout' => 'Complete your order at AyurViora. Secure checkout for Ayurvedic medicines, lab tests and doctor consultations.',
+    'AI Health Assistant' => 'Get instant health guidance from AyurViora\'s AI Health Assistant. Ask symptoms, medicine questions and get wellness tips for free.',
+    'Doctor Profile' => 'View doctor profile, qualifications, experience and patient reviews. Book online video consultation with verified Ayurvedic doctors.',
+    'Product Details' => 'View product details, pricing, ratings and reviews for Ayurvedic medicines and health products at AyurViora.',
+    'Wellness Blog' => 'Read Ayurvedic wellness articles, health tips and natural remedies at AyurViora\'s Wellness Blog. Expert advice for holistic living.',
+    'Contact Us' => 'Contact AyurViora for support, queries or emergency help. Reach our team for assistance with orders, appointments or health services.',
+    'About Us' => 'Learn about AyurViora\'s mission to make healthcare accessible through Ayurveda, allopathy and homeopathy. AI-powered health platform.',
+    'Privacy Policy' => 'AyurViora Privacy Policy. Learn how we collect, use and protect your personal and health information.',
+    'Terms of Service' => 'AyurViora Terms of Service. Understand the terms governing use of our healthcare platform and services.',
+];
+$current_meta_desc = $meta_descriptions[$site_title] ?? SITE_NAME . ' - ' . SITE_TAGLINE;
+?>
+<meta name="description" content="<?= htmlspecialchars($current_meta_desc) ?>">
+<link rel="canonical" href="<?= BASE_URL ?>/<?= $current_page ?>">
+<link rel="icon" type="image/svg+xml" href="<?= BASE_URL ?>/favicon.svg">
+<?php foreach (getAvailableLanguages() as $code => $info): ?>
+<link rel="alternate" hreflang="<?= $info['html_lang'] ?>" href="<?= langUrl($code) ?>">
+<?php endforeach; ?>
+<link rel="alternate" hreflang="x-default" href="<?= langUrl('en') ?>">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script>
@@ -103,21 +131,62 @@ body { background-color: #fbf9f8; color: #1b1c1c; overflow-x: hidden; -webkit-fo
   }
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalOrganization",
+      "@id": "https://ayurviora.com/#organization",
+      "name": "AyurViora",
+      "url": "https://ayurviora.com/",
+      "description": "AyurViora brings blood tests, AI report analysis, verified doctors and medicines into one simple healthcare platform.",
+      "areaServed": "IN",
+      "foundingDate": "2026",
+      "medicalSpecialty": ["Ayurveda", "Allopathy", "Homeopathy"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ayurviora.com/#website",
+      "url": "https://ayurviora.com/",
+      "name": "AyurViora",
+      "publisher": { "@id": "https://ayurviora.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://ayurviora.com/shop.php?search={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://ayurviora.com/#webpage",
+      "url": "https://ayurviora.com/<?= $current_page ?>",
+      "name": "<?= htmlspecialchars($site_title) ?> | <?= SITE_NAME ?>",
+      "description": "<?= htmlspecialchars($current_meta_desc) ?>",
+      "isPartOf": { "@id": "https://ayurviora.com/#website" },
+      "about": { "@id": "https://ayurviora.com/#organization" }
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-background text-on-surface font-body-md overflow-x-hidden">
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-lg transition-all duration-300 shadow-sm">
 <div class="flex justify-between items-center gap-6 w-full px-base md:px-margin-desktop py-3 max-w-container-max mx-auto">
 <div class="flex items-center gap-8 min-w-0">
-<a class="font-display-lg text-headline-md font-bold text-primary tracking-tight shrink-0" href="<?= BASE_URL ?>/index.php"><?= SITE_NAME ?></a>
+<a class="shrink-0" href="<?= BASE_URL ?>/index.php"><img loading="lazy" class="h-8 sm:h-10 w-auto object-contain" src="<?= BASE_URL ?>/assets/uploads/final_log.jpeg" alt="<?= SITE_NAME ?>"></a>
 <nav class="hidden xl:flex items-center gap-2">
-<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'index.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/index.php">Home</a>
-<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'shop.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/shop.php">Medicine</a>
-<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'lab-tests.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/lab-tests.php">Lab Tests</a>
-<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= in_array($current_page, ['doctor-listing.php','doctor-profile.php','video-consult.php']) ? 'active' : '' ?>" href="<?= BASE_URL ?>/doctor-listing.php">Doctors</a>
-<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'ai-assistant.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/ai-assistant.php">AI Health</a>
-<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'orders.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/orders.php">Orders</a>
-<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'returns.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/returns.php">Returns</a>
+<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'index.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/index.php"><?= t('nav_home') ?></a>
+<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'shop.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/shop.php"><?= t('nav_medicine') ?></a>
+<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'lab-tests.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/lab-tests.php"><?= t('nav_lab_tests') ?></a>
+<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= in_array($current_page, ['doctor-listing.php','doctor-profile.php','video-consult.php']) ? 'active' : '' ?>" href="<?= BASE_URL ?>/doctor-listing.php"><?= t('nav_consult') ?></a>
+<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'ai-assistant.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/ai-assistant.php"><?= t('nav_ai_health') ?></a>
+<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'orders.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/orders.php"><?= t('nav_orders') ?></a>
+<a class="nav-link px-3 py-2 text-label-lg font-label-lg text-on-surface-variant hover:text-primary transition-colors <?= $current_page === 'returns.php' ? 'active' : '' ?>" href="<?= BASE_URL ?>/returns.php"><?= t('nav_returns') ?></a>
 </nav>
 </div>
 
@@ -134,11 +203,11 @@ body { background-color: #fbf9f8; color: #1b1c1c; overflow-x: hidden; -webkit-fo
 
 <div class="relative" id="lang-switcher">
 <button onclick="document.getElementById('lang-menu').classList.toggle('hidden')" class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-lg hover:bg-surface-container text-sm font-medium flex items-center gap-1">
-<span><?php $langs = getAvailableLanguages(); echo $langs[$_SESSION['lang']]['flag'] ?? '🌐'; ?></span>
+<span><?php $langs = getAvailableLanguages(); echo $langs[$currentLang]['flag'] ?? '🌐'; ?></span>
 </button>
 <div id="lang-menu" class="hidden absolute right-0 mt-2 w-44 bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant/30 py-2 z-[100]">
 <?php foreach (getAvailableLanguages() as $code => $info): ?>
-<a href="?lang=<?= $code ?>" class="flex items-center gap-3 px-4 py-2.5 hover:bg-surface-container transition-colors text-sm <?= ($_SESSION['lang'] ?? 'hi') === $code ? 'bg-secondary-container font-bold' : '' ?>">
+<a href="<?= langUrl($code) ?>" class="flex items-center gap-3 px-4 py-2.5 hover:bg-surface-container transition-colors text-sm <?= activeLangClass($code, $currentLang) ?>">
 <span><?= $info['flag'] ?></span>
 <span><?= $info['native'] ?></span>
 </a>
@@ -212,7 +281,7 @@ body { background-color: #fbf9f8; color: #1b1c1c; overflow-x: hidden; -webkit-fo
 
 <div id="mobile-menu" class="hidden fixed inset-0 z-[90] xl:hidden bg-surface/95 backdrop-blur-lg flex-col h-dvh w-screen max-w-full">
 <div class="flex items-center justify-between px-5 py-4 border-b border-outline-variant/20 shrink-0 pt-[max(1rem,env(safe-area-inset-top))]">
-<span class="font-display-lg text-headline-md font-bold text-primary"><?= SITE_NAME ?></span>
+<img loading="lazy" class="h-8 w-auto object-contain" src="<?= BASE_URL ?>/assets/uploads/final_log.jpeg" alt="<?= SITE_NAME ?>">
 <button class="close-mobile-btn p-2 text-on-surface-variant rounded-lg hover:bg-surface-container" type="button" aria-label="Close navigation menu"><span class="material-symbols-outlined">close</span></button>
 </div>
 <?php if (isset($_SESSION['user_id'])): ?>
@@ -226,13 +295,13 @@ body { background-color: #fbf9f8; color: #1b1c1c; overflow-x: hidden; -webkit-fo
 <?php endif; ?>
 <div class="flex-1 overflow-y-auto">
 <nav class="py-2">
-<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'index.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/index.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">home</span> Home</a>
-<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'shop.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/shop.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">medication</span> Medicine</a>
-<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'lab-tests.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/lab-tests.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">science</span> Lab Tests</a>
-<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= in_array($current_page, ['doctor-listing.php','doctor-profile.php','video-consult.php']) ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/doctor-listing.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">stethoscope</span> Doctors</a>
-<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'ai-assistant.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/ai-assistant.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">psychology</span> AI Health</a>
-<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'orders.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/orders.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">shopping_bag</span> Orders</a>
-<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'returns.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/returns.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">assignment_return</span> Returns</a>
+<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'index.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/index.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">home</span> <?= t('nav_home') ?></a>
+<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'shop.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/shop.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">medication</span> <?= t('nav_medicine') ?></a>
+<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'lab-tests.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/lab-tests.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">science</span> <?= t('nav_lab_tests') ?></a>
+<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= in_array($current_page, ['doctor-listing.php','doctor-profile.php','video-consult.php']) ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/doctor-listing.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">stethoscope</span> <?= t('nav_consult') ?></a>
+<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'ai-assistant.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/ai-assistant.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">psychology</span> <?= t('nav_ai_health') ?></a>
+<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'orders.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/orders.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">shopping_bag</span> <?= t('nav_orders') ?></a>
+<a class="flex items-center gap-3 px-5 py-3 text-sm text-on-surface hover:bg-surface-container transition-colors <?= $current_page === 'returns.php' ? 'bg-surface-container font-bold' : '' ?>" href="<?= BASE_URL ?>/returns.php"><span class="material-symbols-outlined text-lg text-on-surface-variant">assignment_return</span> <?= t('nav_returns') ?></a>
 </nav>
 <?php if (isset($_SESSION['user_id'])): ?>
 <hr class="border-outline-variant/20 mx-5">
@@ -261,9 +330,9 @@ body { background-color: #fbf9f8; color: #1b1c1c; overflow-x: hidden; -webkit-fo
 </div>
 <div class="border-t border-outline-variant/20 p-5 shrink-0 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
 <?php if (isset($_SESSION['user_id'])): ?>
-<a class="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-error/30 text-error font-label-lg hover:bg-error-container transition-colors" href="<?= BASE_URL ?>/logout.php"><span class="material-symbols-outlined text-lg">logout</span> Sign Out</a>
+<a class="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-error/30 text-error font-label-lg hover:bg-error-container transition-colors" href="<?= BASE_URL ?>/logout.php"><span class="material-symbols-outlined text-lg">logout</span> <?= t('nav_logout') ?></a>
 <?php else: ?>
-<a class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-primary text-on-primary font-label-lg hover:bg-primary-container transition-colors" href="<?= BASE_URL ?>/login.php"><span class="material-symbols-outlined text-lg">person</span> Login</a>
+<a class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-primary text-on-primary font-label-lg hover:bg-primary-container transition-colors" href="<?= BASE_URL ?>/login.php"><span class="material-symbols-outlined text-lg">person</span> <?= t('nav_login') ?></a>
 <?php endif; ?>
 </div>
 </div>
@@ -302,4 +371,3 @@ document.addEventListener('keydown', function(e) {
     document.getElementById('mobile-menu-btn')?.setAttribute('aria-expanded', 'false');
 });
 </script>
-<main>

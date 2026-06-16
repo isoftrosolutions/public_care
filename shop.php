@@ -28,6 +28,7 @@ if ($min_price > 0) {
 if ($max_price > 0) {
     $where[] = "p.price <= " . (float)$max_price;
 }
+$where[] = "p.stock > 0";
 
 $where_clause = '';
 if (count($where) > 0) {
@@ -70,6 +71,25 @@ if ($categories_result && $categories_result->num_rows > 0) {
     while ($row = $categories_result->fetch_assoc()) {
         $categories[] = $row;
     }
+}
+
+// Filter out placeholder categories (timestamp names or empty)
+$valid_categories = [];
+if (!empty($categories)) {
+    $stmt = $conn->prepare("SELECT COUNT(*) as cnt FROM products WHERE category_id = ? AND stock > 0");
+    foreach ($categories as $cat) {
+        if (preg_match('/^first-\d+$/', $cat['name'])) {
+            continue; // Skip timestamp-named categories
+        }
+        $stmt->bind_param("i", $cat['id']);
+        $stmt->execute();
+        $cnt_result = $stmt->get_result()->fetch_assoc()['cnt'];
+        if ($cnt_result > 0) {
+            $valid_categories[] = $cat;
+        }
+    }
+    $stmt->close();
+    $categories = $valid_categories;
 }
 
 $any_filter_active = $category_filter > 0 || $search_term !== '' || $min_price > 0 || $max_price > 0;
@@ -209,7 +229,7 @@ Clear All
 <div class="flex-1 min-w-0">
 <div class="sticky top-[64px] z-30 -mx-4 mb-4 border-b border-outline-variant/30 bg-background/95 px-4 py-3 backdrop-blur md:static md:z-auto md:mx-0 md:mb-6 md:border-0 md:bg-transparent md:px-0 md:py-0 md:backdrop-blur-0 flex flex-row items-center justify-between gap-3">
 <div>
-<h1 class="font-headline-lg text-2xl leading-8 md:text-headline-lg md:leading-[40px] text-primary">Shop All</h1>
+<h1 class="font-headline-lg text-2xl leading-8 md:text-headline-lg md:leading-[40px] text-primary"><?= t('nav_shop') ?></h1>
 <p class="hidden md:block text-body-md text-on-surface-variant mt-1">Explore our range of authentic Ayurvedic formulations</p>
 <p class="md:hidden text-xs text-on-surface-variant"><?= number_format((int)$total_products) ?> products available</p>
 </div>
@@ -283,7 +303,7 @@ Showing <span class="font-bold text-on-surface"><?= count($products) ?></span>
 <div class="product-card group bg-surface-container-lowest rounded-2xl border border-outline-variant/20 overflow-hidden hover:shadow-xl hover:border-primary/20 transition-all duration-500 flex flex-col" style="animation: fadeSlideUp 0.5s ease-out <?= $index * 0.05 ?>s both;">
 <div class="relative aspect-square bg-surface-container-low overflow-hidden">
 <a href="<?= BASE_URL ?>/product-details.php?id=<?= $product['id'] ?>">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="<?= htmlspecialchars(trim((string)($product['image_url'] ?? '')) !== '' ? $product['image_url'] : $default_product_image) ?>" alt="<?= htmlspecialchars($product['name']) ?>" onerror="this.onerror=null;this.src='<?= htmlspecialchars($default_product_image) ?>';"/>
+<img loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="<?= htmlspecialchars(trim((string)($product['image_url'] ?? '')) !== '' ? $product['image_url'] : $default_product_image) ?>" alt="<?= htmlspecialchars($product['name']) ?>" onerror="this.onerror=null;this.src='<?= htmlspecialchars($default_product_image) ?>';"/>
 </a>
 
 <?php if ($product['is_bestseller']): ?>
@@ -324,9 +344,9 @@ Quick View
 <div class="p-3 md:p-5 flex-1 flex flex-col">
 <span class="text-[10px] md:text-[11px] font-medium text-tertiary uppercase tracking-widest mb-1 md:mb-1.5 truncate"><?= htmlspecialchars($product['category_name'] ?? 'General') ?></span>
 <a href="<?= BASE_URL ?>/product-details.php?id=<?= $product['id'] ?>">
-<h3 class="font-bold md:font-headline-md text-sm leading-5 md:text-headline-md md:leading-[32px] text-primary mb-1 md:mb-1.5 line-clamp-2 md:line-clamp-1 group-hover:text-primary-container transition-colors"><?= htmlspecialchars($product['name']) ?></h3>
+<h3 class="font-bold md:font-headline-md text-sm leading-5 md:text-headline-md md:leading-[32px] text-primary mb-1 md:mb-1.5 line-clamp-2 md:line-clamp-1 group-hover:text-primary-container transition-colors"><?= htmlspecialchars(db_t($product, 'name')) ?></h3>
 </a>
-<p class="hidden md:block text-body-md text-on-surface-variant line-clamp-2 mb-4 leading-relaxed"><?= htmlspecialchars($product['description']) ?></p>
+<p class="hidden md:block text-body-md text-on-surface-variant line-clamp-2 mb-4 leading-relaxed"><?= htmlspecialchars(db_t($product, 'description')) ?></p>
 
 <div class="hidden md:flex items-center gap-1 mb-3">
 <div class="flex text-secondary">
@@ -457,7 +477,7 @@ if ($count_r) { $cat_count = $count_r->fetch_assoc()['cnt']; }
 <div class="group cursor-pointer" onclick="window.location='<?= BASE_URL ?>/shop.php?category=<?= $cat['id'] ?>'">
 <div class="relative h-48 rounded-2xl overflow-hidden mb-4 shadow-sm">
 <?php if ($cat['image_url']): ?>
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="<?= htmlspecialchars($cat['image_url']) ?>" alt="<?= htmlspecialchars($cat['name']) ?>"/>
+<img loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="<?= htmlspecialchars($cat['image_url']) ?>" alt="<?= htmlspecialchars($cat['name']) ?>"/>
 <?php else: ?>
 <div class="w-full h-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
 <span class="material-symbols-outlined text-5xl text-primary/30">category</span>
@@ -526,7 +546,7 @@ if ($count_r) { $cat_count = $count_r->fetch_assoc()['cnt']; }
 <div class="flex flex-col lg:flex-row gap-4 md:gap-gutter">
 <div class="flex-1 bg-white border border-outline-variant/30 rounded-3xl p-5 md:p-8 flex items-center gap-4 md:gap-8 shadow-sm hover:shadow-md transition-shadow">
 <div class="hidden md:block w-32 h-32 rounded-2xl overflow-hidden flex-shrink-0">
-<img class="w-full h-full object-cover" alt="Ayurvedic doctor consultation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3hGX4_nQCApx-s8yhMpbu2WwnRHNUnQp--yvUNmnarIhqCCeBrpiyV75lROJ6FdsLzp9C21wAOae6ouNxzg9auJ-mEO8cMR9cSExXN8PWhKVFqvedci9xJ12Yt1EXsO_O-qYPNBj1sWGOZ1CswH78Ybc80gbGlYAW-FOQ-nu25tbyeemeUM5sbxVmHVZK-pMoj6PvsYMavD3VMhbMAjYwqqBQHy18t_QwGoupudZDNAMsXWcJNrlanH3ncgcrmYD3aJl19CzMiG8"/>
+<img loading="lazy" class="w-full h-full object-cover" alt="Ayurvedic doctor consultation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3hGX4_nQCApx-s8yhMpbu2WwnRHNUnQp--yvUNmnarIhqCCeBrpiyV75lROJ6FdsLzp9C21wAOae6ouNxzg9auJ-mEO8cMR9cSExXN8PWhKVFqvedci9xJ12Yt1EXsO_O-qYPNBj1sWGOZ1CswH78Ybc80gbGlYAW-FOQ-nu25tbyeemeUM5sbxVmHVZK-pMoj6PvsYMavD3VMhbMAjYwqqBQHy18t_QwGoupudZDNAMsXWcJNrlanH3ncgcrmYD3aJl19CzMiG8"/>
 </div>
 <div>
 <h3 class="font-bold md:font-title-lg text-base md:text-title-lg mb-1 md:mb-2">Ayurvedic Consultation</h3>
@@ -661,4 +681,5 @@ this.classList.add('bg-primary', 'text-on-primary');
 </script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
+
 
