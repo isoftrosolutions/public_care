@@ -39,7 +39,7 @@ $botResponses = [
     ],
     'contact' => [
         'keywords' => ['contact', 'संपर्क', 'support', 'help', 'मदद', 'call', 'phone', 'फोन', 'email'],
-        'response' => chatbotIcon('call') . " Get in touch with us:\n\n" . chatbotIcon('mail') . " Email: support@ayurviora.com\n" . chatbotIcon('smartphone') . " Phone: +91 99999 99999\n" . chatbotIcon('chat') . " <a href='contact-us.php' class='text-primary font-bold'>Contact Form</a>\n\nWe're here Mon-Sat, 8AM to 8PM!"
+        'response' => chatbotIcon('call') . " Get in touch with us:\n\n" . chatbotIcon('mail') . " Email: sharmasumolishyam@gmail.com\n" . chatbotIcon('smartphone') . " Phone: +91 9899784504\n" . chatbotIcon('chat') . " <a href='contact-us.php' class='text-primary font-bold'>Contact Form</a>\n\nWe're here Mon-Sat, 8AM to 8PM!"
     ],
     'pricing' => [
         'keywords' => ['price', 'कीमत', 'cost', 'fee', 'फीस', 'rate', 'charge', '₹'],

@@ -56,9 +56,9 @@ $bottom_nav_items = [
 <h3 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary"><?= SITE_NAME ?></h3>
 <p class="font-body-md text-body-md text-on-surface-variant"><?= t('footer_partner_text') ?></p>
 <div class="flex gap-3 pt-2">
-<a class="w-10 h-10 bg-surface-container flex items-center justify-center rounded-full text-primary hover:bg-primary hover:text-on-primary transition-all" href="#"><span class="material-symbols-outlined">public</span></a>
-<a class="w-10 h-10 bg-surface-container flex items-center justify-center rounded-full text-primary hover:bg-primary hover:text-on-primary transition-all" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
-<a class="w-10 h-10 bg-surface-container flex items-center justify-center rounded-full text-primary hover:bg-primary hover:text-on-primary transition-all" href="#"><span class="material-symbols-outlined">call</span></a>
+<a class="w-10 h-10 bg-surface-container flex items-center justify-center rounded-full text-primary hover:bg-primary hover:text-on-primary transition-all" href="<?= BASE_URL ?>/"><span class="material-symbols-outlined">public</span></a>
+<a class="w-10 h-10 bg-surface-container flex items-center justify-center rounded-full text-primary hover:bg-primary hover:text-on-primary transition-all" href="mailto:sharmasumolishyam@gmail.com"><span class="material-symbols-outlined">alternate_email</span></a>
+<a class="w-10 h-10 bg-surface-container flex items-center justify-center rounded-full text-primary hover:bg-primary hover:text-on-primary transition-all" href="tel:+919899784504"><span class="material-symbols-outlined">call</span></a>
 </div>
 </div>
 <div class="space-y-4">
