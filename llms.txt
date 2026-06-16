@@ -1,0 +1,40 @@
+# AyurViora — AI Health & Wellness Platform
+
+> AyurViora is an Indian healthcare platform combining Ayurveda, Allopathy, and Homeopathy. Users can book blood tests, upload reports for AI explanation, consult verified doctors online, and order medicines.
+
+## Docs
+
+- About Us: https://ayurviora.com/about-us.php
+- Privacy Policy: https://ayurviora.com/privacy-policy.php
+- Terms of Service: https://ayurviora.com/terms-of-service.php
+- Contact & Emergency Help: https://ayurviora.com/contact-us.php
+
+## Core Pages
+
+- Home: https://ayurviora.com/
+- Shop Medicines: https://ayurviora.com/shop.php
+- Lab Tests: https://ayurviora.com/lab-tests.php
+- Doctor Listing: https://ayurviora.com/doctor-listing.php
+- AI Health Assistant: https://ayurviora.com/ai-assistant.php
+- Wellness Blog: https://ayurviora.com/wellness-blog.php
+- Report Upload: https://ayurviora.com/upload-report.php
+- Login: https://ayurviora.com/login.php
+- Register: https://ayurviora.com/register.php
+
+## Features
+
+- **Blood Test Booking**: Book lab tests with home sample collection. Tests include CBC, Thyroid Profile, Lipid Profile, Blood Sugar, LFT, KFT, Vitamin D, Vitamin B12.
+- **AI Report Analysis**: Upload PDF/image reports and get plain-language AI-powered explanations.
+- **Doctor Video Consultation**: Book verified Ayurvedic and allopathic doctors for secure online consultations.
+- **Medicine Delivery**: Order Ayurvedic, herbal and wellness products with home delivery.
+- **AI Health Assistant**: Free AI chatbot for symptom guidance, medicine lookup, drug interactions, and Ayurvedic diet tips.
+- **Multi-Language**: Available in English, Hindi, Haryanvi, Punjabi, and Bhojpuri.
+
+## FAQ
+
+- What is AyurViora? An Indian healthcare platform for lab tests, doctor consultations, medicines, and AI health analysis.
+- What medical systems are supported? Ayurveda, Allopathy, and Homeopathy.
+- Is AyurViora a medical emergency service? No. For emergencies, contact local emergency services immediately.
+- How do I book a lab test? Visit the Lab Tests page, choose a test, and select a home collection slot.
+- How does the AI report analysis work? Upload your blood test report (PDF or image), and the AI provides a plain-language explanation.
+- What languages are supported? English, Hindi, हिन्दी, हरियाणवी, ਪੰਜਾਬੀ, भोजपुरी.
